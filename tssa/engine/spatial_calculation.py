@@ -5,7 +5,7 @@ updates:
 '''
 import numpy as np
 
-def point_relative_to_line(point:np.array, line_start:np.array, line_end:np.array) -> str:
+def point_relative_to_line(point:np.array, line_start:np.array, line_end:np.array) -> int:
     """
     Determines the position of a point relative to a line.
 
@@ -15,7 +15,7 @@ def point_relative_to_line(point:np.array, line_start:np.array, line_end:np.arra
         line_end (numpy.ndarray): The ending point of the line (shape: (2,))
 
     Returns:
-        str: 'left', 'right', or 'on'
+        str: 'left-up', 'right-down', or 'on'
     """
 
     # Calculate the cross product of the vectors from the line start to the point and the line end
@@ -23,10 +23,8 @@ def point_relative_to_line(point:np.array, line_start:np.array, line_end:np.arra
 
     result = 'on'
     if cross_product > 0:
-        result = 'left'
+        result = 'right-down'
     elif cross_product < 0:
-        result = 'right'
-    else:
-        result = 'on'
+        result = 'left-up'
 
     return result

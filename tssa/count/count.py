@@ -21,13 +21,20 @@ class Count:
         count_tracks_by_line(): 
             count tracks that passing a reference line for post-analysis
     '''
-    def __init__(self) -> None:
+    def __init__(self, line:LineString) -> None:
+        '''
+        Initialize the class of Count
+        Inputs:
+            line - the reference line, LineString(pointA, pointB)
+        '''
         self.track_fields = ['frame', 'track_id', 'x', 'y', 'w', 'h', 'r1', 'r2', 'r3', 'r4']
+        self.line = line
+        self.line_end_a = np.array(self.line.coords[0])
+        self.line_end_b = np.array(self.line.coords[1])
 
     def count_tracks_by_line(self,
                              tracks:pd.DataFrame=None,
                              track_file:str=None,
-                             line: LineString=None,
                              video_index:int=None,
                              video_tot:int=None) -> pd.DataFrame:
         '''
@@ -35,7 +42,6 @@ class Count:
             Inputs:
                 tracks - a DataFrame of tracks, if None (default), read track_file
                 track_file -  a txt file contains tracks, 
-                line - the reference line, LineString(pointA, pointB)
                 video_index - the index of video for processing
                 video_tot - the total number of videos
             Return:
@@ -57,11 +63,9 @@ class Count:
                                                 (track['x'], track['y'] + track['h'])]),
                                                 axis =1)
         geo_tracks = gpd.GeoDataFrame(tracks, geometry=geo)
-        point_a = np.array(line.coords[0])
-        point_b = np.array(line.coords[1])
 
         # Check if bboxes intersect with the line
-        geo_tracks['intersected'] = line.intersects(geo_tracks.geometry).values.tolist()
+        geo_tracks['intersected'] = self.line.intersects(geo_tracks.geometry).values.tolist()
 
         # Interate through all tracks
         pbar = tqdm(total=len(track_ids), unit=' tracks')
@@ -74,20 +78,22 @@ class Count:
         intersected_direct = []
 
         for track_id in track_ids:
-            selected = geo_tracks.loc[(geo_tracks['track_id']==track_id)].copy()
-            if len(selected)>0:
-                intersected = selected.loc[(selected['intersected'] is True)].copy()
-                if len(intersected) > 0:
-                    intersected.sort_values(by='frame', inplace=True)
+            track_frames = geo_tracks.loc[(geo_tracks['track_id']==track_id)].copy()
+            if len(track_frames)>0:
+                track_intersected_frames = track_frames.loc[(track_frames['intersected']==True)].copy()
+                if len(track_intersected_frames) > 0:
+                    track_frames.sort_values(by='frame', inplace=True)
                     if not track_id in intersected_tracks:
                         intersected_tracks.append(track_id)
-                        frame_pos = int(len(intersected)/2)
-                        intersected_frames.append(intersected['frame'].values[frame_pos])
-
+                        intersected_frames.append(track_intersected_frames['frame'].values[
+                                                        int(len(track_intersected_frames)/2)
+                                                        ])
                         # center point of the first frame
-                        point_c = np.array((intersected.iloc[0]['x'] + intersected.iloc[0]['w']/2,
-                                            intersected.iloc[0]['y'] + intersected.iloc[0]['h']/2))
-                        intersected_direct.append(point_relative_to_line(point_c, point_a, point_b))
+                        point_c_end = np.array((track_frames.iloc[-1]['x'] + track_frames.iloc[-1]['w']/2,
+                                            track_frames.iloc[-1]['y'] + track_frames.iloc[-1]['h']/2))
+                        intersected_direct.append(
+                            point_relative_to_line(point_c_end, self.line_end_a, self.line_end_b)
+                            )
             pbar.update()
         pbar.close()
 
