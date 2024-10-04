@@ -80,7 +80,8 @@ class Count:
         for track_id in track_ids:
             track_frames = geo_tracks.loc[(geo_tracks['track_id']==track_id)].copy()
             if len(track_frames)>0:
-                track_intersected_frames = track_frames.loc[(track_frames['intersected']==True)].copy()
+                track_intersected_frames = track_frames.loc[
+                                            (track_frames['intersected']==True)].copy()
                 if len(track_intersected_frames) > 0:
                     track_frames.sort_values(by='frame', inplace=True)
                     if not track_id in intersected_tracks:
@@ -89,8 +90,10 @@ class Count:
                                                         int(len(track_intersected_frames)/2)
                                                         ])
                         # center point of the first frame
-                        point_c_end = np.array((track_frames.iloc[-1]['x'] + track_frames.iloc[-1]['w']/2,
-                                            track_frames.iloc[-1]['y'] + track_frames.iloc[-1]['h']/2))
+                        point_c_end = np.array((track_frames.iloc[-1]['x']
+                                                    + track_frames.iloc[-1]['w']/2,
+                                                track_frames.iloc[-1]['y']
+                                                    + track_frames.iloc[-1]['h']/2))
                         intersected_direct.append(
                             point_relative_to_line(point_c_end, self.line_end_a, self.line_end_b)
                             )
