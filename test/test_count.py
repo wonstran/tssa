@@ -3,7 +3,7 @@ import sys
 import pandas as pd
 from shapely.geometry import LineString
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from tssa.count.count import Count
+from tssa.core.count import Count
 
 track_file ='/mnt/d/videos/ped2stage/05032024/wb_20240416/tracks/wb_20240416_cross_ped_track.txt'
 tracks = pd.read_csv(track_file)

@@ -11,7 +11,7 @@ import pandas as pd
 from tqdm import tqdm
 import numpy as np
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from engine.spatial_calculation import point_relative_to_line
+from tssa.engine.geometry import point_relative_to_line
 
 class Count:
     '''
@@ -45,7 +45,7 @@ class Count:
                 video_index - the index of video for processing
                 video_tot - the total number of videos
             Return:
-                A DataFrame of track_id, frame, direction, count
+                A DataFrame of count,track_id,frame,direction
         '''
         # Load tracks
         if tracks is None:
