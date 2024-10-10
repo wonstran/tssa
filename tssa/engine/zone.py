@@ -10,13 +10,14 @@ import geopandas as gpd
 from shapely.geometry import Point, Polygon
 from tqdm import tqdm
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from core.definition import track_fields
+from tssa.io.definition import track_fields
 
 def match_zone_by_point(tracks:pd.DataFrame,
                         zone:Polygon,
                         ref_point:str='cc',
                         ref_offset:tuple=(0,0),
                         zone_field:str='in_zone',
+                        output_ref_xy:bool=False,
                         verbose:bool=True)->pd.DataFrame:
     '''
     Scan the position of a point of tracks and determine if the track belongs to a pre-define zone
@@ -35,13 +36,13 @@ def match_zone_by_point(tracks:pd.DataFrame,
                     'br' - bottom right of the bounding box
         ref_offset - the offset of the reference point, default is (0,0)
         zone_field - the field name of the zone, default is 'zone'
+        output_ref_xy - if True, output the reference point x and y
         verbose - if True, show the progress bar
     Returns:
         A DataFrame of tracks with the zone field
     '''
 
     tracks.columns = track_fields
-    tracks[zone_field] = False
 
     if verbose:
         tqdm.pandas(desc='Generating geometries for reference points')
@@ -153,16 +154,19 @@ def match_zone_by_point(tracks:pd.DataFrame,
                                                             axis=1)
 
     geo_tracks = gpd.GeoDataFrame(tracks, geometry=geo)
+    geo_tracks[zone_field] = False
     geo_tracks.loc[(geo_tracks.geometry.within(zone)), zone_field] = True
-
+    if output_ref_xy:
+        geo_tracks[['ref_x', 'ref_y']] = geo_tracks.geometry.apply(
+                                            lambda p: [p.x, p.y]).apply(pd.Series)
     return pd.DataFrame(geo_tracks.drop(columns='geometry'))
-
 
 def match_zones_by_point(tracks:pd.DataFrame,
                         zones:list[Polygon],
                         ref_point:str='cc',
                         ref_offset:tuple=(0,0),
                         zone_field:str='zone',
+                        output_ref_xy:bool=False,
                         verbose:bool=True)->pd.DataFrame:
     '''
     Scan the position of a point of tracks and determine if the track belongs to pre-define zones
@@ -181,6 +185,7 @@ def match_zones_by_point(tracks:pd.DataFrame,
                     'br' - bottom right of the bounding box
         ref_offset - the offset of the reference point, default is (0,0)
         zone_field - the field name of the zone, default is 'zone'
+        output_ref_xy - if True, output the reference point x and y
         verbose - if True, show the progress bar
     Returns:
         A DataFrame of tracks with the zone field
@@ -307,5 +312,7 @@ def match_zones_by_point(tracks:pd.DataFrame,
             pbar.update()
     if verbose:
         pbar.close()
-
+    if output_ref_xy:
+        geo_tracks[['ref_x', 'ref_y']] = geo_tracks.geometry.apply(
+                                            lambda p: [p.x, p.y]).apply(pd.Series)
     return pd.DataFrame(geo_tracks.drop(columns='geometry'))
