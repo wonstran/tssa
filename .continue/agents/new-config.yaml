@@ -1,0 +1,54 @@
+# This is an example configuration file
+# To learn more, see the full config.yaml reference: https://docs.continue.dev/reference
+
+name: Config
+version: 1.0.0
+schema: v1
+
+x-ollama-remote: &ollama_remote
+  provider: ollama
+  apiBase: http://cutrxps.ddns.net:11435
+  apiKey: vRCSXh6DP9dtHfJOWX++v5ialMV+FSNQB+qoh+jHcAw=
+  
+models:
+    # Chat / edits (good general assistant or code chat)
+  - <<: *ollama_remote
+    name: qwen3-coder-30b-dev-fast
+    provider: ollama
+    model: qwen3-coder-30b-dev-fast         # must match `ollama list` tag
+    roles:
+      - chat
+      - edit
+      - apply
+
+  - <<: *ollama_remote
+    name: qwen2.5-coder-14b-fast
+    provider: ollama
+    model: qwen2.5-coder-14b-fast         # must match `ollama list` tag
+    roles:
+      - chat
+      - edit
+      - apply
+      
+  # Tab autocomplete (optional but recommended)
+  - <<: *ollama_remote
+    name: qwen2.5-coder-7b autocomplete
+    provider: ollama
+    model: qwen2.5-coder:7b           # smaller is often faster for autocomplete
+    roles:
+      - autocomplete
+    completionOptions:
+      temperature: 0.1
+      topP: 0.9
+      topK: 40
+      maxTokens: 64
+      repetitionPenalty: 1.05
+      stop:
+        - "\n\n"
+        - "\n#"
+        - "\n//"
+
+# MCP Servers that Continue can access
+# https://docs.continue.dev/customization/mcp-tools
+mcpServers:
+  - uses: anthropic/memory-mcp

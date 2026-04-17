@@ -30,9 +30,9 @@ To get started with TSSA, follow these steps:
     cd tssa
     ```
 
-2. Install the required dependencies:
+2. Install the package and required dependencies:
     ```bash
-    pip install -r requirements.txt
+    pip install .
     ```
 
 3. Set up your environment variables (e.g., API keys, database credentials) in a `.env` file.

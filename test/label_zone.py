@@ -183,14 +183,14 @@ def label_track_lane(input_video:str,
         if label_lanes:
             for i in range(len(lanes)):
                 lane = lanes[i]
-                '''results.append([frame['frame'], 
+                results.append([frame['frame'], 
                             'filled_polygon',
                             np.array(list(lane.exterior.coords), np.int32).reshape((-1, 1, 2)),
                             [218, 177, 218],
                             1,
                             1,
-                            0.1, 
-                            ""])'''
+                            0.2, 
+                            ""])
                 results.append([frame['frame'], 
                             'text',
                             [(int(lane.centroid.x), int(lane.centroid.y))], 

@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tssa"
+version = "0.0.0.2"
+description = "A Python tool for traffic surrogate safety analysis"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+authors = [
+  { name = "Zhenyu Wang", email = "wonstran@hotmail.com" },
+]
+keywords = ["traffic", "vehicle", "trajectory", "surrogate", "safety"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: End Users/Desktop",
+  "Programming Language :: Python :: 3",
+]
+dependencies = [
+  "cython",
+  "cython_bbox",
+  "easydict",
+  "geopandas",
+  "matplotlib",
+  "numpy",
+  "numpy_indexed",
+  "pandas",
+  "pyyaml",
+  "scipy",
+  "shapely",
+  "tabulate",
+  "tqdm",
+]
+
+[project.urls]
+Homepage = "https://its.cutr.usf.edu/dnt/"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["tssa", "tssa.*"]

@@ -1,0 +1,15 @@
+opencv-python
+opencv-contrib-python
+cython
+cython_bbox
+easydict
+geopandas
+matplotlib
+numpy
+numpy_indexed
+pandas
+pyyaml
+scipy
+shapely
+tabulate
+tqdm
