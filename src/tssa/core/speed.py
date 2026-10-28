@@ -15,7 +15,9 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from tssa.engine.line import match_lines_by_point, \
                              match_lines_by_bbox
 from tssa.engine.zone import match_zone_by_point
-from tssa.engine.view_transform import ViewTransform
+from tssa.transform.homography import HomographyTransform
+
+FT_PER_M = 3.28084
 
 class SpeedMeterbyLine:
     """
@@ -210,13 +212,14 @@ class SpeedMeterByTransformation():
                  rolling_window:int=None,
                  speed_unit:str='mph',
                  speed_field:str='speed',
-                 in_zone:bool=True)->None:
+                 in_zone:bool=True,
+                 distance_unit:str='ft')->None:
 
         """
         Initialize the class of SpeedMeter\n
         Inputs:\n
-            source - the source four coordinates on image 
-            destination - the destination coordinates 
+            source - the source coordinates on image (4+ points), also used as the speed zone
+            destination - the matching real-world coordinates, in distance_unit
             fps - frame per second, default is 30
             ref_point - the reference point of the track, default is 'bbox'
                         'bbox' - bounding box
@@ -235,8 +238,14 @@ class SpeedMeterByTransformation():
                         'km/h' - kilometer per hour
             speed_field - the field name of the speed, default is 'speed'
             in_zone - if True, only calculate the speed in the zone
+            distance_unit - the unit of the destination coordinates, default is 'ft'
+                        'ft' - feet (e.g. State Plane)
+                        'm' - meters (e.g. UTM from kmz_to_csv)
         """
-        self.transformer = ViewTransform(source, destination)
+        if distance_unit not in ('ft', 'm'):
+            raise ValueError("distance_unit must be 'ft' or 'm'.")
+        self.transformer = HomographyTransform(source, destination)
+        self.distance_unit = distance_unit
         self.speed_zone = Polygon(source)
         self.fps = fps
         self.ref_point = ref_point
@@ -276,13 +285,10 @@ class SpeedMeterByTransformation():
         if self.in_zone:
             matched_tracks = matched_tracks.loc[matched_tracks['in_zone']==True].copy()
 
-        matched_tracks[['anchor_x', 'anchor_y']] = \
-                matched_tracks.apply(lambda x:
-                                tuple(self.transformer.transform(
-                                    np.float32([x['ref_x'], x['ref_y']]))[0]
-                                    ),
-                                axis=1,
-                                result_type='expand')
+        anchor_xy = self.transformer.image_to_world(
+            matched_tracks[['ref_x', 'ref_y']].to_numpy(dtype=np.float64))
+        matched_tracks['anchor_x'] = anchor_xy[:, 0]
+        matched_tracks['anchor_y'] = anchor_xy[:, 1]
 
         track_ids = matched_tracks['track_id'].unique()
         results = []
@@ -296,6 +302,8 @@ class SpeedMeterByTransformation():
             track_seq['y_diff'] = track_seq['anchor_y'].diff()
             track_seq.dropna(inplace=True)
             track_seq['distance'] = np.sqrt(track_seq['x_diff']**2 + track_seq['y_diff']**2)
+            if self.distance_unit == 'm':
+                track_seq['distance'] = track_seq['distance']*FT_PER_M
             track_seq['time_diff'] = track_seq['frame_diff']/(self.fps if self.fps > 0 else 1.e-17)
             track_seq['speed_fps'] = track_seq['distance']/track_seq['time_diff']
             track_seq['rolling_speed'] = track_seq['speed_fps'].rolling(window=self.rolling_window,

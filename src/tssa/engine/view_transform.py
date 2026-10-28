@@ -20,10 +20,11 @@ class ViewTransform:
             source (numpy.ndarray): The source points (shape: (4, 2))
             destination (numpy.ndarray): The destination points (shape: (4, 2))
         """
+        # float32 is required by getPerspectiveTransform, but the matrices are kept in float64
         source = np.float32(source)
         destination = np.float32(destination)
-        self.M = cv2.getPerspectiveTransform(source, destination)
-        self.M_inv = cv2.getPerspectiveTransform(destination, source)
+        self.M = cv2.getPerspectiveTransform(source, destination).astype(np.float64)
+        self.M_inv = np.linalg.inv(self.M)
 
     def transform(self, image_points: np.ndarray) -> np.ndarray:
         """
@@ -33,15 +34,16 @@ class ViewTransform:
             image_points (numpy.ndarray): The image coordinates (shape: (2,))
 
         Returns:\n
-            numpy.ndarray: The real-world coordinates (shape: (2,))
+            numpy.ndarray: The real-world coordinates as float64 (shape: (N, 2))
         """
-        if image_points.ndim == 1:
-            image_points = np.array([image_points])
+        image_points = np.atleast_2d(np.asarray(image_points, dtype=np.float64))
+        if image_points.shape[0] == 0:
+            return np.empty((0, 2), dtype=np.float64)
 
-        reshaped_points = image_points.reshape(-1, 1, 2).astype(np.float32)
+        reshaped_points = image_points.reshape(-1, 1, 2)
         world_points = cv2.perspectiveTransform(reshaped_points, self.M)
 
-        return world_points.reshape(-1, 2).astype(np.int32)
+        return world_points.reshape(-1, 2)
 
     def transform_inv(self, world_points: np.ndarray) -> np.ndarray:
         """
@@ -51,12 +53,13 @@ class ViewTransform:
             world_points (numpy.ndarray): The real-world coordinates (shape: (2,))
 
         Returns:\n
-            numpy.ndarray: The image coordinates (shape: (2,))
+            numpy.ndarray: The image coordinates as float64 (shape: (N, 2))
         """
-        if world_points.ndim == 1:
-            world_points = np.array([world_points])
+        world_points = np.atleast_2d(np.asarray(world_points, dtype=np.float64))
+        if world_points.shape[0] == 0:
+            return np.empty((0, 2), dtype=np.float64)
 
-        reshaped_points = world_points.reshape(-1, 1, 2).astype(np.float32)
+        reshaped_points = world_points.reshape(-1, 1, 2)
         image_points = cv2.perspectiveTransform(reshaped_points, self.M_inv)
 
-        return image_points.reshape(-1, 2).astype(np.int32)
+        return image_points.reshape(-1, 2)

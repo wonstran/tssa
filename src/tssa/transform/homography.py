@@ -5,7 +5,7 @@ This module provides `HomographyTransform` for mapping 2D image coordinates to
 
 Example:
     >>> import numpy as np
-    >>> from tssa.transformation.homography import HomographyTransform
+    >>> from tssa.transform.homography import HomographyTransform
     >>> image_pts = np.array([[100, 200], [200, 200], [200, 300], [100, 300]])
     >>> world_pts = np.array([[0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0]])
     >>> h = HomographyTransform(image_pts, world_pts)
@@ -55,6 +55,7 @@ class HomographyTransform:
             ValueError: If point arrays are invalid, mismatched in length, or homography fails.
             ValueError: If the estimated homography is singular and cannot be inverted.
         """
+        self._ransac_threshold = ransac_reproj_threshold
         src = self._validate_points(image_points, min_points=4, name="image_points")
         dst = self._validate_points(world_points, min_points=4, name="world_points")
 
@@ -65,11 +66,12 @@ class HomographyTransform:
         if H is None:
             raise ValueError("Failed to compute homography matrix from input points.")
 
-        self.H = H
+        self.H = H.astype(np.float64)
         self.inlier_mask = mask
+        self.n_points = int(src.shape[0])
 
         try:
-            self.H_inv = np.linalg.inv(H)
+            self.H_inv = np.linalg.inv(self.H)
         except np.linalg.LinAlgError as exc:
             raise ValueError("Homography matrix is singular and cannot be inverted.") from exc
 
@@ -142,6 +144,8 @@ class HomographyTransform:
         Raises:
             cv2.error: If OpenCV projection fails for invalid matrix/point inputs.
         """
+        if points.shape[0] == 0:
+            return np.empty((0, 2), dtype=np.float64)
         reshaped = points.reshape(-1, 1, 2).astype(np.float64)
         projected = cv2.perspectiveTransform(reshaped, matrix)
         return projected.reshape(-1, 2)
@@ -182,7 +186,10 @@ class HomographyTransform:
         Args:
             file_path: Destination path for the saved matrices.
         """
-        np.savez(file_path, H=self.H, H_inv=self.H_inv, inlier_mask=self.inlier_mask)
+        arrays = {"H": self.H, "H_inv": self.H_inv}
+        if self.inlier_mask is not None:
+            arrays["inlier_mask"] = self.inlier_mask
+        np.savez(file_path, **arrays)
 
     @classmethod
     def load_matrix(cls, file_path: str) -> "HomographyTransform":
@@ -209,7 +216,39 @@ class HomographyTransform:
         obj.H = H.astype(np.float64)
         obj.H_inv = H_inv.astype(np.float64)
         obj.inlier_mask = inlier_mask
+        obj.n_points = int(inlier_mask.size) if inlier_mask is not None else 0
+        obj._ransac_threshold = 3.0
         return obj
+
+    def __repr__(self) -> str:
+        """Return a string representation of the homography transform."""
+        n_inliers = int(self.inlier_mask.sum()) if self.inlier_mask is not None else 0
+        return f"HomographyTransform(n_points={self.n_points}, inliers={n_inliers})"
+
+    def reprojection_error(
+        self, image_points: np.ndarray, world_points: np.ndarray
+    ) -> float:
+        """Compute mean reprojection error for validation.
+
+        Projects world_points to image space and compares to the original image_points.
+        Lower values indicate better fit.
+
+        Args:
+            image_points: Original image points shaped (N, 2).
+            world_points: Original world points shaped (N, 2).
+
+        Returns:
+            Mean Euclidean distance between projected and original image points.
+        """
+        src = self._validate_points(image_points, min_points=1, name="image_points")
+        dst = self._validate_points(world_points, min_points=1, name="world_points")
+
+        if src.shape[0] != dst.shape[0]:
+            raise ValueError("image_points and world_points must contain the same number of points.")
+
+        projected = self._project(dst, self.H_inv)
+        errors = np.linalg.norm(src - projected, axis=1)
+        return float(errors.mean())
 
 
 if __name__ == "__main__":

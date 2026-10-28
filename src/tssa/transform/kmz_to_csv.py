@@ -11,14 +11,18 @@ import re
 import xml.etree.ElementTree as ET
 import zipfile
 from pathlib import Path
+from typing import Optional
 
 import pandas as pd
 from pyproj import Transformer
 
 KML_NS = {"kml": "http://www.opengis.net/kml/2.2"}
 
+# Cache for UTM transformers keyed by EPSG code
+_UTM_CACHE: dict[int, Transformer] = {}
 
-def _to_float(x):
+
+def _to_float(x) -> Optional[float]:
     """Safely convert a value to ``float``.
 
     Args:
@@ -29,7 +33,7 @@ def _to_float(x):
     """
     try:
         return float(x)
-    except Exception:
+    except (TypeError, ValueError):
         return None
 
 
@@ -43,10 +47,18 @@ def _to_utm(lat: float, lon: float) -> tuple[float, float]:
     Returns:
         Tuple of (utm_x, utm_y) in meters for the appropriate UTM zone.
     """
+    if lat is None or lon is None:
+        raise ValueError("lat and lon must not be None")
+
     zone_number = int((lon + 180) / 6) + 1
     epsg_code = 32600 + zone_number if lat >= 0 else 32700 + zone_number
 
-    transformer = Transformer.from_crs("EPSG:4326", f"EPSG:{epsg_code}", always_xy=True)
+    if epsg_code not in _UTM_CACHE:
+        _UTM_CACHE[epsg_code] = Transformer.from_crs(
+            "EPSG:4326", f"EPSG:{epsg_code}", always_xy=True
+        )
+
+    transformer = _UTM_CACHE[epsg_code]
     utm_x, utm_y = transformer.transform(lon, lat)
 
     return utm_x, utm_y
