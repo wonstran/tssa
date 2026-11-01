@@ -1,14 +1,14 @@
-"""TrackSmoother: segment projected ground tracks, fill gaps, smooth with a chosen method, compute speed.
+"""TrackSmoother: segment projected ground tracks, fill gaps, smooth the positions with a chosen method.
 
 Inputs:  track tables with frame, track and two position columns in metres (a ground plane the user projected
          beforehand; default names x, y), optionally interp (0 detected, 1 filled upstream) and a per-row sigma
          column. Any other columns are carried through. No homography is involved.
 Outputs: the input columns first, unchanged and in their order (NaN on rows filled here), then the added columns.
-         Velocities and speeds are in mph by default (`units="metric"` gives m/s; see SmoothConfig); the unit is in
-         `out.attrs["speed_unit"]`. `smooth()` adds seg, fill_reason, <pos>_smooth (two columns), vx, vy, speed and fallback (1 = segment too
-         short for the method, raw values copied); `interp` (0 detected, 1 filled upstream, 2 filled here) is
-         updated in place, or added at the front when the input lacks it. `compare()` adds seg, fill_reason, the
-         unsmoothed vx_raw, vy_raw, speed_raw, then <pos>_<m>, vx_<m>, vy_<m>, speed_<m>, fb_<m> per method <m>.
+         `smooth()` adds seg, fill_reason, <pos>_smooth (two columns) and fallback (1 = segment too short for the
+         method, raw positions copied); `interp` (0 detected, 1 filled upstream, 2 filled here) is updated in place,
+         or added at the front when the input lacks it. `compare()` adds seg, fill_reason, then <pos>_<m> (two
+         columns) and fb_<m> per method <m>. Speeds are not computed here: pass the smoothed positions to
+         tssa.speed.SpeedCalculator.
 """
 
 from __future__ import annotations
@@ -17,8 +17,8 @@ import numpy as np
 import pandas as pd
 
 from . import segments
-from .config import SPEED_PER_MPS, SPEED_UNIT, SmoothConfig
-from .methods import PRESETS, SegmentContext, available_methods, block_velocity, raw_velocity, resolve, smooth_segment
+from .config import SmoothConfig
+from .methods import PRESETS, SegmentContext, available_methods, resolve, smooth_segment
 
 INTERNAL = {"_x", "_y", "_sigma"}  # helper columns of segments.prepare
 SMOOTH_SUFFIX = "_smooth"  # smoothed positions are <pos>_smooth, so the input positions stay untouched
@@ -83,15 +83,12 @@ class TrackSmoother:
         return df, segments.build_grid(df, gaps, self.config)
 
     def _apply(self, grid: pd.DataFrame, specs: list[tuple[str, str, dict]]) -> pd.DataFrame:
-        """Step 3: smooth every (track, seg) with every method; adds raw and per-method columns."""
+        """Step 3: smooth every (track, seg) with every method; adds per-method position and fallback columns."""
         dt = 1.0 / self.config.fps
-        n = self.config.speed_interval
         out = grid.copy()
-        names = ["raw"] + [s[0] for s in specs]
-        for m in names:
-            for c in ("x", "y", "vx", "vy"):
-                out[f"{c}_{m}"] = np.nan
         for name, _, _ in specs:
+            out[f"x_{name}"] = np.nan
+            out[f"y_{name}"] = np.nan
             out[f"fb_{name}"] = 0
         keys = grid.groupby(["track", "seg"], sort=False).indices
         col = {c: out.columns.get_loc(c) for c in out.columns}
@@ -103,21 +100,12 @@ class TrackSmoother:
                 obs=g[["x_obs", "y_obs"]].to_numpy(dtype=float), sigma=g["sigma"].to_numpy(dtype=float),
                 interp=g["interp"].to_numpy(), dt=dt,
             )  # fmt: skip
-            self._store(out, rows, col, "raw", pos, block_velocity(t, pos, n) if n else raw_velocity(t, pos))
             for name, kind, p in specs:
-                sp, sv, fb = smooth_segment(kind, p, t, pos, ctx)
-                if n:
-                    sv = block_velocity(t, sp, n)
-                self._store(out, rows, col, name, sp, sv)
+                sp, fb = smooth_segment(kind, p, t, pos, ctx)
+                out.iloc[rows, col[f"x_{name}"]] = sp[:, 0]
+                out.iloc[rows, col[f"y_{name}"]] = sp[:, 1]
                 out.iloc[rows, col[f"fb_{name}"]] = int(fb)
-        for m in names:
-            out[f"speed_{m}"] = np.hypot(out[f"vx_{m}"], out[f"vy_{m}"])
         return out
-
-    @staticmethod
-    def _store(out: pd.DataFrame, rows: np.ndarray, col: dict, m: str, pos: np.ndarray, vel: np.ndarray) -> None:
-        for c, v in zip(("x", "y", "vx", "vy"), (pos[:, 0], pos[:, 1], vel[:, 0], vel[:, 1])):
-            out.iloc[rows, col[f"{c}_{m}"]] = v
 
     def _finish(self, out: pd.DataFrame, grid: pd.DataFrame, df: pd.DataFrame, names: list[str], single: bool) -> pd.DataFrame:
         """Step 4: input columns first (unchanged), then the added columns; local metres back to input coordinates."""
@@ -129,13 +117,12 @@ class TrackSmoother:
         given = [c for c in df.columns if c not in INTERNAL]
         if single:
             m = names[0]
-            ren = {f"x_{m}": f"{xc}{SMOOTH_SUFFIX}", f"y_{m}": f"{yc}{SMOOTH_SUFFIX}",
-                   f"vx_{m}": "vx", f"vy_{m}": "vy", f"speed_{m}": "speed", f"fb_{m}": "fallback"}  # fmt: skip
+            ren = {f"x_{m}": f"{xc}{SMOOTH_SUFFIX}", f"y_{m}": f"{yc}{SMOOTH_SUFFIX}", f"fb_{m}": "fallback"}
             added = ["seg", "fill_reason", *ren.values()]
         else:
             ren = {f"{c}_{m}": f"{xc if c == 'x' else yc}_{m}" for m in names for c in ("x", "y")}
-            added = ["seg", "fill_reason", "vx_raw", "vy_raw", "speed_raw"]
-            added += [c for m in names for c in (ren[f"x_{m}"], ren[f"y_{m}"], f"vx_{m}", f"vy_{m}", f"speed_{m}", f"fb_{m}")]
+            added = ["seg", "fill_reason"]
+            added += [c for m in names for c in (ren[f"x_{m}"], ren[f"y_{m}"], f"fb_{m}")]
         out = out.rename(columns=ren)
         clash = sorted(set(added) & set(given))
         if clash:
@@ -146,10 +133,7 @@ class TrackSmoother:
             added.insert(0, "interp")
         cols = [*given, *[c for c in added if c not in given]]
         out = out[cols].copy()
-        vel = [c for c in added if c.split("_")[0] in ("vx", "vy", "speed")]
-        out[vel] = out[vel] * SPEED_PER_MPS[self.config.units]
         num = [c for c in added if c not in ("seg", "interp", "fill_reason") and not c.startswith("fb_") and c != "fallback"]
         out[num] = out[num].round(3)
         out.attrs["origin"] = (x0, y0)
-        out.attrs["speed_unit"] = SPEED_UNIT[self.config.units]
         return out
