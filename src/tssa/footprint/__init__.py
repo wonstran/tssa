@@ -1,6 +1,7 @@
 """tssa.footprint: vehicle ground footprints from tracked boxes (design docs/2026-11-10-footprint-design.md)."""
 
 from .config import FootprintConfig as FootprintConfig
+from . import detect as detect
 from .locators import LocateContext as LocateContext
 from .locators import LocatorResult as LocatorResult
 from .locators import available_locators as available_locators
