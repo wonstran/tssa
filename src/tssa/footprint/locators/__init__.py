@@ -9,6 +9,8 @@ Design docs/2026-11-10-footprint-design.md, section 7.1. A locator is registered
 - scope "segment": `rows` are whole segments (consecutive frames, inserted rows included) of one class.
 - `classes`: the cls_track values the locator serves (None = all); other rows fail with "class_ineligible".
 - A locator whose `needs` tables were not supplied fails every row with "not_supplied".
+- `aliases`: further names that resolve to the locator (design 16, Q7), such as "cuboid" for M6. Chains and
+  `compare()` accept either; results always carry the canonical name (`fp_source`, `fp_fail`, `method`).
 
 `rows` carries: track, frame, the box columns (x, y, w, h under their configured names, NaN on inserted rows),
 cls_track, seg, interp, fp_row_kind, u_bc, v_bc (bbox bottom-centre px), m1_x, m1_y, m2_x, m2_y (world m) and
@@ -78,24 +80,51 @@ class Locator:
 
 
 REGISTRY: dict[str, Locator] = {}
+ALIASES: dict[str, str] = {}  # alias -> canonical locator name
 
 
-def register_locator(name: str, needs=(), scope: str = "row", point_only: bool = False, classes=None):
-    """Decorator: register `fn(rows, ctx) -> LocatorResult` as locator `name`."""
+def register_locator(name: str, needs=(), scope: str = "row", point_only: bool = False, classes=None, aliases=()):
+    """Decorator: register `fn(rows, ctx) -> LocatorResult` as locator `name`, also reachable as each of `aliases`."""
     if scope not in ("row", "segment"):
         raise ValueError(f"scope must be 'row' or 'segment', got {scope!r}")
+    if name in ALIASES:
+        raise ValueError(f"{name!r} is already an alias of {ALIASES[name]!r}")
+    aliases = (aliases,) if isinstance(aliases, str) else tuple(aliases)
 
     def wrap(fn):
         REGISTRY[name] = Locator(name, fn, tuple(needs), scope, bool(point_only),
                                  None if classes is None else tuple(classes))  # fmt: skip
+        for a in aliases:
+            register_alias(a, name)
         return fn
 
     return wrap
 
 
+def register_alias(alias: str, name: str) -> None:
+    """Make `alias` another name of the registered locator `name`."""
+    if name not in REGISTRY:
+        raise ValueError(f"unknown locator {name!r}; known: {sorted(REGISTRY)}")
+    if alias in REGISTRY:
+        raise ValueError(f"{alias!r} is a locator name, not available as an alias")
+    if ALIASES.get(alias, name) != name:
+        raise ValueError(f"{alias!r} is already an alias of {ALIASES[alias]!r}")
+    ALIASES[alias] = name
+
+
+def canonical(name: str) -> str:
+    """The registered name behind `name` (itself, or the locator an alias points to); ValueError if unknown."""
+    if name in REGISTRY:
+        return name
+    if name in ALIASES and ALIASES[name] in REGISTRY:
+        return ALIASES[name]
+    raise ValueError(f"unknown locator {name!r}; known: {sorted(REGISTRY)}, aliases: {sorted(ALIASES)}")
+
+
 def available_locators() -> dict[str, dict]:
-    """Every registered locator with its needs, scope and flags."""
-    return {n: {"needs": L.needs, "scope": L.scope, "point_only": L.point_only, "classes": L.classes}
+    """Every registered locator with its aliases, needs, scope and flags."""
+    return {n: {"aliases": tuple(a for a, c in ALIASES.items() if c == n), "needs": L.needs, "scope": L.scope,
+                "point_only": L.point_only, "classes": L.classes}
             for n, L in REGISTRY.items()}  # fmt: skip
 
 

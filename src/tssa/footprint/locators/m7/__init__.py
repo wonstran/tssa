@@ -196,7 +196,7 @@ def _summary_extras(sm: dict) -> dict:
     }  # fmt: skip
 
 
-@register_locator("M7", needs=("masks",), scope="segment", classes=(5, 7))
+@register_locator("M7", needs=("masks",), scope="segment", classes=(5, 7), aliases="wheel_fit")
 def locate_m7(rows: pd.DataFrame, ctx) -> LocatorResult:
     """See the module docstring. Fail reasons: the solve's gate reason, camera_invalid, too_few_frames,
     no_initial_pose, solve_error; kinematic rows of a passed solve are supplied with support "kinematic"."""

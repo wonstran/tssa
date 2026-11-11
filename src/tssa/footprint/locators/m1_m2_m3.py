@@ -11,7 +11,7 @@ from ..geometry import rect_corners
 from . import LocatorResult, register_locator
 
 
-@register_locator("M1", point_only=True)
+@register_locator("M1", point_only=True, aliases="bottom_centre")
 def locate_m1(rows, ctx) -> LocatorResult:
     """The world point under the bbox bottom-centre: the foot of the box, not the body centre."""
     res = LocatorResult.empty(len(rows))
@@ -22,7 +22,7 @@ def locate_m1(rows, ctx) -> LocatorResult:
     return res
 
 
-@register_locator("M2")
+@register_locator("M2", aliases="nominal_shift")
 def locate_m2(rows, ctx) -> LocatorResult:
     """M1 moved half the class's nominal width away from the camera (computed for every box row by the printer)."""
     res = LocatorResult.empty(len(rows))
@@ -62,7 +62,7 @@ def solve_m3(ground, box_xywh, heading_deg, L_m, W_m, init, resid_ok_px: float =
     return centre, rect_corners(centre, heading_deg, L_m, W_m), bool(r < resid_ok_px), r
 
 
-@register_locator("M3")
+@register_locator("M3", aliases="nominal_box")
 def locate_m3(rows, ctx) -> LocatorResult:
     """M3 at the reference heading; the orientation is imposed (directed psi_ref), not measured."""
     cfg = ctx.config

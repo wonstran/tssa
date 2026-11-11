@@ -175,7 +175,7 @@ def front_conflict(track, valid, flipped, min_rows: int, share: float) -> np.nda
     return df["track"].map(flag).fillna(False).to_numpy(dtype=bool)
 
 
-@register_locator("M4", needs=("keypoints",))
+@register_locator("M4", needs=("keypoints",), aliases="wheel_keypoints")
 def locate_m4(rows, ctx) -> LocatorResult:
     """Fail reasons: no_match, no_heading, camera_invalid, no_valid_pair, side_ambiguous, no_prior."""
     cfg = ctx.config

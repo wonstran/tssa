@@ -86,6 +86,8 @@ gdf = vfp.to_geodataframe(out, crs="EPSG:32617")                    # one polygo
 - Default chains: cars M6 then M2; buses M7, M6, M2; trucks M7, M6, M3, M2. Without detections they reduce to M2
   (M3 then M2 for trucks).
 - `compare()` runs each method alone on one grid (native-only with `fallback=None`).
+- Methods can also be named `bottom_centre`, `nominal_shift`, `nominal_box`, `wheel_keypoints`, `sam_outline`,
+  `cuboid` and `wheel_fit` (M1 to M7), e.g. `chains={2: ("cuboid", "nominal_shift")}`; outputs keep the M names.
 - M7 is the slow method: about a minute per bus or truck segment on one core. Use `workers` (each worker gets one
   BLAS thread; more workers than physical cores slows every solve) and `cache_dir` (solves are cached).
 - Sizes and distance settings are in feet (`FootprintConfig`); positions stay in the homography's metres; speeds

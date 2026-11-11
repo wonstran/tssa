@@ -385,6 +385,7 @@ Each class has an ordered chain. The **first locator that succeeds** on a row su
 
 - Locators whose tables were not supplied fail with `not_supplied`, so without detections the chains reduce to `M2` / `M3 → M2`.
 - M4 and M5 are in no default chain (the study rejected them for production). Users add them through `chains`.
+- **Aliases** (added in 0.0.2.12, Q7 in §16): `bottom_centre` M1, `nominal_shift` M2, `nominal_box` M3, `wheel_keypoints` M4, `sam_outline` M5, `cuboid` M6, `wheel_fit` M7. Chains and `compare()` accept either name; the printer resolves aliases when it is built, so results (`fp_source`, `fp_fail`, `method`) always carry the `M` name. `register_locator(..., aliases=...)` and `register_alias()` add names for user locators.
 - **A chain of one locator** has no fallback: failed rows have no measurement, and the smoother predicts them. For M7 this is the study's **native-only** product only with `admit_kinematic=False`; with admission on (the default), kinematic rows are still measured. `compare(fallback=None)` turns admission off for you (§11.2).
 - **Mixing sources** inside a track adds jumps, because the locators disagree by 1–2 ft (cars: M2 vs M6 1.6 ft). `fp_source` records it per row.
 
@@ -835,7 +836,7 @@ The results are written into this document as a new §19.
 ## 16. Decisions on the open points (user, 2026-11-10)
 
 - **Q6. Freeze point for M7: snapshot now.** The user has reviewed the M7 clips, so the snapshot (§17, phase 0) is taken now. The study's code has not changed since run `20261110_161113_s0`: the newest code file is `settings.py` (2026-11-10 16:10, just before that run), and the later edit to the M7 notes (18:50) only reports that run. The snapshot is therefore exactly the state §7.6 describes. Later study changes are ported deliberately, each with a new snapshot and a validation rerun.
-- **Q7. Method names: `M1`–`M7` only, for now.** Descriptive aliases (`bottom_centre`, `nominal_shift`, `nominal_box`, `wheel_keypoints`, `sam_outline`, `cuboid`, `wheel_fit`) are added later, as a follow-up outside phases 0–6. The registry (§7.1) must therefore allow more than one name per locator without changing its result columns: `fp_source` keeps the canonical `M` name.
+- **Q7. Method names: `M1`–`M7` only, for now.** Descriptive aliases (`bottom_centre`, `nominal_shift`, `nominal_box`, `wheel_keypoints`, `sam_outline`, `cuboid`, `wheel_fit`) are added later, as a follow-up outside phases 0–6. (Done in 0.0.2.12, §7.8.) The registry (§7.1) must therefore allow more than one name per locator without changing its result columns: `fp_source` keeps the canonical `M` name.
 
 ## 17. Build order
 

@@ -14,7 +14,7 @@ RAW_COLS = ["m6_raw_c1x", "m6_raw_c1y", "m6_raw_c2x", "m6_raw_c2y", "m6_raw_c3x"
             "m6_raw_c4y"]  # fmt: skip
 
 
-@register_locator("M6", needs=("cuboids",))
+@register_locator("M6", needs=("cuboids",), aliases="cuboid")
 def locate_m6(rows, ctx) -> LocatorResult:
     """Fail reasons: no_match (no row, IoU below m6_min_iou, non-finite corners); implausible_size (length or width
     below m6_size_gate of the class's nominal size: a collapsed face)."""

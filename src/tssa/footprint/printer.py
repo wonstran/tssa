@@ -21,7 +21,7 @@ from ..transform.ground import GroundModel
 from . import orientation as O
 from .config import FT, MPS_TO_MPH, FootprintConfig
 from .geometry import away_dir, bottom_centre, direct_toward, edge_flag, jacobian, project, projection_valid, rect_corners
-from .locators import REGISTRY, LocateContext, LocatorResult
+from .locators import REGISTRY, LocateContext, LocatorResult, canonical
 
 XY = ("fp_x", "fp_y")
 COV = ("fp_cov_xx", "fp_cov_xy", "fp_cov_yy")
@@ -74,10 +74,13 @@ class VehFootPrinter:
         self.speed = speed or SpeedCalculator(fps=cfg.fps, xy_cols=SMOOTH_XY)
         if tuple(self.speed.xy_cols) != SMOOTH_XY:
             raise ValueError(f"the speed calculator must use xy_cols={SMOOTH_XY}")
-        for c, chain in [*cfg.chains.items(), ("default", cfg.default_chain)]:
-            bad = [m for m in chain if m not in REGISTRY]
-            if bad:
-                raise ValueError(f"chain of class {c} names unregistered locator(s) {bad}; known: {sorted(REGISTRY)}")
+        try:  # aliases resolve to the canonical names here, so everything downstream sees M1-M7 (design 16, Q7)
+            chains = {c: _canonical_chain(ch) for c, ch in cfg.chains.items()}
+            default_chain = _canonical_chain(cfg.default_chain)
+        except ValueError as exc:
+            raise ValueError(f"a class chain names an unregistered locator: {exc}") from None
+        if chains != {c: tuple(ch) for c, ch in cfg.chains.items()} or default_chain != tuple(cfg.default_chain):
+            self.config = cfg = cfg.with_overrides(chains=chains, default_chain=default_chain)
         self.workers = int(workers)
         self.cache_dir = cache_dir
         self.local_origin = None  # world offset of the local frame M7 solves in; None = floor of the M1 minimum
@@ -138,9 +141,8 @@ class VehFootPrinter:
             raise ValueError("admit_kinematic=True contradicts a native-only comparison (fallback=None)")
         admit = False if fallback is None else (self.config.admit_kinematic if admit_kinematic is None
                                                 else bool(admit_kinematic))  # fmt: skip
-        bad = [m for m in [*methods, *([fallback] if fallback else [])] if m not in REGISTRY]
-        if bad:
-            raise ValueError(f"unknown locator(s) {bad}; known: {sorted(REGISTRY)}")
+        methods = _canonical_chain(methods)  # aliases accepted; `method` carries the canonical name
+        fallback = canonical(fallback) if fallback else fallback
         base = self._prepare(tracks, only_tracks, self._needs_heading({0: tuple(methods)}, ()))
         classes = np.unique(base["cls_track"].dropna())
         parts = []
@@ -526,6 +528,11 @@ def _polygons(table: pd.DataFrame, cfg: FootprintConfig, speed_unit: str | None)
     out["fp_low_confidence"] = _low_confidence(t, cfg, groups)
     out.loc[seg < 0, ["orient_source", "front_source"]] = "none"
     return out
+
+
+def _canonical_chain(names) -> tuple:
+    """Canonical locator names, in order, duplicates (an alias next to its own name) dropped."""
+    return tuple(dict.fromkeys(canonical(n) for n in ((names,) if isinstance(names, str) else names)))
 
 
 def _low_confidence(t: pd.DataFrame, cfg: FootprintConfig, groups) -> np.ndarray:

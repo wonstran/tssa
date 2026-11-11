@@ -6,6 +6,7 @@ from .locators import LocateContext as LocateContext
 from .locators import LocatorResult as LocatorResult
 from .locators import available_locators as available_locators
 from .locators import register_locator as register_locator
+from .locators import register_alias as register_alias
 from .m7config import M7Config as M7Config
 from .printer import VehFootPrinter as VehFootPrinter
 

@@ -125,7 +125,7 @@ def solve_m5(outline_px, box_xywh, ground, L_m, W_m, init, min_cols: int = 8, ma
     return out
 
 
-@register_locator("M5", needs=("masks",))
+@register_locator("M5", needs=("masks",), aliases="sam_outline")
 def locate_m5(rows, ctx) -> LocatorResult:
     """Fail reasons: no_match (no mask), few_columns, fit_residual."""
     cfg = ctx.config
