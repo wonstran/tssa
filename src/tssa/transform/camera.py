@@ -103,7 +103,7 @@ class PinholeCamera:
 
         Hw2i = _dlt(X[:, :2], uv_u)
         f0, R0, C0 = _decompose(Hw2i, cx0, cy0, f_fixed)
-        rvec0 = Rotation.from_matrix(R0).as_rotvec()
+        rvec0 = _rotvec(R0)
 
         def unpack(p):  # p = [f?] + [cx, cy]? + rvec + C
             i = 0
@@ -140,6 +140,29 @@ def _project_local(f, R, C, cx, cy, X_local):
     with np.errstate(divide="ignore", invalid="ignore"):
         uv = np.column_stack([f * Xc[:, 0] / z + cx, f * Xc[:, 1] / z + cy])
     return uv, z
+
+
+def _rotvec(R: np.ndarray) -> np.ndarray:
+    """Rotation matrix -> rotation vector with OpenCV's `Rodrigues` conventions (sign choices near 0 and pi), so the
+    fit starts where the study's did; `scipy`'s `as_rotvec` can return the opposite sign near pi."""
+    R = np.asarray(R, dtype=float)
+    r = np.array([R[2, 1] - R[1, 2], R[0, 2] - R[2, 0], R[1, 0] - R[0, 1]]) * 0.5
+    s = np.linalg.norm(r)
+    c = np.clip((np.trace(R) - 1.0) * 0.5, -1.0, 1.0)
+    if s < 1e-5:
+        if c > 0:
+            return np.zeros(3)
+        t = (R + np.eye(3)) * 0.5
+        rx, ry, rz = (np.sqrt(max(t[i, i], 0.0)) for i in range(3))
+        if R[0, 1] < 0:
+            ry = -ry
+        if R[0, 2] < 0:
+            rz = -rz
+        if abs(rx) < abs(ry) and abs(rx) < abs(rz) and ((R[1, 2] > 0) != (ry * rz > 0)):
+            rz = -rz
+        v = np.array([rx, ry, rz])
+        return v * (np.pi / np.linalg.norm(v))
+    return r * (np.arccos(c) / s)
 
 
 def _dlt(src: np.ndarray, dst: np.ndarray) -> np.ndarray:
@@ -198,6 +221,12 @@ class PinholeGround:
         EN = np.asarray(EN, dtype=float)
         E2 = np.atleast_2d(EN)
         return self.cam.project(np.column_stack([E2, np.zeros(len(E2))])).reshape(EN.shape)
+
+    def undistort(self, uv) -> np.ndarray:
+        return np.asarray(uv, dtype=float)
+
+    def distort(self, uv) -> np.ndarray:
+        return np.asarray(uv, dtype=float)
 
 
 def zone_grid(zone, step: float = GRID_STEP_M) -> np.ndarray:
