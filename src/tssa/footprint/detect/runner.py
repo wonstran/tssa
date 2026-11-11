@@ -111,6 +111,7 @@ class _Entry:
         self.cols = [*det.columns, "matched"]
         self.df = pd.DataFrame(columns=self.cols)
         self.outlines: dict = {}
+        self.lower: dict = {}  # masks: raw-mask lower outline per row
         self.timing: list = []
         if self.dir is not None and (self.dir / "meta.json").exists():
             meta = json.loads((self.dir / "meta.json").read_text())
@@ -120,7 +121,8 @@ class _Entry:
             self.df = pd.read_csv(self.dir / "rows.csv").reindex(columns=self.cols)
             self.df[["track", "frame"]] = self.df[["track", "frame"]].astype("int64")
             if (self.dir / "outlines.npz").exists():
-                self.outlines = dict(MaskTable.load_npz(self.dir / "outlines.npz"))
+                mt = MaskTable.load_npz(self.dir / "outlines.npz")
+                self.outlines, self.lower = dict(mt), dict(mt.outlines)
         self.pending: list = []
         self.pending_out: dict = {}
 
@@ -134,7 +136,11 @@ class _Entry:
             return
         add = pd.DataFrame(self.pending, columns=self.cols)
         self.df = add if not len(self.df) else pd.concat([self.df, add], ignore_index=True)
-        self.outlines.update(self.pending_out)
+        for k, v in self.pending_out.items():
+            if isinstance(v, tuple):  # masks: (contours, raw-mask lower outline)
+                self.outlines[k], self.lower[k] = v
+            else:
+                self.outlines[k] = v
         n = len(add)
         self.pending, self.pending_out = [], {}
         if self.dir is None:
@@ -145,7 +151,7 @@ class _Entry:
         df = self.df.sort_values(["track", "frame"]).reset_index(drop=True)
         _atomic(self.dir / "rows.csv", lambda p: df.to_csv(p, index=False))
         if self.det.table == "masks":
-            _atomic(self.dir / "outlines.npz", lambda p: MaskTable(self.outlines).save_npz(p))
+            _atomic(self.dir / "outlines.npz", lambda p: MaskTable(self.outlines, self.lower).save_npz(p))
         meta = {"key": self.key, "inputs": json.loads(_canonical(self.inputs)), "rows": int(len(df)),
                 "matched": int(df["matched"].sum()) if len(df) else 0, "timing": self.timing}  # fmt: skip
         _atomic(self.dir / "meta.json", lambda p: p.write_text(json.dumps(meta, indent=2)))
@@ -210,12 +216,14 @@ def run(video, tracks: pd.DataFrame, detectors, rows=None, cache_dir=None, model
         got = got.drop_duplicates(["track", "frame"]).reset_index(drop=True)
         if e.det.table == "masks":
             keys = set(map(tuple, got.loc[got["matched"].astype(bool), ["track", "frame"]].to_numpy()))
-            out["masks"] = MaskTable({k: v for k, v in e.outlines.items() if k in keys})
+            out["masks"] = MaskTable({k: v for k, v in e.outlines.items() if k in keys},
+                                     {k: v for k, v in e.lower.items() if k in keys})
         else:
             m = got[got["matched"].astype(bool)][e.det.columns].reset_index(drop=True)
             m[["track", "frame"]] = m[["track", "frame"]].astype("int64")
             out[e.det.table] = m
-        out.setdefault("_cache", {})[e.det.table] = None if e.dir is None else str(e.dir)
+        if e.dir is not None:
+            log.info("detect: %s cache %s", e.det.table, e.dir)
     return out
 
 

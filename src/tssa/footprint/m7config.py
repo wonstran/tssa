@@ -183,6 +183,9 @@ class M7Config:
     M7_START_SHIFT_FT: float = 7.0
     # a two-segment body line is kept when its cost is below this fraction of one line's
     M7_TWO_SEG_GAIN: float = 0.7
+    # mask components kept for the observations: at least this share of the summed (area + perimeter) (the study's
+    # infer.M7_MIN_COMPONENT_FRAC, applied when its SAM cache was written; tssa stores every component)
+    M7_MIN_COMPONENT_FRAC: float = 0.05
 
     def as_dict(self) -> dict:
         return {k: getattr(self, k) for k in self.__dataclass_fields__}

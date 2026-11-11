@@ -140,8 +140,9 @@ def locate_m5(rows, ctx) -> LocatorResult:
     flipped = np.zeros(n, bool)
     for i in range(n):
         key = (int(tr[i]), int(fr[i]))
+        raw = getattr(masks, "outlines", {}).get(key)
         polys = masks.get(key) if hasattr(masks, "get") else None
-        outline = lower_outline(list(polys), boxes[i]) if polys else None
+        outline = raw if raw is not None else (lower_outline(list(polys), boxes[i]) if polys else None)
         L, W = (v * FT for v in cfg.size_of(cls[i]))
         r = solve_m5(outline, boxes[i], ctx.ground, L, W, init[i], cfg.m5_min_cols, cfg.m5_max_resid_ft)
         cols[i], resid[i], sides[i], flipped[i] = r["cols"], r["resid_ft"], r["sides"], r["flipped"]

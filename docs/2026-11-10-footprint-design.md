@@ -1,7 +1,7 @@
 # tssa.footprint: vehicle ground footprint from tracked boxes (VehFootPrinter)
 
 Date: 2026-11-10
-Status: **approved by the user, 2026-11-10** (rev 4.1). Q6 and Q7 answered the same day (§16); nothing is open.
+Status: **approved by the user, 2026-11-10** (rev 4.1); rev 4.2 is an implementation note (§4.3). Q6 and Q7 answered the same day (§16); nothing is open.
 - rev 4.1: addresses [review_2026-11-10-213328.md](review_2026-11-10-213328.md) ([response](review_2026-11-10-213328-response.md)); §15 summary of invalid-projection rows only (editorial).
 - rev 4: addresses [review_2026-11-10-211138.md](review_2026-11-10-211138.md) ([response](review_2026-11-10-211138-response.md)):
   - M7 admission is separate from the box-projection gate, with three row kinds (§7.7, §7.10, §9);
@@ -152,9 +152,13 @@ Written by `tssa.footprint.detect` (§6), or by the user's own pipeline in the s
 |---|---|---|
 | `keypoints` | `track, frame, iou, u0, v0 … u3, v3` (CarFusion wheels 0 RF, 1 LF, 2 RB, 3 LB) | M4, M7 (optional cue) |
 | `cuboids` | `track, frame, iou, gu0, gv0 … gu3, gv3` (bottom-face corners, any start, any winding) | M6 |
-| `masks` | `MaskTable`: `(track, frame) →` list of contour polygons `(k, 2)`, largest first | M5 (its lower outline), M7 |
+| `masks` | `MaskTable`: `(track, frame) →` list of contour polygons `(k, 2)` of every mask component, largest first, plus `.outlines`: the lower outline taken from the raw mask at segmentation time | M5 (the stored outline, else one rebuilt from the contours), M7 (components with at least 5% of the area) |
 
-One SAM pass serves both M5 and M7: M5's lower outline is computed from the contours (`lower_outline` accepts a polygon). The study ran SAM twice (§15).
+One SAM pass serves both M5 and M7 (the study ran SAM twice, §15):
+- M5 reads the lower outline that `MaskSegmenter` takes from the raw mask, exactly the study's M5 input. Without one (masks from elsewhere), it rebuilds the outline from the contours.
+- M7 keeps the components holding at least `M7_MIN_COMPONENT_FRAC` (5%) of the summed area + perimeter, the rule the study applied when it wrote its SAM cache. Applied to an already filtered table it keeps every component, so the study's cache works as is.
+
+rev 4.2 (implementation, 2026-11-10): rev 4.1 stored only the 5% components and rebuilt M5's outline from them. The validation run measured the cost: outlines identical to the study's on 3,769 of 4,129 bus and truck rows, and M5 validity changed on 62 of them (§19).
 
 ### 4.4 Camera zone
 
@@ -229,9 +233,9 @@ This is how one segmentation serves every method, as the study required (base de
 |---|---|---|---|
 | `KeypointDetector(repo, filename, revision, conf=0.08, imgsz=640)` | CarFusion YOLO pose | `keypoints` | `infer.run_keypoints` |
 | `CuboidDetector(weights, repo_root, conf=0.08, imgsz=640, prefer_cls=(2, 5, 7))` | UrbanOmniDetect-2 | `cuboids` | `infer.run_uod` |
-| `MaskSegmenter(weights, min_component_frac=0.05)` | SAM2.1, box-prompted with each track bbox | `masks` | `infer.run_sam_full` |
+| `MaskSegmenter(weights, min_component_frac=0.0)` | SAM2.1, box-prompted with each track bbox | `masks` | `infer.run_sam_full` |
 
-Full-frame inference for keypoints and cuboids; SAM is prompted with the requested rows' boxes (all of a frame in one call). Masks are `> 0.5`, resized to the frame if needed, and stored as external contours (`CHAIN_APPROX_NONE`) of components holding at least 5% of the mask area, largest first.
+Full-frame inference for keypoints and cuboids; SAM is prompted with the requested rows' boxes (all of a frame in one call). Masks are `> 0.5`, resized to the frame if needed, and stored as external contours (`CHAIN_APPROX_NONE`) of every component (by default), largest first, together with the row's lower outline from the raw mask.
 
 ### 6.3 Matching
 
@@ -817,7 +821,7 @@ The results are written into this document as a new §19.
 |---|---|---|
 | One product per call; `compare()` instead of metric-native / metric-e2e / display | a library has no eligibility rules or clip sample | no sample-independence guarantees; users build their own metric sets |
 | M7 solves per segment only (display solve) | one product | metric-run solves are not available |
-| One SAM pass (contours) for M5 and M7 | the study's M5 cache kept only outlines | M5 outlines come from contours with components < 5% dropped; validated in §14.3 |
+| One SAM pass for M5 and M7: every component's contour plus the raw-mask lower outline; M7 applies the 5% component rule itself | the study ran SAM twice (M5 outlines, M7 contours) | M5 identical to the study's outlines on 358 of 360 tested rows (the other 2: SAM prompted with a different batch of boxes); M7 contours identical after the 5% rule (§19) |
 | Approach-direction fallback dropped | needs movement labels | never-moving tracks: M3/M4 fail `no_heading`; M7 starts from the path direction |
 | Segmentation on ground speed, not pixel jumps | `TrackSmoother` has no pixel rule | segment boundaries may differ; counted in §14.3 |
 | Native orientations folded to axes, directed toward the final motion heading | one rule for mixed-source tracks | equal to the study's while moving; differs only while stopped (hold rule) |

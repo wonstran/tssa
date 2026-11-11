@@ -80,6 +80,7 @@ class VehFootPrinter:
                 raise ValueError(f"chain of class {c} names unregistered locator(s) {bad}; known: {sorted(REGISTRY)}")
         self.workers = int(workers)
         self.cache_dir = cache_dir
+        self.local_origin = None  # world offset of the local frame M7 solves in; None = floor of the M1 minimum
         self.info: dict = {}
 
     @staticmethod
@@ -300,7 +301,12 @@ class VehFootPrinter:
         extras: dict[str, np.ndarray] = {}
         Rbox = np.stack([np.stack([base["_rxx"], base["_rxy"]], -1), np.stack([base["_rxy"], base["_ryy"]], -1)], -2)
         all_boxes = base.loc[base["_given"].to_numpy(bool), ["track", "frame", *cfg.box_cols]].reset_index(drop=True)
-        ctx = LocateContext(self.ground, cfg, tables, self.camera, all_boxes, self.workers, self.cache_dir)
+        b_xy = base[["m1_x", "m1_y"]].to_numpy(dtype=float)
+        fin = np.isfinite(b_xy).all(axis=1)
+        origin = self.local_origin if self.local_origin is not None else (
+            np.floor(b_xy[fin].min(axis=0)) if fin.any() else np.zeros(2))  # fmt: skip
+        ctx = LocateContext(self.ground, cfg, tables, self.camera, all_boxes, self.workers, self.cache_dir,
+                            np.asarray(origin, dtype=float))  # fmt: skip
         counts: dict = {}
         for c, chain in chains.items():
             of_c = (cls == c) & incl
@@ -370,6 +376,7 @@ class VehFootPrinter:
         out["fp_len_ft"], out["fp_wid_ft"] = lft, wft
         out["fp_seg_len_ft"], out["fp_seg_wid_ft"], out["fp_seg_dims_source"] = seg_l, seg_w, seg_src
         self.info["sources"] = {**counts, "none": int((source == "none").sum())}
+        self.info.update(ctx.info)
         given = base.attrs["given"]
         cols = [*given, *[c for c in ("interp",) if c not in given], *LOCATE_COLUMNS, *sorted(extras)]
         for k, v in extras.items():

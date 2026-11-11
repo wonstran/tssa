@@ -175,3 +175,18 @@ def test_m5_through_the_masks_table():
     assert r.fp_source == "M5" and r.fp_orient_kind == "axis" and r.m5_cols > 8
     assert np.hypot(r.fp_x - c_true[0], r.fp_y - c_true[1]) / FT < 0.5
     assert VehFootPrinter(DH, chains={2: ("M5",)}).locate(tr, masks=MaskTable({}))["fp_fail"].iloc[0] == "M5:no_match"
+
+
+def test_raw_outlines_round_trip_and_take_precedence(tmp_path):
+    pytest.importorskip("cv2")
+    c_true = np.array([580010.0, 2851980.0])
+    face = DH.world_to_image(rect_corners(c_true, 60.0, L, W))
+    box = np.array([face[:, 0].min(), face[:, 1].min() - 30, np.ptp(face[:, 0]), np.ptp(face[:, 1]) + 30])
+    raw = lower_outline([face], box)
+    mt = MaskTable({(1, 0): [np.array([[0.0, 0.0], [3.0, 0.0], [3.0, 3.0]])]}, {(1, 0): raw})  # contours unusable
+    mt.save_npz(tmp_path / "m.npz")
+    back = MaskTable.load_npz(tmp_path / "m.npz")
+    assert np.array_equal(back.outlines[(1, 0)], raw)
+    tr = pd.DataFrame({"frame": [0], "track": [1], "x": [box[0]], "y": [box[1]], "w": [box[2]], "h": [box[3]], "cls": [2]})
+    r = VehFootPrinter(DH, chains={2: ("M5",)}).locate(tr, masks=back).iloc[0]
+    assert r.fp_source == "M5" and np.hypot(r.fp_x - c_true[0], r.fp_y - c_true[1]) / FT < 0.5  # the raw outline won

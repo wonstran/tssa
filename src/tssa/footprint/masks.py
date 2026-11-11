@@ -58,6 +58,27 @@ def rasterise(polys, img_size) -> np.ndarray:
     return canvas.astype(bool)
 
 
+def component_areas(polys) -> np.ndarray:
+    """Area + perimeter samples of each contour polygon (the study's `cv2.contourArea(c) + len(c)`, by the
+    shoelace formula, so thin parts still count)."""
+    out = []
+    for p in polys:
+        p = np.asarray(p, dtype=float).reshape(-1, 2)
+        x, y = p[:, 0], p[:, 1]
+        out.append(0.5 * abs(float(np.dot(x, np.roll(y, -1)) - np.dot(y, np.roll(x, -1)))) + len(p))
+    return np.asarray(out, dtype=float)
+
+
+def keep_components(polys, frac: float) -> list:
+    """Components holding at least `frac` of the summed area, largest first (study infer.mask_contours); applying it
+    again with the same `frac` keeps them all."""
+    polys = list(polys)
+    if not polys:
+        return []
+    a = component_areas(polys)
+    return [polys[i] for i in np.argsort(-a) if a[i] >= frac * a.sum()]
+
+
 def lower_outline(mask, box_xywh) -> np.ndarray:
     """(m, 2) pixels [u, v]: the largest set row per integer column inside the bbox.
 
@@ -87,11 +108,18 @@ def lower_outline(mask, box_xywh) -> np.ndarray:
 
 
 class MaskTable(Mapping):
-    """(track, frame) -> list of contour polygons (distorted px), largest first."""
+    """(track, frame) -> list of contour polygons (distorted px), largest first.
 
-    def __init__(self, data: dict | None = None) -> None:
+    `outlines` (optional): (track, frame) -> the lower outline taken from the raw mask when it was segmented
+    (`lower_outline(mask, box)`, the exact input of the study's M5). M5 uses it where present; rebuilding the outline
+    from the contours differs from the raw mask on a few percent of rows.
+    """
+
+    def __init__(self, data: dict | None = None, outlines: dict | None = None) -> None:
         self._d = {(int(t), int(f)): [np.asarray(p, dtype=float).reshape(-1, 2) for p in v]
                    for (t, f), v in (data or {}).items()}  # fmt: skip
+        self.outlines = {(int(t), int(f)): np.asarray(v, dtype=float).reshape(-1, 2)
+                         for (t, f), v in (outlines or {}).items()}  # fmt: skip
 
     def __getitem__(self, key):
         return self._d[(int(key[0]), int(key[1]))]
@@ -108,10 +136,14 @@ class MaskTable(Mapping):
     def save_npz(self, path) -> None:
         keys = sorted(self._d)
         joined = [join_contours(self._d[k]) for k in keys]
+        okeys = sorted(self.outlines)
+        ol = [self.outlines[k] for k in okeys]
         np.savez_compressed(
             path, track=np.array([k[0] for k in keys], dtype=np.int64), frame=np.array([k[1] for k in keys], np.int64),
             count=np.array([len(j) for j in joined], dtype=np.int64),
             pts=np.vstack(joined) if joined else np.empty((0, 2)),
+            o_track=np.array([k[0] for k in okeys], dtype=np.int64), o_frame=np.array([k[1] for k in okeys], np.int64),
+            o_count=np.array([len(o) for o in ol], dtype=np.int64), o_pts=np.vstack(ol) if ol else np.empty((0, 2)),
         )  # fmt: skip
 
     @classmethod
@@ -121,4 +153,10 @@ class MaskTable(Mapping):
         track, frame, count, pts = z["track"], z["frame"], z["count"], z["pts"]  # each array read once
         ends = np.cumsum(count)
         starts = ends - count
-        return cls({(t, f): split_contours(pts[a:b]) for t, f, a, b in zip(track, frame, starts, ends)})
+        data = {(t, f): split_contours(pts[a:b]) for t, f, a, b in zip(track, frame, starts, ends)}
+        outl = {}
+        if "o_pts" in z.files:
+            ot, of, oc, op = z["o_track"], z["o_frame"], z["o_count"], z["o_pts"]
+            oe = np.cumsum(oc)
+            outl = {(t, f): op[a:b] for t, f, a, b in zip(ot, of, oe - oc, oe)}
+        return cls(data, outl)

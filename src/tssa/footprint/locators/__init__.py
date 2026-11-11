@@ -63,6 +63,8 @@ class LocateContext:
     all_boxes: pd.DataFrame  # every original row (track, frame, x, y, w, h): the matching / occlusion context
     workers: int = 1
     cache_dir: object = None
+    origin: object = None  # (2,) world offset of the local frame segment solvers work in
+    info: dict = field(default_factory=dict)  # per-locator diagnostics, copied into VehFootPrinter.info
 
 
 @dataclass

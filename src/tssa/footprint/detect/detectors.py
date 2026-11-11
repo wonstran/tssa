@@ -13,6 +13,7 @@ from pathlib import Path
 
 import numpy as np
 
+from ..masks import lower_outline
 from ..match import match_frame, xyxy
 
 KP_REVISION = "48b5795f3b79cdfe7ff6588812aa388a6a7fdd9d"  # the study's pinned HF revision of kiselyovd/vehicle-keypoints
@@ -164,13 +165,14 @@ def mask_contours(m: np.ndarray, min_frac: float) -> list:
 @dataclass
 class MaskSegmenter(Detector):
     """SAM2.1 prompted with every requested track box of a frame in one call; masks > 0.5 kept as external contours
-    of components with at least `min_component_frac` of the mask area (study `infer.run_sam_full`)."""
+    of components with at least `min_component_frac` of the mask area. The default keeps every component, so M5's
+    outline sees the whole mask as in the study; M7 applies the study's 5% rule itself (M7_MIN_COMPONENT_FRAC)."""
 
     weights: str = ""
-    min_component_frac: float = 0.05
+    min_component_frac: float = 0.0
     table: str = field(default="masks", init=False)
     columns: list = field(default_factory=lambda: list(MASK_COLUMNS), init=False)
-    code_version: str = field(default="m7-v1", init=False)
+    code_version: str = field(default="masks-v2", init=False)  # v2: every component kept, raw-mask lower outline
 
     def weights_id(self) -> str:
         return _ckpt_id(self.weights)
@@ -201,6 +203,6 @@ class MaskSegmenter(Detector):
             cs = mask_contours(m, self.min_component_frac)
             ok = len(cs) > 0
             if ok:
-                outs[(int(r.track), int(r.frame))] = cs
+                outs[(int(r.track), int(r.frame))] = (cs, lower_outline(m, (r.x, r.y, r.w, r.h)))
             recs.append([int(r.track), int(r.frame), 1.0 if ok else 0.0, len(cs), int(m.sum()), int(ok)])
         return recs, outs
