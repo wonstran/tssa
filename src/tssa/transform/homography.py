@@ -25,14 +25,29 @@ Notes:
     - Use stable pavement/corner features and avoid elevated/moving objects.
     - Prefer 8+ distributed GCPs for robust estimation (minimum is 4).
     - Distortion, slope, and map/video time mismatch can introduce error.
+    - OpenCV is needed only to *fit* a homography from point pairs. Loading a saved model
+      (`load_json`, `load_matrix`) and projecting with it use NumPy only.
 """
 
 from __future__ import annotations
 
 import json
 
-import cv2
 import numpy as np
+
+_CV_RANSAC = 8  # cv2.RANSAC; the default fitting method
+_W_EPS = float(np.finfo(np.float32).eps)  # cv2.perspectiveTransform maps points with |w| <= FLT_EPSILON to (0, 0)
+
+
+def _cv2():
+    """Import OpenCV on first use (fitting only)."""
+    try:
+        import cv2
+    except ImportError as exc:  # pragma: no cover - depends on the environment
+        raise ImportError(
+            "Fitting a homography needs OpenCV (pip install opencv-python); loading a saved one and projecting do not."
+        ) from exc
+    return cv2
 
 
 class HomographyTransform:
@@ -42,7 +57,7 @@ class HomographyTransform:
         self,
         image_points: np.ndarray,
         world_points: np.ndarray,
-        method: int = cv2.RANSAC,
+        method: int | None = None,
         ransac_reproj_threshold: float = 3.0,
     ) -> None:
         """Compute homography and inverse-homography matrices.
@@ -50,7 +65,8 @@ class HomographyTransform:
         Args:
             image_points: Image-space correspondences shaped ``(N, 2)`` with ``N >= 4``.
             world_points: World-space correspondences shaped ``(N, 2)`` with ``N >= 4``.
-            method: OpenCV homography estimation method (e.g., ``cv2.RANSAC``).
+            method: OpenCV homography estimation method (e.g., ``cv2.RANSAC``, ``0`` for plain
+                least squares). ``None`` (default) means ``cv2.RANSAC``.
             ransac_reproj_threshold: Reprojection threshold used when ``method`` is RANSAC-like.
 
         Raises:
@@ -64,7 +80,8 @@ class HomographyTransform:
         if src.shape[0] != dst.shape[0]:
             raise ValueError("image_points and world_points must contain the same number of points.")
 
-        H, mask = cv2.findHomography(src, dst, method=method, ransacReprojThreshold=ransac_reproj_threshold)
+        method = _CV_RANSAC if method is None else method
+        H, mask = _cv2().findHomography(src, dst, method=method, ransacReprojThreshold=ransac_reproj_threshold)
         if H is None:
             raise ValueError("Failed to compute homography matrix from input points.")
 
@@ -134,23 +151,26 @@ class HomographyTransform:
 
     @staticmethod
     def _project(points: np.ndarray, matrix: np.ndarray) -> np.ndarray:
-        """Project 2D points with a 3x3 homography matrix.
+        """Project 2D points with a 3x3 homography matrix (NumPy; same results as ``cv2.perspectiveTransform``).
 
         Args:
             points: Input points shaped ``(N, 2)``.
             matrix: Homography matrix shaped ``(3, 3)``.
 
         Returns:
-            Projected points shaped ``(N, 2)``.
-
-        Raises:
-            cv2.error: If OpenCV projection fails for invalid matrix/point inputs.
+            Projected points shaped ``(N, 2)``. As in OpenCV, a point whose homogeneous scale
+            ``|w|`` is at most ``FLT_EPSILON`` (on the horizon line) maps to ``(0, 0)``.
         """
         if points.shape[0] == 0:
             return np.empty((0, 2), dtype=np.float64)
-        reshaped = points.reshape(-1, 1, 2).astype(np.float64)
-        projected = cv2.perspectiveTransform(reshaped, matrix)
-        return projected.reshape(-1, 2)
+        p = points.reshape(-1, 2).astype(np.float64)
+        m = np.asarray(matrix, dtype=np.float64)
+        x = m[0, 0] * p[:, 0] + m[0, 1] * p[:, 1] + m[0, 2]
+        y = m[1, 0] * p[:, 0] + m[1, 1] * p[:, 1] + m[1, 2]
+        w = m[2, 0] * p[:, 0] + m[2, 1] * p[:, 1] + m[2, 2]
+        ok = np.abs(w) > _W_EPS
+        inv = np.divide(1.0, w, out=np.zeros_like(w), where=ok)
+        return np.column_stack([x * inv, y * inv])
 
     def image_to_world(self, image_xy: np.ndarray) -> np.ndarray:
         """Transform image-space point(s) into world-space point(s).

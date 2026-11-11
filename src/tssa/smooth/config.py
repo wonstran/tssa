@@ -17,6 +17,9 @@ class SmoothConfig:
     fps:           frames per second of the tracks.
     xy_cols:       names of the input position columns (metres); the smoothed positions keep these names.
     sigma_col:     optional column of the per-row position std-dev in metres; overrides the rts `sigma` row by row.
+    cov_cols:      optional names of three per-row covariance columns (xx, xy, yy) in m^2. Where all three are finite
+                   the rts kind uses them as the measurement covariance, ahead of sigma_col and sigma. A supplied
+                   covariance is final: fill_scale is not applied to it. Kinds without a noise model ignore it.
     split_speed:   a track is cut between two rows whose implied speed (m/s) is above this (a jump / ID switch).
                    This and gap_max_speed are segmentation rules in m/s; the speeds of the output come from
                    tssa.speed.SpeedCalculator.
@@ -28,6 +31,7 @@ class SmoothConfig:
     fps: float = 10.0
     xy_cols: tuple = ("x", "y")
     sigma_col: str | None = None
+    cov_cols: tuple | None = None
     split_speed: float = 6.0
     fill_gaps: bool = True
     fill_max_gap: int = 20
@@ -36,6 +40,13 @@ class SmoothConfig:
     def __post_init__(self) -> None:
         if len(self.xy_cols) != 2 or self.xy_cols[0] == self.xy_cols[1] or not all(isinstance(c, str) for c in self.xy_cols):
             raise ValueError(f"xy_cols must be a pair of two different column names, got {self.xy_cols!r}")
+        if self.cov_cols is not None:
+            c = tuple(self.cov_cols)
+            if len(c) != 3 or len(set(c)) != 3 or not all(isinstance(v, str) for v in c):
+                raise ValueError(f"cov_cols must be three different column names (xx, xy, yy), got {self.cov_cols!r}")
+            if set(c) & set(self.xy_cols):
+                raise ValueError("cov_cols must differ from xy_cols")
+            object.__setattr__(self, "cov_cols", c)
         if self.fps <= 0:
             raise ValueError("fps must be positive")
         if self.fill_max_gap < 0:
