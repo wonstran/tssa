@@ -26,10 +26,16 @@ RTS_P0 = (1.0, 1.0, 4.0, 4.0)  # initial state variances: e, n, ve, vn
 class SegmentContext:
     """Per-segment data some smoothers need beyond the raw positions."""
 
-    obs: np.ndarray  # (n, 2) observed positions, NaN on interp = 2 rows
+    obs: np.ndarray  # (n, 2) observed positions, NaN on interp = 2 rows (and, segmented, on unmeasured rows)
     sigma: np.ndarray  # (n,) per-row position std-dev in metres, NaN where the user gave none
     interp: np.ndarray  # (n,) 0 detected, 1 filled upstream, 2 filled here
     dt: float
+    meas: np.ndarray | None = None  # (n,) bool: rows that are measurements; None = the legacy rule interp < 2
+    cov: np.ndarray | None = None  # (n, 2, 2) per-row covariance in m^2 (final, never scaled); NaN where not given
+
+    def measured(self) -> np.ndarray:
+        """Rows that are measurements: `meas` when given (segmented mode), else interp < 2."""
+        return np.asarray(self.meas, bool) if self.meas is not None else self.interp < 2
 
 
 @dataclass
@@ -111,20 +117,28 @@ def median_sg(t: np.ndarray, pos: np.ndarray, ctx: SegmentContext, win: int, ord
 
 
 def rts_smooth(pos: np.ndarray, R: np.ndarray, dt: float, q: float) -> tuple[np.ndarray, np.ndarray]:
-    """Constant-velocity Kalman filter + RTS smoother; rows with NaN pos get no measurement update."""
+    """Constant-velocity Kalman filter + RTS smoother; rows with NaN pos get no measurement update.
+
+    The forward pass starts at the first measured row `i0`, from the state of the first two measured rows. Rows
+    before `i0` take the smoothed state at `i0` extrapolated backward at its constant velocity. Raises ValueError
+    with fewer than 2 measured rows.
+    """
+    pos = np.asarray(pos, dtype=float)
     n = len(pos)
+    meas = np.flatnonzero(~np.isnan(pos[:, 0]))
+    if len(meas) < 2:
+        raise ValueError(f"rts_smooth needs at least 2 measured rows, got {len(meas)}")
     I2 = np.eye(2)
     F = np.block([[I2, dt * I2], [np.zeros((2, 2)), I2]])
     Q = q * np.block([[dt**3 / 3 * I2, dt**2 / 2 * I2], [dt**2 / 2 * I2, dt * I2]])
     H = np.hstack([I2, np.zeros((2, 2))])
-    meas = np.flatnonzero(~np.isnan(pos[:, 0]))
     i0, i1 = meas[0], meas[1]
     x0 = np.concatenate([pos[i0], (pos[i1] - pos[i0]) / ((i1 - i0) * dt)])
     xp, Pp = np.zeros((n, 4)), np.zeros((n, 4, 4))
     xf, Pf = np.zeros((n, 4)), np.zeros((n, 4, 4))
     x, P = x0, np.diag(RTS_P0)
-    for k in range(n):
-        if k > 0:
+    for k in range(i0, n):
+        if k > i0:
             x, P = F @ x, F @ P @ F.T + Q
         xp[k], Pp[k] = x, P
         if not np.isnan(pos[k, 0]):
@@ -134,28 +148,45 @@ def rts_smooth(pos: np.ndarray, R: np.ndarray, dt: float, q: float) -> tuple[np.
             P = (np.eye(4) - K @ H) @ P
         xf[k], Pf[k] = x, P
     xs = xf.copy()
-    for k in range(n - 2, -1, -1):
+    for k in range(n - 2, i0 - 1, -1):
         C = Pf[k] @ F.T @ np.linalg.inv(Pp[k + 1])
         xs[k] = xf[k] + C @ (xs[k + 1] - xp[k + 1])
+    if i0 > 0:  # unmeasured prefix: constant-velocity extrapolation back from the smoothed state at i0
+        back = (i0 - np.arange(i0))[:, None] * dt
+        xs[:i0, :2] = xs[i0, :2] - back * xs[i0, 2:]
+        xs[:i0, 2:] = xs[i0, 2:]
     return xs[:, :2], xs[:, 2:]
+
+
+def _check_cov(cov: np.ndarray) -> None:
+    """Raise ValueError unless every (2, 2) matrix is symmetric positive definite."""
+    xx, xy, yx, yy = cov[:, 0, 0], cov[:, 0, 1], cov[:, 1, 0], cov[:, 1, 1]
+    bad = ~((xx > 0) & (yy > 0) & (xx * yy - xy * xy > 0) & np.isclose(xy, yx))
+    if bad.any():
+        raise ValueError(f"{int(bad.sum())} measured row(s) have a covariance that is not positive definite")
 
 
 @register_method(
     "rts", {"q": 0.5, "sigma": 0.05, "fill_scale": FILL_MEAS_SCALE}, min_len=lambda p: 2,
-    usable=lambda ctx: int((ctx.interp < 2).sum()),
+    usable=lambda ctx: int(ctx.measured().sum()),
 )  # fmt: skip
 def rts(t: np.ndarray, pos: np.ndarray, ctx: SegmentContext, q: float, sigma: float, fill_scale: float) -> np.ndarray:
     """RTS smoother on the observed positions (the position part of the state).
 
-    The measurement std-dev is `sigma` metres (the per-row sigma column replaces it where given), times
-    `fill_scale` on rows filled upstream (interp = 1); rows filled here get no measurement.
+    Measured rows are interp < 2 (legacy) or `ctx.meas` (segmented mode). A row's covariance is its per-row
+    covariance where one is given (final: never scaled); otherwise the std-dev `sigma` metres (the per-row sigma
+    column replaces it where given), times `fill_scale` on rows filled upstream (interp = 1).
     """
     if q <= 0 or sigma <= 0 or fill_scale <= 0:
         raise ValueError("q, sigma and fill_scale must be positive")
-    ok = ctx.interp < 2
+    ok = ctx.measured()
     s = np.where(np.isnan(ctx.sigma), sigma, ctx.sigma) * np.where(ctx.interp == 1, fill_scale, 1.0)
     R = np.zeros((len(t), 2, 2))
     R[ok] = (s[ok] ** 2)[:, None, None] * np.eye(2)
+    if ctx.cov is not None:
+        own = ok & np.isfinite(ctx.cov).all(axis=(1, 2))
+        _check_cov(ctx.cov[own])
+        R[own] = ctx.cov[own]
     obs = ctx.obs.copy()
     obs[~ok] = np.nan
     return rts_smooth(obs, R, ctx.dt, q)[0]

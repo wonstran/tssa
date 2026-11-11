@@ -1,0 +1,5266 @@
+{
+ "design": "docs/2026-11-10-footprint-design.md, section 17 phase 0 (Q6: snapshot after the user's M7 clip review)",
+ "created": "2026-11-11T02:46:16+00:00",
+ "study_dir": "D:/apps/miami-win/test/speed",
+ "excluded": [
+  ".pytest_cache",
+  ".superpowers",
+  "__pycache__"
+ ],
+ "archive": {
+  "path": "/mnt/e/videos/miami/output/a1a-20mins/footprint/snapshots/study-speed-2026-11-10.tar.gz",
+  "bytes": 364871,
+  "sha256": "2093d7f949d300a4cd8fbd0d6904a5fc1d94f7cb91a2e8b8dd53cd1b65f065ed"
+ },
+ "files": [
+  {
+   "path": "annotate_manual.py",
+   "bytes": 12632,
+   "sha256": "12e672465631fb10813a71067754f865e412fdcc9951619de82c7a7392801b4f",
+   "mtime": "2026-11-08T11:17:54"
+  },
+  {
+   "path": "camera.py",
+   "bytes": 11303,
+   "sha256": "609ddf2497a34e77d1f4e797649cfca12320c1c6b4ca01b6e24ccc453d93f6c7",
+   "mtime": "2026-11-05T21:18:03"
+  },
+  {
+   "path": "check_manual.py",
+   "bytes": 4104,
+   "sha256": "edae3296df6a21bed703a281e803a6e896bff6cb0ca14388a63b9f8f66cdf840",
+   "mtime": "2026-11-08T11:17:54"
+  },
+  {
+   "path": "check_seed.py",
+   "bytes": 1908,
+   "sha256": "ad7c8349e890ba496008bec07fd959117970dfd84e607539eee28f3452ca7a71",
+   "mtime": "2026-11-05T21:45:12"
+  },
+  {
+   "path": "check_speed_trap.py",
+   "bytes": 4735,
+   "sha256": "7386d9090d542178901eb7d46084d34dea806edd9e6bf8ed2035bc104d778509",
+   "mtime": "2026-11-07T10:06:37"
+  },
+  {
+   "path": "combine_pet.py",
+   "bytes": 3447,
+   "sha256": "d9bbc832e61272abbb237f945e92e96ba326248bc5f8a70e165a91201fb8f932",
+   "mtime": "2026-11-09T14:18:57"
+  },
+  {
+   "path": "docs/2026-11-05-vehicle-footprint-design.md",
+   "bytes": 37352,
+   "sha256": "5a6b5e13efe9b0b030130cf54ad60a45d04eb11d2dd150ba9e390d4abf8c7301",
+   "mtime": "2026-11-05T21:10:24"
+  },
+  {
+   "path": "docs/2026-11-05-vehicle-footprint-plan.md",
+   "bytes": 61267,
+   "sha256": "0cf10a5ffbaa0aabbae0839459f51b02d16aa8fd9b7bba879f6eaf25cb743f26",
+   "mtime": "2026-11-05T21:48:40"
+  },
+  {
+   "path": "docs/2026-11-05-vehicle-footprint-sdd-ledger.md",
+   "bytes": 19512,
+   "sha256": "5f4781c1daa55324a83b1729dda0b4ed097e5f9f497704a344890ecd708a76af",
+   "mtime": "2026-11-06T01:10:42"
+  },
+  {
+   "path": "docs/2026-11-06-vehicle-footprint-run-report.md",
+   "bytes": 23275,
+   "sha256": "7e6fea81d20d5c47fc29efb56e65f7ca54982a40d3ed2c6ff5f5837b3c24be21",
+   "mtime": "2026-11-09T16:20:59"
+  },
+  {
+   "path": "docs/2026-11-08-m7-build-notes.md",
+   "bytes": 51749,
+   "sha256": "3225ebbd6db3003004c4f943779ae1976f4b96c3de8a6676975bc03eba41aa33",
+   "mtime": "2026-11-10T18:50:35"
+  },
+  {
+   "path": "docs/2026-11-08-m7-wheel-anchored-design.md",
+   "bytes": 64735,
+   "sha256": "1279792b13d6870ad69a747821a659a016143ef11cffe3a037373de049964271",
+   "mtime": "2026-11-09T12:19:05"
+  },
+  {
+   "path": "docs/review_2026-11-05-16-06-38-response.md",
+   "bytes": 8624,
+   "sha256": "18384745a9aadb1bc72c59363a53ac205080c6afa7c8ef3bfe61344da099461f",
+   "mtime": "2026-11-05T16:11:19"
+  },
+  {
+   "path": "docs/review_2026-11-05-16-06-38.md",
+   "bytes": 12568,
+   "sha256": "e40c57aaeba689daae1d86f3ac139f2229cf60e3215b01074b5bafdee1c98dd8",
+   "mtime": "2026-11-05T16:07:39"
+  },
+  {
+   "path": "docs/review_2026-11-05-16-18-26-response.md",
+   "bytes": 5681,
+   "sha256": "e224801b915994e2c6ca59ab3fb240e604ba48b4b9d229cca12be2a16b9e3fd7",
+   "mtime": "2026-11-05T16:36:54"
+  },
+  {
+   "path": "docs/review_2026-11-05-16-18-26.md",
+   "bytes": 8212,
+   "sha256": "aac678af585d04eda13ef0f63d0e8512fd8c008eaa51a773c9c5ebd87b65363a",
+   "mtime": "2026-11-05T16:19:09"
+  },
+  {
+   "path": "docs/review_2026-11-05-16-38-19-response.md",
+   "bytes": 4761,
+   "sha256": "51eb038cba2cfd0dffc722fc61b74fc8dadcba40dca4505dee6d01549bed0420",
+   "mtime": "2026-11-05T17:39:45"
+  },
+  {
+   "path": "docs/review_2026-11-05-16-38-19.md",
+   "bytes": 5717,
+   "sha256": "8ef1a622b30fc43c4c040d17ffc35ce40d1430459c17b8c2d96385d03737802d",
+   "mtime": "2026-11-05T16:38:56"
+  },
+  {
+   "path": "docs/review_2026-11-05-17-41-06-response.md",
+   "bytes": 3902,
+   "sha256": "ece6308630345a3356eaeb6c53941261852d06c35a977a4881e5a85e0d7d199e",
+   "mtime": "2026-11-05T17:43:19"
+  },
+  {
+   "path": "docs/review_2026-11-05-17-41-06.md",
+   "bytes": 3580,
+   "sha256": "5729af09e4d97709e9c0db050ea1d21931301e864fb7e2e27ed478c95997986f",
+   "mtime": "2026-11-05T17:41:37"
+  },
+  {
+   "path": "docs/review_2026-11-05-17-45-50-response.md",
+   "bytes": 2546,
+   "sha256": "60ea60d2f954494e250c2d093925e47879bc69b4e91d7cfe35cf2cacd975394b",
+   "mtime": "2026-11-05T18:07:18"
+  },
+  {
+   "path": "docs/review_2026-11-05-17-45-50.md",
+   "bytes": 2498,
+   "sha256": "cff49e8e827bff6309c4313c9e535b2ae060ab1f028fbad1f25b7c89cec72860",
+   "mtime": "2026-11-05T17:46:36"
+  },
+  {
+   "path": "docs/review_2026-11-05-18-09-42-response.md",
+   "bytes": 1110,
+   "sha256": "e13cfb84b9ba46ae3e5eeb51865bfa16161f1f0d94796cc0eee9422fd34aabf0",
+   "mtime": "2026-11-05T18:10:54"
+  },
+  {
+   "path": "docs/review_2026-11-05-18-09-42.md",
+   "bytes": 1129,
+   "sha256": "eb5b6e61f92eaffa9d0ea61dd419380aaa580d9d62a353c5bc032339bbad620c",
+   "mtime": "2026-11-05T18:10:15"
+  },
+  {
+   "path": "docs/review_2026-11-05-18-32-09-response.md",
+   "bytes": 6035,
+   "sha256": "33645356e63c8822d30c26ce8ffd8ece6da28baba3ecd387571697a83960f800",
+   "mtime": "2026-11-05T18:36:12"
+  },
+  {
+   "path": "docs/review_2026-11-05-18-32-09.md",
+   "bytes": 8974,
+   "sha256": "4caca34ffbacf273ce17542e718aa6711a73d5c7fa6b90f69ba91bb3d9fa3ec9",
+   "mtime": "2026-11-05T18:33:14"
+  },
+  {
+   "path": "docs/review_2026-11-05-18-39-38-response.md",
+   "bytes": 2181,
+   "sha256": "2cc42e7656194d520dc28a225a8500d74fd4d0abb788c6488f9ffb5321fc44ed",
+   "mtime": "2026-11-05T18:43:17"
+  },
+  {
+   "path": "docs/review_2026-11-05-18-39-38.md",
+   "bytes": 3557,
+   "sha256": "78166f0fc8fe8ff0b22fba9c045402949f6bcd16c73f37ca3042db638ad00282",
+   "mtime": "2026-11-05T18:40:12"
+  },
+  {
+   "path": "docs/review_2026-11-05-18-43-50.md",
+   "bytes": 1235,
+   "sha256": "8d6532cfb42f22a707dcbeba9a33381997aa3b52945fc0ecabe949f0f1d2e113",
+   "mtime": "2026-11-05T18:44:19"
+  },
+  {
+   "path": "docs/review_2026-11-08-17-57-30-response.md",
+   "bytes": 9782,
+   "sha256": "1da3f8e24ee3ae3089af84cafbae8376ef8cad5e65730cb53b7537e26b78adbb",
+   "mtime": "2026-11-08T18:03:01"
+  },
+  {
+   "path": "docs/review_2026-11-08-17-57-30.md",
+   "bytes": 10132,
+   "sha256": "5c9061e4f9cfb5d28f7aad80d185ecdde4139bc14a9c0028c63789ad80cd78eb",
+   "mtime": "2026-11-08T17:58:03"
+  },
+  {
+   "path": "docs/review_2026-11-08-18-07-48-response.md",
+   "bytes": 8850,
+   "sha256": "856120d2f61c542c68a23d6726242e014c8595d74fa84ddad3e4b200b42ed44e",
+   "mtime": "2026-11-08T18:26:19"
+  },
+  {
+   "path": "docs/review_2026-11-08-18-07-48.md",
+   "bytes": 11399,
+   "sha256": "65349b1a12600d3b4f4d60228efa973449f56cab681a26ad8982b9e1209fe80a",
+   "mtime": "2026-11-08T18:07:48"
+  },
+  {
+   "path": "docs/review_2026-11-08-18-30-06-response.md",
+   "bytes": 6385,
+   "sha256": "5721f5bcd5403f74cf95af59de2c450b0f2e933b154e176b40609157ca4499c4",
+   "mtime": "2026-11-08T18:33:06"
+  },
+  {
+   "path": "docs/review_2026-11-08-18-30-06.md",
+   "bytes": 8122,
+   "sha256": "5e16f51942af42db55914cced00947cd55a0caaf452e2b54d45ff595bc704601",
+   "mtime": "2026-11-08T18:30:06"
+  },
+  {
+   "path": "docs/review_2026-11-08-18-35-04.md",
+   "bytes": 3585,
+   "sha256": "fef18b011f239573daf1861b245ef660fda1e2e3ca2bd0ab554911a819d57773",
+   "mtime": "2026-11-08T18:35:04"
+  },
+  {
+   "path": "docs/vehicle-footprint-methods-report.pdf",
+   "bytes": 25187,
+   "sha256": "59e893d631453fd82d90b6676a89ffb75dc4578e254379ab9acedbbd31a375e0",
+   "mtime": "2026-11-09T16:01:20"
+  },
+  {
+   "path": "export.py",
+   "bytes": 2628,
+   "sha256": "0db19bcd4d31f66f9e1b8b37ccd34fcaac6e70be9a8d9feefb8e192081754ea7",
+   "mtime": "2026-11-09T14:11:29"
+  },
+  {
+   "path": "geometry.py",
+   "bytes": 4951,
+   "sha256": "a61133fc1ff8371e4f0ee590a3d5cdd9e4c3f611b3a3d19b73d17cc9799c2fa7",
+   "mtime": "2026-11-05T18:53:44"
+  },
+  {
+   "path": "grid.py",
+   "bytes": 5072,
+   "sha256": "53880c21bfe3924c6c49b14bbf9b1de9789807c549f1e6432e40772ea860e03a",
+   "mtime": "2026-11-05T19:03:11"
+  },
+  {
+   "path": "infer.py",
+   "bytes": 31580,
+   "sha256": "6e12746e6f0e57bd7a1a3870f5375b31ec3d949b28b2e4fa33f85b6ac36c4bd1",
+   "mtime": "2026-11-08T18:40:08"
+  },
+  {
+   "path": "inputs.py",
+   "bytes": 3372,
+   "sha256": "ffd6077564906fcf1f8e9c247b60d4c26819cc8061aea45e8d1913e5b55d38fb",
+   "mtime": "2026-11-05T18:51:43"
+  },
+  {
+   "path": "m3.py",
+   "bytes": 4287,
+   "sha256": "52863f7d6ee8973af8f9afc3911f99f1335d89137bc27a9e359cc93bf93750ac",
+   "mtime": "2026-11-05T19:17:44"
+  },
+  {
+   "path": "m4.py",
+   "bytes": 12421,
+   "sha256": "e3e971afb8b697d1375677cd4096b3b9ad642ba29f52b4b37f9d36206da00649",
+   "mtime": "2026-11-05T19:26:57"
+  },
+  {
+   "path": "m5.py",
+   "bytes": 8059,
+   "sha256": "c21a7ca8bc3dcf8bc879258acd624ad33c5a95fb06f2f23a51fec21923ee4c2a",
+   "mtime": "2026-11-05T21:37:21"
+  },
+  {
+   "path": "m6.py",
+   "bytes": 3695,
+   "sha256": "12b36f676a19a013a6b2a864a652d212114f4cb5394dcaf612cfd30908d6d703",
+   "mtime": "2026-11-07T21:16:35"
+  },
+  {
+   "path": "m7.py",
+   "bytes": 56883,
+   "sha256": "d8fc196b1e8375caeaef486eaadcc7314bbf65eaa82c92b26ed67ef8bcbf108f",
+   "mtime": "2026-11-10T06:42:00"
+  },
+  {
+   "path": "m7_candidates.py",
+   "bytes": 9957,
+   "sha256": "7a664ff6885db247aa0d1b2e942115aece3522ba9e187761d1e7260883ef4261",
+   "mtime": "2026-11-08T18:54:15"
+  },
+  {
+   "path": "m7_phase0.py",
+   "bytes": 12655,
+   "sha256": "ba1f03b0730cb8ac3dddbb2fa11e3a2c3e6c3585bae42dc2500a625376aa3ac4",
+   "mtime": "2026-11-08T18:55:01"
+  },
+  {
+   "path": "m7_runner.py",
+   "bytes": 24112,
+   "sha256": "e45ed545595731218d23b3ba3de211d2801aff00dbe43daac47eff4e3d3ff80b",
+   "mtime": "2026-11-09T18:14:09"
+  },
+  {
+   "path": "m7_smoke.py",
+   "bytes": 6593,
+   "sha256": "72a52e37c3c73d9faca1eef5545fd1b1c5cb4a805a4fee36e8de38a7e22531fa",
+   "mtime": "2026-11-08T19:17:32"
+  },
+  {
+   "path": "make_methods_report.py",
+   "bytes": 32256,
+   "sha256": "00fee8304190025783695fc07debded5ab127e6598e68c470c19cea8e8b98238",
+   "mtime": "2026-11-09T16:01:19"
+  },
+  {
+   "path": "manual.py",
+   "bytes": 6438,
+   "sha256": "9d06e3b78e7c51d943ec7ccbd064f8b7ab05e1394c65fff55ef03e327287b156",
+   "mtime": "2026-11-08T11:13:28"
+  },
+  {
+   "path": "metrics.py",
+   "bytes": 21024,
+   "sha256": "f6e90f893e3f67ff6f37158ddbacaf36431b1466e83c30b9ab5c238b8bb4cf3e",
+   "mtime": "2026-11-09T14:15:47"
+  },
+  {
+   "path": "products.py",
+   "bytes": 18953,
+   "sha256": "8cdbb93b612c771184fdb2a530c6beaab09871c7df54f43936a8a7b99928c460",
+   "mtime": "2026-11-09T14:11:29"
+  },
+  {
+   "path": "render.py",
+   "bytes": 13193,
+   "sha256": "7a5b6d6340df79b9f12de6355898a5e88dfe139b7e5d782f42d257c61487fff0",
+   "mtime": "2026-11-09T14:14:08"
+  },
+  {
+   "path": "run_footprint.py",
+   "bytes": 28463,
+   "sha256": "f5b3a2699239a96c0063982af5e99c9a5a4f543656184911fb0bb8cf9b5b31b9",
+   "mtime": "2026-11-09T14:17:46"
+  },
+  {
+   "path": "sample.py",
+   "bytes": 1982,
+   "sha256": "3053cce7f251cc712b96b3862d93c916775a802e23c250a69cf526a42a10a727",
+   "mtime": "2026-11-05T20:37:40"
+  },
+  {
+   "path": "settings.py",
+   "bytes": 13925,
+   "sha256": "518d604d1557f5a9fa2b9b1f7e71cc9d79c5973488f717bce8ea3e81d5d63109",
+   "mtime": "2026-11-10T16:10:45"
+  },
+  {
+   "path": "smooth.py",
+   "bytes": 12558,
+   "sha256": "5963d3ff021ce6d053c7a9025d876feafd588aac83ff3d14bc4b4ce355676634",
+   "mtime": "2026-11-09T14:10:54"
+  },
+  {
+   "path": "smoothlib/__init__.py",
+   "bytes": 0,
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "mtime": "2026-11-05T18:49:38"
+  },
+  {
+   "path": "smoothlib/ground.py",
+   "bytes": 1687,
+   "sha256": "59a4e8b302e564f0486c11aa1d6909102f26604678419ed5e02c3f034d3a7242",
+   "mtime": "2026-11-05T18:49:38"
+  },
+  {
+   "path": "smoothlib/methods.py",
+   "bytes": 6570,
+   "sha256": "87cf218a451b86ed52cf1214c96812fc311a808248c332033d465afac5c5dd38",
+   "mtime": "2026-11-05T18:49:38"
+  },
+  {
+   "path": "smoothlib/segments.py",
+   "bytes": 9162,
+   "sha256": "fb051357d966808d874899a2388384c91c14313366d171f2da4e5706fa795a5a",
+   "mtime": "2026-11-05T18:49:41"
+  },
+  {
+   "path": "smoothlib/smooth_settings.py",
+   "bytes": 3116,
+   "sha256": "54c15e02b6ede6990b7408b3eca6b99b3af8d44fb18c585ccd3a05b9dbeb445e",
+   "mtime": "2026-11-05T18:49:38"
+  },
+  {
+   "path": "stops.py",
+   "bytes": 3843,
+   "sha256": "bb0adcf157ec69c27ce7905fe0137b15d4da49913015895799aa58a8a6b1ba8e",
+   "mtime": "2026-11-05T19:47:31"
+  },
+  {
+   "path": "tests/conftest.py",
+   "bytes": 1984,
+   "sha256": "cba0d7aec22118c921f799dfd0922afde1672d2af55abdc82ead3e7f275887ac",
+   "mtime": "2026-11-05T18:49:54"
+  },
+  {
+   "path": "tests/m7_synth.py",
+   "bytes": 6122,
+   "sha256": "02034d52cb165996082ba6de6f30549255da4f6c5e6fe3c630fe5cecb829c2de",
+   "mtime": "2026-11-09T20:33:13"
+  },
+  {
+   "path": "tests/test_camera.py",
+   "bytes": 11811,
+   "sha256": "f9566c89c500cf78a9be93b68f2af117b66e0b6eda3d3d57909c9ae9bb9d56ff",
+   "mtime": "2026-11-05T21:18:14"
+  },
+  {
+   "path": "tests/test_export.py",
+   "bytes": 8474,
+   "sha256": "d944e57ae58a9d815ebe2407cce08099111b71d647416005d3e6db3148e6f19e",
+   "mtime": "2026-11-05T20:37:23"
+  },
+  {
+   "path": "tests/test_fallback.py",
+   "bytes": 1698,
+   "sha256": "239bca93dcba8ce170652862f7208e6446cafe6315347415d4e5f07f5187b2d2",
+   "mtime": "2026-11-07T21:47:07"
+  },
+  {
+   "path": "tests/test_geometry.py",
+   "bytes": 2818,
+   "sha256": "182bb76efec043a25a738694084dd49dc13fd3fa4ff610a5b74ae07ef400cc38",
+   "mtime": "2026-11-05T18:53:29"
+  },
+  {
+   "path": "tests/test_grid.py",
+   "bytes": 5717,
+   "sha256": "ae1309f1d336470c2bbc6b47bd8497ebe15d333ccb6224131240fa2c529283bd",
+   "mtime": "2026-11-05T19:03:11"
+  },
+  {
+   "path": "tests/test_infer.py",
+   "bytes": 18334,
+   "sha256": "8cffd060783ba25b50b600bb1bf6d5d1bba267f5063050b4f3bfa63c97e791f4",
+   "mtime": "2026-11-08T18:41:18"
+  },
+  {
+   "path": "tests/test_inputs.py",
+   "bytes": 3476,
+   "sha256": "87ee3f8d21651d37d1f02499a85989662edd48a93f6d3400b6130de9fdd9f1b3",
+   "mtime": "2026-11-05T18:51:48"
+  },
+  {
+   "path": "tests/test_m3.py",
+   "bytes": 2487,
+   "sha256": "54858de3052d32faca093b5e3eba2c7ec19ed4cc26d27deb8c3783dfaeedbb16",
+   "mtime": "2026-11-05T19:17:28"
+  },
+  {
+   "path": "tests/test_m4.py",
+   "bytes": 13711,
+   "sha256": "bc242393bd343f3662cc5ce1d8e637f88c164b3644bf6e08df416a256bec9ae0",
+   "mtime": "2026-11-05T19:27:17"
+  },
+  {
+   "path": "tests/test_m5.py",
+   "bytes": 8259,
+   "sha256": "ad25fbdc215484b17b49b6b15c900866aaef25cdeb09cbf3a5d663a5038bce94",
+   "mtime": "2026-11-05T21:38:21"
+  },
+  {
+   "path": "tests/test_m6.py",
+   "bytes": 3182,
+   "sha256": "9c0ea10c6fce9899bdc35fbb1e7c25ebd073d93936a3c576c797d7d3bac2bcc4",
+   "mtime": "2026-11-07T21:16:35"
+  },
+  {
+   "path": "tests/test_m7.py",
+   "bytes": 23917,
+   "sha256": "db56779387220356c39c4fb5393bfd40faa9152d07858bc985ea6a20272fb43d",
+   "mtime": "2026-11-10T06:45:14"
+  },
+  {
+   "path": "tests/test_m7_candidates.py",
+   "bytes": 5942,
+   "sha256": "a3b973f55b869f152707d5d9cb7806c3e0ef5103332557ba6a22a17cd7cff5c3",
+   "mtime": "2026-11-08T18:54:44"
+  },
+  {
+   "path": "tests/test_m7_runner.py",
+   "bytes": 18370,
+   "sha256": "7f8ea7fc0d560d2433727f09ad367a69bd734833c33a7fb1057821fb7bbb0936",
+   "mtime": "2026-11-09T14:21:10"
+  },
+  {
+   "path": "tests/test_manual.py",
+   "bytes": 5357,
+   "sha256": "50c4df13718293ece211dfc6a8fbe40a5c03c8f2b474caf1650e5d62f540eada",
+   "mtime": "2026-11-08T11:18:55"
+  },
+  {
+   "path": "tests/test_metrics.py",
+   "bytes": 22348,
+   "sha256": "0320f33cf8a604ccb7aa6dc8053158a3cc8f236a3630f40fb3516cc13dc9388f",
+   "mtime": "2026-11-09T14:17:46"
+  },
+  {
+   "path": "tests/test_products.py",
+   "bytes": 27359,
+   "sha256": "495c5d03a4f7aa6e8359fef3ff861047c92feb1feafa33c6996fdec947182666",
+   "mtime": "2026-11-07T22:24:42"
+  },
+  {
+   "path": "tests/test_render.py",
+   "bytes": 8084,
+   "sha256": "5c4a7b3d03df22d43a480b282cd41d6fc0fe600a4cc823f43327bca1739ce619",
+   "mtime": "2026-11-05T20:45:51"
+  },
+  {
+   "path": "tests/test_run.py",
+   "bytes": 18212,
+   "sha256": "2ede25888e0cecbf40ea9312aa4412c426c6908cb1540313d0c44bb3a2917013",
+   "mtime": "2026-11-09T14:18:57"
+  },
+  {
+   "path": "tests/test_sample.py",
+   "bytes": 2767,
+   "sha256": "6ee1911df9e6418eed6f6f45754c8531044db657b121b71074439b9af0b7c4c9",
+   "mtime": "2026-11-05T20:37:22"
+  },
+  {
+   "path": "tests/test_smooth.py",
+   "bytes": 13301,
+   "sha256": "fee3de9e58de24c2af3120860dbd59f0e7d0c9cf72a0b3ade221750b8d564645",
+   "mtime": "2026-11-05T19:13:20"
+  },
+  {
+   "path": "tests/test_smoothlib.py",
+   "bytes": 1154,
+   "sha256": "29768e9ce7d904ca671970cb40bd682b1836382ddeb83367b4550c23b544af47",
+   "mtime": "2026-11-05T18:49:54"
+  },
+  {
+   "path": "tests/test_stops.py",
+   "bytes": 3917,
+   "sha256": "c0971dd4dbca2f9d533f893eed872069026079945a3d263ff1136a62fbcdcf37",
+   "mtime": "2026-11-05T19:47:17"
+  }
+ ],
+ "newest_code_file": {
+  "path": "settings.py",
+  "bytes": 13925,
+  "sha256": "518d604d1557f5a9fa2b9b1f7e71cc9d79c5973488f717bce8ea3e81d5d63109",
+  "mtime": "2026-11-10T16:10:45"
+ },
+ "settings": {
+  "evaluated_on": "Linux (WSL): path settings use /mnt/e/; the study ran them as E:/",
+  "values": {
+   "FT": 0.3048,
+   "MPS_TO_MPH": 2.2369362920544,
+   "E_ROOT": "/mnt/e/",
+   "_CLIP": "A1A_Collins Ave & 17th St -- 5-28-26 -- 0000-2400 -- NW Corner_afternoon_140000.00",
+   "VIDEO": "/mnt/e/videos/miami/clips/20min/A1A_Collins Ave & 17th St -- 5-28-26 -- 0000-2400 -- NW Corner_afternoon_140000.00.mp4",
+   "TRACKS": "/mnt/e/videos/miami/output/a1a-20mins/tracks/A1A_Collins Ave & 17th St -- 5-28-26 -- 0000-2400 -- NW Corner_afternoon_140000.00_veh_tracks_reclass_p3.txt",
+   "TRACKS_FINAL": "/mnt/e/videos/miami/output/a1a-20mins/tracks/A1A_Collins Ave & 17th St -- 5-28-26 -- 0000-2400 -- NW Corner_afternoon_140000.00_veh_tracks.txt",
+   "AUDIT": "/mnt/e/videos/miami/output/a1a-20mins/counts/veh_bbox_20261103/count_file_turn_audit.csv",
+   "HOMOGRAPHY": "/mnt/e/videos/miami/homo/a1a/model_a1a_nw.json",
+   "GCPS": "/mnt/e/videos/miami/homo/a1a/a1a_nw_gcps_transfer.csv",
+   "LAYOUT": "D:/apps/miami-win/test/smooth/layout_a1a_nw.json",
+   "OUT_ROOT": "/mnt/e/videos/miami/output/a1a-20mins/footprint/",
+   "SAM_CKPT": "D:/apps/miami-win/sam2.1_b.pt",
+   "UOD_CKPT": "D:/apps/miami-win/urbanomnidetect/checkpoints/urbanomnidetect_v2_x_640.pt",
+   "UOD_ROOT": "D:/apps/miami-win/urbanomnidetect",
+   "KP_REPO": "kiselyovd/vehicle-keypoints",
+   "KP_FILE": "weights.pt",
+   "KP_REVISION": "48b5795f3b79cdfe7ff6588812aa388a6a7fdd9d",
+   "EXPECTED_SHA256": {
+    "tracks": "4ddb7a785883604e2923d993fe3427f9b89579abbbd14c2466d88be798fc04d7",
+    "tracks_final": "18bc6fb6b582f96920a6f176d9033ea35cb718bb6ed50aa8a6435f8dff71b059",
+    "audit": "52df90c270031f7a4baee2ff78ca1d78f60e332ad62867dfe4ba364cbca7d52a",
+    "video": "9fc514d683647599a7f94ed608ca9b38197ab35b957572f7cb4c7ac452611f19",
+    "homography": "f1d4afab3e2bd42933efd0a28f60c9b0be27aa0d57d087c898677bea299dad4b",
+    "gcps": "6d2a95d95314132f7157a25189a8d74cee81fb6aca6843aa10af61c917496bb0",
+    "layout": "279335415c1bab8d08171f442aca7d3a4edfc34f86cab866c1f5cbedd94c8a2c"
+   },
+   "CLIP": "afternoon-nw",
+   "ZONE_BUFFER_FT": 15,
+   "GATE_BUFFER_FT": 100,
+   "GATE_MAX_FT_PER_PX": 2.0,
+   "EDGE_PX": 2,
+   "IMG_SIZE": [
+    640,
+    480
+   ],
+   "FILL_MAX_GAP": 20,
+   "GAP_MAX_SPEED_MPH": 60,
+   "SPLIT_SPEED": 0.5,
+   "SPLIT_LOGH": 0.5,
+   "RTS_Q": 2.0,
+   "RTS_SIGMA_K": 0.03,
+   "HEADING_MIN_MPH": 3,
+   "APPROACH_FALLBACK_FT": 50,
+   "ORIENT_Q": 1.0,
+   "ORIENT_SIGMA": 0.1,
+   "ORIENT_NATIVE_REACH_FRAMES": 10,
+   "WHEELBASE_TOL": 0.3,
+   "AXIS_TOL_DEG": 30,
+   "PARALLEL_TOL_DEG": 15,
+   "TRACK_TOL": 0.3,
+   "LONG_OFFSET_FRAC": 0.25,
+   "MIN_CONTACT_SEP_FT": 0.5,
+   "NEAR_DV_PX": 3,
+   "NEAR_BOTTOM_FRAC": 0.1,
+   "CAMERA_AWAY_DOT": 0.5,
+   "FRONT_CONFLICT_MIN_ROWS": 10,
+   "FRONT_CONFLICT_SHARE": 0.5,
+   "WHEEL_LANDMARK": "hub",
+   "M5_MIN_COLS": 8,
+   "M5_MAX_RESID_FT": 1.0,
+   "KP_MATCH_IOU": 0.3,
+   "M6_MATCH_IOU": 0.3,
+   "M6_MIN_SIZE_FRAC": 0.5,
+   "CAMERA_RMS_PX": 1.0,
+   "CAMERA_MAX_PX": 3.0,
+   "FOCAL_SCALES": [
+    0.87,
+    1.0,
+    1.13
+   ],
+   "CAMERA_FREE_PRINCIPAL": true,
+   "CAMERA_PP_PRIOR": 0.001,
+   "STOP_WIN_S": 2.0,
+   "STOP_BASE_FT": 1.0,
+   "STOP_NOISE_PX": 2.0,
+   "STOP_DH": 0.05,
+   "STOP_MIN_S": 1.5,
+   "ACCEL_LIMIT_FTS2": 15,
+   "LAT_ACCEL_G": 0.5,
+   "SAMPLE_PER_CELL": 5,
+   "SAMPLE_MIN_ROWS": 20,
+   "SEED": 0,
+   "CLIP_PAD": 10,
+   "SIZE_FT": {
+    "2": [
+     15,
+     6
+    ],
+    "7": [
+     25,
+     8
+    ],
+    "5": [
+     40,
+     8.5
+    ]
+   },
+   "FALLBACK_BY_CLASS": {
+    "7": "M3"
+   },
+   "M6_MEASURED_SIZE_CLASSES": [
+    2
+   ],
+   "MANUAL_CLICKS": "/mnt/e/videos/miami/output/a1a-20mins/footprint/manual/manual_clicks.csv",
+   "MANUAL_KEYFRAME_STEP": 10,
+   "M7_CLASSES": [
+    5,
+    7
+   ],
+   "M7_PROTRUDE_PX": 2.0,
+   "M7_TYRE_W_MIN": 0.4,
+   "M7_TYRE_W_MAX": 3.0,
+   "M7_MAX_DEPTH_TYRES": 1.0,
+   "M7_DEDUP_TYRES": 0.5,
+   "M7_WHEEL_R_REF_FT": {
+    "5": 1.6,
+    "7": 1.45
+   },
+   "M7_GATE_MIN_PX": 8.0,
+   "M7_GATE_TYRES": 0.75,
+   "M7_SIGMA_WHEEL_PX": 1.5,
+   "M7_MIN_OUTLINE_COLS": 8,
+   "M7_PRIORS_FT": {
+    "bus": {
+     "Lw": [
+      24.0,
+      5.0,
+      12.0,
+      30.0
+     ],
+     "af": 0.2916666666666667,
+     "sf": 2.0,
+     "ar": 0.375,
+     "sr": 2.0,
+     "W": [
+      8.5,
+      0.3,
+      7.0,
+      8.8
+     ],
+     "H": [
+      11.0,
+      1.0
+     ],
+     "c": [
+      1.0,
+      0.5,
+      0.3,
+      3.5
+     ],
+     "i_f": 1.0,
+     "i_r": 0.3,
+     "wheel_r": 1.6
+    },
+    "truck": {
+     "Lw": [
+      15.0,
+      5.0,
+      8.0,
+      26.0
+     ],
+     "af": 0.26666666666666666,
+     "sf": 2.0,
+     "ar": 0.4,
+     "sr": 3.0,
+     "W": [
+      8.0,
+      0.8,
+      6.0,
+      8.8
+     ],
+     "H": [
+      10.0,
+      2.0
+     ],
+     "c": [
+      1.5,
+      1.0,
+      0.3,
+      4.0
+     ],
+     "i_f": 0.8,
+     "i_r": 0.3,
+     "wheel_r": 1.6
+    },
+    "pickup_van": {
+     "Lw": [
+      12.0,
+      1.5,
+      9.0,
+      15.0
+     ],
+     "af": 0.25,
+     "sf": 1.5,
+     "ar": 0.35000000000000003,
+     "sr": 1.5,
+     "W": [
+      6.7,
+      0.4,
+      5.8,
+      7.2
+     ],
+     "H": [
+      7.0,
+      1.5
+     ],
+     "c": [
+      1.0,
+      0.4,
+      0.3,
+      2.0
+     ],
+     "i_f": 0.5,
+     "i_r": 0.5,
+     "wheel_r": 1.3
+    }
+   },
+   "M7_SUBTYPES": {
+    "5": [
+     "bus"
+    ],
+    "7": [
+     "truck",
+     "pickup_van"
+    ]
+   },
+   "M7_TANDEM_FT": [
+    4.5,
+    0.7
+   ],
+   "M7_ALLOW_TANDEM": false,
+   "M7_FIX_WIDTH": false,
+   "M7_FIXED_W_SD_FT": 0.01,
+   "M7_LOOSE_W_FT": {
+    "bus": [
+     8.5,
+     0.5,
+     7.5,
+     8.8
+    ],
+    "truck": [
+     8.0,
+     0.8,
+     6.5,
+     8.8
+    ],
+    "pickup_van": [
+     6.7,
+     0.4,
+     6.0,
+     7.2
+    ]
+   },
+   "M7_FIT_INSET": true,
+   "M7_INSET_SD_LO_HI_FT": {
+    "bus": [
+     0.5,
+     0.0,
+     2.0
+    ],
+    "truck": [
+     0.5,
+     0.0,
+     2.0
+    ],
+    "pickup_van": [
+     0.3,
+     0.0,
+     1.5
+    ]
+   },
+   "M7_FIXED_INSET_SD_FT": 0.01,
+   "M7_TANDEM_SPACING_BOUNDS_FT": [
+    3.0,
+    7.0
+   ],
+   "M7_MIN_DIM_FT": 0.5,
+   "M7_MAX_RIGID_LEN_FT": {
+    "bus": 45.0,
+    "truck": 40.0,
+    "pickup_van": 24.0
+   },
+   "M7_SIGMA_FAR_PX": 3.0,
+   "M7_FAR_TARGETS": false,
+   "M7_SIGMA_ENV_PX": 2.0,
+   "M7_SIGMA_EXT_PX": 3.0,
+   "M7_ENV_MAX_COLS": 40,
+   "M7_ENV_EFF_N": 10,
+   "M7_MIN_ENV_COLS": 12,
+   "M7_SIGMA_SLIP_FT": 0.1,
+   "M7_SIGMA_ACC_FT": 0.05,
+   "M7_SIGMA_YAW_DEG": 0.5,
+   "M7_SIGMA_CURV_DEG": 0.2,
+   "M7_STEER_MAX_DEG": 40.0,
+   "M7_CURV_EPS_DEG": 0.2,
+   "M7_OUTER_ITERS": 30,
+   "M7_TOL": 0.0001,
+   "M7_INNER_NFEV": 200,
+   "M7_IRLS_ROUNDS": 4,
+   "M7_IRLS_NFEV": 60,
+   "M7_USE_EXTENTS": true,
+   "M7_ENV_CLAMP_PX": 3.0,
+   "M7_SIDE_FREEZE": true,
+   "M7_EXT_ABOVE_THR": 3.0,
+   "M7_MODEL_MARGIN": 3.0,
+   "M7_FRONT_MIN_YAW_DPS": 3.0,
+   "M7_FRONT_MARGIN": 3.0,
+   "M7_FRONT_RULE": "travel",
+   "M7_W_BOUND_FAILS": false,
+   "M7_W_HOLD_FT_PER_PX": 0.3,
+   "M7_BOUND_TOL_FT": 0.01,
+   "M7_GROUP_MIN_FRAMES": 5,
+   "M7_MIN_SUPPORT_FRAMES": 10,
+   "M7_MAX_WHEEL_PX": 3.5,
+   "M7_MAX_ENV_PX": 4.0,
+   "M7_MAX_SLIP_FT": 0.3,
+   "M7_ARTIC_OUTLIER_SHARE": 0.3,
+   "M7_PRIOR_DOM_RATIO": 0.7,
+   "M7_PRIOR_ONLY_RATIO": 0.9,
+   "M7_MEASURED_SD_FT": {
+    "L": 1.0,
+    "W": 0.5
+   },
+   "M7_TYRE_LOWEST_POINT": true,
+   "M7_EDGE_BAND_PX": 160.0,
+   "M7_EDGE_SIGMA_MULT": 8.0,
+   "M7_PAIR_START": true,
+   "M7_PAIR_TOL_FT": 1.0,
+   "M7_MOVING_MPH": 3.0,
+   "M7_COARSE_GATE_MULT": 3.0,
+   "M7_START_SHIFT_FT": 7.0,
+   "M7_TWO_SEG_GAIN": 0.7,
+   "M7_KIN_MEAS_SCALE": 2.0,
+   "M7_KIN_SD_FLOOR_FT": 0.5,
+   "M7_LOWCONF_S": 2.0,
+   "M7_WORKERS": 12,
+   "M7_SOLVE_CACHE": true,
+   "PRIORS_FT": {
+    "2": {
+     "height": 5,
+     "wheelbase": 9,
+     "track": 5,
+     "front_oh": 3,
+     "rear_oh": 3,
+     "wheel_r": 1.1
+    },
+    "7": {
+     "height": 10,
+     "wheelbase": 15,
+     "track": 6.5,
+     "front_oh": 4,
+     "rear_oh": 6,
+     "wheel_r": 1.6
+    },
+    "5": {
+     "height": 11,
+     "wheelbase": 24,
+     "track": 7,
+     "front_oh": 7,
+     "rear_oh": 9,
+     "wheel_r": 1.6
+    }
+   }
+  },
+  "vs_reference_run": {
+   "compared_run": "20261110_161113_s0",
+   "paths_skipped": [
+    "AUDIT",
+    "E_ROOT",
+    "GCPS",
+    "HOMOGRAPHY",
+    "KP_REPO",
+    "LAYOUT",
+    "MANUAL_CLICKS",
+    "OUT_ROOT",
+    "SAM_CKPT",
+    "TRACKS",
+    "TRACKS_FINAL",
+    "UOD_CKPT",
+    "UOD_ROOT",
+    "VIDEO"
+   ],
+   "differences": {},
+   "identical": true
+  }
+ },
+ "environment": {
+  "study_runs": {
+   "python": "3.12.7",
+   "path": "D:/apps/miami-win/.venv",
+   "pip_freeze": [
+    "annotated-doc==0.0.5",
+    "annotated-types==0.8.0",
+    "anthropic==1.11.0",
+    "anyio==4.15.1",
+    "beautifulsoup4==4.15.0",
+    "boxmot==16.0.11",
+    "certifi==2026.7.22",
+    "charset-normalizer==3.5.2",
+    "click==8.5.0",
+    "cloudpickle==3.1.2",
+    "colorama==0.4.6",
+    "contourpy==1.4.0",
+    "cycler==0.12.1",
+    "Cython==3.3.0",
+    "cython_bbox==0.1.5",
+    "dateparser==1.4.3",
+    "dnt",
+    "@",
+    "file:///D:/apps/miami-win/dnt-0.3.4.2-py3-none-any.whl#sha256=3006e90f9b62c0592850d24f6b49b2d2c90eb9253786fe89935c4c5f8af18bed",
+    "docstring_parser==0.18.0",
+    "easydict==1.13",
+    "easyocr==1.7.2",
+    "filelock==4.0.12",
+    "filterpy==1.4.5",
+    "fonttools==4.66.1",
+    "fsspec==2026.9.0",
+    "ftfy==6.3.1",
+    "future==1.0.0",
+    "gdown==5.2.2",
+    "geopandas==1.2.0",
+    "h11==0.16.0",
+    "hf-xet==1.6.0",
+    "httpcore==1.0.9",
+    "httpcore2==2.13.1",
+    "httpx==0.28.1",
+    "httpx2==2.13.1",
+    "huggingface_hub==1.33.0",
+    "idna==3.20",
+    "ImageIO==2.38.0",
+    "iniconfig==2.3.1",
+    "Jinja2==3.1.6",
+    "jiter==0.17.0",
+    "joblib==1.6.0",
+    "kiwisolver==1.5.1",
+    "lapx==0.10.0",
+    "lazy-loader==0.6",
+    "loguru==0.7.3",
+    "markdown-it-py==4.2.0",
+    "MarkupSafe==3.0.4",
+    "matplotlib==3.11.2",
+    "mdurl==0.1.2",
+    "mpmath==1.3.0",
+    "narwhals==2.26.0",
+    "networkx==3.7",
+    "ninja==1.13.2",
+    "numpy==2.5.3",
+    "numpy-indexed==0.3.7",
+    "nvidia-ml-py==13.615.71",
+    "openai==3.24.0",
+    "opencv-python==4.14.0.94",
+    "opencv-python-headless==5.0.0.93",
+    "packaging==26.3",
+    "pandas==2.3.3",
+    "pillow==12.3.0",
+    "pluggy==1.7.0",
+    "polars==1.44.2",
+    "polars-runtime-32==1.44.2",
+    "psutil==7.2.2",
+    "pyclipper==1.4.0",
+    "pydantic==2.13.5",
+    "pydantic_core==2.46.5",
+    "Pygments==2.21.0",
+    "pyogrio==0.13.0",
+    "pyparsing==3.3.3",
+    "pyproj==3.8.0",
+    "PySocks==1.7.1",
+    "pytest==9.2.0",
+    "python-bidi==0.6.11",
+    "python-dateutil==2.9.0.post0",
+    "pytz==2026.5",
+    "PyYAML==6.0.3",
+    "qrcode==8.2",
+    "regex==2026.9.29",
+    "requests==2.34.2",
+    "rich==15.0.0",
+    "safetensors==0.8.0",
+    "scikit-image==0.26.0",
+    "scikit-learn==1.9.1",
+    "scipy==1.18.1",
+    "setuptools==81.0.0",
+    "shapely==2.1.2",
+    "shellingham==1.5.4",
+    "six==1.17.0",
+    "sniffio==1.3.1",
+    "soupsieve==2.10",
+    "sympy==1.14.0",
+    "tabulate==0.10.0",
+    "threadpoolctl==3.7.0",
+    "tifffile==2026.9.20",
+    "timm==1.0.30",
+    "tokenizers==0.23.2",
+    "torch==2.11.0+cu128",
+    "torchvision==0.26.0+cu128",
+    "tqdm==4.70.1",
+    "transformers==5.18.0",
+    "truststore==0.10.4",
+    "tssa",
+    "@",
+    "file:///D:/apps/miami-win/tssa-0.0.2.4-py3-none-any.whl#sha256=69b809a787c29fd01517708c1bf065b2492b7195794bc40ff0b19c114dd5a378",
+    "typer==0.27.2",
+    "typing-inspection==0.4.4",
+    "typing_extensions==4.16.0",
+    "tzdata==2026.5",
+    "tzlocal==5.4.4",
+    "ultralytics==8.4.173",
+    "ultralytics-platform==0.1.80",
+    "ultralytics-thop==2.2.2",
+    "urllib3==2.8.0",
+    "wcwidth==0.9.2",
+    "win32_setctime==1.2.0",
+    "yacs==0.1.8"
+   ]
+  },
+  "pdf_only": {
+   "python": "3.14.3",
+   "path": "C:/Python314",
+   "note": "used only to rebuild the PDF report (reportlab)",
+   "pip_freeze": [
+    "affine==2.4.0",
+    "aiofiles==25.1.0",
+    "annotated-doc==0.0.4",
+    "annotated-types==0.7.0",
+    "anyio==4.13.0",
+    "attrs==26.1.0",
+    "basedpyright==1.39.2",
+    "cairocffi==1.7.1",
+    "CairoSVG==2.9.0",
+    "certifi==2026.2.25",
+    "cffi==2.0.0",
+    "charset-normalizer==3.5.1",
+    "click==8.3.3",
+    "cligj==0.7.2",
+    "colorama==0.4.6",
+    "contourpy==1.3.3",
+    "coverage==7.13.5",
+    "cryptography==50.0.0",
+    "cssselect2==0.10.1",
+    "cycler==0.12.1",
+    "Cython==3.3.0",
+    "cython_bbox==0.1.5",
+    "defusedxml==0.7.1",
+    "duckdb==1.5.5",
+    "easydict==1.13",
+    "et_xmlfile==2.0.0",
+    "fastapi==0.136.1",
+    "flatbuffers==25.12.19",
+    "fonttools==4.65.0",
+    "future==1.0.0",
+    "geopandas==1.1.3",
+    "git-filter-repo==2.47.0",
+    "h11==0.16.0",
+    "httptools==0.7.1",
+    "idna==3.11",
+    "iniconfig==2.3.0",
+    "joblib==1.5.3",
+    "kiwisolver==1.5.1",
+    "litalib==0.0.4",
+    "lxml==6.1.3",
+    "matplotlib==3.11.1",
+    "ml_dtypes==0.5.4",
+    "mpmath==1.3.0",
+    "networkx==3.6.1",
+    "nodejs-wheel-binaries==24.14.1",
+    "numpy==2.4.4",
+    "numpy-indexed==0.3.7",
+    "onnx==1.21.0",
+    "onnxruntime==1.24.4",
+    "onnxruntime-gpu==1.24.4",
+    "onnxslim==0.1.90",
+    "opencv-python-headless==5.0.0.93",
+    "openpyxl==3.1.5",
+    "osmnx==2.1.0",
+    "packaging==26.0",
+    "pandas==3.0.2",
+    "pdfminer.six==20260107",
+    "pdfplumber==0.11.10",
+    "pillow==12.3.0",
+    "pluggy==1.6.0",
+    "protobuf==7.34.1",
+    "pyarrow==25.0.1",
+    "pycparser==3.0",
+    "pydantic==2.13.3",
+    "pydantic-settings==2.14.0",
+    "pydantic_core==2.46.3",
+    "Pygments==2.20.0",
+    "pymupdf==1.28.2",
+    "pyogrio==0.12.1",
+    "pyparsing==3.3.2",
+    "pypdf==6.11.0",
+    "pypdfium2==5.13.0",
+    "pyproj==3.7.2",
+    "pytest==9.0.3",
+    "pytest-cov==7.1.0",
+    "python-dateutil==2.9.0.post0",
+    "python-docx==1.2.0",
+    "python-dotenv==1.2.2",
+    "python-multipart==0.0.27",
+    "PyYAML==6.0.3",
+    "rasterio==1.5.0",
+    "reportlab==5.0.1",
+    "requests==2.33.1",
+    "-e",
+    "git+https://github.com/wonstran/routopt.git@34a4e3e51363c394890effc91e00fc7ad5bd6a52#egg=routopt&subdirectory=cli",
+    "scikit-learn==1.8.0",
+    "scipy==1.17.1",
+    "shapely==2.1.2",
+    "six==1.17.0",
+    "sse-starlette==3.4.1",
+    "starlette==1.0.0",
+    "svglib==2.2.0",
+    "sympy==1.14.0",
+    "tabulate==0.10.0",
+    "threadpoolctl==3.6.0",
+    "tinycss2==1.5.1",
+    "tqdm==4.70.0",
+    "tssa",
+    "@",
+    "file:///D:/apps/miami-win/tssa-0.0.2.3-py3-none-any.whl#sha256=cba29d0d66e3dbf120581bbd3dec0e40cc56d956f4f08beb561681b9dec47428",
+    "typing-inspection==0.4.2",
+    "typing_extensions==4.15.0",
+    "tzdata==2026.2",
+    "ulid-py==1.1.0",
+    "urllib3==2.6.3",
+    "uv==0.11.14",
+    "uvicorn==0.46.0",
+    "watchfiles==1.1.1",
+    "webencodings==0.6.1",
+    "websockets==16.0",
+    "xlrd==2.0.2"
+   ]
+  }
+ },
+ "checkpoints": {
+  "sam2.1_b.pt": {
+   "path": "/mnt/d/apps/miami-win/sam2.1_b.pt",
+   "bytes": 161935802,
+   "sha256": "f1a9cf2dd69d84bb463b5ad98246d03e2d47a130a9295db0ec967e6cd95e2e47",
+   "matches_cache_weights_id": true
+  },
+  "urbanomnidetect_v2_x_640.pt": {
+   "path": "/mnt/d/apps/miami-win/urbanomnidetect/checkpoints/urbanomnidetect_v2_x_640.pt",
+   "bytes": 126516025,
+   "sha256": "0ab45cbff123becdbbdfe5e5d996dd86736599ddd3a72fbc4b90bd92162fe38c",
+   "matches_cache_weights_id": true
+  },
+  "keypoints": {
+   "hf_repo": "kiselyovd/vehicle-keypoints",
+   "file": "weights.pt",
+   "revision": "48b5795f3b79cdfe7ff6588812aa388a6a7fdd9d"
+  }
+ },
+ "caches": {
+  "m4": {
+   "dir": "/mnt/e/videos/miami/output/a1a-20mins/footprint/cache/m4/6a1f0df0d8de1344",
+   "key": "6a1f0df0d8de1344",
+   "inputs": {
+    "code_version": "m4-v2",
+    "method": "m4",
+    "params": {
+     "conf": 0.08,
+     "imgsz": 640,
+     "input": "full_frame",
+     "kept": "wheels 0-3 (RF, LF, RB, LB)",
+     "match_iou": 0.3
+    },
+    "tracks_sha": "4ddb7a785883604e2923d993fe3427f9b89579abbbd14c2466d88be798fc04d7",
+    "video_sha": "9fc514d683647599a7f94ed608ca9b38197ab35b957572f7cb4c7ac452611f19",
+    "weights_id": "kiselyovd/vehicle-keypoints/weights.pt@48b5795f3b79cdfe7ff6588812aa388a6a7fdd9d"
+   },
+   "rows": 40456,
+   "matched": 17164,
+   "files": {
+    "meta.json": {
+     "bytes": 9781,
+     "sha256": "ba46a79d215d127c79fd85f781d5f7de926599483d93e063591b372228984cf4"
+    },
+    "rows.csv": {
+     "bytes": 3648894,
+     "sha256": "a5563171846a2705288b144ca6e81448287bc50d3821be81abcfb89d66374d03"
+    }
+   },
+   "rows_csv_columns": [
+    "track",
+    "frame",
+    "iou",
+    "u0",
+    "v0",
+    "u1",
+    "v1",
+    "u2",
+    "v2",
+    "u3",
+    "v3",
+    "matched"
+   ],
+   "rows_csv_example": {
+    "track": 1.0,
+    "frame": 0.0,
+    "iou": 0.756065498446781,
+    "u0": 103.4529266357422,
+    "v0": 227.6961212158203,
+    "u1": 109.57589721679688,
+    "v1": 224.4493560791016,
+    "u2": 43.94775390625,
+    "v2": 240.29551696777344,
+    "u3": 55.46190643310547,
+    "v3": 236.1391448974609,
+    "matched": 1.0
+   }
+  },
+  "m5": {
+   "dir": "/mnt/e/videos/miami/output/a1a-20mins/footprint/cache/m5/62a0ce39913f7eb0",
+   "key": "62a0ce39913f7eb0",
+   "inputs": {
+    "code_version": "m5-v1",
+    "method": "m5",
+    "params": {
+     "input": "full_frame",
+     "mask": "masks.data > 0.5",
+     "outline": "m5.lower_outline",
+     "prompt": "track bbox xyxy, all boxes of a frame in one call"
+    },
+    "tracks_sha": "4ddb7a785883604e2923d993fe3427f9b89579abbbd14c2466d88be798fc04d7",
+    "video_sha": "9fc514d683647599a7f94ed608ca9b38197ab35b957572f7cb4c7ac452611f19",
+    "weights_id": "sam2.1_b.pt:f1a9cf2dd69d84bb463b5ad98246d03e2d47a130a9295db0ec967e6cd95e2e47"
+   },
+   "rows": 40456,
+   "matched": 40456,
+   "files": {
+    "meta.json": {
+     "bytes": 3672,
+     "sha256": "7bac1c05fa402b8ffb1049a4b2ac0770615486fbaab4aa809a42dca38c117e49"
+    },
+    "outlines.npz": {
+     "bytes": 5074940,
+     "sha256": "ac6f8fd2954e255fe8656eb224d9c7b0e6783a238823de1d1c3775c0f4e0ed7d"
+    },
+    "rows.csv": {
+     "bytes": 773906,
+     "sha256": "847bbf4d5243225dabd5fd72351c6ba52662bd46c87a13f5bbeac042e00465fe"
+    }
+   },
+   "rows_csv_columns": [
+    "track",
+    "frame",
+    "iou",
+    "matched",
+    "n_pts"
+   ],
+   "rows_csv_example": {
+    "track": 1.0,
+    "frame": 0.0,
+    "iou": 1.0,
+    "matched": 1.0,
+    "n_pts": 108.0
+   },
+   "outlines_npz_arrays": {
+    "track": {
+     "shape": [
+      40456
+     ],
+     "dtype": "int64"
+    },
+    "frame": {
+     "shape": [
+      40456
+     ],
+     "dtype": "int64"
+    },
+    "count": {
+     "shape": [
+      40456
+     ],
+     "dtype": "int64"
+    },
+    "pts": {
+     "shape": [
+      3025186,
+      2
+     ],
+     "dtype": "float64"
+    }
+   },
+   "outlines_npz_layout": "pts holds every row's points back to back; count[i] points belong to (track[i], frame[i])"
+  },
+  "m6": {
+   "dir": "/mnt/e/videos/miami/output/a1a-20mins/footprint/cache/m6/9a1f4b79288939c9",
+   "key": "9a1f4b79288939c9",
+   "inputs": {
+    "code_version": "m6-v2",
+    "method": "m6",
+    "params": {
+     "conf": 0.08,
+     "imgsz": 640,
+     "input": "full_frame",
+     "kept": "keypoints 0-3 (bottom face)",
+     "match_iou": 0.3,
+     "prefer_cls": [
+      2,
+      5,
+      7
+     ]
+    },
+    "tracks_sha": "4ddb7a785883604e2923d993fe3427f9b89579abbbd14c2466d88be798fc04d7",
+    "video_sha": "9fc514d683647599a7f94ed608ca9b38197ab35b957572f7cb4c7ac452611f19",
+    "weights_id": "urbanomnidetect_v2_x_640.pt:0ab45cbff123becdbbdfe5e5d996dd86736599ddd3a72fbc4b90bd92162fe38c"
+   },
+   "rows": 40456,
+   "matched": 39908,
+   "files": {
+    "meta.json": {
+     "bytes": 9859,
+     "sha256": "817f2b07a7b708cf092e91636c83558e7faf30a42e1bbc25776ebe3b7f026510"
+    },
+    "rows.csv": {
+     "bytes": 7021202,
+     "sha256": "80a2b05e809a948b5a2a4ef146a542c754dabb07826483667a6f35bf84175447"
+    }
+   },
+   "rows_csv_columns": [
+    "track",
+    "frame",
+    "iou",
+    "gu0",
+    "gv0",
+    "gu1",
+    "gv1",
+    "gu2",
+    "gv2",
+    "gu3",
+    "gv3",
+    "matched"
+   ],
+   "rows_csv_example": {
+    "track": 1.0,
+    "frame": 0.0,
+    "iou": 0.9804814731037776,
+    "gu0": 132.93463134765625,
+    "gv0": 233.96798706054688,
+    "gu1": 27.57589340209961,
+    "gv1": 252.71841430664065,
+    "gu2": 25.946117401123047,
+    "gv2": 231.341049194336,
+    "gu3": 122.95035552978516,
+    "gv3": 214.5118865966797,
+    "matched": 1.0
+   }
+  },
+  "m7": {
+   "dir": "/mnt/e/videos/miami/output/a1a-20mins/footprint/cache/m7/a322c8cecb019168",
+   "key": "a322c8cecb019168",
+   "inputs": {
+    "code_version": "m7-v1",
+    "method": "m7",
+    "params": {
+     "input": "full_frame",
+     "mask": "masks.data > 0.5",
+     "min_component_frac": 0.05,
+     "prompt": "track bbox xyxy, requested boxes of a frame in one call",
+     "stored": "external contours, CHAIN_APPROX_NONE, NaN-separated"
+    },
+    "tracks_sha": "4ddb7a785883604e2923d993fe3427f9b89579abbbd14c2466d88be798fc04d7",
+    "video_sha": "9fc514d683647599a7f94ed608ca9b38197ab35b957572f7cb4c7ac452611f19",
+    "weights_id": "sam2.1_b.pt:f1a9cf2dd69d84bb463b5ad98246d03e2d47a130a9295db0ec967e6cd95e2e47"
+   },
+   "rows": 4129,
+   "matched": 4129,
+   "files": {
+    "meta.json": {
+     "bytes": 2880,
+     "sha256": "2a1599b9618fc8d142a74e006fd04d49bf07747852dad14402cbc75f6ce228dc"
+    },
+    "outlines.npz": {
+     "bytes": 2517896,
+     "sha256": "1c7e5de863ec816bb68d744306998bf8f676184eac498233292dea7e11ce3381"
+    },
+    "rows.csv": {
+     "bytes": 96397,
+     "sha256": "e7054bca39d90c3b2e33afb6145585064250901700dfdd1360e343460104a711"
+    }
+   },
+   "rows_csv_columns": [
+    "track",
+    "frame",
+    "iou",
+    "matched",
+    "n_comp",
+    "area_px"
+   ],
+   "rows_csv_example": {
+    "track": 16.0,
+    "frame": 93.0,
+    "iou": 1.0,
+    "matched": 1.0,
+    "n_comp": 1.0,
+    "area_px": 3331.0
+   },
+   "outlines_npz_arrays": {
+    "track": {
+     "shape": [
+      4129
+     ],
+     "dtype": "int64"
+    },
+    "frame": {
+     "shape": [
+      4129
+     ],
+     "dtype": "int64"
+    },
+    "count": {
+     "shape": [
+      4129
+     ],
+     "dtype": "int64"
+    },
+    "pts": {
+     "shape": [
+      1665756,
+      2
+     ],
+     "dtype": "float64"
+    }
+   },
+   "outlines_npz_layout": "pts holds every row's points back to back; count[i] points belong to (track[i], frame[i])"
+  }
+ },
+ "m7solve": {
+  "dir": "/mnt/e/videos/miami/output/a1a-20mins/footprint/cache/m7solve",
+  "files": 292,
+  "layout": "<key[:2]>/<key>.pkl; key = m7_runner.job_key (observations, initial pose, camera, solver settings, solver code)",
+  "pickle_keys": [
+   "frames",
+   "summary",
+   "overlay",
+   "seconds"
+  ],
+  "frames_columns": [
+   "frame",
+   "R_e",
+   "R_n",
+   "psi_deg",
+   "e_nat",
+   "n_nat",
+   "m7_support",
+   "m7_n_inliers",
+   "m7_n_outliers",
+   "near_side",
+   "m7_sd_along_ft",
+   "m7_sd_across_ft",
+   "m7_sd_heading_deg",
+   "m7_cov_centre_ee",
+   "m7_cov_centre_en",
+   "m7_cov_centre_nn",
+   "c1e",
+   "c1n",
+   "c2e",
+   "c2n",
+   "c3e",
+   "c3n",
+   "c4e",
+   "c4n",
+   "native_valid",
+   "fail_reason"
+  ],
+  "summary_keys": [
+   "subtype",
+   "subtype_ambiguous",
+   "axle_config",
+   "axle_grouping",
+   "group_frames",
+   "start_used",
+   "F",
+   "E",
+   "converged",
+   "iters",
+   "wheelbase_ft",
+   "front_oh_ft",
+   "rear_oh_ft",
+   "width_ft",
+   "height_ft",
+   "clearance_ft",
+   "inset_ft",
+   "tandem_ft",
+   "length_ft",
+   "fail_reason",
+   "wheel_resid_px",
+   "env_resid_px",
+   "slip_rms_ft",
+   "support_frames",
+   "articulated_suspect",
+   "L_source",
+   "L_sd_ft",
+   "L_prior_sd_ft",
+   "L_ratio",
+   "W_source",
+   "W_sd_ft",
+   "W_prior_sd_ft",
+   "W_ratio",
+   "Lw_sd_ft",
+   "Lw_prior_sd_ft",
+   "Lw_ratio",
+   "Lf_sd_ft",
+   "Lf_prior_sd_ft",
+   "Lf_ratio",
+   "Lr_sd_ft",
+   "Lr_prior_sd_ft",
+   "Lr_ratio",
+   "H_sd_ft",
+   "H_prior_sd_ft",
+   "H_ratio",
+   "c_sd_ft",
+   "c_prior_sd_ft",
+   "c_ratio",
+   "inset_sd_ft",
+   "inset_prior_sd_ft",
+   "inset_ratio",
+   "dims_source",
+   "front_state",
+   "front_source",
+   "flip",
+   "margin",
+   "reversing",
+   "models"
+  ],
+  "example_summary": {
+   "subtype": "bus",
+   "subtype_ambiguous": false,
+   "axle_config": "two_axle",
+   "axle_grouping": "observed",
+   "group_frames": {
+    "F": 58,
+    "R": 140
+   },
+   "start_used": "pairs(23.2,front)",
+   "F": 4059.040303754223,
+   "E": 4065.814138145832,
+   "converged": true,
+   "iters": 6,
+   "wheelbase_ft": 18.84106223075099,
+   "front_oh_ft": 8.898254608137915,
+   "rear_oh_ft": 11.599123699267139,
+   "width_ft": 8.737105012581743,
+   "height_ft": 8.382564258378324,
+   "clearance_ft": 0.3000008802295956,
+   "inset_ft": 3.950204021805888e-09,
+   "tandem_ft": NaN,
+   "length_ft": 39.33844053815604,
+   "fail_reason": "",
+   "wheel_resid_px": 0.6611936465725267,
+   "env_resid_px": 0.6644158821667361,
+   "slip_rms_ft": 0.10705045272563157,
+   "support_frames": 243,
+   "articulated_suspect": false,
+   "L_source": "prior",
+   "L_sd_ft": NaN,
+   "L_prior_sd_ft": 8.80025252162939,
+   "L_ratio": NaN,
+   "W_source": "prior",
+   "W_sd_ft": NaN,
+   "W_prior_sd_ft": 0.5,
+   "W_ratio": NaN,
+   "Lw_sd_ft": NaN,
+   "Lw_prior_sd_ft": 5.000000000000001,
+   "Lw_ratio": NaN,
+   "Lf_sd_ft": NaN,
+   "Lf_prior_sd_ft": 2.4752244567131907,
+   "Lf_ratio": NaN,
+   "Lr_sd_ft": NaN,
+   "Lr_prior_sd_ft": 2.741464024932664,
+   "Lr_ratio": NaN,
+   "H_sd_ft": NaN,
+   "H_prior_sd_ft": 1.0,
+   "H_ratio": NaN,
+   "c_sd_ft": NaN,
+   "c_prior_sd_ft": 0.5,
+   "c_ratio": NaN,
+   "inset_sd_ft": NaN,
+   "inset_prior_sd_ft": 0.5,
+   "inset_ratio": NaN,
+   "dims_source": "m7_prior",
+   "front_state": "established",
+   "front_source": "turning",
+   "flip": false,
+   "margin": -786.8399586456321,
+   "reversing": false,
+   "models": {
+    "bus/two": 4065.814138145832
+   }
+  },
+  "example_frames_row": {
+   "frame": 3821,
+   "R_e": 10.495977000305087,
+   "R_n": 4.279832041304664,
+   "psi_deg": 29.531531778212752,
+   "e_nat": 11.70840146171563,
+   "n_nat": 6.420035984396971,
+   "m7_support": "kinematic",
+   "m7_n_inliers": 0,
+   "m7_n_outliers": 0,
+   "near_side": "left",
+   "m7_sd_along_ft": 1.6892093896739218,
+   "m7_sd_across_ft": 0.6486948142092417,
+   "m7_sd_heading_deg": 2.6162567494760176,
+   "m7_cov_centre_ee": 0.07327302228443847,
+   "m7_cov_centre_en": 0.08519164152478065,
+   "m7_cov_centre_nn": 0.21764548034497797,
+   "c1e": 13.504891796883017,
+   "c1n": 12.292664928430277,
+   "c2e": 15.821987563628868,
+   "c2n": 10.980031337551821,
+   "c3e": 9.911911126548242,
+   "c3n": 0.5474070403636648,
+   "c4e": 7.594815359802391,
+   "c4n": 1.8600406312421207,
+   "native_valid": false,
+   "fail_reason": "no_observation"
+  },
+  "run_solves": [
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "display t16 s13",
+    "key": "399d265b78ff243212ba4d3c91055c951a2c6615a877fee879d5866f094b4779",
+    "seconds": 1690.7
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "solve_failed",
+    "job": "metric t16 s13 r18",
+    "key": "24c1860ccd566a687bf36f2f75eba999125ad4b65084487d855aec125ff65515",
+    "seconds": 793.6
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "too_few_frames",
+    "job": "metric t16 s13 r19",
+    "key": "0c01e31f009d23b33d63cf5063b64d7cc0a172520f3f57d84fe4ca9208b9c9fa",
+    "seconds": 0.0
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "display t20 s17",
+    "key": "50e9e7cd1e49e0fc636c7b6b7c0fe0cbc3780a9ae48e7ee2b0de75457f0ce9bf",
+    "seconds": 611.9
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "metric t20 s17 r24",
+    "key": "e59b47c0a22d77abc2b97f09bd68c486f0779349306062ee6c5f26f8a6bf0aae",
+    "seconds": 543.7
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "param_bound",
+    "job": "display t22 s19",
+    "key": "83432a5a954c018b8ed437451658575e216bfe724dace11fa41ee3362eef2bb0",
+    "seconds": 3054.1
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "param_bound",
+    "job": "metric t22 s19 r26",
+    "key": "01168bc1b12c9fdd9b79cb82c7a3119101123ae1b8d0647e157248c6726011a3",
+    "seconds": 3787.4
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "display t44 s71",
+    "key": "caef0b47509328a5444ea7e837c1d39865a0b956a93bd74d221598ea1c63bb72",
+    "seconds": 1140.6
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "metric t44 s71 r80",
+    "key": "d4db3ea4aff9cc550abd0c6e06486402db91ae84086ce5f80564ead53e7bfb49",
+    "seconds": 754.1
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "articulated_suspect",
+    "job": "display t65 s127",
+    "key": "1bd76cae8ec24ed48f295b53226fd3f7eb94ad7897fa4235919c7d50b9afd370",
+    "seconds": 896.8
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "too_few_frames",
+    "job": "metric t65 s127 r136",
+    "key": "bae531705b3fa2e50f29b61990f735f16dd40ed117102e4dd51ac6b5ce19a8b5",
+    "seconds": 0.0
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "display t120 s207",
+    "key": "7c59dd3b0c9af9e45c36ad1e6e7c473ab95d727bac51e0feb197640a4f05c8c4",
+    "seconds": 974.5
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "metric t120 s207 r240",
+    "key": "90056628cd2a0a5bd00169ec34100861f6ec41f80c2091739b22c7c2fdca68d7",
+    "seconds": 1323.4
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "display t130 s215",
+    "key": "6532feeaeeac2b3796931a62b089c5070b1f71dd31ab45752c7b4c15665aa3ab",
+    "seconds": 7802.1
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "too_few_frames",
+    "job": "metric t130 s215 r251",
+    "key": "5c5d77c957456369f1d1ece16e64303ff4d93c63731dde3249144e1c432e8e6d",
+    "seconds": 0.0
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "metric t130 s215 r252",
+    "key": "9d7fd5e63c7970f0b6df4909a7a035a0cd21871bc00df7120a8712f455387cae",
+    "seconds": 6839.0
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "display t144 s228",
+    "key": "84826845801049ff9ed6ddbd068697c60765ac55901acbe65995fcbab86a1bb3",
+    "seconds": 524.0
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "metric t144 s228 r270",
+    "key": "4b202f0ed0f9b76232283dabcdd9e5c3d1fdc84ffacef3a907d45f75b18bc1db",
+    "seconds": 1315.7
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "display t173 s261",
+    "key": "987826a846cd91a97609f80d9376d25f614fb145908e851692db970b2b15428b",
+    "seconds": 4197.1
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "wheel_resid",
+    "job": "metric t173 s261 r317",
+    "key": "50f9ebd100362d82e37f60104fce23c44095d764792ff99d9e1cf03929137566",
+    "seconds": 2547.4
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "param_bound",
+    "job": "display t176 s263",
+    "key": "dd2131f5c8a235b5d9424576eea831fb5e422809517db5c92b14839312315db5",
+    "seconds": 2062.2
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "metric t176 s263 r319",
+    "key": "e8d0befba7db2c226e97ac2a8c4b5f08f0c846dc88b2daf5d1d75ced408922e4",
+    "seconds": 850.1
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "too_few_frames",
+    "job": "metric t176 s263 r320",
+    "key": "4939b4e1319f0cf0de3ffb3dd47ec9cbded5671d097a8d1462e8bed7d6bd35e7",
+    "seconds": 0.0
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "display t193 s279",
+    "key": "9927996a6bfb0ee22666ca1fee54bc9377867027d2a2028484f44cd8157c8ed9",
+    "seconds": 2559.9
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "articulated_suspect",
+    "job": "metric t193 s279 r335",
+    "key": "ef7c40045260eb355b42dec47c852d0c7bcddc386588846f4d7a41fcb9557a6d",
+    "seconds": 583.9
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "display t215 s300",
+    "key": "a575ed432a2cf4b6791fb74f9b4f8a092e33a5e758dc289043d8511a2d8f3c8f",
+    "seconds": 824.3
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "metric t215 s300 r365",
+    "key": "c17efdc03cf5dc290226897e7960bb3df4b7d5e7464fa5be9072926191f49d55",
+    "seconds": 511.4
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "display t251 s334",
+    "key": "dced61cb49653d7789c328f09d8825cdf74da58c8c6e71e8f79d517687929029",
+    "seconds": 471.4
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "too_few_frames",
+    "job": "metric t251 s334 r419",
+    "key": "58eaa1b317e900b869d61ef914d7efcb87e95a901621451c4c092a2ac4ef950e",
+    "seconds": 0.0
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "metric t251 s334 r420",
+    "key": "59a210dc93f3c89ed6e3d8d02114002f656c266653dae9251c1e2b6caf732525",
+    "seconds": 1384.3
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "display t315 s392",
+    "key": "c73016a75fa0859535c2841e4bd1642126ff2eb3f363445b0d6ac79ae6716b54",
+    "seconds": 1280.8
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "articulated_suspect",
+    "job": "metric t315 s392 r515",
+    "key": "c2a9998fc255047992cc5a1ed6c17600eca8928449b3cfef0a1c9091124ce9d1",
+    "seconds": 1066.4
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "articulated_suspect",
+    "job": "display t338 s440",
+    "key": "89ab86f951de086d385804f2f657f7eae9daf9bee0b478d1a404bd8b3f15c27f",
+    "seconds": 1085.1
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "too_few_frames",
+    "job": "metric t338 s440 r571",
+    "key": "4d14443d13f745173681bc45e3246ca52db6df4400e6920b9058fbe9411cfcdc",
+    "seconds": 0.0
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "too_few_frames",
+    "job": "metric t338 s440 r572",
+    "key": "8041aa064517f1c0a2ccf863eab5ec1efd76b3984a6fdf70b03f2c035551ddc6",
+    "seconds": 0.0
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "articulated_suspect",
+    "job": "metric t338 s440 r573",
+    "key": "c7a643e41a402b2f3a002b43eb2cbd58ffc0ee95ee73b0964799b777a3b02d3e",
+    "seconds": 391.3
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "display t354 s473",
+    "key": "82cb91a74dabb0f4947fba0f78c4af5cb42187f0867e7150a0adf24fbc97ca67",
+    "seconds": 635.5
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "articulated_suspect",
+    "job": "metric t354 s473 r610",
+    "key": "5023a4fb08941b7bb9d310cf794ccc801cb4dde85b7bb56f9679d82e089e8c15",
+    "seconds": 844.1
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "display t360 s478",
+    "key": "56372c6231c9e6c2aa8ada68a0933abd4f52087d38671ce7991f80b04d776ad8",
+    "seconds": 1503.4
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "metric t360 s478 r615",
+    "key": "8baa801821b8b935c85a6823a6dda528558672b4ff6a06576ba4cbd1db356ccf",
+    "seconds": 406.1
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "too_few_frames",
+    "job": "metric t360 s478 r616",
+    "key": "acf6f9944b620177dad95454aadb52a1c5d9f8122ff6bae85dc099a5bc6906b6",
+    "seconds": 0.0
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "display t406 s601",
+    "key": "a1b1573ececd153482d366fc72375b2270b4b638dbd1453d59a062cd81d9d538",
+    "seconds": 1791.4
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "metric t406 s601 r745",
+    "key": "1fed40fc330e34e47513e48147afb3380ba210cc913fb4eb060e41d45a1a4c30",
+    "seconds": 1909.3
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "display t408 s603",
+    "key": "d00460265ad1b0cf36c4e86aa22ce9911753e50a0b4df6adf6a09976115186b1",
+    "seconds": 2723.1
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "too_few_frames",
+    "job": "metric t408 s603 r747",
+    "key": "5f162f8c091cefbca1ddc9d5db50b766fe179f5146f507d038ae7053d7e13878",
+    "seconds": 0.0
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "param_bound",
+    "job": "metric t408 s603 r748",
+    "key": "8ef5a774805579e6e92b25e63f2ab8482f927d0f89942fd6abd3defe549b3ccc",
+    "seconds": 1346.0
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "display t417 s611",
+    "key": "0eef807cefcc469386a7e6158c0cb479e235691d3a3f2d527b4ef40d8b5a6cdd",
+    "seconds": 4605.7
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "too_few_frames",
+    "job": "metric t417 s611 r762",
+    "key": "b5c7a84b337f5023482599d5a5c6756c8aa0fa3554bb6c77d216c85184b210ce",
+    "seconds": 0.0
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "too_few_frames",
+    "job": "metric t417 s611 r763",
+    "key": "8760ae2c412ec2632bd468cb7b37438cc505f7cb3842db44f3f1a1293d7ca19d",
+    "seconds": 0.0
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "too_few_frames",
+    "job": "metric t417 s611 r764",
+    "key": "bceb28084d98e90517eb2249d95390be8205357cb6d997480330c0a2c196631e",
+    "seconds": 0.0
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "metric t417 s611 r765",
+    "key": "389207e019c664f8d1cbda95abf84f4edca97414adb70980795a7f4ae538997b",
+    "seconds": 615.1
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "display t452 s663",
+    "key": "d752673c3aed8cecc8dbb3aecf303f20d295d914061542ad0445e15cf684d290",
+    "seconds": 980.6
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "metric t452 s663 r828",
+    "key": "ea72897a9de644b03ee8a97e8029d903c4955c6e0d4d7abec06023f085dc04ff",
+    "seconds": 376.1
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "articulated_suspect",
+    "job": "display t459 s668",
+    "key": "d5f010073cb7746bbaffd941fd4f30e625dcd85e37b4031b7880f8430ac73fe1",
+    "seconds": 799.0
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "metric t459 s668 r835",
+    "key": "7797e1208b225805f869c6f3bdba97c31474087606e3780b89a0fd569ebb8a5f",
+    "seconds": 1310.7
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "param_bound",
+    "job": "display t469 s674",
+    "key": "f9916a037a52b5b4320c244702132232f2b018b4dee4f40e9a45968129a3ea43",
+    "seconds": 7834.5
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "param_bound",
+    "job": "metric t469 s674 r844",
+    "key": "c7cbddfa4055863ed4d967a77ad678ad147b39a8d616ebbe894f8d92b607f7e7",
+    "seconds": 4198.8
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "display t476 s695",
+    "key": "0ae4e1861cd2817ac6abdac4ba6ad3f0ed4839c4893ea292a566c254b920b322",
+    "seconds": 2114.7
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "wheel_resid",
+    "job": "metric t476 s695 r869",
+    "key": "a4b79bea03a59bff05ff229ba1b7b00df79d7843bf671dbae9271d97d602328d",
+    "seconds": 747.3
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "display t488 s704",
+    "key": "69344b9b59ef99848d61d12622a4c8e8adbec181e678f8dc405d4739ec836609",
+    "seconds": 1843.2
+   },
+   {
+    "cached": false,
+    "error": "",
+    "fail_reason": "",
+    "job": "metric t488 s704 r876",
+    "key": "1410cb021467315f57c49e50d4f59f01429c545f7adaaa698e3fc0f9ad6c6094",
+    "seconds": 1035.8
+   }
+  ]
+ },
+ "pinned_inputs": {
+  "audit": {
+   "sha256": "52df90c270031f7a4baee2ff78ca1d78f60e332ad62867dfe4ba364cbca7d52a",
+   "snapshot": "E:\\videos\\miami\\output\\a1a-20mins\\footprint\\inputs\\count_file_turn_audit.csv",
+   "source": "E:/videos/miami/output/a1a-20mins/counts/veh_bbox_20261103/count_file_turn_audit.csv"
+  },
+  "gcps": {
+   "sha256": "6d2a95d95314132f7157a25189a8d74cee81fb6aca6843aa10af61c917496bb0",
+   "snapshot": "E:\\videos\\miami\\output\\a1a-20mins\\footprint\\inputs\\a1a_nw_gcps_transfer.csv",
+   "source": "E:/videos/miami/homo/a1a/a1a_nw_gcps_transfer.csv"
+  },
+  "homography": {
+   "sha256": "f1d4afab3e2bd42933efd0a28f60c9b0be27aa0d57d087c898677bea299dad4b",
+   "snapshot": "E:\\videos\\miami\\output\\a1a-20mins\\footprint\\inputs\\model_a1a_nw.json",
+   "source": "E:/videos/miami/homo/a1a/model_a1a_nw.json"
+  },
+  "layout": {
+   "sha256": "279335415c1bab8d08171f442aca7d3a4edfc34f86cab866c1f5cbedd94c8a2c",
+   "snapshot": "E:\\videos\\miami\\output\\a1a-20mins\\footprint\\inputs\\layout_a1a_nw.json",
+   "source": "D:/apps/miami-win/test/smooth/layout_a1a_nw.json"
+  },
+  "tracks": {
+   "sha256": "4ddb7a785883604e2923d993fe3427f9b89579abbbd14c2466d88be798fc04d7",
+   "snapshot": "E:\\videos\\miami\\output\\a1a-20mins\\footprint\\inputs\\A1A_Collins Ave & 17th St -- 5-28-26 -- 0000-2400 -- NW Corner_afternoon_140000.00_veh_tracks_reclass_p3.txt",
+   "source": "E:/videos/miami/output/a1a-20mins/tracks/A1A_Collins Ave & 17th St -- 5-28-26 -- 0000-2400 -- NW Corner_afternoon_140000.00_veh_tracks_reclass_p3.txt"
+  },
+  "tracks_final": {
+   "sha256": "18bc6fb6b582f96920a6f176d9033ea35cb718bb6ed50aa8a6435f8dff71b059",
+   "snapshot": "E:\\videos\\miami\\output\\a1a-20mins\\footprint\\inputs\\A1A_Collins Ave & 17th St -- 5-28-26 -- 0000-2400 -- NW Corner_afternoon_140000.00_veh_tracks.txt",
+   "source": "E:/videos/miami/output/a1a-20mins/tracks/A1A_Collins Ave & 17th St -- 5-28-26 -- 0000-2400 -- NW Corner_afternoon_140000.00_veh_tracks.txt"
+  },
+  "video": {
+   "sha256": "9fc514d683647599a7f94ed608ca9b38197ab35b957572f7cb4c7ac452611f19",
+   "snapshot": "E:\\videos\\miami\\output\\a1a-20mins\\footprint\\inputs\\A1A_Collins Ave & 17th St -- 5-28-26 -- 0000-2400 -- NW Corner_afternoon_140000.00.mp4",
+   "source": "E:/videos/miami/clips/20min/A1A_Collins Ave & 17th St -- 5-28-26 -- 0000-2400 -- NW Corner_afternoon_140000.00.mp4"
+  }
+ },
+ "runs": {
+  "20261105_215301_s0": {
+   "dir": "/mnt/e/videos/miami/output/a1a-20mins/footprint/runs/20261105_215301_s0",
+   "manifest_sha256": "00c3002757585a4bcfdfb1ceb187b2f9ae2466a9b93df6bcb2abac9e01ae4e15",
+   "cache_keys": {
+    "m4": "6a1f0df0d8de1344",
+    "m5": "62a0ce39913f7eb0",
+    "m6": "9a1f4b79288939c9"
+   },
+   "camera": {
+    "C_rel": [
+     -12.171324112334698,
+     10.514357528126599,
+     6.733058272508432
+    ],
+    "R": [
+     [
+      -0.5015812817718039,
+      -0.8650808482912467,
+      0.007165451545522783
+     ],
+     [
+      -0.5166057853033335,
+      0.2928681446831608,
+      -0.8045785930665628
+     ],
+     [
+      0.6939269993070456,
+      -0.4072632757192091,
+      -0.593802950382683
+     ]
+    ],
+    "consistency": {
+     "max_px": 3.661260472669591e-08,
+     "ok": true,
+     "rms_px": 2.2189950253702864e-08
+    },
+    "converged": true,
+    "cx": 334.10085400161427,
+    "cy": 240.1255795054726,
+    "f": 319.5459175640886,
+    "height_m": 6.733058272508432,
+    "m4_to_ground": "hub_to_contact",
+    "origin": [
+     587248.0,
+     2852973.0
+    ],
+    "sensitivity": [
+     {
+      "C_rel": [
+       -11.302913750054177,
+       10.00469058993304,
+       5.857760703152666
+      ],
+      "R": [
+       [
+        -0.5006571024952533,
+        -0.865623245804829,
+        0.006233942843021145
+       ],
+       [
+        -0.62037800217398,
+        0.353771687791851,
+        -0.6999833764708463
+       ],
+       [
+        0.603716489868944,
+        -0.3543190500653582,
+        -0.7141319280224793
+       ]
+      ],
+      "converged": true,
+      "cx": 333.67527941184926,
+      "cy": 287.91156868299424,
+      "f": 278.0049482807571,
+      "height_m": 5.857760703152666,
+      "max_px": 2.0589231070675104e-07,
+      "ok": true,
+      "origin": [
+       587248.0,
+       2852973.0
+      ],
+      "rms_px": 9.047902497968872e-08,
+      "scale": 0.87
+     },
+     {
+      "C_rel": [
+       -12.171324112334698,
+       10.514357528126599,
+       6.733058272508432
+      ],
+      "R": [
+       [
+        -0.5015812817718039,
+        -0.8650808482912467,
+        0.007165451545522783
+       ],
+       [
+        -0.5166057853033335,
+        0.2928681446831608,
+        -0.8045785930665628
+       ],
+       [
+        0.6939269993070456,
+        -0.4072632757192091,
+        -0.593802950382683
+       ]
+      ],
+      "converged": true,
+      "cx": 334.10085400161427,
+      "cy": 240.1255795054725,
+      "f": 319.5459175640886,
+      "height_m": 6.733058272508432,
+      "max_px": 3.661260645785678e-08,
+      "ok": true,
+      "origin": [
+       587248.0,
+       2852973.0
+      ],
+      "rms_px": 2.2189952859766387e-08,
+      "scale": 1.0
+     },
+     {
+      "C_rel": [
+       -13.452082127743376,
+       11.266029832118498,
+       7.608355834866869
+      ],
+      "R": [
+       [
+        -0.5029442895954122,
+        -0.864280903871331,
+        0.008096960338367876
+       ],
+       [
+        -0.36355936420412677,
+        0.2030457471695033,
+        -0.9091738080564514
+       ],
+       [
+        0.7841375072414642,
+        -0.4602075007643106,
+        -0.4163381149707647
+       ]
+      ],
+      "converged": true,
+      "cx": 334.72850438662897,
+      "cy": 169.64934930679152,
+      "f": 361.0868868474201,
+      "height_m": 7.608355834866869,
+      "max_px": 5.38196318772734e-07,
+      "ok": true,
+      "origin": [
+       587248.0,
+       2852973.0
+      ],
+      "rms_px": 2.0839392751091143e-07,
+      "scale": 1.13
+     }
+    ]
+   },
+   "artifacts": [
+    {
+     "bytes": 2346622,
+     "path": "clips/M1/014_SB-T_car.mp4",
+     "sha256": "c93a5ca33c7f7c550d92c21ce7fa8f84ebb0e7bd6fefe9ec0b6e7c1234f7d0f5"
+    },
+    {
+     "bytes": 3314345,
+     "path": "clips/M1/016_SB-R_bus.mp4",
+     "sha256": "99d47826d35d647843179ee321f38e8ab14b2cf45105eabf6364ac84689ae736"
+    },
+    {
+     "bytes": 3511775,
+     "path": "clips/M1/022_NB-L_bus.mp4",
+     "sha256": "5034d2099c7b72c7869458fd5f6670f994c3a8d6e3d80901d8050d5835938c6a"
+    },
+    {
+     "bytes": 1431619,
+     "path": "clips/M1/024_SB-T_car.mp4",
+     "sha256": "006f47693ee8a328697d3b53f6b41e2b9b5ac66a9ea12c2693a0ca75f4631340"
+    },
+    {
+     "bytes": 2616382,
+     "path": "clips/M1/034_WB-L_car.mp4",
+     "sha256": "08402c6bfb7f033346809f290191961d7d5309e8b9711cfaff26be1762aac686"
+    },
+    {
+     "bytes": 1552072,
+     "path": "clips/M1/035_EB-T_car.mp4",
+     "sha256": "785580915ac4125c8ab7646cc488bd91a8e1f2ecc00588e4ca83d765975774b4"
+    },
+    {
+     "bytes": 1385726,
+     "path": "clips/M1/063_SB-T_car.mp4",
+     "sha256": "653e98d279139edb29818fc465696377ed84cc07dd6e4604a5f7ff4a50923a1b"
+    },
+    {
+     "bytes": 2796122,
+     "path": "clips/M1/065_SB-R_bus.mp4",
+     "sha256": "e829858ff5792a4b25f9be817ee27de5445a134dcffa4d6aeb1d6a1efe86627d"
+    },
+    {
+     "bytes": 1705361,
+     "path": "clips/M1/070_SB-T_car.mp4",
+     "sha256": "95adbb3c8ae4e8f8beced6b33cf21fa5622845971686e32bdb495538ec566710"
+    },
+    {
+     "bytes": 1587276,
+     "path": "clips/M1/072_SB-L_car.mp4",
+     "sha256": "7c8532b71bc7be35373469386f197e85e78838ecc964d1a963eec42085230ae7"
+    },
+    {
+     "bytes": 2618963,
+     "path": "clips/M1/090_SB-L_car.mp4",
+     "sha256": "f1102fbdba241aa300fb99653161475f2804aa8b5eae8bf67ba03ace695f89cf"
+    },
+    {
+     "bytes": 7992847,
+     "path": "clips/M1/112_WB-R_car.mp4",
+     "sha256": "0ee01d9c267895bbc084b68d24d1f97a585e201526580085316cb9a7dafdf9e8"
+    },
+    {
+     "bytes": 1907084,
+     "path": "clips/M1/115_NB-T_car.mp4",
+     "sha256": "080e782b9948f74e42fdabf06fbf94ec74225bdbcbaa44e97bc7878c60a09c37"
+    },
+    {
+     "bytes": 1984903,
+     "path": "clips/M1/116_EB-R_car.mp4",
+     "sha256": "a761fffc07397e234448098cbaca4e67a340d127cd5924a898a6fac9c9703ffd"
+    },
+    {
+     "bytes": 4621756,
+     "path": "clips/M1/120_SB-R_bus.mp4",
+     "sha256": "895a4459cfca3fd8c4f2151b741c8f6f6f326589740603a05406a5978bf413ec"
+    },
+    {
+     "bytes": 1373734,
+     "path": "clips/M1/122_EB-R_car.mp4",
+     "sha256": "a1af22ecf8cff30c62801e023df96eef5918fad1db2d0655f2a9fe76cb3053c2"
+    },
+    {
+     "bytes": 10386268,
+     "path": "clips/M1/130_NB-L_truck.mp4",
+     "sha256": "d61f28203871158f31d9c5d0640532ed10ff0f64ac41934147f07e3e8203a676"
+    },
+    {
+     "bytes": 2319825,
+     "path": "clips/M1/131_EB-L_car.mp4",
+     "sha256": "f7778ff0dcb75ab71ef70964e83e4e01bba9b2fec17ad9f08ebb2ba2c9fdd76a"
+    },
+    {
+     "bytes": 6115664,
+     "path": "clips/M1/133_SB-L_car.mp4",
+     "sha256": "0bc546d62f8a960af1f3c01f764052eabea1c47cb17a404c185e3988002d1bab"
+    },
+    {
+     "bytes": 13670660,
+     "path": "clips/M1/148_WB-L_car.mp4",
+     "sha256": "a13317f5ccc6a9d249313fefec09d37014c8560c9fe0833c5098d7554d54c9e3"
+    },
+    {
+     "bytes": 1296160,
+     "path": "clips/M1/154_WB-R_car.mp4",
+     "sha256": "2b6b0b45c77fdc108b78a5e3299aaea43cc3392b99d8fe1454e21810b0b3b982"
+    },
+    {
+     "bytes": 5026166,
+     "path": "clips/M1/173_NB-L_bus.mp4",
+     "sha256": "bc8019074108a942388a6ae242c11aa074c06f66e515c9249b2b1519636d00ca"
+    },
+    {
+     "bytes": 4435000,
+     "path": "clips/M1/193_SB-R_bus.mp4",
+     "sha256": "0616e425d51f9eace83736340633338353d2d8ed7a4f1004199d8c6c004ecefe"
+    },
+    {
+     "bytes": 1388699,
+     "path": "clips/M1/211_EB-L_car.mp4",
+     "sha256": "0c6aa4a0b18becd8a095dc27073bb3f0aad203c10c5ab88d33464dcf6eff20e0"
+    },
+    {
+     "bytes": 3870866,
+     "path": "clips/M1/230_SB-T_car.mp4",
+     "sha256": "26a5cdbefe0e2e058ab5e3306782ed470b06aa6464e58fbeb7de8f61564e6578"
+    },
+    {
+     "bytes": 2848351,
+     "path": "clips/M1/236_NB-R_car.mp4",
+     "sha256": "efcce5c05d1053841c19349b5bda1194742b4d1bc14f14cb0f32600800a2b28c"
+    },
+    {
+     "bytes": 2593309,
+     "path": "clips/M1/251_EB-L_bus.mp4",
+     "sha256": "5d049661b794a31f92df2b06c57b0975d6e244937b01c1f0ede404359952242a"
+    },
+    {
+     "bytes": 2358434,
+     "path": "clips/M1/252_WB-T_car.mp4",
+     "sha256": "782532c14a151469e7efc15cbb2b25efbf39d48bfa7e6cb589e90eeaf7965613"
+    },
+    {
+     "bytes": 3213927,
+     "path": "clips/M1/264_NB-R_car.mp4",
+     "sha256": "d8eaecfe022d0d0059d028395ba3b91b2583bd5a4c7e0fc474fc7f20d02dee42"
+    },
+    {
+     "bytes": 1844695,
+     "path": "clips/M1/287_EB-R_car.mp4",
+     "sha256": "07042616b972c0f2a8f844b2a5031ecc6f8f38893875f6e85659c82db0c52462"
+    },
+    {
+     "bytes": 2094308,
+     "path": "clips/M1/303_NB-T_car.mp4",
+     "sha256": "a4daf1b84747e11911efcb7afb001e7a7c9ee0b876ec53f71ae371e39d203171"
+    },
+    {
+     "bytes": 9563307,
+     "path": "clips/M1/307_WB-T_car.mp4",
+     "sha256": "1b1af556e6fb49f0ab8e21790f020ba149c5565b69a4b359841b6e52fc6c8ddf"
+    },
+    {
+     "bytes": 2285726,
+     "path": "clips/M1/309_NB-T_car.mp4",
+     "sha256": "fa145146db8e113dbb2f717c87b42cada469e48d4bd006cde4bb05468866699f"
+    },
+    {
+     "bytes": 2628512,
+     "path": "clips/M1/315_NB-L_truck.mp4",
+     "sha256": "83e2a2f4e3fa4db924936726c592b85cdccca7d4a0f1f4f629ed0480d87a54d5"
+    },
+    {
+     "bytes": 900607,
+     "path": "clips/M1/325_NB-T_car.mp4",
+     "sha256": "9863418cb7b726ce5a5701887b55f3f4716020f058b20b8907b50b9661b99e8b"
+    },
+    {
+     "bytes": 6840280,
+     "path": "clips/M1/326_NB-T_car.mp4",
+     "sha256": "d9b97afcee982d2499fe85256aa4fa2f8e69fc64cbf187fd8f8905494708d876"
+    },
+    {
+     "bytes": 4462038,
+     "path": "clips/M1/329_WB-T_car.mp4",
+     "sha256": "1f0b774a180aaf7e6f77061457af179c7b78e59dfa5550fd34265dddc477d1dd"
+    },
+    {
+     "bytes": 1527846,
+     "path": "clips/M1/335_EB-R_car.mp4",
+     "sha256": "33218067dbfda19b10a420f35507dcf8205c45d45a714175583a502bb7b079ea"
+    },
+    {
+     "bytes": 1550860,
+     "path": "clips/M1/337_EB-L_car.mp4",
+     "sha256": "2448a77d4a1ded280e575540194b2ea607fbc3e6cce2b0ff25b66b0820616a01"
+    },
+    {
+     "bytes": 2486972,
+     "path": "clips/M1/338_EB-L_truck.mp4",
+     "sha256": "a4733924c169e3e8707c5c69f64230f21f53f68fd7a8c928a62dfede9240d5dd"
+    },
+    {
+     "bytes": 15943290,
+     "path": "clips/M1/345_WB-T_car.mp4",
+     "sha256": "cb8921aadd9b67cf92ed4a1c916d9adea64648f4ab643b90e706acd1fc4d8832"
+    },
+    {
+     "bytes": 4086093,
+     "path": "clips/M1/408_SB-R_bus.mp4",
+     "sha256": "8bc0aae7bced7dff97849ffdacd345e1a042ce554a1e9e43a2eef36f34de64b8"
+    },
+    {
+     "bytes": 2679787,
+     "path": "clips/M1/419_WB-R_car.mp4",
+     "sha256": "2db1ccebdb967375de511d93a4ba582d855493584024ec288583f549a51e24cc"
+    },
+    {
+     "bytes": 3151791,
+     "path": "clips/M1/424_SB-L_car.mp4",
+     "sha256": "e0c63a42ce450d2e82c54c4b32f375176bd09059a6465c5066533ab8af919562"
+    },
+    {
+     "bytes": 1924891,
+     "path": "clips/M1/432_SB-T_car.mp4",
+     "sha256": "4b9c19dc0372ddfbbe91658cff63b1a4d688b61e1c2b3a4297cd26554c4e5bdd"
+    },
+    {
+     "bytes": 8515635,
+     "path": "clips/M1/449_WB-L_car.mp4",
+     "sha256": "ee064fefa374f2ff3a99d39db6cc3422a1b0678aa21846541871f044f3e0a7f5"
+    },
+    {
+     "bytes": 2460590,
+     "path": "clips/M1/450_EB-R_car.mp4",
+     "sha256": "a3793d7837fab9c9d22a746b380e14168c87e0f982243c7c8c05baa427c515a5"
+    },
+    {
+     "bytes": 2735670,
+     "path": "clips/M1/458_NB-R_car.mp4",
+     "sha256": "db50bc3ee003567cce21392c3ea865e2c5434db871476b66553936d691df84df"
+    },
+    {
+     "bytes": 10172593,
+     "path": "clips/M1/469_NB-L_bus.mp4",
+     "sha256": "53d96e68d858ab58d2034178ef47deffceda5eb7c30a50de7e30644b26f45177"
+    },
+    {
+     "bytes": 10065515,
+     "path": "clips/M1/470_WB-R_car.mp4",
+     "sha256": "eeb04dba8bac5526934b24357644386b01f16ed772bec91165b253855d76ab80"
+    },
+    {
+     "bytes": 1035875,
+     "path": "clips/M1/491_WB-R_car.mp4",
+     "sha256": "c2491450b1771944cecbff91725db1d7f6f76f37d1a2b6ba90c3e7d9fe6c7789"
+    },
+    {
+     "bytes": 1165890,
+     "path": "clips/M1/506_SB-T_car.mp4",
+     "sha256": "6207cdab9580e9ff8e5689e4fcc55fa930d4c34c0594f2d047991da48448eddc"
+    },
+    {
+     "bytes": 1760234,
+     "path": "clips/M1/512_WB-T_car.mp4",
+     "sha256": "9bf3bec84bc98766afc98615a6773857f50d28d8bb7d68bceadaf7518f41a3b7"
+    },
+    {
+     "bytes": 2351946,
+     "path": "clips/M2/014_SB-T_car.mp4",
+     "sha256": "ff1aee67dd85e35938add4dd8e0e9971f4d5722a467c84af1e083615ae85bf5b"
+    },
+    {
+     "bytes": 3332636,
+     "path": "clips/M2/016_SB-R_bus.mp4",
+     "sha256": "42b9a5ffc44269a964acc4c0bb4b2b6befc239f82501e874c90109522bfd79ce"
+    },
+    {
+     "bytes": 3495441,
+     "path": "clips/M2/022_NB-L_bus.mp4",
+     "sha256": "578b0d1eef00a2ec3e4a7213991dacd36d482603b2283de9e1a4af94f419e039"
+    },
+    {
+     "bytes": 1426064,
+     "path": "clips/M2/024_SB-T_car.mp4",
+     "sha256": "f19ace2f85f7fe942701bdb85e836b3c485fdbf2c29187b47ecacb7acc012b48"
+    },
+    {
+     "bytes": 2626228,
+     "path": "clips/M2/034_WB-L_car.mp4",
+     "sha256": "22bb0dcd18374f4ebf2a1c4b15bd87ecab2ad1a3dfb678da1cbf64dc7f379e03"
+    },
+    {
+     "bytes": 1551663,
+     "path": "clips/M2/035_EB-T_car.mp4",
+     "sha256": "9e34911295d0355da1de4a529fe4e95fd4fca8fb89dd5bf944d8700b97218c02"
+    },
+    {
+     "bytes": 1389209,
+     "path": "clips/M2/063_SB-T_car.mp4",
+     "sha256": "f9dc9fbbd61577379dd8a73fc69fc99662a2bd5f16ca9e60cb6bc94241baa711"
+    },
+    {
+     "bytes": 2835435,
+     "path": "clips/M2/065_SB-R_bus.mp4",
+     "sha256": "92cd557e3bef2ba8029cf0aa0ea677feab3fdd5ccf893f63a06c2eaaad220adb"
+    },
+    {
+     "bytes": 1702144,
+     "path": "clips/M2/070_SB-T_car.mp4",
+     "sha256": "3deefc3bb7c6e8c2b789ef9f14cccacd34a3c501698d378966f8afaa51ee2c41"
+    },
+    {
+     "bytes": 1582380,
+     "path": "clips/M2/072_SB-L_car.mp4",
+     "sha256": "6c078733eb3a0e98e7ee57874eaada57de4041c05fa0be4cf3e89c43aa33f7cf"
+    },
+    {
+     "bytes": 2617032,
+     "path": "clips/M2/090_SB-L_car.mp4",
+     "sha256": "287de9483865f849b9288a33a703dc71df3c92b048fbbb13b6d9a60e018bdd2c"
+    },
+    {
+     "bytes": 7974044,
+     "path": "clips/M2/112_WB-R_car.mp4",
+     "sha256": "910cfa20b179d62d54b1977344d1fc85bad21d6d56ea92c98d4fc4f861e4fba1"
+    },
+    {
+     "bytes": 1897280,
+     "path": "clips/M2/115_NB-T_car.mp4",
+     "sha256": "bb68b44344c107b414aba1760adca68c263c440e3b72cb2354179d7c32f16da0"
+    },
+    {
+     "bytes": 1981063,
+     "path": "clips/M2/116_EB-R_car.mp4",
+     "sha256": "4948f387fec725ba990f966c09bd2296e9af6bc50153926fde3d53af8816919d"
+    },
+    {
+     "bytes": 4647405,
+     "path": "clips/M2/120_SB-R_bus.mp4",
+     "sha256": "64c79b1dac5cb2aa0ee77578235e90322d317de8e6e891bf8db819e0c4f6ef2f"
+    },
+    {
+     "bytes": 1379406,
+     "path": "clips/M2/122_EB-R_car.mp4",
+     "sha256": "331bcae7b68a55bbb128dd2fe413319db741aa813a3e16c92b31414570d99d75"
+    },
+    {
+     "bytes": 10430800,
+     "path": "clips/M2/130_NB-L_truck.mp4",
+     "sha256": "f6f440578430a3e41410dfdac7a2225efaefdaa9f71fe07a2ab73b9bee5cfa8e"
+    },
+    {
+     "bytes": 2326583,
+     "path": "clips/M2/131_EB-L_car.mp4",
+     "sha256": "07394370ce40117c9025a242762990837679f955bd121027d3e207307fcf7d23"
+    },
+    {
+     "bytes": 6075188,
+     "path": "clips/M2/133_SB-L_car.mp4",
+     "sha256": "c3e168746206341606f265b39253fcca2921ad6bcb3aa01362afad9fae3a1dd0"
+    },
+    {
+     "bytes": 13636891,
+     "path": "clips/M2/148_WB-L_car.mp4",
+     "sha256": "9ea1663dcb19b8e4679f9a33c53e5e77f76e54cfebc571770269c4cc39a669c6"
+    },
+    {
+     "bytes": 1296430,
+     "path": "clips/M2/154_WB-R_car.mp4",
+     "sha256": "87032750ae6fc8448712fce0a7f034424ebb23fa42796d916cc0514ac8a25fed"
+    },
+    {
+     "bytes": 5003468,
+     "path": "clips/M2/173_NB-L_bus.mp4",
+     "sha256": "16ebb9652259b2ebe3a3aba8789766884fdc4d9be45626e86ad88c10830d84f3"
+    },
+    {
+     "bytes": 4447050,
+     "path": "clips/M2/193_SB-R_bus.mp4",
+     "sha256": "efeb4af266d7eb98060d9b6f7463136a3b3cb5e40c52f08fb73736b80d1cf43d"
+    },
+    {
+     "bytes": 1386726,
+     "path": "clips/M2/211_EB-L_car.mp4",
+     "sha256": "b76eb02a21dc0bd5fc23b4b6ef60bcccfe6b19bcf2b1733d5887d87d7ca969b2"
+    },
+    {
+     "bytes": 3886306,
+     "path": "clips/M2/230_SB-T_car.mp4",
+     "sha256": "6a5c644c6c3431d817f0992f49b3c5214be2a38fb3775dd6d8d40a24ee83a613"
+    },
+    {
+     "bytes": 2852975,
+     "path": "clips/M2/236_NB-R_car.mp4",
+     "sha256": "06a94b5ee2656a41ec4b96168f0ef4662fb905c12fff5f579568572713f1d432"
+    },
+    {
+     "bytes": 2597320,
+     "path": "clips/M2/251_EB-L_bus.mp4",
+     "sha256": "581d149fac978f30fa34e4f983cc6e690c949f22d225f142819c7683c4ce10bf"
+    },
+    {
+     "bytes": 2372786,
+     "path": "clips/M2/252_WB-T_car.mp4",
+     "sha256": "0d73d1dd78623870e21cc2d76c2666a8d592452743e497f32af641f7638f3af0"
+    },
+    {
+     "bytes": 3206167,
+     "path": "clips/M2/264_NB-R_car.mp4",
+     "sha256": "8912d375ce087eb71254b49ba956a1d03d32286f5b5e79a18083900d1148951a"
+    },
+    {
+     "bytes": 1829105,
+     "path": "clips/M2/287_EB-R_car.mp4",
+     "sha256": "797caccac91770e6f09a174b4d5640415cf303d430cf482c66a032b2dc67c7a9"
+    },
+    {
+     "bytes": 2103043,
+     "path": "clips/M2/303_NB-T_car.mp4",
+     "sha256": "53768fb8e39eb35db9794b8ca22b8b908fba4d0500b475c62ac8ea40d31049f3"
+    },
+    {
+     "bytes": 9602211,
+     "path": "clips/M2/307_WB-T_car.mp4",
+     "sha256": "c8c55c01c7021fd0de935fcf87c65ae55eb5af6cd8fc1de4f6e68cf601483de0"
+    },
+    {
+     "bytes": 2294611,
+     "path": "clips/M2/309_NB-T_car.mp4",
+     "sha256": "a7ba0114eb7968af1983b6ac65be02bf699917e96736fa8dd6048831d6914b38"
+    },
+    {
+     "bytes": 2627530,
+     "path": "clips/M2/315_NB-L_truck.mp4",
+     "sha256": "0bac99c5ba65ae8ab74a9dc3f1a249f8eea3e8dae334cdc9f10ea086d4231516"
+    },
+    {
+     "bytes": 908702,
+     "path": "clips/M2/325_NB-T_car.mp4",
+     "sha256": "e82a23e7a4f65b6306db3df35a61d2a5c9241a5ed4c5d320a5de6773cac7a18c"
+    },
+    {
+     "bytes": 6843308,
+     "path": "clips/M2/326_NB-T_car.mp4",
+     "sha256": "dc1809388fef1aad1eea25a186ad1add0bdc21fa6fec4813e03b8ee33bc68df8"
+    },
+    {
+     "bytes": 4478710,
+     "path": "clips/M2/329_WB-T_car.mp4",
+     "sha256": "4313e8eaa54db0242617306f4b01226f22f003174d21683d7d4d391b96f4dee0"
+    },
+    {
+     "bytes": 1517205,
+     "path": "clips/M2/335_EB-R_car.mp4",
+     "sha256": "8d020bb3e1a34694de49be2a65637577ff666f706d3fc74e0bdc2439a91269f3"
+    },
+    {
+     "bytes": 1551281,
+     "path": "clips/M2/337_EB-L_car.mp4",
+     "sha256": "4c26c2a208ba6863b0d068e849360307545614e2f215482188387116eb0919ee"
+    },
+    {
+     "bytes": 2489311,
+     "path": "clips/M2/338_EB-L_truck.mp4",
+     "sha256": "9399a46f8a5863779d6b0eb43c64371c372ff02a48e9a091b72f1275a9e2c62f"
+    },
+    {
+     "bytes": 15925534,
+     "path": "clips/M2/345_WB-T_car.mp4",
+     "sha256": "5dab7ac742c00d3cf6e07d5bb1ac0294628af6a927ef527ac8cebf0f20844783"
+    },
+    {
+     "bytes": 4069236,
+     "path": "clips/M2/408_SB-R_bus.mp4",
+     "sha256": "f9954fc397b63b1015514d69c206ed69f49462ec3d5441bfa1b0940f7b44c525"
+    },
+    {
+     "bytes": 2668371,
+     "path": "clips/M2/419_WB-R_car.mp4",
+     "sha256": "246c836628c8acde2aceff3e3ec2d785b19c02a2aa9eaa9f72602f341fd5cce0"
+    },
+    {
+     "bytes": 3166872,
+     "path": "clips/M2/424_SB-L_car.mp4",
+     "sha256": "81e903eeb1688e15096830b6aacc9dd5ef97d375ee377cc145e8b4432f511ab8"
+    },
+    {
+     "bytes": 1916473,
+     "path": "clips/M2/432_SB-T_car.mp4",
+     "sha256": "bd5b7a9e4c705b46e92b1838b0e1327c338e54f6afb95ad9e9a91505e3dccb67"
+    },
+    {
+     "bytes": 8540940,
+     "path": "clips/M2/449_WB-L_car.mp4",
+     "sha256": "5de1a9d20f51a67f142140986a5e0fe2b365d0f42b1c9da8478f110790581b49"
+    },
+    {
+     "bytes": 2455427,
+     "path": "clips/M2/450_EB-R_car.mp4",
+     "sha256": "79d6ff53627a499ad81381aa3dab341e692da77dd0b4ed5d4239a659fe616a46"
+    },
+    {
+     "bytes": 2729864,
+     "path": "clips/M2/458_NB-R_car.mp4",
+     "sha256": "791217c2dcd5e4e3c2017333de50d25ee96582dfae3501e9c4a627d96730384f"
+    },
+    {
+     "bytes": 10178188,
+     "path": "clips/M2/469_NB-L_bus.mp4",
+     "sha256": "00d6ee20bb040f99267c62dd56b0a89611b141635ae0238cfa009d2f03a4fe5c"
+    },
+    {
+     "bytes": 10054927,
+     "path": "clips/M2/470_WB-R_car.mp4",
+     "sha256": "243c0e99c0341cadbf6242b7156341e0ca1a0f086ad4fe79f2a28f684ff07fa6"
+    },
+    {
+     "bytes": 1036391,
+     "path": "clips/M2/491_WB-R_car.mp4",
+     "sha256": "88d71e8cd17422f057053478962ad57e180c3b76c63b3e6476fcc67c442c76c4"
+    },
+    {
+     "bytes": 1166949,
+     "path": "clips/M2/506_SB-T_car.mp4",
+     "sha256": "7dc8cbc92de73e21a746b62aa5609fff8af1ef905e6581429d618c11251f2c1d"
+    },
+    {
+     "bytes": 1773285,
+     "path": "clips/M2/512_WB-T_car.mp4",
+     "sha256": "419bd27b7a5c611b0a64d92ac36eb0ef5301c2d5746ff4592d299aff750a7f92"
+    },
+    {
+     "bytes": 2349004,
+     "path": "clips/M3/014_SB-T_car.mp4",
+     "sha256": "e374b56f42ccff10fc0d6a5a397a1eb08af8a2c4968f35da30d5f99b29ebf2fc"
+    },
+    {
+     "bytes": 3374760,
+     "path": "clips/M3/016_SB-R_bus.mp4",
+     "sha256": "02b8092740963f9b12c2cf30a1b83440eaa4bde66f017dc3f0b42962741ab5f9"
+    },
+    {
+     "bytes": 3413113,
+     "path": "clips/M3/022_NB-L_bus.mp4",
+     "sha256": "4454beb4550b4a57104c476447f24535a011d593d52c4dcec8eea67fed90ad7a"
+    },
+    {
+     "bytes": 1418777,
+     "path": "clips/M3/024_SB-T_car.mp4",
+     "sha256": "bc4e8be7947663c88e7cfbb7d4f08baa1845f034e026808f78f5b4b7e9485fbe"
+    },
+    {
+     "bytes": 2611909,
+     "path": "clips/M3/034_WB-L_car.mp4",
+     "sha256": "c80f480fe5ad4371b11e99cba95e9d62cba68820bd5d5526bb71892318d9fc2d"
+    },
+    {
+     "bytes": 1557812,
+     "path": "clips/M3/035_EB-T_car.mp4",
+     "sha256": "0243409af1383e88d3d213ea08c8b21f1a2298dd10b81c8c88d52a43ee9cd236"
+    },
+    {
+     "bytes": 1387264,
+     "path": "clips/M3/063_SB-T_car.mp4",
+     "sha256": "0d9d72f63ecc69e4a9345a5d05975cf9455fb65adee34767f1ba1294ae6cec68"
+    },
+    {
+     "bytes": 2891937,
+     "path": "clips/M3/065_SB-R_bus.mp4",
+     "sha256": "e6553bd008ca5091437bef0f3017058192aa90a08279afc8d16ea01ce7120bfb"
+    },
+    {
+     "bytes": 1694188,
+     "path": "clips/M3/070_SB-T_car.mp4",
+     "sha256": "84b196bac05038d5f270cfe52dee1b2ef958f29bc889db0232e4a3d18e3f74cc"
+    },
+    {
+     "bytes": 1581430,
+     "path": "clips/M3/072_SB-L_car.mp4",
+     "sha256": "b455b5138f8911aeef568c40e70bb049274f6d0a444321fa9065c728ff95ee85"
+    },
+    {
+     "bytes": 2610460,
+     "path": "clips/M3/090_SB-L_car.mp4",
+     "sha256": "92fbd33ca8d04c7687167b6402de482d552a58d34eae71d8da6a9eb37c17a692"
+    },
+    {
+     "bytes": 8004024,
+     "path": "clips/M3/112_WB-R_car.mp4",
+     "sha256": "99a2a62d65b88e8febbe798365494e01dcc24fa1b7a0f93ee8e7bd68c76e1f7d"
+    },
+    {
+     "bytes": 1896551,
+     "path": "clips/M3/115_NB-T_car.mp4",
+     "sha256": "7a2095245b7a0348b35e4f5a0702a5528a1f1f5766e777491a68fb2abcb596e1"
+    },
+    {
+     "bytes": 1981429,
+     "path": "clips/M3/116_EB-R_car.mp4",
+     "sha256": "292de9e4343975a740ba412ba39466684497cc08f1c58a95599c2728a221b013"
+    },
+    {
+     "bytes": 4678683,
+     "path": "clips/M3/120_SB-R_bus.mp4",
+     "sha256": "af829a4093fde21556207d331cb2d94b577bc78d07e1c4240253eb5c0955f1b9"
+    },
+    {
+     "bytes": 1371937,
+     "path": "clips/M3/122_EB-R_car.mp4",
+     "sha256": "a6480bbf9dd8bc74aa0568f35e8d0576e7e2003b9b67c8b783a9e7a51b5edb04"
+    },
+    {
+     "bytes": 10370176,
+     "path": "clips/M3/130_NB-L_truck.mp4",
+     "sha256": "b675bc9b0ca3be8598708bb06711bd2f64c13b6cbc9b173e720d9480d540528a"
+    },
+    {
+     "bytes": 2332032,
+     "path": "clips/M3/131_EB-L_car.mp4",
+     "sha256": "b0a6cfcac42c2dbe3bebeb873f1910d35b3e962b709de78e327291bf743d1833"
+    },
+    {
+     "bytes": 6055331,
+     "path": "clips/M3/133_SB-L_car.mp4",
+     "sha256": "de3c07cb090ed3968ca680c56b8d7ac6423a63169c4e40dd845e86a0b9a24fb4"
+    },
+    {
+     "bytes": 13608902,
+     "path": "clips/M3/148_WB-L_car.mp4",
+     "sha256": "d3ee7391696e668a6118e920069bfe89757c5fb44e0c19612e8f7c78e3ec2aed"
+    },
+    {
+     "bytes": 1300830,
+     "path": "clips/M3/154_WB-R_car.mp4",
+     "sha256": "a84255ac0ee449783afbc23167480543f83e57dcb2b52d3e6e867274c945a7c9"
+    },
+    {
+     "bytes": 4958243,
+     "path": "clips/M3/173_NB-L_bus.mp4",
+     "sha256": "01aef2632d44272fca0ae9282d271b046a0dc38b5a709e18559a15b9251db9b2"
+    },
+    {
+     "bytes": 4484929,
+     "path": "clips/M3/193_SB-R_bus.mp4",
+     "sha256": "68e2fdf0c0ba766a2625c8984d2cf885e7d34d8c424911f4fbbf71c8bff9942f"
+    },
+    {
+     "bytes": 1390985,
+     "path": "clips/M3/211_EB-L_car.mp4",
+     "sha256": "f5254c3853f699e78272e5de7f530644678c61950aff6827a16e64b1cbdcaeb0"
+    },
+    {
+     "bytes": 3883991,
+     "path": "clips/M3/230_SB-T_car.mp4",
+     "sha256": "fe8f7321427d0c19d5ed6f879d6f52376b6cae0952e1fb2819e06b86da5a7d81"
+    },
+    {
+     "bytes": 2842604,
+     "path": "clips/M3/236_NB-R_car.mp4",
+     "sha256": "3f9cc37963b2c1749ec07f91c8a4a95d22ef3895d2fec0545d3de82454259e91"
+    },
+    {
+     "bytes": 2630659,
+     "path": "clips/M3/251_EB-L_bus.mp4",
+     "sha256": "04ec278b6fa3e19409d62348dfaa5efafa8169e982a9c5f40c7b4588613356d1"
+    },
+    {
+     "bytes": 2373016,
+     "path": "clips/M3/252_WB-T_car.mp4",
+     "sha256": "56955f3c392e2985b6daac1f14c7fe5381cccec3d757dc02388165eb5853075c"
+    },
+    {
+     "bytes": 3207472,
+     "path": "clips/M3/264_NB-R_car.mp4",
+     "sha256": "cb39f6823a02d3dc8f0fe3ab1a302a41d911c96a442af67529fda1a0a0935044"
+    },
+    {
+     "bytes": 1827104,
+     "path": "clips/M3/287_EB-R_car.mp4",
+     "sha256": "8d8c3691793070e29e5c67e8b9576880b80ed8df3993790a7b02ddafde36a1ef"
+    },
+    {
+     "bytes": 2098596,
+     "path": "clips/M3/303_NB-T_car.mp4",
+     "sha256": "24eb8f148b432779c00f446d9dae6229bf6d3042e7d2ed4e1999ec99c8bace85"
+    },
+    {
+     "bytes": 9558347,
+     "path": "clips/M3/307_WB-T_car.mp4",
+     "sha256": "49293c67d5657556dbfc105ae786cb4fad7577d12117e0d6f3889f9c99648247"
+    },
+    {
+     "bytes": 2282147,
+     "path": "clips/M3/309_NB-T_car.mp4",
+     "sha256": "587af92f3984951319bdeca606b434db05eb80ddb124da97a7812dad8d5c427c"
+    },
+    {
+     "bytes": 2607873,
+     "path": "clips/M3/315_NB-L_truck.mp4",
+     "sha256": "48721ba30209945d51d1d1ce8a25189b9f6af532b41160f26d65d6b532ef5cb0"
+    },
+    {
+     "bytes": 902134,
+     "path": "clips/M3/325_NB-T_car.mp4",
+     "sha256": "d7d05f883218cd9423e82a5d8c26575e2d7242e2f8a74d092f9be43d6c6f9803"
+    },
+    {
+     "bytes": 6794805,
+     "path": "clips/M3/326_NB-T_car.mp4",
+     "sha256": "11a016463a1b207a119cc1fc6779b9afdb34de380104a2406a1ebbd3f966971f"
+    },
+    {
+     "bytes": 4470093,
+     "path": "clips/M3/329_WB-T_car.mp4",
+     "sha256": "0784bb9b08860d0a22aaeec1d6c9476bd8980477f217f49383c33db9d341c468"
+    },
+    {
+     "bytes": 1520708,
+     "path": "clips/M3/335_EB-R_car.mp4",
+     "sha256": "2f90db9cc6398c0847e12abcd7f2c4c14707003947e231c587b59e555acde63e"
+    },
+    {
+     "bytes": 1568682,
+     "path": "clips/M3/337_EB-L_car.mp4",
+     "sha256": "b6165c0ff5667c1569777db9316c402cacc224c08e347486c967d618615442f4"
+    },
+    {
+     "bytes": 2510006,
+     "path": "clips/M3/338_EB-L_truck.mp4",
+     "sha256": "8de368245edcfaa347ad5979fc44aff795152c482239723707eb86c2272c3673"
+    },
+    {
+     "bytes": 16030708,
+     "path": "clips/M3/345_WB-T_car.mp4",
+     "sha256": "ec2176bb180d51e7c82ca5642b6b2ea0e60812851f9c9b885d778c4afca7624b"
+    },
+    {
+     "bytes": 4102650,
+     "path": "clips/M3/408_SB-R_bus.mp4",
+     "sha256": "9fcc6fe7f6013871d04bd3262651b9d430e2cae2282e0a759a240880e5cbf515"
+    },
+    {
+     "bytes": 2671574,
+     "path": "clips/M3/419_WB-R_car.mp4",
+     "sha256": "3b62319fb150576d94f87cc6e6a3a9630a38eb61c81b29c40f2865a565e20416"
+    },
+    {
+     "bytes": 3163122,
+     "path": "clips/M3/424_SB-L_car.mp4",
+     "sha256": "a6c745ab73f47314bbaa18a8f42d1690ba0f0a642b47875babf94f3792239a5d"
+    },
+    {
+     "bytes": 1917677,
+     "path": "clips/M3/432_SB-T_car.mp4",
+     "sha256": "cd0b2e8dda9880a411c2d55fa3fcdb52e990626f465177ef8a431ac6b14c02f8"
+    },
+    {
+     "bytes": 8497761,
+     "path": "clips/M3/449_WB-L_car.mp4",
+     "sha256": "8f0b51a41667efab8c335ef8f94eddc1543cf31e315917d1e447cb8e739a1d09"
+    },
+    {
+     "bytes": 2437746,
+     "path": "clips/M3/450_EB-R_car.mp4",
+     "sha256": "847fa60d52f2d69484f01f008c64ec1ea8c8bf1f1f6e5a6c6299a6e6d4d766cf"
+    },
+    {
+     "bytes": 2730558,
+     "path": "clips/M3/458_NB-R_car.mp4",
+     "sha256": "630f35cee223e2b55c7ae5c04329f8bc6178e1f1b028ea0bce846d4e25f09295"
+    },
+    {
+     "bytes": 10131589,
+     "path": "clips/M3/469_NB-L_bus.mp4",
+     "sha256": "427303e6ddb5b857ebe25d6a203ddedbdcec0ac497762364c04eb51a3628bdae"
+    },
+    {
+     "bytes": 10083497,
+     "path": "clips/M3/470_WB-R_car.mp4",
+     "sha256": "5bdc4b139b741d19623fd7d090fa7505f554f4b6e4e4b9e75dfbb5805f0f1940"
+    },
+    {
+     "bytes": 1039804,
+     "path": "clips/M3/491_WB-R_car.mp4",
+     "sha256": "531468c34633ab121506cbb354e3d46b9cbfa1e27f98a71f7cf9f8ec8a0bbead"
+    },
+    {
+     "bytes": 1169392,
+     "path": "clips/M3/506_SB-T_car.mp4",
+     "sha256": "595c7587feedefdb319194891dd80ad86918778f0bc456226b96c13a9298acc1"
+    },
+    {
+     "bytes": 1757130,
+     "path": "clips/M3/512_WB-T_car.mp4",
+     "sha256": "ac3541f7556b2f7a6c0ffd9e5aebf218caa5a3a8cfc62b17727cd20d250018a2"
+    },
+    {
+     "bytes": 2375797,
+     "path": "clips/M4/014_SB-T_car.mp4",
+     "sha256": "06fa5f1082acbf2acb277348db98ae78a934dbc6dd3f4f2f046c60079ad2b9f7"
+    },
+    {
+     "bytes": 3399312,
+     "path": "clips/M4/016_SB-R_bus.mp4",
+     "sha256": "0745aaff3b78d23e2e881136bd509a6b6fa3256e5e8c9ee351e4c7cb0ba5fe43"
+    },
+    {
+     "bytes": 3577253,
+     "path": "clips/M4/022_NB-L_bus.mp4",
+     "sha256": "79c028fd6c925977f349d5fe2d9889e1e5729ec3cdb660e15859365b474985c9"
+    },
+    {
+     "bytes": 1439399,
+     "path": "clips/M4/024_SB-T_car.mp4",
+     "sha256": "8765a6cba6f13374811bc26dfa9095973d412fc6448fc98e6bc89a305491e5b4"
+    },
+    {
+     "bytes": 2661153,
+     "path": "clips/M4/034_WB-L_car.mp4",
+     "sha256": "001a47c3a059ef36318a9d6e45beed2cb242fa2628070778df35b41fb64ea4c7"
+    },
+    {
+     "bytes": 1580489,
+     "path": "clips/M4/035_EB-T_car.mp4",
+     "sha256": "1bc6a847832eb84a5fe559ea6b961635a5b9d27f626411748954ce7fa7058ee4"
+    },
+    {
+     "bytes": 1407093,
+     "path": "clips/M4/063_SB-T_car.mp4",
+     "sha256": "80f19ee18527e8676fd79677b4caf734fcc1f03b04f9ce487069d2a662a07c5c"
+    },
+    {
+     "bytes": 2883492,
+     "path": "clips/M4/065_SB-R_bus.mp4",
+     "sha256": "27d1fe2d4edbcc96d2b98f9bd4c14e4e37af29e31b47d0a7f94b13e39f4b89da"
+    },
+    {
+     "bytes": 1724796,
+     "path": "clips/M4/070_SB-T_car.mp4",
+     "sha256": "a1ca09d4c94714b8a16b6aba094a18b508fb1fcd94772bb7e3c66621ba80a035"
+    },
+    {
+     "bytes": 1598779,
+     "path": "clips/M4/072_SB-L_car.mp4",
+     "sha256": "ca338cf37d7a91e3a6829edd772cea97f6310bbf33aaddd0488e52b0e2d5d853"
+    },
+    {
+     "bytes": 2639796,
+     "path": "clips/M4/090_SB-L_car.mp4",
+     "sha256": "d9a3c9445130dfa629eed355f38fabd5eb96a9539db309abdfe2d8794c25b0b5"
+    },
+    {
+     "bytes": 8036543,
+     "path": "clips/M4/112_WB-R_car.mp4",
+     "sha256": "20e947afc8a343aefa21d939f6f64d4ead66258a49e601e6d34babc4f783eb61"
+    },
+    {
+     "bytes": 1907792,
+     "path": "clips/M4/115_NB-T_car.mp4",
+     "sha256": "dcd06201e905efb39993c4fb139dab2c09bb78ea3e3077d03b8a0b0d241734b4"
+    },
+    {
+     "bytes": 1994840,
+     "path": "clips/M4/116_EB-R_car.mp4",
+     "sha256": "d8e17f57e8eef9a703945aafa72bc219fd33bdc4c828168574be75d2824f9791"
+    },
+    {
+     "bytes": 4832583,
+     "path": "clips/M4/120_SB-R_bus.mp4",
+     "sha256": "6488ce9908560dcf722277cf6ffc3f8fa7a04d0e003bffce7b6ec77715a054fa"
+    },
+    {
+     "bytes": 1391581,
+     "path": "clips/M4/122_EB-R_car.mp4",
+     "sha256": "25dee17caaa705b8d0703f77390686d4e4789220235335351c00f81b196d1402"
+    },
+    {
+     "bytes": 10578658,
+     "path": "clips/M4/130_NB-L_truck.mp4",
+     "sha256": "3aa394f389484a34aaf56ff1a592c95f92fd2ad8d39debb92d2b53835a0a177a"
+    },
+    {
+     "bytes": 2363268,
+     "path": "clips/M4/131_EB-L_car.mp4",
+     "sha256": "8f2ee7386ef3c2cd24f181c4823ee035863eb8d804911b45cc16aac93f161610"
+    },
+    {
+     "bytes": 6127231,
+     "path": "clips/M4/133_SB-L_car.mp4",
+     "sha256": "30a56186ef16cb6b530b15f530c3d8fd3b5270992cebbb430b48c3969c279e4f"
+    },
+    {
+     "bytes": 13757288,
+     "path": "clips/M4/148_WB-L_car.mp4",
+     "sha256": "5ea8e1fbc56040d4ff6319d50c40f579fa96583f31235b56d05a82e4675e4008"
+    },
+    {
+     "bytes": 1309218,
+     "path": "clips/M4/154_WB-R_car.mp4",
+     "sha256": "91bcbc0d590bf222701718195e8fa5565666bf1c8a9b27baed34bfeb12f32ee0"
+    },
+    {
+     "bytes": 5189636,
+     "path": "clips/M4/173_NB-L_bus.mp4",
+     "sha256": "1cbd7c4e3589d3d919ed8e281d5dc44d17e9be1c749ca0ead8b9e697c1e19f1b"
+    },
+    {
+     "bytes": 4549360,
+     "path": "clips/M4/193_SB-R_bus.mp4",
+     "sha256": "a4b1d2af1a3f7762257c997ae83d17599e2b8d03c121ec60447aa34df6c87718"
+    },
+    {
+     "bytes": 1405553,
+     "path": "clips/M4/211_EB-L_car.mp4",
+     "sha256": "d89a632a78cc44065b91373e9fa5944168c3f965b692b7e31c7985a2af0b93f9"
+    },
+    {
+     "bytes": 3945119,
+     "path": "clips/M4/230_SB-T_car.mp4",
+     "sha256": "6b4f7a33edf5563e7c5d9dcc654f0dbe16dc6c5fc5da86e124df8195ccdffc5b"
+    },
+    {
+     "bytes": 2888059,
+     "path": "clips/M4/236_NB-R_car.mp4",
+     "sha256": "d3f5277ffadd4f2b5baf8f27cc8a925bbac33f538d425b6612762d8d5475f997"
+    },
+    {
+     "bytes": 2656531,
+     "path": "clips/M4/251_EB-L_bus.mp4",
+     "sha256": "7d8f6a7ddb9156d93bd755dcd36859b9f7f316862ba13eb790ad6ee907503371"
+    },
+    {
+     "bytes": 2398306,
+     "path": "clips/M4/252_WB-T_car.mp4",
+     "sha256": "b4cb9d7fe4dc6f3bc7e361b2a7ecea8b5ddd9af4e4b758ebfcb8c66cabf71d20"
+    },
+    {
+     "bytes": 3220903,
+     "path": "clips/M4/264_NB-R_car.mp4",
+     "sha256": "6a393fa69a70b039dace568a89cee9794322035f8003de4032ee82ba03338578"
+    },
+    {
+     "bytes": 1841139,
+     "path": "clips/M4/287_EB-R_car.mp4",
+     "sha256": "20e09422cc7674b963f77f3fda7738d23b61600a38c458b7728843e43364bc76"
+    },
+    {
+     "bytes": 2114105,
+     "path": "clips/M4/303_NB-T_car.mp4",
+     "sha256": "36bc5ec7120e92dcf2b6809840e60509c5ca83454d6a7eec5787db568444a8d6"
+    },
+    {
+     "bytes": 9667724,
+     "path": "clips/M4/307_WB-T_car.mp4",
+     "sha256": "3681a2a77872701b72b9c11e1b9b5151d944d71ac4dd00453e1305f169741375"
+    },
+    {
+     "bytes": 2307653,
+     "path": "clips/M4/309_NB-T_car.mp4",
+     "sha256": "6c55ba7d29ae4a5b14fbc8e4922168383a79300ff4ebafe850308006032929c4"
+    },
+    {
+     "bytes": 2660600,
+     "path": "clips/M4/315_NB-L_truck.mp4",
+     "sha256": "087e255177ca8a05a767640b7d8b9e217cf77649ea611b14f729777fcd494631"
+    },
+    {
+     "bytes": 934333,
+     "path": "clips/M4/325_NB-T_car.mp4",
+     "sha256": "b74ad5f994e2a0a615e625b986ee4e60c04a33792aa12fcee32127c6cef6b7c6"
+    },
+    {
+     "bytes": 6878948,
+     "path": "clips/M4/326_NB-T_car.mp4",
+     "sha256": "3b1e23853b3ed4a81613ed72376d13cdf1f3b2f66c31cbac05ef994cc2864b55"
+    },
+    {
+     "bytes": 4530056,
+     "path": "clips/M4/329_WB-T_car.mp4",
+     "sha256": "6d9645a067f9be7c8ecef017c0d685c242005e13252ab9fdc18e923cb3bfb89f"
+    },
+    {
+     "bytes": 1530299,
+     "path": "clips/M4/335_EB-R_car.mp4",
+     "sha256": "5a8e6394123faa65a1c1df17e01314bc0099a005fc589240ec1f70a7a0322a2f"
+    },
+    {
+     "bytes": 1574882,
+     "path": "clips/M4/337_EB-L_car.mp4",
+     "sha256": "b46daf25483c27098e33ceb45506a8ac5fa1581170c6ef7ba0eeb5aff4f4a68e"
+    },
+    {
+     "bytes": 2560808,
+     "path": "clips/M4/338_EB-L_truck.mp4",
+     "sha256": "65eaacc9634397efbd802eb08f55ba525b048de76c7196577a650252c3461042"
+    },
+    {
+     "bytes": 16007752,
+     "path": "clips/M4/345_WB-T_car.mp4",
+     "sha256": "2a6ab1434c7c09f3bd27bfe279b84facc3d7f6b002773c55351271d74b6e5405"
+    },
+    {
+     "bytes": 4216749,
+     "path": "clips/M4/408_SB-R_bus.mp4",
+     "sha256": "ac2f3f6fbe3dd12f4b7a1404e6d865fbfd6da571863d24a919de576e0673d61b"
+    },
+    {
+     "bytes": 2698073,
+     "path": "clips/M4/419_WB-R_car.mp4",
+     "sha256": "a0b692c27a8ff120979863121c61ec2b6f29916985f4bed2c463bf3507ca6fbd"
+    },
+    {
+     "bytes": 3197480,
+     "path": "clips/M4/424_SB-L_car.mp4",
+     "sha256": "0a67f9455b19a8c4143694233d1eb4c2056fd212ad4fdf3be6a18e4395fc7d6f"
+    },
+    {
+     "bytes": 1948123,
+     "path": "clips/M4/432_SB-T_car.mp4",
+     "sha256": "02b4a4edab20487436e62c0f1fa79cd15761c357ed6035ef26ee24f1a658de24"
+    },
+    {
+     "bytes": 8573468,
+     "path": "clips/M4/449_WB-L_car.mp4",
+     "sha256": "49d6b64b352891c0646542c56d06ca46e513ed0e46077632e295b02313ea7d3b"
+    },
+    {
+     "bytes": 2468470,
+     "path": "clips/M4/450_EB-R_car.mp4",
+     "sha256": "715f1951a79b465e2c31f350df72b40c3dfbac71032587b07f383b85bf64c800"
+    },
+    {
+     "bytes": 2743238,
+     "path": "clips/M4/458_NB-R_car.mp4",
+     "sha256": "23d92163fa93980505c3c83e0a3d7b861e385fef86819491b065afca9ebb5395"
+    },
+    {
+     "bytes": 10468827,
+     "path": "clips/M4/469_NB-L_bus.mp4",
+     "sha256": "7c45d9ce17edb9e05ee262f7a7c88431d6a31d54f11d5733fa7ab0ab421b083a"
+    },
+    {
+     "bytes": 10082490,
+     "path": "clips/M4/470_WB-R_car.mp4",
+     "sha256": "55b9b6bf36c82d3b0e8b63a28376932dacdcd6ee800c90512b7ff44bde4425f7"
+    },
+    {
+     "bytes": 1044229,
+     "path": "clips/M4/491_WB-R_car.mp4",
+     "sha256": "7894e55eb108d2d84ffa2385db0e52e3b711762cec2a54e498d9ecfa23ee44c7"
+    },
+    {
+     "bytes": 1181870,
+     "path": "clips/M4/506_SB-T_car.mp4",
+     "sha256": "f2a9bb8b057303a2e648829f975f9e667188eb7f07e78211954c599a878dc171"
+    },
+    {
+     "bytes": 1799402,
+     "path": "clips/M4/512_WB-T_car.mp4",
+     "sha256": "0811632c4b817921b3ce41e7889de1f4799138f2d8827026a2670d1aca72ab02"
+    },
+    {
+     "bytes": 2373051,
+     "path": "clips/M5/014_SB-T_car.mp4",
+     "sha256": "531e2c35434b9e23af416ccd0ab03ff51f56651e6e98ab107e20a55f589d12c4"
+    },
+    {
+     "bytes": 3392965,
+     "path": "clips/M5/016_SB-R_bus.mp4",
+     "sha256": "b2a184a23db26a9f2268156d63e2177a809bd2cc9aab8990f2467a936e87934e"
+    },
+    {
+     "bytes": 3645765,
+     "path": "clips/M5/022_NB-L_bus.mp4",
+     "sha256": "75cc95a390b423e76df75f383686a39530eaee1b3c46be93921c4033732383eb"
+    },
+    {
+     "bytes": 1424362,
+     "path": "clips/M5/024_SB-T_car.mp4",
+     "sha256": "93c8bb212f7780f495bc6459bf1282434b6fd2618434cba1f7123d8fb7132a5d"
+    },
+    {
+     "bytes": 2655869,
+     "path": "clips/M5/034_WB-L_car.mp4",
+     "sha256": "03ee9d6ea881d3a7842d003d0c2693c33e677442394f48aa217bbcd2a1202c8d"
+    },
+    {
+     "bytes": 1577732,
+     "path": "clips/M5/035_EB-T_car.mp4",
+     "sha256": "1380016765a103b488881422437b2842c710bf1fe40eaf816b7a4cd9159ac760"
+    },
+    {
+     "bytes": 1400459,
+     "path": "clips/M5/063_SB-T_car.mp4",
+     "sha256": "5a92088b6b9950ef17e79f4f5483d4b42207a0a6b2dd098c1da89e46dd68774a"
+    },
+    {
+     "bytes": 2880000,
+     "path": "clips/M5/065_SB-R_bus.mp4",
+     "sha256": "df807a7227bd77e23f4b534de690f0b67a5ebcda666d17577ecd15bab2cedcbc"
+    },
+    {
+     "bytes": 1718391,
+     "path": "clips/M5/070_SB-T_car.mp4",
+     "sha256": "aa8a9d94e4b00df66d8a766b632c4be44e5b4e0f83af5673277e32187d623669"
+    },
+    {
+     "bytes": 1623168,
+     "path": "clips/M5/072_SB-L_car.mp4",
+     "sha256": "7ddd851f83af490cbf675efb3524b180bea9e73af651bec4dc331061eeff9171"
+    },
+    {
+     "bytes": 2650010,
+     "path": "clips/M5/090_SB-L_car.mp4",
+     "sha256": "79daa92a5117d6a962370d70aac0d8354ff4896d7cc8b651e42cb6151a684696"
+    },
+    {
+     "bytes": 8374516,
+     "path": "clips/M5/112_WB-R_car.mp4",
+     "sha256": "417ad9e86ddda8023ef41c7d21fdb6772714529484e0739ac7df28d0d4fbd4f5"
+    },
+    {
+     "bytes": 1917878,
+     "path": "clips/M5/115_NB-T_car.mp4",
+     "sha256": "5a47220b89d77a7f87d114faaf6dfe1d3b253bfa00a814a676ab77c952cb83ea"
+    },
+    {
+     "bytes": 2021208,
+     "path": "clips/M5/116_EB-R_car.mp4",
+     "sha256": "8757fd56b7a73ff4fe0ec967a154acbbbba8104bd4e15e18e91ae67f078a86d3"
+    },
+    {
+     "bytes": 5021566,
+     "path": "clips/M5/120_SB-R_bus.mp4",
+     "sha256": "95f828585c4a4af9e3f8570ab5c4b34609ab688d102a270642623e849e1d4948"
+    },
+    {
+     "bytes": 1384779,
+     "path": "clips/M5/122_EB-R_car.mp4",
+     "sha256": "1a3f840cead551a726334fc192b6d4ed58400d33678dade53e8a7746cdb1c829"
+    },
+    {
+     "bytes": 10531017,
+     "path": "clips/M5/130_NB-L_truck.mp4",
+     "sha256": "4966ce27fc74be912bc1f11d44826150a48422c9eab3e599641d96f7f444db06"
+    },
+    {
+     "bytes": 2388772,
+     "path": "clips/M5/131_EB-L_car.mp4",
+     "sha256": "9090b8db2f86057ba575f267adcbd893dc567a6cf373a478ab4cf4db2d4d939f"
+    },
+    {
+     "bytes": 6188909,
+     "path": "clips/M5/133_SB-L_car.mp4",
+     "sha256": "3a0b180d999b2b675b1e5c318f13e1f47ba35209226800531dbed2df7e3047e0"
+    },
+    {
+     "bytes": 13833356,
+     "path": "clips/M5/148_WB-L_car.mp4",
+     "sha256": "56beefced71f4408c7864b4880290b4e9ff83238fc9e498df9e5c840ad629ddc"
+    },
+    {
+     "bytes": 1309622,
+     "path": "clips/M5/154_WB-R_car.mp4",
+     "sha256": "906aaeb3c2afa2705aec31bdd5abdb4d5368428a72800e70477a62b32c93de97"
+    },
+    {
+     "bytes": 5148839,
+     "path": "clips/M5/173_NB-L_bus.mp4",
+     "sha256": "44acd2e49dbe6b6881fc3cdfb247196f6a6b37c38f31e2094ca19199a18435b8"
+    },
+    {
+     "bytes": 4767132,
+     "path": "clips/M5/193_SB-R_bus.mp4",
+     "sha256": "9c4c0471baf22a41334ed97b166cf0380d49097fb81a01248b17ad69dc0a700c"
+    },
+    {
+     "bytes": 1381471,
+     "path": "clips/M5/211_EB-L_car.mp4",
+     "sha256": "ba7cdaee1203e6c059f63ff9d1077a405d225a70ab6264c02e099e4dd21ee527"
+    },
+    {
+     "bytes": 3885267,
+     "path": "clips/M5/230_SB-T_car.mp4",
+     "sha256": "e5e514b76b161ec4cfd5cea4e18559296ed40a42f4adcccb6d9505e98631ef01"
+    },
+    {
+     "bytes": 2897205,
+     "path": "clips/M5/236_NB-R_car.mp4",
+     "sha256": "06c1985c27fe44856e13bb0f85e7f6757345163ae848676fdce672a483b868c4"
+    },
+    {
+     "bytes": 2660309,
+     "path": "clips/M5/251_EB-L_bus.mp4",
+     "sha256": "9d57a70c5d93ba60e6e70083d859e81f93613e76ee33321d54d0714e3f6206e7"
+    },
+    {
+     "bytes": 2378776,
+     "path": "clips/M5/252_WB-T_car.mp4",
+     "sha256": "b523a73da0a834bb2776e1da8c12761a25938f6581ed1b5388b0365d39b71f9f"
+    },
+    {
+     "bytes": 3207349,
+     "path": "clips/M5/264_NB-R_car.mp4",
+     "sha256": "d27014bb1a219bdf453f95aaaa013ab7f58af18c69d9bdb9eff37fefe1c7a01e"
+    },
+    {
+     "bytes": 1863914,
+     "path": "clips/M5/287_EB-R_car.mp4",
+     "sha256": "f20441e79310416819093cf16d6cf93026cfd9f40d9421ad580e137d966013ee"
+    },
+    {
+     "bytes": 2110369,
+     "path": "clips/M5/303_NB-T_car.mp4",
+     "sha256": "1c5f49f0d0a4cce33cd4655aebf1f687ccbf803f7c14c6b32ed94d3733535595"
+    },
+    {
+     "bytes": 9893802,
+     "path": "clips/M5/307_WB-T_car.mp4",
+     "sha256": "e6dbc14455e19621c19c140fd0424c9ce50946af28323236158c09cc2852b989"
+    },
+    {
+     "bytes": 2290114,
+     "path": "clips/M5/309_NB-T_car.mp4",
+     "sha256": "7ac11886298322b056275aa77339e56d859d12d285c944eaccd6619804f23a14"
+    },
+    {
+     "bytes": 2678511,
+     "path": "clips/M5/315_NB-L_truck.mp4",
+     "sha256": "10d94bf39983594a2d4d1c96f68ea8514cf101fde4e9a6af432feebd9e74f02f"
+    },
+    {
+     "bytes": 926336,
+     "path": "clips/M5/325_NB-T_car.mp4",
+     "sha256": "85ea22c6d61777f6071c555c9e8292e16ee11615062ee7793f915d4b9ef60a49"
+    },
+    {
+     "bytes": 6906643,
+     "path": "clips/M5/326_NB-T_car.mp4",
+     "sha256": "0d96419feac6c001104b15bfaf62f3964759ab83049784f1efa60c70fd892c1a"
+    },
+    {
+     "bytes": 4530561,
+     "path": "clips/M5/329_WB-T_car.mp4",
+     "sha256": "54d032614ffe579d7041bd2a25edf8fc08a407d597f6bcf91f186cc4c8316b03"
+    },
+    {
+     "bytes": 1557190,
+     "path": "clips/M5/335_EB-R_car.mp4",
+     "sha256": "648d4cec83357dacf8c73d6a14705b944da83138b7858ff5e8ead83fec1c2118"
+    },
+    {
+     "bytes": 1557768,
+     "path": "clips/M5/337_EB-L_car.mp4",
+     "sha256": "9016a30617e37a73e726bf746c5900701d2a383633b577f5064f100e4b6a4923"
+    },
+    {
+     "bytes": 2563642,
+     "path": "clips/M5/338_EB-L_truck.mp4",
+     "sha256": "eb16c6a115489e9a90e2c7741b7edadea33c2d452f91a58a218d61c02063a014"
+    },
+    {
+     "bytes": 16120372,
+     "path": "clips/M5/345_WB-T_car.mp4",
+     "sha256": "7d980b836dcd62dff920c8a8d86e01785fb35107d99546f87feba7ca48cdf0dd"
+    },
+    {
+     "bytes": 4468395,
+     "path": "clips/M5/408_SB-R_bus.mp4",
+     "sha256": "3e0b20f4b9807e70f9da4b4d2da18e9cffe533b4e73fc54e62409f786c52f3e6"
+    },
+    {
+     "bytes": 2722271,
+     "path": "clips/M5/419_WB-R_car.mp4",
+     "sha256": "0c07a0672d7df0b6061f1121afcb4ceb1e582970dccf2d0cec9246b463b6b200"
+    },
+    {
+     "bytes": 3223981,
+     "path": "clips/M5/424_SB-L_car.mp4",
+     "sha256": "48fd8e669f0b70799967868799e0aefac186879038fea34cc1e1ca4a8591e0c2"
+    },
+    {
+     "bytes": 1937580,
+     "path": "clips/M5/432_SB-T_car.mp4",
+     "sha256": "6d886f232ba76601d9b8a92323b18c4b8a12a1ee95feb8570b7c081436148a18"
+    },
+    {
+     "bytes": 8720974,
+     "path": "clips/M5/449_WB-L_car.mp4",
+     "sha256": "ce4a5185c4cea10d9ec9fbd018fa90c1378c8f564ff943bab9bf130fe800fe5b"
+    },
+    {
+     "bytes": 2469248,
+     "path": "clips/M5/450_EB-R_car.mp4",
+     "sha256": "c5a1d1a8cafac338dcee286a617426dfa3cf7d53aafd17e95661cd7b5b2cdee4"
+    },
+    {
+     "bytes": 2732971,
+     "path": "clips/M5/458_NB-R_car.mp4",
+     "sha256": "7f1041ba24bdac5d5e08c705b509f8cbbffe60a68bfd0117253f164e40a1a063"
+    },
+    {
+     "bytes": 10497658,
+     "path": "clips/M5/469_NB-L_bus.mp4",
+     "sha256": "866d1f562cea5597c818ce5e6ad877cd4030b5c3280eeb9f9d456520b2f6f77d"
+    },
+    {
+     "bytes": 10339558,
+     "path": "clips/M5/470_WB-R_car.mp4",
+     "sha256": "89a080898fd6096268ec80d851f9fec3e12b8e58fa0ae93e30c9466335e6a5b2"
+    },
+    {
+     "bytes": 1044731,
+     "path": "clips/M5/491_WB-R_car.mp4",
+     "sha256": "46f030a39ecc476ca43922af7067d7174438bafb6b7a6e8aaf268ee17e164672"
+    },
+    {
+     "bytes": 1168016,
+     "path": "clips/M5/506_SB-T_car.mp4",
+     "sha256": "3983a1fd73a7313d9b0db35a2af75551c80ba4ddbd2216e715fc1184eb94aeca"
+    },
+    {
+     "bytes": 1758142,
+     "path": "clips/M5/512_WB-T_car.mp4",
+     "sha256": "9eaf018764f2651d350bc349a961e30b13ea3f51fe1859c653949f3c5beb1e34"
+    },
+    {
+     "bytes": 2358973,
+     "path": "clips/M6/014_SB-T_car.mp4",
+     "sha256": "9526a6eed33a0597842d0b01c7dcdc6a107276782e0d5316fc2f8a10d42114c5"
+    },
+    {
+     "bytes": 3121202,
+     "path": "clips/M6/016_SB-R_bus.mp4",
+     "sha256": "25e7b4372e89140dd3876a78f66d7853a2474e035269668d2110cfdcf78134ae"
+    },
+    {
+     "bytes": 3353942,
+     "path": "clips/M6/022_NB-L_bus.mp4",
+     "sha256": "deb8965a9e3828c377a9cb0a665a4a3fdac331d2054149ba154e1467ed722c51"
+    },
+    {
+     "bytes": 1418709,
+     "path": "clips/M6/024_SB-T_car.mp4",
+     "sha256": "5d1ed1c6498d541aaf423de15b07d431f3eec182647c1ebffa2f6eeffca7466f"
+    },
+    {
+     "bytes": 2614173,
+     "path": "clips/M6/034_WB-L_car.mp4",
+     "sha256": "60a1cdbf34ab9ad7f829f485128f979aa63eaa315ab7ed13b2398cdcb64a9d86"
+    },
+    {
+     "bytes": 1561672,
+     "path": "clips/M6/035_EB-T_car.mp4",
+     "sha256": "7800c644e5d3bd8da1bb49b4aa5399b3d4549ce9430f079ee6338d9f4668b252"
+    },
+    {
+     "bytes": 1396255,
+     "path": "clips/M6/063_SB-T_car.mp4",
+     "sha256": "c6f8b3baa7ae8e7d55a429ba0d01b8b96e1c98c155e003fab01ee4293a43c1f2"
+    },
+    {
+     "bytes": 2652602,
+     "path": "clips/M6/065_SB-R_bus.mp4",
+     "sha256": "cc16d5acefed568eeda5b93f25207bbc7bac131b88a20175aeb12710bab4a477"
+    },
+    {
+     "bytes": 1708979,
+     "path": "clips/M6/070_SB-T_car.mp4",
+     "sha256": "bab3f92c64afc63b7ac27ed7fdd7add6e819685417bcc06a18fa90114564031a"
+    },
+    {
+     "bytes": 1571897,
+     "path": "clips/M6/072_SB-L_car.mp4",
+     "sha256": "9589345b2eb98487fbdf1361cf83594f44fcfe909e017351c5b83c0dd97cf697"
+    },
+    {
+     "bytes": 2604343,
+     "path": "clips/M6/090_SB-L_car.mp4",
+     "sha256": "2981abb9a8b66d0c4a52065689ea07c48640c01520a5309875a5d7b89694ab67"
+    },
+    {
+     "bytes": 8045190,
+     "path": "clips/M6/112_WB-R_car.mp4",
+     "sha256": "f2a7b3e19204454c473288724b130d6e48443668a47cf3b3c665e679661663b0"
+    },
+    {
+     "bytes": 1893943,
+     "path": "clips/M6/115_NB-T_car.mp4",
+     "sha256": "317271b7fef326f717bbdf15e0b899cc5fc3811e1af78d1f9d0c251ef6f24e44"
+    },
+    {
+     "bytes": 2007414,
+     "path": "clips/M6/116_EB-R_car.mp4",
+     "sha256": "e6be00b7abb97e6249c228f8322832364b5c4b5c443d2a91afe8b5003604dd58"
+    },
+    {
+     "bytes": 4514876,
+     "path": "clips/M6/120_SB-R_bus.mp4",
+     "sha256": "1476024463f59180eb4ef4674b0a81b12ab76a00eefef0a74160ddd27fe8a880"
+    },
+    {
+     "bytes": 1384753,
+     "path": "clips/M6/122_EB-R_car.mp4",
+     "sha256": "2a532ad2ad21b9659da4faa0212a15ad2721838b12319655ac99779562017160"
+    },
+    {
+     "bytes": 10364307,
+     "path": "clips/M6/130_NB-L_truck.mp4",
+     "sha256": "c95b6e5e66b1cf43381e234718727fc2df8d3fb44941b6e8e98b46a555e2ff9b"
+    },
+    {
+     "bytes": 2349856,
+     "path": "clips/M6/131_EB-L_car.mp4",
+     "sha256": "c3307a4af4a7c2f4bff0b0c602944ab7d91529c7f82b4843d702cc60b8b1edae"
+    },
+    {
+     "bytes": 6072613,
+     "path": "clips/M6/133_SB-L_car.mp4",
+     "sha256": "bc9a0d4472035e18a45d35c40cfce87c0dd57e780fb487d7aea547c01c1b5270"
+    },
+    {
+     "bytes": 13629271,
+     "path": "clips/M6/148_WB-L_car.mp4",
+     "sha256": "c341b415de65064a242f0241ba5d6bbeeb8efb530a2d7ec00c9165528cee31e9"
+    },
+    {
+     "bytes": 1298763,
+     "path": "clips/M6/154_WB-R_car.mp4",
+     "sha256": "861222cfed2244ea9d5cdd52478373f0321502cb57da671ac02e3f2d56cdfddd"
+    },
+    {
+     "bytes": 4976758,
+     "path": "clips/M6/173_NB-L_bus.mp4",
+     "sha256": "1767f8aa2abc46ec4d1c5843d5254532fb0d4c3cc2eda491a18ec301eb7a3740"
+    },
+    {
+     "bytes": 4241379,
+     "path": "clips/M6/193_SB-R_bus.mp4",
+     "sha256": "a16e6634f1fbb18403679a9cf6cfaa6e8b0de22b44052a802202ea35b86547f8"
+    },
+    {
+     "bytes": 1384466,
+     "path": "clips/M6/211_EB-L_car.mp4",
+     "sha256": "3756cb90b72c4bc347b160bb0919c9334940eb2de8e258e51cec828bad795351"
+    },
+    {
+     "bytes": 3859539,
+     "path": "clips/M6/230_SB-T_car.mp4",
+     "sha256": "0269e6f801fb14bf68770566a9b0755a2edabb17aa248d74d00289de6b8191c1"
+    },
+    {
+     "bytes": 2834083,
+     "path": "clips/M6/236_NB-R_car.mp4",
+     "sha256": "7c483da35d7705e3f9ff6b1384c57fee443a43256a9708a59bdfd77ac34a931e"
+    },
+    {
+     "bytes": 2527830,
+     "path": "clips/M6/251_EB-L_bus.mp4",
+     "sha256": "7a2621d0210f46c50d47f66b476795cfd61c05369977999357f32477e6252a21"
+    },
+    {
+     "bytes": 2346617,
+     "path": "clips/M6/252_WB-T_car.mp4",
+     "sha256": "85d17006633f1d6c450bd1a8672b51ab82977d7bf152df5ebfb2ad1f6e5c8329"
+    },
+    {
+     "bytes": 3184679,
+     "path": "clips/M6/264_NB-R_car.mp4",
+     "sha256": "3cbd353a5694b3b929917be0da4f231ababe6cd0362558cefd5b5c45bac3e677"
+    },
+    {
+     "bytes": 1834654,
+     "path": "clips/M6/287_EB-R_car.mp4",
+     "sha256": "e94605702fff2c1a53cbae170402ebe98df934f3780fe671e9d11590fa8b1bee"
+    },
+    {
+     "bytes": 2098748,
+     "path": "clips/M6/303_NB-T_car.mp4",
+     "sha256": "878a840ecfde87361bfdf347b9c58720d891a168c4b81ed9388267f4ecaa5d53"
+    },
+    {
+     "bytes": 9436142,
+     "path": "clips/M6/307_WB-T_car.mp4",
+     "sha256": "61ebe9f64a3459121ec670eb21ab2a17d2d3f30f531e7ab1e5a0ec1cf98c5512"
+    },
+    {
+     "bytes": 2282156,
+     "path": "clips/M6/309_NB-T_car.mp4",
+     "sha256": "0b34b3cae76119532f7f04ac9d691fa5175dfe2c19181a45c3c707647a165d37"
+    },
+    {
+     "bytes": 2618112,
+     "path": "clips/M6/315_NB-L_truck.mp4",
+     "sha256": "9683b0c14a3f9038487092d89bf15814cc590f09f2426410a6a93a5e90d6d95f"
+    },
+    {
+     "bytes": 912415,
+     "path": "clips/M6/325_NB-T_car.mp4",
+     "sha256": "05a36af58f3eb7a4b9318cf9eb6d1a35435051ea2716ad07d52506abb4e7fe7c"
+    },
+    {
+     "bytes": 6878519,
+     "path": "clips/M6/326_NB-T_car.mp4",
+     "sha256": "1a6d835862bbe02dc363046db719677116888d786e342f997076d5077f834894"
+    },
+    {
+     "bytes": 4430430,
+     "path": "clips/M6/329_WB-T_car.mp4",
+     "sha256": "3f1cc167c956f224ddff1d0c23270ce67d3c4465fed289e1195bbdcd899af7a5"
+    },
+    {
+     "bytes": 1547599,
+     "path": "clips/M6/335_EB-R_car.mp4",
+     "sha256": "bc47b9d4cb85e4ac32d37c2b304ce97793ef3b8fa05e84d420317fd8ffc2dd8a"
+    },
+    {
+     "bytes": 1565387,
+     "path": "clips/M6/337_EB-L_car.mp4",
+     "sha256": "1305e1ed903283f5eb88f3bb07218f87a8da0125e3985609bd288cc7dd2c2d80"
+    },
+    {
+     "bytes": 2511806,
+     "path": "clips/M6/338_EB-L_truck.mp4",
+     "sha256": "a21b6e1a8dbe2a79f9dcb2f9b60c933f8c01a2de85b5af3360355023b5d751b4"
+    },
+    {
+     "bytes": 15947185,
+     "path": "clips/M6/345_WB-T_car.mp4",
+     "sha256": "d6d72a88c0bfdf90b6374a3bff90b2de5465d91316358950982843adb296d9ff"
+    },
+    {
+     "bytes": 4111281,
+     "path": "clips/M6/408_SB-R_bus.mp4",
+     "sha256": "1f21f36706680712df6635eed0650e4c5b8df56be5b82a64e7ad88d1a8b2bda1"
+    },
+    {
+     "bytes": 2666688,
+     "path": "clips/M6/419_WB-R_car.mp4",
+     "sha256": "5be53243a7c7b0dafcc4b0f189c25c675bfee47ccb04f5681e1daa0da8f14e62"
+    },
+    {
+     "bytes": 3143804,
+     "path": "clips/M6/424_SB-L_car.mp4",
+     "sha256": "2c582966854f39407d424d2a7a0fd35d43b9a3ea40eb96bb884a09e8b8fb8670"
+    },
+    {
+     "bytes": 1925043,
+     "path": "clips/M6/432_SB-T_car.mp4",
+     "sha256": "7c82c52094114b1e54e91bbc60eb7a1f898c412b436c8bca362e8bda7d41458d"
+    },
+    {
+     "bytes": 8470863,
+     "path": "clips/M6/449_WB-L_car.mp4",
+     "sha256": "91a00715f586ea0bd826fc6dea0f4152b83a6e4c8a18ac451bfd9eb4cd1cd1df"
+    },
+    {
+     "bytes": 2451664,
+     "path": "clips/M6/450_EB-R_car.mp4",
+     "sha256": "eedd40d96e2db54727ac748b8298d15200b5753916915c23d67256dde83b0b9f"
+    },
+    {
+     "bytes": 2719322,
+     "path": "clips/M6/458_NB-R_car.mp4",
+     "sha256": "8f3faaf52af1e2121f7735862f45b787ba4eebb700fa117017c9f918aaddef0b"
+    },
+    {
+     "bytes": 10119896,
+     "path": "clips/M6/469_NB-L_bus.mp4",
+     "sha256": "25f77c7ed552ce17bf44ffb34dc232dc00b88e76809053d203d9517f94659ef7"
+    },
+    {
+     "bytes": 9888866,
+     "path": "clips/M6/470_WB-R_car.mp4",
+     "sha256": "703f2d8f785520305d79921ce490576e18cc9bc0563b12cf18553e31a5419afc"
+    },
+    {
+     "bytes": 1043262,
+     "path": "clips/M6/491_WB-R_car.mp4",
+     "sha256": "1500371ab51820dfa40233002591cdc9886a9d0ab7eb3a67e70ffe7d23c6cdb3"
+    },
+    {
+     "bytes": 1164702,
+     "path": "clips/M6/506_SB-T_car.mp4",
+     "sha256": "3063cb106e7fa6c8f087524c01eddf93a5a7d75f72e7d41945911ed64bbf1366"
+    },
+    {
+     "bytes": 1747805,
+     "path": "clips/M6/512_WB-T_car.mp4",
+     "sha256": "10d97d238fe7a47a30584a9d2ed35f336f578c404970a65fd35dd1afaf12c099"
+    },
+    {
+     "bytes": 1071,
+     "path": "coverage.csv",
+     "sha256": "02ec502b720cd621ee2974f2a213739825f49cde669c3f32705dd87101843198"
+    },
+    {
+     "bytes": 7925,
+     "path": "front_conflict_stats.csv",
+     "sha256": "1240d2ccdd7f1536b3126ea39fb30036d4ecf290d0dcc3c87e2f2efdaaee4210"
+    },
+    {
+     "bytes": 905427,
+     "path": "metrics_by_track.csv",
+     "sha256": "f26d07ccbeea3a4d32220cfcd20c5f640d495efeb55b74fbcd23f380c6f15b58"
+    },
+    {
+     "bytes": 3931,
+     "path": "metrics_summary.csv",
+     "sha256": "6e2d6eb0f04487ab9b9963c1a3f6b7d5a880c58a87585edade5efea946c300fe"
+    },
+    {
+     "bytes": 18118364,
+     "path": "traj_M1_display.csv",
+     "sha256": "e64595f79577c8aa382c2a2e0d8630966cef3c5eb286f24dbfe6c6eccccbde24"
+    },
+    {
+     "bytes": 12156853,
+     "path": "traj_M1_metric_e2e.csv",
+     "sha256": "e0a9e02eacd0dc9b8c21a4e56d4f88156b20db40489b110d661fc04cb9bd21d6"
+    },
+    {
+     "bytes": 12263629,
+     "path": "traj_M1_metric_native.csv",
+     "sha256": "808701b831d2b9cfb5f03220ed18c520c19b0ef3218e40ea45dd8ef632257f1f"
+    },
+    {
+     "bytes": 18118316,
+     "path": "traj_M2_display.csv",
+     "sha256": "66685bfe77caccb7398c3f0e9b8df4a96494931d503764b0473e023af7afe639"
+    },
+    {
+     "bytes": 12156964,
+     "path": "traj_M2_metric_e2e.csv",
+     "sha256": "66e3e813f8efefb4378eb220c2509b67e1187eccee6d776d08dd621c2aea0e13"
+    },
+    {
+     "bytes": 12263740,
+     "path": "traj_M2_metric_native.csv",
+     "sha256": "45d85f44904cc399c42ccaf80dafdeac81da8da5bd61cec6ad70476d14cfdbd9"
+    },
+    {
+     "bytes": 18792774,
+     "path": "traj_M3_display.csv",
+     "sha256": "fdc0a3b21ff201c29b2e9733c71175c053f783c7ef006889a7a1a1eb57c595b6"
+    },
+    {
+     "bytes": 12739234,
+     "path": "traj_M3_metric_e2e.csv",
+     "sha256": "0fb0eec0239ef4572f85565f1a422b78bd6d9aca6220d89170444fa47ad758bd"
+    },
+    {
+     "bytes": 12846010,
+     "path": "traj_M3_metric_native.csv",
+     "sha256": "dbd06c99350ff9cfaa44e1b80af272df2bb59d6df811ce3390723da543fbd749"
+    },
+    {
+     "bytes": 19100464,
+     "path": "traj_M4_display.csv",
+     "sha256": "66414db5b09addddb52e4d3836bb9db94996445f9de886134088ed8cf7613818"
+    },
+    {
+     "bytes": 13069067,
+     "path": "traj_M4_metric_e2e.csv",
+     "sha256": "f41c7ebdbb9b98079c47ae23c21cdcb11d42201aa1b1fd485107c8ad53bc1fcc"
+    },
+    {
+     "bytes": 9462480,
+     "path": "traj_M4_metric_native.csv",
+     "sha256": "d23256df55330eb77e7c90691b5cb1141e215cccbc333d0a20285163c1834afc"
+    },
+    {
+     "bytes": 18303762,
+     "path": "traj_M5_display.csv",
+     "sha256": "83a2f007a108c7e1602c6051a42e2573c5a465d8354e1338607457a2668eb166"
+    },
+    {
+     "bytes": 12469046,
+     "path": "traj_M5_metric_e2e.csv",
+     "sha256": "fe8cfe448d11e2387dabd8879adbc0c8eb4d9c404c1320f52946399a50134b9f"
+    },
+    {
+     "bytes": 11693931,
+     "path": "traj_M5_metric_native.csv",
+     "sha256": "c91befdc433e7af51c13f0a23e7465d4845b5193216c59207a9216cafbe11f91"
+    },
+    {
+     "bytes": 23823463,
+     "path": "traj_M6_display.csv",
+     "sha256": "9edad1a7c69b3c5bcf8946997375f1fec5cc26db12ed8e292a1d52740f083a08"
+    },
+    {
+     "bytes": 17284202,
+     "path": "traj_M6_metric_e2e.csv",
+     "sha256": "0c4c8fd946000530959d77270d46462c11444a886c1ecb045e020b0725d26c19"
+    },
+    {
+     "bytes": 17382065,
+     "path": "traj_M6_metric_native.csv",
+     "sha256": "2ed174049171cafc85b0e2f675d280e352e41119e6381a07d324c7111f327d2c"
+    }
+   ]
+  },
+  "20261107_222536_s0": {
+   "dir": "/mnt/e/videos/miami/output/a1a-20mins/footprint/runs/20261107_222536_s0",
+   "manifest_sha256": "2e07c3183a525f7df19b4fcf88f9c6ae6cf2c99e7285db1071e61eef223e40b5",
+   "cache_keys": {
+    "m4": "6a1f0df0d8de1344",
+    "m5": "62a0ce39913f7eb0",
+    "m6": "9a1f4b79288939c9"
+   },
+   "camera": {
+    "C_rel": [
+     -12.171324112334698,
+     10.514357528126599,
+     6.733058272508432
+    ],
+    "R": [
+     [
+      -0.5015812817718039,
+      -0.8650808482912467,
+      0.007165451545522783
+     ],
+     [
+      -0.5166057853033335,
+      0.2928681446831608,
+      -0.8045785930665628
+     ],
+     [
+      0.6939269993070456,
+      -0.4072632757192091,
+      -0.593802950382683
+     ]
+    ],
+    "consistency": {
+     "max_px": 3.661260472669591e-08,
+     "ok": true,
+     "rms_px": 2.2189950253702864e-08
+    },
+    "converged": true,
+    "cx": 334.10085400161427,
+    "cy": 240.1255795054726,
+    "f": 319.5459175640886,
+    "height_m": 6.733058272508432,
+    "m4_to_ground": "hub_to_contact",
+    "origin": [
+     587248.0,
+     2852973.0
+    ],
+    "sensitivity": [
+     {
+      "C_rel": [
+       -11.302913750054177,
+       10.00469058993304,
+       5.857760703152666
+      ],
+      "R": [
+       [
+        -0.5006571024952533,
+        -0.865623245804829,
+        0.006233942843021145
+       ],
+       [
+        -0.62037800217398,
+        0.353771687791851,
+        -0.6999833764708463
+       ],
+       [
+        0.603716489868944,
+        -0.3543190500653582,
+        -0.7141319280224793
+       ]
+      ],
+      "converged": true,
+      "cx": 333.67527941184926,
+      "cy": 287.91156868299424,
+      "f": 278.0049482807571,
+      "height_m": 5.857760703152666,
+      "max_px": 2.0589231070675104e-07,
+      "ok": true,
+      "origin": [
+       587248.0,
+       2852973.0
+      ],
+      "rms_px": 9.047902497968872e-08,
+      "scale": 0.87
+     },
+     {
+      "C_rel": [
+       -12.171324112334698,
+       10.514357528126599,
+       6.733058272508432
+      ],
+      "R": [
+       [
+        -0.5015812817718039,
+        -0.8650808482912467,
+        0.007165451545522783
+       ],
+       [
+        -0.5166057853033335,
+        0.2928681446831608,
+        -0.8045785930665628
+       ],
+       [
+        0.6939269993070456,
+        -0.4072632757192091,
+        -0.593802950382683
+       ]
+      ],
+      "converged": true,
+      "cx": 334.10085400161427,
+      "cy": 240.1255795054725,
+      "f": 319.5459175640886,
+      "height_m": 6.733058272508432,
+      "max_px": 3.661260645785678e-08,
+      "ok": true,
+      "origin": [
+       587248.0,
+       2852973.0
+      ],
+      "rms_px": 2.2189952859766387e-08,
+      "scale": 1.0
+     },
+     {
+      "C_rel": [
+       -13.452082127743376,
+       11.266029832118498,
+       7.608355834866869
+      ],
+      "R": [
+       [
+        -0.5029442895954122,
+        -0.864280903871331,
+        0.008096960338367876
+       ],
+       [
+        -0.36355936420412677,
+        0.2030457471695033,
+        -0.9091738080564514
+       ],
+       [
+        0.7841375072414642,
+        -0.4602075007643106,
+        -0.4163381149707647
+       ]
+      ],
+      "converged": true,
+      "cx": 334.72850438662897,
+      "cy": 169.64934930679152,
+      "f": 361.0868868474201,
+      "height_m": 7.608355834866869,
+      "max_px": 5.38196318772734e-07,
+      "ok": true,
+      "origin": [
+       587248.0,
+       2852973.0
+      ],
+      "rms_px": 2.0839392751091143e-07,
+      "scale": 1.13
+     }
+    ]
+   },
+   "artifacts": [
+    {
+     "bytes": 3314345,
+     "path": "clips/M1/016_SB-R_bus.mp4",
+     "sha256": "99d47826d35d647843179ee321f38e8ab14b2cf45105eabf6364ac84689ae736"
+    },
+    {
+     "bytes": 3222990,
+     "path": "clips/M1/051_SB-R_car.mp4",
+     "sha256": "ae128c705c9f40c316508484152a2ebc6d099ce6ce3b07fa5442458fcd963c21"
+    },
+    {
+     "bytes": 4621756,
+     "path": "clips/M1/120_SB-R_bus.mp4",
+     "sha256": "895a4459cfca3fd8c4f2151b741c8f6f6f326589740603a05406a5978bf413ec"
+    },
+    {
+     "bytes": 2233492,
+     "path": "clips/M1/169_SB-R_car.mp4",
+     "sha256": "a247c6003e8d3c6f028a292a0561dd87637a784ea6f71cf37e2edad96972ce3c"
+    },
+    {
+     "bytes": 4903933,
+     "path": "clips/M1/188_SB-R_car.mp4",
+     "sha256": "054eab3062bc8b56b6468f8148034dc782790cb4831c905d5ef8df27f31493e1"
+    },
+    {
+     "bytes": 4435000,
+     "path": "clips/M1/193_SB-R_bus.mp4",
+     "sha256": "0616e425d51f9eace83736340633338353d2d8ed7a4f1004199d8c6c004ecefe"
+    },
+    {
+     "bytes": 1715694,
+     "path": "clips/M1/274_SB-R_car.mp4",
+     "sha256": "fb74c11b722431a453232fe1aba97f11ad311d970fbf7382c6ac44d29b6174aa"
+    },
+    {
+     "bytes": 2798880,
+     "path": "clips/M1/301_SB-R_car.mp4",
+     "sha256": "9a9c2c0defe4ff797b2dabfe080e26993f6b3e5d48159e7ca96a04e62f978da1"
+    },
+    {
+     "bytes": 3621913,
+     "path": "clips/M1/360_SB-R_bus.mp4",
+     "sha256": "617fe055e073ed911a9fbd4a9c1f609eb180a8818d658192d26957303cf7529e"
+    },
+    {
+     "bytes": 1671185,
+     "path": "clips/M1/379_SB-R_car.mp4",
+     "sha256": "7387ef6968b9a05f98d7326e5d4510336f9f63e3cad62942940b7a89151fa37e"
+    },
+    {
+     "bytes": 2216605,
+     "path": "clips/M1/402_SB-R_car.mp4",
+     "sha256": "7fdcacb9fc9f3ea63b11df69f3ea7242d47f5a31906e639859268838e1a2ba01"
+    },
+    {
+     "bytes": 1855770,
+     "path": "clips/M1/406_SB-R_truck.mp4",
+     "sha256": "ec6931c4170e911e41fe4fdc20d80bab69b0c7294c366576ba2a6498038c9543"
+    },
+    {
+     "bytes": 4086093,
+     "path": "clips/M1/408_SB-R_bus.mp4",
+     "sha256": "8bc0aae7bced7dff97849ffdacd345e1a042ce554a1e9e43a2eef36f34de64b8"
+    },
+    {
+     "bytes": 1976841,
+     "path": "clips/M1/412_SB-R_car.mp4",
+     "sha256": "7d6b1f1d571667f61bb9bdec72a73269317f373f49a6d52d8d6ee83d2d347646"
+    },
+    {
+     "bytes": 1548942,
+     "path": "clips/M1/452_SB-R_truck.mp4",
+     "sha256": "e517e7ad20019bd295282de7e422f2a6af05f60720f0ed5b953f11b7bc1b25a4"
+    },
+    {
+     "bytes": 1400772,
+     "path": "clips/M1/488_SB-R_truck.mp4",
+     "sha256": "02c836279c4e7fd303630cb83501ab065232ef3836e428db4749409bd78c2dec"
+    },
+    {
+     "bytes": 3332636,
+     "path": "clips/M2/016_SB-R_bus.mp4",
+     "sha256": "42b9a5ffc44269a964acc4c0bb4b2b6befc239f82501e874c90109522bfd79ce"
+    },
+    {
+     "bytes": 3215640,
+     "path": "clips/M2/051_SB-R_car.mp4",
+     "sha256": "6707303c834d191cd5cfdf4729b7f1a7c4988d2b239de2cfd303e664e56ae349"
+    },
+    {
+     "bytes": 4647405,
+     "path": "clips/M2/120_SB-R_bus.mp4",
+     "sha256": "64c79b1dac5cb2aa0ee77578235e90322d317de8e6e891bf8db819e0c4f6ef2f"
+    },
+    {
+     "bytes": 2245654,
+     "path": "clips/M2/169_SB-R_car.mp4",
+     "sha256": "2efb7d8114d5891cc1387041d954df0e3ac93d8ab2756456de05dc5295432815"
+    },
+    {
+     "bytes": 4912847,
+     "path": "clips/M2/188_SB-R_car.mp4",
+     "sha256": "8aecec886a867a6d4142cad388cc681920b7bfc6b9af36aac71dc7c62bffc65e"
+    },
+    {
+     "bytes": 4447050,
+     "path": "clips/M2/193_SB-R_bus.mp4",
+     "sha256": "efeb4af266d7eb98060d9b6f7463136a3b3cb5e40c52f08fb73736b80d1cf43d"
+    },
+    {
+     "bytes": 1719897,
+     "path": "clips/M2/274_SB-R_car.mp4",
+     "sha256": "1e4b83b0656d606ceab3543c8e50f8bab08001741a674aae6e20e71c6d5cc841"
+    },
+    {
+     "bytes": 2810989,
+     "path": "clips/M2/301_SB-R_car.mp4",
+     "sha256": "e0269053ae95a9fccdf21bfd3f34754ca513997e4477f5f5db358d753b248ecc"
+    },
+    {
+     "bytes": 3672697,
+     "path": "clips/M2/360_SB-R_bus.mp4",
+     "sha256": "564234c820530f98e119468a5c9e337d3d7e3910dbff8ad3b2ebfd72f1f35909"
+    },
+    {
+     "bytes": 1673331,
+     "path": "clips/M2/379_SB-R_car.mp4",
+     "sha256": "0a5ef5690c9b0d00134352da896b5c0a1f76d65bbfb92c72d755284fa9537ec9"
+    },
+    {
+     "bytes": 2228284,
+     "path": "clips/M2/402_SB-R_car.mp4",
+     "sha256": "c4752ebccb647515e775ddb183de3296fb151092f2d58b16556a0991713a1f5e"
+    },
+    {
+     "bytes": 1870881,
+     "path": "clips/M2/406_SB-R_truck.mp4",
+     "sha256": "baf9af5623690666f3099a5fe4da674aef87ba3aaf7050d5a559ff7807de6b48"
+    },
+    {
+     "bytes": 4069236,
+     "path": "clips/M2/408_SB-R_bus.mp4",
+     "sha256": "f9954fc397b63b1015514d69c206ed69f49462ec3d5441bfa1b0940f7b44c525"
+    },
+    {
+     "bytes": 1983701,
+     "path": "clips/M2/412_SB-R_car.mp4",
+     "sha256": "512f1ffbf787f9cba9947fbb66a56d2eb7d4c042b24fa798fb45f687ef644d68"
+    },
+    {
+     "bytes": 1544036,
+     "path": "clips/M2/452_SB-R_truck.mp4",
+     "sha256": "a80c75716dfe4f8b8afcabd37b23be3eb2d23aecee86d2d5274155d47e5cbea1"
+    },
+    {
+     "bytes": 1394507,
+     "path": "clips/M2/488_SB-R_truck.mp4",
+     "sha256": "66a35687cce9e990a135033c845c82dc7f183f0b4474387eeb63ec489b61b179"
+    },
+    {
+     "bytes": 3374760,
+     "path": "clips/M3/016_SB-R_bus.mp4",
+     "sha256": "02b8092740963f9b12c2cf30a1b83440eaa4bde66f017dc3f0b42962741ab5f9"
+    },
+    {
+     "bytes": 3237128,
+     "path": "clips/M3/051_SB-R_car.mp4",
+     "sha256": "7f743ea12d35b44e0597bc51c67f25b634953a6342b342c0f8a5d8d003053108"
+    },
+    {
+     "bytes": 4678683,
+     "path": "clips/M3/120_SB-R_bus.mp4",
+     "sha256": "af829a4093fde21556207d331cb2d94b577bc78d07e1c4240253eb5c0955f1b9"
+    },
+    {
+     "bytes": 2253992,
+     "path": "clips/M3/169_SB-R_car.mp4",
+     "sha256": "e798312fce01036b67a19adccdbbba3ebbe13f223eaf8cf2d3359765b859dc7b"
+    },
+    {
+     "bytes": 4926894,
+     "path": "clips/M3/188_SB-R_car.mp4",
+     "sha256": "e36de25d08733783cc13aa810f198adff2f5b54ce51c7835ce64bc63cd1875db"
+    },
+    {
+     "bytes": 4484929,
+     "path": "clips/M3/193_SB-R_bus.mp4",
+     "sha256": "68e2fdf0c0ba766a2625c8984d2cf885e7d34d8c424911f4fbbf71c8bff9942f"
+    },
+    {
+     "bytes": 1737693,
+     "path": "clips/M3/274_SB-R_car.mp4",
+     "sha256": "02f579bce34fcba6487bd5f2704281fbdcfda5950f001d8320836f355db5dd00"
+    },
+    {
+     "bytes": 2833542,
+     "path": "clips/M3/301_SB-R_car.mp4",
+     "sha256": "69edf9059bb7dfc3ff0a8286c628a6ee3e373bc90354dea377e866d60de32343"
+    },
+    {
+     "bytes": 3714540,
+     "path": "clips/M3/360_SB-R_bus.mp4",
+     "sha256": "a76c58d01dadc11a91c5245e50362c581a6746da933df99aec854b368f0616c2"
+    },
+    {
+     "bytes": 1698197,
+     "path": "clips/M3/379_SB-R_car.mp4",
+     "sha256": "815dfadd5730f43128170c9e522bbad0a3440b9b88628d4b60bf32be512169c1"
+    },
+    {
+     "bytes": 2246424,
+     "path": "clips/M3/402_SB-R_car.mp4",
+     "sha256": "c7945d07f918b44a85d1f7d41a81cfae2b70eed39e1784e0a33b1b48f412cd95"
+    },
+    {
+     "bytes": 1907692,
+     "path": "clips/M3/406_SB-R_truck.mp4",
+     "sha256": "c658d679229d279cd75cc6f63bf1b5ac6c6dd6ca07c45762bcdd10d5ecfbf585"
+    },
+    {
+     "bytes": 4102650,
+     "path": "clips/M3/408_SB-R_bus.mp4",
+     "sha256": "9fcc6fe7f6013871d04bd3262651b9d430e2cae2282e0a759a240880e5cbf515"
+    },
+    {
+     "bytes": 1997996,
+     "path": "clips/M3/412_SB-R_car.mp4",
+     "sha256": "145cf7557d567abdf49ba07370418085193efeb67743beae78b4b6c0768c2c33"
+    },
+    {
+     "bytes": 1543479,
+     "path": "clips/M3/452_SB-R_truck.mp4",
+     "sha256": "15bfe7c04763bb8308ad7359f476b7f18cf4e3bac139e326b36e727aabeb5b7d"
+    },
+    {
+     "bytes": 1413336,
+     "path": "clips/M3/488_SB-R_truck.mp4",
+     "sha256": "802b04cccbaba5cd325ea3e8d64f48ff894dbcb3a98e375d402f9a1e96a047c2"
+    },
+    {
+     "bytes": 3399312,
+     "path": "clips/M4/016_SB-R_bus.mp4",
+     "sha256": "0745aaff3b78d23e2e881136bd509a6b6fa3256e5e8c9ee351e4c7cb0ba5fe43"
+    },
+    {
+     "bytes": 3292165,
+     "path": "clips/M4/051_SB-R_car.mp4",
+     "sha256": "3958fe2fbf14daa4e7e905bceb74b23ea6f94076cddc6c7514c2709d19496d0e"
+    },
+    {
+     "bytes": 4832583,
+     "path": "clips/M4/120_SB-R_bus.mp4",
+     "sha256": "6488ce9908560dcf722277cf6ffc3f8fa7a04d0e003bffce7b6ec77715a054fa"
+    },
+    {
+     "bytes": 2293175,
+     "path": "clips/M4/169_SB-R_car.mp4",
+     "sha256": "04e340dab3f650a3951a731227df084d00ff1d44899088e177c805f4bcff8655"
+    },
+    {
+     "bytes": 5032966,
+     "path": "clips/M4/188_SB-R_car.mp4",
+     "sha256": "c914250dfd099ebd7cbed26b9b5439b0470fb84eb7eeeaf87f0a5d3499437b3d"
+    },
+    {
+     "bytes": 4549360,
+     "path": "clips/M4/193_SB-R_bus.mp4",
+     "sha256": "a4b1d2af1a3f7762257c997ae83d17599e2b8d03c121ec60447aa34df6c87718"
+    },
+    {
+     "bytes": 1757860,
+     "path": "clips/M4/274_SB-R_car.mp4",
+     "sha256": "d218b5e33a4e567275fc7e12e595996b6ac9fc9395e6def2cb7ff29992c82988"
+    },
+    {
+     "bytes": 2845562,
+     "path": "clips/M4/301_SB-R_car.mp4",
+     "sha256": "cbe5ddd23eb07e37e33d320d94db0858c55e15bd37f036d3180e767d5377336a"
+    },
+    {
+     "bytes": 3759396,
+     "path": "clips/M4/360_SB-R_bus.mp4",
+     "sha256": "13c6e517abce9d4897c5bc7e71401ffbc8b01845e1efd54984a30389fc64b1e5"
+    },
+    {
+     "bytes": 1707279,
+     "path": "clips/M4/379_SB-R_car.mp4",
+     "sha256": "eb6bb70cc199277c878459236ac764d52f631966442e3474f4f941bf83900137"
+    },
+    {
+     "bytes": 2246932,
+     "path": "clips/M4/402_SB-R_car.mp4",
+     "sha256": "0073970743c531e635f84218a4574fc4f88f27d2d918446d2f30d84e62ceb6d6"
+    },
+    {
+     "bytes": 1975581,
+     "path": "clips/M4/406_SB-R_truck.mp4",
+     "sha256": "08259b3c40850fa3b8264657f671aa771bbf366192572d0ffcc02754a5bffaa2"
+    },
+    {
+     "bytes": 4216749,
+     "path": "clips/M4/408_SB-R_bus.mp4",
+     "sha256": "ac2f3f6fbe3dd12f4b7a1404e6d865fbfd6da571863d24a919de576e0673d61b"
+    },
+    {
+     "bytes": 2017502,
+     "path": "clips/M4/412_SB-R_car.mp4",
+     "sha256": "805f161ede3cab84eb8689b5dead9d4d6678c61efb529ef5978c65448890444f"
+    },
+    {
+     "bytes": 1573682,
+     "path": "clips/M4/452_SB-R_truck.mp4",
+     "sha256": "de07e7b0560c741382bd92719a068458aa8992818333ab28f83a2d122d9a6eaf"
+    },
+    {
+     "bytes": 1446032,
+     "path": "clips/M4/488_SB-R_truck.mp4",
+     "sha256": "ee2e647868402a6e1db8ff55262568d49bcbd029eda53eb4a7f004b01a425cf8"
+    },
+    {
+     "bytes": 3392965,
+     "path": "clips/M5/016_SB-R_bus.mp4",
+     "sha256": "b2a184a23db26a9f2268156d63e2177a809bd2cc9aab8990f2467a936e87934e"
+    },
+    {
+     "bytes": 3293503,
+     "path": "clips/M5/051_SB-R_car.mp4",
+     "sha256": "b638c9e25027e36d79a3825476a64ba0ea170b6572580b60b005843f54885f77"
+    },
+    {
+     "bytes": 5021566,
+     "path": "clips/M5/120_SB-R_bus.mp4",
+     "sha256": "95f828585c4a4af9e3f8570ab5c4b34609ab688d102a270642623e849e1d4948"
+    },
+    {
+     "bytes": 2303826,
+     "path": "clips/M5/169_SB-R_car.mp4",
+     "sha256": "13e4ff5e91dace6bc8186f1927565ad4f43c11b99857f7d5f27174f7282ec18e"
+    },
+    {
+     "bytes": 4912938,
+     "path": "clips/M5/188_SB-R_car.mp4",
+     "sha256": "5031b8a7ba2f34feb6bcccf4fab81f94fa8f6f8b86d26d2b8742d5fa1cbd777d"
+    },
+    {
+     "bytes": 4767132,
+     "path": "clips/M5/193_SB-R_bus.mp4",
+     "sha256": "9c4c0471baf22a41334ed97b166cf0380d49097fb81a01248b17ad69dc0a700c"
+    },
+    {
+     "bytes": 1780007,
+     "path": "clips/M5/274_SB-R_car.mp4",
+     "sha256": "c6d6ad2e4ac4981047f317dfc893c80fc8ebc8be95f644ae02f36e2a456098b4"
+    },
+    {
+     "bytes": 2820918,
+     "path": "clips/M5/301_SB-R_car.mp4",
+     "sha256": "214dde082ff42601947c842667f461f59a3724f91d4ff6fa0503b31f2039a565"
+    },
+    {
+     "bytes": 3792724,
+     "path": "clips/M5/360_SB-R_bus.mp4",
+     "sha256": "632c7f60e6491c3e64c2944bacdcfaeca0c6fbbd48bf6ace1ae50fe411c11b90"
+    },
+    {
+     "bytes": 1700333,
+     "path": "clips/M5/379_SB-R_car.mp4",
+     "sha256": "81d7dbeb8869ab6d961ee2d70b0c5673865ed53770ebea30d43a522138b4be87"
+    },
+    {
+     "bytes": 2243711,
+     "path": "clips/M5/402_SB-R_car.mp4",
+     "sha256": "9dd09819400d7aa68a5b6792064a13fedc1a55ac4fb6fa21248d46fc39f8a1a6"
+    },
+    {
+     "bytes": 1865809,
+     "path": "clips/M5/406_SB-R_truck.mp4",
+     "sha256": "884ece6cae848f342e0a97afa9882d58c6aeeb81f9ee5cb2c893b6d7484eb1b4"
+    },
+    {
+     "bytes": 4468395,
+     "path": "clips/M5/408_SB-R_bus.mp4",
+     "sha256": "3e0b20f4b9807e70f9da4b4d2da18e9cffe533b4e73fc54e62409f786c52f3e6"
+    },
+    {
+     "bytes": 1991878,
+     "path": "clips/M5/412_SB-R_car.mp4",
+     "sha256": "d9c08e60d8f8753d50ff24b02ab467cb72fab14bed11158bbad292a2323449b0"
+    },
+    {
+     "bytes": 1551710,
+     "path": "clips/M5/452_SB-R_truck.mp4",
+     "sha256": "0b2ab95ce915be0dcf65057cda31f6637af875f40dd325772be2434167417db3"
+    },
+    {
+     "bytes": 1401367,
+     "path": "clips/M5/488_SB-R_truck.mp4",
+     "sha256": "d78ed6cf27845c5595ab5b45ba8cb9c399e38c76bc0fab2107acfaafdebe5a6a"
+    },
+    {
+     "bytes": 3413538,
+     "path": "clips/M6/016_SB-R_bus.mp4",
+     "sha256": "50b95da75333ce3cc3c1b29542d2ab1c90e3e364028db9f3c4767df7ac8d1c7b"
+    },
+    {
+     "bytes": 3206547,
+     "path": "clips/M6/051_SB-R_car.mp4",
+     "sha256": "64b1fa4a3827eca3e9428840913495546afcadcad052c32bb81b8abc7d9aa12d"
+    },
+    {
+     "bytes": 4834096,
+     "path": "clips/M6/120_SB-R_bus.mp4",
+     "sha256": "365c1fc88fa62800a8bc56118b4193a2febf28d683c2793baf211844924f88c3"
+    },
+    {
+     "bytes": 2244415,
+     "path": "clips/M6/169_SB-R_car.mp4",
+     "sha256": "ffe5d1bf8c0ef32e7a2d0ae32f16e60b5bd89aeaed0331d1c3b874079f48cebc"
+    },
+    {
+     "bytes": 4917843,
+     "path": "clips/M6/188_SB-R_car.mp4",
+     "sha256": "b87721dc6b39061b2ed219275bfcb2447d97737d99bedcbe1dca4b89e3190dd4"
+    },
+    {
+     "bytes": 4551262,
+     "path": "clips/M6/193_SB-R_bus.mp4",
+     "sha256": "ed46e5f36a57ba95a1dae37343f4b6a1cdd802bab8c72b9189e70e1c70e82345"
+    },
+    {
+     "bytes": 1724727,
+     "path": "clips/M6/274_SB-R_car.mp4",
+     "sha256": "db8422f6cd9f221a660d03a36beeefce6ca9eca55b1d763bbf418da19e3bfa4e"
+    },
+    {
+     "bytes": 2795436,
+     "path": "clips/M6/301_SB-R_car.mp4",
+     "sha256": "5e2bd1c3b421b9be0705d628341c099e0bb2a84b88dc1f8fda47eab36351d9e4"
+    },
+    {
+     "bytes": 3765470,
+     "path": "clips/M6/360_SB-R_bus.mp4",
+     "sha256": "e969bc300970672af1bd7a5cdbd9a6cfd157991dea0a942dcd7ee7a88e986687"
+    },
+    {
+     "bytes": 1672347,
+     "path": "clips/M6/379_SB-R_car.mp4",
+     "sha256": "eeaf37112c9fc6eccbeb5eddd6a64093684303e7c12dd17432e83e6d70dc517f"
+    },
+    {
+     "bytes": 2234123,
+     "path": "clips/M6/402_SB-R_car.mp4",
+     "sha256": "9aa4c76435f14a6463a279163483117c99642e8e6cba667da17128314712ef11"
+    },
+    {
+     "bytes": 1955694,
+     "path": "clips/M6/406_SB-R_truck.mp4",
+     "sha256": "c1f474f1632fdd032936e298529aa6ca47b2c091aa8f41e5bea5b2c6cb094155"
+    },
+    {
+     "bytes": 4242337,
+     "path": "clips/M6/408_SB-R_bus.mp4",
+     "sha256": "34410997475bc35391ed90b0927280d7415e39d4b3bb46d8fabb75c7e9470c12"
+    },
+    {
+     "bytes": 1978086,
+     "path": "clips/M6/412_SB-R_car.mp4",
+     "sha256": "424625cbc43eb640ea47d212e5a956733a0a35392f09e47c33c69ca76f930e67"
+    },
+    {
+     "bytes": 1579783,
+     "path": "clips/M6/452_SB-R_truck.mp4",
+     "sha256": "5528567ce4b77c0d3519735e31d9c3e1e8e4d0f88dc8162bf9ff4a98e0e58176"
+    },
+    {
+     "bytes": 1395218,
+     "path": "clips/M6/488_SB-R_truck.mp4",
+     "sha256": "2bdd3ee7098c4d86c78b967908a0d466ade5fb5b4cbf8c54a67d8e19e3e3ceec"
+    },
+    {
+     "bytes": 1111,
+     "path": "coverage.csv",
+     "sha256": "41731745314184b8ca3a05bc875acb997396a85925daed82e86eb251ec6a0fe3"
+    },
+    {
+     "bytes": 7925,
+     "path": "front_conflict_stats.csv",
+     "sha256": "1240d2ccdd7f1536b3126ea39fb30036d4ecf290d0dcc3c87e2f2efdaaee4210"
+    },
+    {
+     "bytes": 903934,
+     "path": "metrics_by_track.csv",
+     "sha256": "541138fd3967b6bce2f6f77a2b0adac2f1ace1a73b9ad01d4a22c6a4cf570a92"
+    },
+    {
+     "bytes": 3932,
+     "path": "metrics_summary.csv",
+     "sha256": "9410d694ad2dab1de069eff9c993eb5e586a33f8938cf0f4c460b7cab1e81b85"
+    },
+    {
+     "bytes": 18118364,
+     "path": "traj_M1_display.csv",
+     "sha256": "e64595f79577c8aa382c2a2e0d8630966cef3c5eb286f24dbfe6c6eccccbde24"
+    },
+    {
+     "bytes": 12156853,
+     "path": "traj_M1_metric_e2e.csv",
+     "sha256": "e0a9e02eacd0dc9b8c21a4e56d4f88156b20db40489b110d661fc04cb9bd21d6"
+    },
+    {
+     "bytes": 12263629,
+     "path": "traj_M1_metric_native.csv",
+     "sha256": "808701b831d2b9cfb5f03220ed18c520c19b0ef3218e40ea45dd8ef632257f1f"
+    },
+    {
+     "bytes": 18118316,
+     "path": "traj_M2_display.csv",
+     "sha256": "66685bfe77caccb7398c3f0e9b8df4a96494931d503764b0473e023af7afe639"
+    },
+    {
+     "bytes": 12156964,
+     "path": "traj_M2_metric_e2e.csv",
+     "sha256": "66e3e813f8efefb4378eb220c2509b67e1187eccee6d776d08dd621c2aea0e13"
+    },
+    {
+     "bytes": 12263740,
+     "path": "traj_M2_metric_native.csv",
+     "sha256": "45d85f44904cc399c42ccaf80dafdeac81da8da5bd61cec6ad70476d14cfdbd9"
+    },
+    {
+     "bytes": 18792774,
+     "path": "traj_M3_display.csv",
+     "sha256": "fdc0a3b21ff201c29b2e9733c71175c053f783c7ef006889a7a1a1eb57c595b6"
+    },
+    {
+     "bytes": 12739234,
+     "path": "traj_M3_metric_e2e.csv",
+     "sha256": "0fb0eec0239ef4572f85565f1a422b78bd6d9aca6220d89170444fa47ad758bd"
+    },
+    {
+     "bytes": 12846010,
+     "path": "traj_M3_metric_native.csv",
+     "sha256": "dbd06c99350ff9cfaa44e1b80af272df2bb59d6df811ce3390723da543fbd749"
+    },
+    {
+     "bytes": 19076965,
+     "path": "traj_M4_display.csv",
+     "sha256": "ebeeefbae1ba23834b7c81e8f15a3a04821c5b2aa933a9f925ea69e73cebfa1e"
+    },
+    {
+     "bytes": 13068816,
+     "path": "traj_M4_metric_e2e.csv",
+     "sha256": "0cd9663b4219e59379f81c7f03be2252c33e59d4cc9dd9c6717cb83a85d7e940"
+    },
+    {
+     "bytes": 9462480,
+     "path": "traj_M4_metric_native.csv",
+     "sha256": "d23256df55330eb77e7c90691b5cb1141e215cccbc333d0a20285163c1834afc"
+    },
+    {
+     "bytes": 18287375,
+     "path": "traj_M5_display.csv",
+     "sha256": "7ef130c965e481628f6742836afce3fe2bb9f90b9806429dbb6ec1180ea4e4dd"
+    },
+    {
+     "bytes": 12469084,
+     "path": "traj_M5_metric_e2e.csv",
+     "sha256": "816722a88e0401eee3ed26bb94aebb945fcd2d05f9a14d2b9b1188e316fdd381"
+    },
+    {
+     "bytes": 11693931,
+     "path": "traj_M5_metric_native.csv",
+     "sha256": "c91befdc433e7af51c13f0a23e7465d4845b5193216c59207a9216cafbe11f91"
+    },
+    {
+     "bytes": 23363029,
+     "path": "traj_M6_display.csv",
+     "sha256": "cd69b61e4287f2111815cd00aac3a7bfe066b7f28672050701520b03168b1852"
+    },
+    {
+     "bytes": 17037387,
+     "path": "traj_M6_metric_e2e.csv",
+     "sha256": "db23287ae2778eec532f02d7be55973613a3ab3470f79a5c8844693254d9cde4"
+    },
+    {
+     "bytes": 17021939,
+     "path": "traj_M6_metric_native.csv",
+     "sha256": "cf58c1fd7af09f0725000741e5b77989340dce10297a5c92e67a794d77471a2f"
+    }
+   ]
+  },
+  "20261110_161113_s0": {
+   "dir": "/mnt/e/videos/miami/output/a1a-20mins/footprint/runs/20261110_161113_s0",
+   "manifest_sha256": "8bf36d6dcc7ab1dcb9a2f1cae6f9988b14c6c58335ff8aa4bed61f4a457fd99e",
+   "cache_keys": {
+    "m4": "6a1f0df0d8de1344",
+    "m5": "62a0ce39913f7eb0",
+    "m6": "9a1f4b79288939c9"
+   },
+   "camera": {
+    "C_rel": [
+     -12.171324112334698,
+     10.514357528126599,
+     6.733058272508432
+    ],
+    "R": [
+     [
+      -0.5015812817718039,
+      -0.8650808482912467,
+      0.007165451545522783
+     ],
+     [
+      -0.5166057853033335,
+      0.2928681446831608,
+      -0.8045785930665628
+     ],
+     [
+      0.6939269993070456,
+      -0.4072632757192091,
+      -0.593802950382683
+     ]
+    ],
+    "consistency": {
+     "max_px": 3.661260472669591e-08,
+     "ok": true,
+     "rms_px": 2.2189950253702864e-08
+    },
+    "converged": true,
+    "cx": 334.10085400161427,
+    "cy": 240.1255795054726,
+    "f": 319.5459175640886,
+    "height_m": 6.733058272508432,
+    "m4_to_ground": "hub_to_contact",
+    "origin": [
+     587248.0,
+     2852973.0
+    ],
+    "sensitivity": [
+     {
+      "C_rel": [
+       -11.302913750054177,
+       10.00469058993304,
+       5.857760703152666
+      ],
+      "R": [
+       [
+        -0.5006571024952533,
+        -0.865623245804829,
+        0.006233942843021145
+       ],
+       [
+        -0.62037800217398,
+        0.353771687791851,
+        -0.6999833764708463
+       ],
+       [
+        0.603716489868944,
+        -0.3543190500653582,
+        -0.7141319280224793
+       ]
+      ],
+      "converged": true,
+      "cx": 333.67527941184926,
+      "cy": 287.91156868299424,
+      "f": 278.0049482807571,
+      "height_m": 5.857760703152666,
+      "max_px": 2.0589231070675104e-07,
+      "ok": true,
+      "origin": [
+       587248.0,
+       2852973.0
+      ],
+      "rms_px": 9.047902497968872e-08,
+      "scale": 0.87
+     },
+     {
+      "C_rel": [
+       -12.171324112334698,
+       10.514357528126599,
+       6.733058272508432
+      ],
+      "R": [
+       [
+        -0.5015812817718039,
+        -0.8650808482912467,
+        0.007165451545522783
+       ],
+       [
+        -0.5166057853033335,
+        0.2928681446831608,
+        -0.8045785930665628
+       ],
+       [
+        0.6939269993070456,
+        -0.4072632757192091,
+        -0.593802950382683
+       ]
+      ],
+      "converged": true,
+      "cx": 334.10085400161427,
+      "cy": 240.1255795054725,
+      "f": 319.5459175640886,
+      "height_m": 6.733058272508432,
+      "max_px": 3.661260645785678e-08,
+      "ok": true,
+      "origin": [
+       587248.0,
+       2852973.0
+      ],
+      "rms_px": 2.2189952859766387e-08,
+      "scale": 1.0
+     },
+     {
+      "C_rel": [
+       -13.452082127743376,
+       11.266029832118498,
+       7.608355834866869
+      ],
+      "R": [
+       [
+        -0.5029442895954122,
+        -0.864280903871331,
+        0.008096960338367876
+       ],
+       [
+        -0.36355936420412677,
+        0.2030457471695033,
+        -0.9091738080564514
+       ],
+       [
+        0.7841375072414642,
+        -0.4602075007643106,
+        -0.4163381149707647
+       ]
+      ],
+      "converged": true,
+      "cx": 334.72850438662897,
+      "cy": 169.64934930679152,
+      "f": 361.0868868474201,
+      "height_m": 7.608355834866869,
+      "max_px": 5.38196318772734e-07,
+      "ok": true,
+      "origin": [
+       587248.0,
+       2852973.0
+      ],
+      "rms_px": 2.0839392751091143e-07,
+      "scale": 1.13
+     }
+    ]
+   },
+   "artifacts": [
+    {
+     "bytes": 3734654,
+     "path": "clips/M7/016_SB-R_bus.mp4",
+     "sha256": "3ca458df4e697aa1e9ff674f670b6911c168a16998637be3241543f2731e75fd"
+    },
+    {
+     "bytes": 1891361,
+     "path": "clips/M7/020_SB-T_truck.mp4",
+     "sha256": "9a12b5cf36d429aa7e3eb3838135090d0b6285f8ac4a29d7d7b4e18bb9b7deeb"
+    },
+    {
+     "bytes": 4117232,
+     "path": "clips/M7/022_NB-L_bus.mp4",
+     "sha256": "f858da4ebc196a00b89dd265f6d76a0617475e77fa2562952ad986d38e8d6de3"
+    },
+    {
+     "bytes": 2756738,
+     "path": "clips/M7/044_NB-T_bus.mp4",
+     "sha256": "ffa46b4463de7fec1cee045f1f98c0edcc596d7bef0006ba78b964abb744ca3d"
+    },
+    {
+     "bytes": 3483532,
+     "path": "clips/M7/065_SB-R_bus.mp4",
+     "sha256": "07f68d57fa403d7257569ececa1eb588fa2604d3555c0115e759c4e125c0e885"
+    },
+    {
+     "bytes": 5232338,
+     "path": "clips/M7/120_SB-R_bus.mp4",
+     "sha256": "538481f069b6b8279507a88a0381213d02dffbbfdf40bbf20fb73d8447b27e73"
+    },
+    {
+     "bytes": 11291039,
+     "path": "clips/M7/130_NB-L_truck.mp4",
+     "sha256": "d3168dc48d45e4dea7893c35b571ebbb67c9045cd493f4927bfe068529f6a80f"
+    },
+    {
+     "bytes": 2342774,
+     "path": "clips/M7/144_NB-T_bus.mp4",
+     "sha256": "1db281483c759276e5a7dbde5197483027999caa8e948b5d1e0e6a83216cb079"
+    },
+    {
+     "bytes": 5362295,
+     "path": "clips/M7/173_NB-L_bus.mp4",
+     "sha256": "71b4297ed00797867fddd9dc241660c1d136e3007f1edcfbeb752e30808d59b5"
+    },
+    {
+     "bytes": 5917540,
+     "path": "clips/M7/176_SB-T_bus.mp4",
+     "sha256": "133c5ec96ec4757f0350bb4e0423db518fafb340c20c768e2c9baf48691703d0"
+    },
+    {
+     "bytes": 4886819,
+     "path": "clips/M7/193_SB-R_bus.mp4",
+     "sha256": "406df30012eac0206679ed74915ba144b3d12d1963b132fc91159bbcac9e5dbe"
+    },
+    {
+     "bytes": 2954930,
+     "path": "clips/M7/215_NB-T_bus.mp4",
+     "sha256": "0796750d0ed1ab97190948715e462b52ac776dc2853d8e6d32bbd8a8e77fc488"
+    },
+    {
+     "bytes": 2896617,
+     "path": "clips/M7/251_EB-L_bus.mp4",
+     "sha256": "1079264417fdc3d8388adb412595e2d5482e756a44ba62bd6f2bceb4be472172"
+    },
+    {
+     "bytes": 2829027,
+     "path": "clips/M7/315_NB-L_truck.mp4",
+     "sha256": "b9a5366723940673b4f49774dcdc546a67ecdf056c45a7fb54eb57d22b13f3df"
+    },
+    {
+     "bytes": 3082392,
+     "path": "clips/M7/338_EB-L_truck.mp4",
+     "sha256": "d84f436d78905b1c69e9b3e4cc2a7324b782e3542aef94d9efaed4f6100d3780"
+    },
+    {
+     "bytes": 2482311,
+     "path": "clips/M7/354_NB-T_truck.mp4",
+     "sha256": "5ae7613448ccca89f105057acc177bb0f30be24360852c716521cb15c843fcb3"
+    },
+    {
+     "bytes": 4142752,
+     "path": "clips/M7/360_SB-R_bus.mp4",
+     "sha256": "51a5857d1243c8157c5752f1bc9de85acc01a532fc8e36af7775899f607679e7"
+    },
+    {
+     "bytes": 2187705,
+     "path": "clips/M7/406_SB-R_truck.mp4",
+     "sha256": "53f43186e3c01ac09b67b8c7d2b81263aaa9e4a6eff4598aad71d4f4600a2e8d"
+    },
+    {
+     "bytes": 4555713,
+     "path": "clips/M7/408_SB-R_bus.mp4",
+     "sha256": "6e69037c18d2d588a00278ded5a35bdbc86e4006fdd857fc8f2b78fe553eac97"
+    },
+    {
+     "bytes": 7930848,
+     "path": "clips/M7/417_NB-T_bus.mp4",
+     "sha256": "c32ee7fc2cf9be4eadc01bb7dba7d07a84ebe025f08223beab958dcb81e7b0ba"
+    },
+    {
+     "bytes": 1747093,
+     "path": "clips/M7/452_SB-R_truck.mp4",
+     "sha256": "ab50af212888881c1db65c05f7a75279bdd5ee52f84c83c4e20707e376d7ec9b"
+    },
+    {
+     "bytes": 2402131,
+     "path": "clips/M7/459_SB-T_bus.mp4",
+     "sha256": "b8427da34e5db092c8267298bb0ba5c8815cf7879ae8b29d35b11d82067485b9"
+    },
+    {
+     "bytes": 12055195,
+     "path": "clips/M7/469_NB-L_bus.mp4",
+     "sha256": "8e7e825431b815e30fddae7de5a2d1a253c05bc42ce8af80373ec1c161aa43e1"
+    },
+    {
+     "bytes": 3077227,
+     "path": "clips/M7/476_SB-R_bus.mp4",
+     "sha256": "cfe7bbd2314c8c212f4dcaea604d0c1e7690fefc2437f2b632cf2239115290ed"
+    },
+    {
+     "bytes": 1572747,
+     "path": "clips/M7/488_SB-R_truck.mp4",
+     "sha256": "d0d215a21d889909e8c523e473b2fc458d976cb79273940f06f842de0f5d48a7"
+    },
+    {
+     "bytes": 1415,
+     "path": "coverage.csv",
+     "sha256": "709783760fbf04a35fa346a082adbb2c4d962f66b304c1ebee85fc7ad0dc77e0"
+    },
+    {
+     "bytes": 7925,
+     "path": "front_conflict_stats.csv",
+     "sha256": "1240d2ccdd7f1536b3126ea39fb30036d4ecf290d0dcc3c87e2f2efdaaee4210"
+    },
+    {
+     "bytes": 10170,
+     "path": "m7_review.csv",
+     "sha256": "d4cd0c841013063cf705b30cc775dc6b1386e00e9f4a09159847364bc326ce72"
+    },
+    {
+     "bytes": 34629,
+     "path": "m7_tracks.csv",
+     "sha256": "f9a75a9c0d409905982acaaf00fae6f85fe332069fb253dc15e3fa7e612a19fb"
+    },
+    {
+     "bytes": 910404,
+     "path": "metrics_by_track.csv",
+     "sha256": "171bee0070df26e0615ff8916cfde6e4bc1b544e945fa3bc635704b43261bfac"
+    },
+    {
+     "bytes": 4311,
+     "path": "metrics_summary.csv",
+     "sha256": "551f1bfe87423ff27be961e20f1027556b3af9c3b050663cae1b27ef969b9567"
+    },
+    {
+     "bytes": 18118364,
+     "path": "traj_M1_display.csv",
+     "sha256": "e64595f79577c8aa382c2a2e0d8630966cef3c5eb286f24dbfe6c6eccccbde24"
+    },
+    {
+     "bytes": 12156853,
+     "path": "traj_M1_metric_e2e.csv",
+     "sha256": "e0a9e02eacd0dc9b8c21a4e56d4f88156b20db40489b110d661fc04cb9bd21d6"
+    },
+    {
+     "bytes": 12263629,
+     "path": "traj_M1_metric_native.csv",
+     "sha256": "808701b831d2b9cfb5f03220ed18c520c19b0ef3218e40ea45dd8ef632257f1f"
+    },
+    {
+     "bytes": 18118316,
+     "path": "traj_M2_display.csv",
+     "sha256": "66685bfe77caccb7398c3f0e9b8df4a96494931d503764b0473e023af7afe639"
+    },
+    {
+     "bytes": 12156964,
+     "path": "traj_M2_metric_e2e.csv",
+     "sha256": "66e3e813f8efefb4378eb220c2509b67e1187eccee6d776d08dd621c2aea0e13"
+    },
+    {
+     "bytes": 12263740,
+     "path": "traj_M2_metric_native.csv",
+     "sha256": "45d85f44904cc399c42ccaf80dafdeac81da8da5bd61cec6ad70476d14cfdbd9"
+    },
+    {
+     "bytes": 18792774,
+     "path": "traj_M3_display.csv",
+     "sha256": "fdc0a3b21ff201c29b2e9733c71175c053f783c7ef006889a7a1a1eb57c595b6"
+    },
+    {
+     "bytes": 12739234,
+     "path": "traj_M3_metric_e2e.csv",
+     "sha256": "0fb0eec0239ef4572f85565f1a422b78bd6d9aca6220d89170444fa47ad758bd"
+    },
+    {
+     "bytes": 12846010,
+     "path": "traj_M3_metric_native.csv",
+     "sha256": "dbd06c99350ff9cfaa44e1b80af272df2bb59d6df811ce3390723da543fbd749"
+    },
+    {
+     "bytes": 19117493,
+     "path": "traj_M4_display.csv",
+     "sha256": "15a87fcf0f6639362bf2d57dd19470dcba276eae58bc30e03646b8fa81d6e60e"
+    },
+    {
+     "bytes": 13068816,
+     "path": "traj_M4_metric_e2e.csv",
+     "sha256": "0cd9663b4219e59379f81c7f03be2252c33e59d4cc9dd9c6717cb83a85d7e940"
+    },
+    {
+     "bytes": 9462480,
+     "path": "traj_M4_metric_native.csv",
+     "sha256": "d23256df55330eb77e7c90691b5cb1141e215cccbc333d0a20285163c1834afc"
+    },
+    {
+     "bytes": 18312963,
+     "path": "traj_M5_display.csv",
+     "sha256": "d6b4fda1e8e96f1da4a046ee08e6aa18bead6c0aa05561fe6cbbc5f83a7eb087"
+    },
+    {
+     "bytes": 12469084,
+     "path": "traj_M5_metric_e2e.csv",
+     "sha256": "816722a88e0401eee3ed26bb94aebb945fcd2d05f9a14d2b9b1188e316fdd381"
+    },
+    {
+     "bytes": 11693931,
+     "path": "traj_M5_metric_native.csv",
+     "sha256": "c91befdc433e7af51c13f0a23e7465d4845b5193216c59207a9216cafbe11f91"
+    },
+    {
+     "bytes": 23462562,
+     "path": "traj_M6_display.csv",
+     "sha256": "2a2884b39a634feff6b1452854b7de57d33c4558c2409f00414426cb0001974e"
+    },
+    {
+     "bytes": 17037387,
+     "path": "traj_M6_metric_e2e.csv",
+     "sha256": "db23287ae2778eec532f02d7be55973613a3ab3470f79a5c8844693254d9cde4"
+    },
+    {
+     "bytes": 17021939,
+     "path": "traj_M6_metric_native.csv",
+     "sha256": "cf58c1fd7af09f0725000741e5b77989340dce10297a5c92e67a794d77471a2f"
+    },
+    {
+     "bytes": 2450609,
+     "path": "traj_M7_display.csv",
+     "sha256": "67deaac5915062380bcda14dfa22f0821d7f9ea02e6ab25ea9277edaec34bc75"
+    },
+    {
+     "bytes": 1165593,
+     "path": "traj_M7_metric_e2e.csv",
+     "sha256": "c4600a09127a7813e18b10335a062a0e51e804b5c784490d272d6479ae2f0b97"
+    },
+    {
+     "bytes": 982016,
+     "path": "traj_M7_metric_native.csv",
+     "sha256": "7399af83d531ed661cbdd508c17e47011a9a8669d78e85087dc5e060a7e868d0"
+    },
+    {
+     "bytes": 19298098,
+     "path": "traj_PET_display.csv",
+     "sha256": "f1c0b65041a0b99a7d4ba44c226f0e5d4292e6de3215f9bb76e20a3aa57cad85"
+    }
+   ]
+  }
+ }
+}
