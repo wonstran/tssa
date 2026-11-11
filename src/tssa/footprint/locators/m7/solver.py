@@ -1,7 +1,10 @@
 """Ported from the speed study's m7.py (sha256 d8fc196b1e8375caeaef486eaadcc7314bbf65eaa82c92b26ed67ef8bcbf108f, snapshot docs/study-snapshot-2026-11-10.json).
 Changes: settings through the per-solve namespace `S` (an M7Config plus FT, MPS_TO_MPH, IMG_SIZE, EDGE_PX,
 SIZE_FT) instead of the study's settings module; image-size default resolved at call time; the width-hold
-decision moved into `width_held` (same expression) so it can be tested on its own.
+decision moved into `width_held` (same expression) so it can be tested on its own. Speed (2026-11-11, results
+bit-identical): the sparsity pattern is built with numpy, the matched candidates are packed once per association,
+and the finite-difference Jacobian is `_FDJac` (scipy's 2-point sparse scheme with the column groups known in
+advance) instead of scipy's own, which re-sliced the pattern on every call.
 
 M7: wheel-anchored rigid-body fit of one bus or truck segment (design 2026-11-08-m7, rev 5, sections 4-8).
 
@@ -27,8 +30,7 @@ from dataclasses import dataclass, field, replace
 import numpy as np
 import pandas as pd
 from scipy.optimize import least_squares, linear_sum_assignment
-from scipy.optimize._numdiff import approx_derivative
-from scipy.sparse import lil_matrix
+from scipy.sparse import coo_matrix, csr_matrix
 from scipy.stats import multivariate_normal
 
 from .candidates import rho
@@ -403,14 +405,23 @@ class Problem:
         """Observation z: wheels (m, 2), envelope (K, M) NaN where absent, extents (K, 2) NaN where absent."""
         mk, mc, mt = assoc
         if len(mk):
-            cand = np.array([self.t.obs[k].cand[c] for k, c in zip(mk, mc)])
-            sc = np.array([self.t.obs[k].s[c] for k, c in zip(mk, mc)])
+            cand, sc = self._matched(assoc)
             zw = (g["tg_px"][mk, mt] - cand) / (self.tg_sigma[mt] * sc)[:, None]
         else:
             zw = np.empty((0, 2))
         ze = np.where(self.env_ok, (self.env_v - g["env_pred"]) / S.M7_SIGMA_ENV_PX, np.nan)
         zx = np.where(self.ext_ok, (self.ext - g["ext_pred"]) / S.M7_SIGMA_EXT_PX, np.nan)
         return zw, ze, zx
+
+    def _matched(self, assoc):
+        """(cand (m, 2), sigma scale (m,)) of the matched candidates, packed once per association object."""
+        c = getattr(self, "_match_cache", None)
+        if c is None or c[0] is not assoc:
+            mk, mc = assoc[0], assoc[1]
+            cand = np.array([self.t.obs[k].cand[i] for k, i in zip(mk, mc)])
+            sc = np.array([self.t.obs[k].s[i] for k, i in zip(mk, mc)])
+            c = self._match_cache = (assoc, cand, sc)
+        return c[1], c[2]
 
     def F(self, x, assoc=None, use_wheels=True, parts=False):
         g = self.geometry(x)
@@ -489,47 +500,144 @@ class Problem:
         return None  # built per association (rows depend on the matches)
 
     def jac_sparsity(self, assoc):
+        """(rows, n) 0/1 pattern of the residual Jacobian (rows in `raw_residuals` order). Built with numpy; the
+        pattern is the study's lil construction, entry for entry."""
+        return self._layout(assoc)["pattern"]
+
+    def _layout(self, assoc):
+        """Row layout of the residual vector for an association, cached per association object: the pattern, the
+        frame of every observation row, and the row counts of each block."""
+        c = getattr(self, "_layout_cache", None)
+        if c is not None and c[0] is assoc:
+            return c[1]
         K, ns = self.K, self.ns
-        mk = assoc[0]
+        mk = np.asarray(assoc[0], int)
         M = self.env_u.shape[1]
-        rows = 2 * len(mk) + K * M + 2 * K
-        nm = (K - 1) + 2 * max(K - 2, 0) + max(K - 2, 0) + (K - 1)
-        sp = lil_matrix((rows + nm + ns, self.n), dtype=int)
-        st = list(range(3 * K, 3 * K + ns))
+        ks = np.arange(K)
+        st = np.arange(3 * K, 3 * K + ns)
 
-        def frame_cols(k):
-            return [2 * k, 2 * k + 1, 2 * K + k]
+        def fc(k):  # (n, 3) columns of frames k
+            return np.stack([2 * k, 2 * k + 1, 2 * K + k], -1)
 
-        r = 0
-        for k in mk:
-            for _ in range(2):
-                sp[r, frame_cols(k) + st] = 1
-                r += 1
-        for k in range(K):
-            for _ in range(M):
-                sp[r, frame_cols(k) + st] = 1
-                r += 1
-        for k in range(K):
-            for _ in range(2):
-                sp[r, frame_cols(k) + st] = 1
-                r += 1
-        for k in range(K - 1):  # slip
-            sp[r, frame_cols(k) + frame_cols(k + 1)] = 1
-            r += 1
-        for k in range(K - 2):  # acc e, n
-            for j in range(2):
-                sp[r, [2 * (k + i) + j for i in range(3)]] = 1
-                r += 1
-        for k in range(K - 2):  # yaw
-            sp[r, [2 * K + k + i for i in range(3)]] = 1
-            r += 1
-        for k in range(K - 1):  # curvature (needs L_w)
-            sp[r, frame_cols(k) + frame_cols(k + 1) + [3 * K]] = 1
-            r += 1
-        for i in range(ns):
-            sp[r, st] = 1
-            r += 1
-        return sp
+        blocks = []  # (n_rows, cols per row)
+
+        def add(cols, rep=1):
+            blocks.append(np.repeat(np.asarray(cols, int), rep, axis=0))
+
+        def with_st(k):
+            return np.concatenate([fc(k), np.broadcast_to(st, (len(k), ns))], 1)
+
+        add(with_st(mk), 2)  # wheel pairs
+        add(with_st(ks), M)  # envelope columns
+        add(with_st(ks), 2)  # extents
+        nob = sum(len(b) for b in blocks)
+        row_frame = np.concatenate([np.repeat(mk, 2), np.repeat(ks, M), np.repeat(ks, 2)])
+        k1, k2 = ks[:-1], ks[:-2]
+        if K > 1:
+            add(np.concatenate([fc(k1), fc(k1 + 1)], 1))  # slip
+        if K > 2:
+            add(np.stack([np.stack([2 * (k2 + i) + j for i in range(3)], -1) for j in range(2)], 1).reshape(-1, 3))
+            add(np.stack([2 * K + k2 + i for i in range(3)], -1))  # yaw
+        if K > 1:
+            add(np.concatenate([fc(k1), fc(k1 + 1), np.full((K - 1, 1), 3 * K)], 1))  # curvature
+        nmo = sum(len(b) for b in blocks) - nob
+        add(np.broadcast_to(st, (ns, ns)))  # priors
+        rows = np.concatenate([np.repeat(np.arange(sum(len(q) for q in blocks[:i]), sum(len(q) for q in blocks[: i + 1])),
+                                         b.shape[1]) for i, b in enumerate(blocks)])  # fmt: skip
+        cols = np.concatenate([b.ravel() for b in blocks])
+        m = sum(len(b) for b in blocks)
+        pat = coo_matrix((np.ones(len(rows), int), (rows, cols)), shape=(m, self.n)).tocsr()
+        pat.sum_duplicates()
+        pat.data[:] = 1
+        out = dict(pattern=pat, nob=nob, nmo=nmo, m=m, row_frame=row_frame)
+        self._layout_cache = (assoc, out)
+        return out
+
+
+class _FDJac:
+    """scipy's 2-point sparse finite-difference Jacobian on `Problem.jac_sparsity`, to the bit, with fewer residual
+    evaluations and no per-call pattern slicing.
+
+    scipy perturbs groups of columns that share no row and evaluates the full residual once per group (about
+    9 + n_statics groups). Here: observation rows depend on their own frame's pose and the statics only, so one
+    full evaluation perturbing coordinate c (E, N or heading) of EVERY frame gives all observation-row entries of
+    that coordinate; motion rows (frames k..k+2) come from cheap motion-only evaluations perturbing coordinate c of
+    the frames k = r mod 3; each static column takes one full evaluation. Every Jacobian entry is the same
+    (f(x + h_j e_j) - f(x))[i] / dx_j that scipy forms, with scipy's step h (relative sqrt(eps), bounds-adjusted),
+    and the matrix is assembled in scipy's canonical (sorted) order, so least_squares follows the same path.
+    `fun` is memoised on the last point, which least_squares always evaluates just before the Jacobian."""
+
+    def __init__(self, prob: Problem, fun, args, assoc, lo, hi):
+        self.p, self.fun, self.args = prob, fun, args
+        self.lo, self.hi = lo, hi
+        self.lay = lay = prob._layout(assoc)
+        self.last = None
+        K, n = prob.K, prob.n
+        pat = lay["pattern"].tocsc()
+        pat.sort_indices()
+        nob, nmo = lay["nob"], lay["nmo"]
+        rows, cols = pat.indices.astype(np.int64), np.repeat(np.arange(n), np.diff(pat.indptr))
+        # evaluation of each entry: 0-2 full (coordinate c of all frames), 3-11 motion (c, k mod 3), 12+ statics
+        coord = np.where(cols < 2 * K, cols % 2, 2)
+        frame = np.where(cols < 2 * K, cols // 2, cols - 2 * K)
+        is_static = cols >= 3 * K
+        ev = np.where(rows < nob, coord, 3 + 3 * coord + frame % 3)
+        ev = np.where(is_static, 12 + (cols - 3 * K), ev)
+        order = np.lexsort((cols, rows))  # canonical csr order
+        self.rows, self.cols, self.ev = rows[order], cols[order], ev[order]
+        self.indptr = np.r_[0, np.cumsum(np.bincount(self.rows, minlength=lay["m"]))]
+        self.nob, self.nmo = nob, nmo
+
+    def _f0(self, x):
+        if self.last is None or not np.array_equal(x, self.last[0]):
+            self.last = (x.copy(), self.fun(x, *self.args))
+        return self.last[1]
+
+    def f(self, x):
+        """The residual function for least_squares; a copy, as scipy scales it in place under a robust loss."""
+        return self._f0(x).copy()
+
+    def __call__(self, x, *_):
+        p, K, n = self.p, self.p.K, self.p.n
+        f0 = self._f0(x)
+        # scipy: _compute_absolute_step(None, x, f0, '2-point') then _adjust_scheme_to_bounds(..., '1-sided')
+        h = np.finfo(np.float64).eps ** 0.5 * ((x >= 0).astype(float) * 2 - 1) * np.maximum(1.0, np.abs(x))
+        lo, hi = self.lo, self.hi
+        if not np.all((lo == -np.inf) & (hi == np.inf)):
+            h = h.copy()
+            lower, upper = x - lo, hi - x
+            viol = ((x + h) < lo) | ((x + h) > hi)
+            fit = np.abs(h) <= np.maximum(lower, upper)
+            h[viol & fit] *= -1
+            fwd = (upper >= lower) & ~fit
+            h[fwd] = upper[fwd]
+            bwd = (upper < lower) & ~fit
+            h[bwd] = -lower[bwd]
+        ns = n - 3 * K
+        df = np.empty((12 + ns, len(f0)))
+        dx = np.empty(n)
+        col_c = [np.arange(K) * 2, np.arange(K) * 2 + 1, 2 * K + np.arange(K)]
+        m0, m1 = self.nob, self.nob + self.nmo
+        for c in range(3):
+            x1 = x.copy()
+            x1[col_c[c]] += h[col_c[c]]
+            df[c] = self.fun(x1, *self.args) - f0
+            dx[col_c[c]] = x1[col_c[c]] - x[col_c[c]]
+            for r in range(3):
+                cc = col_c[c][r::3]
+                x2 = x.copy()
+                x2[cc] += h[cc]
+                R, psi, th = p.unpack(x2)
+                zm, _ = p.motion({"R": R, "psi": psi, "th": th})
+                df[3 + 3 * c + r, m0:m1] = zm - f0[m0:m1]
+        for s in range(ns):
+            j = 3 * K + s
+            x1 = x.copy()
+            x1[j] += h[j]
+            df[12 + s] = self.fun(x1, *self.args) - f0
+            dx[j] = x1[j] - x[j]
+        data = df[self.ev, self.rows] / dx[self.cols]
+        return csr_matrix((data, self.cols, self.indptr), shape=(len(f0), n))
 
 
 # --- fitting (7.2, 7.3) ----------------------------------------------------------------------------------------
@@ -620,8 +728,8 @@ def _solve(prob: Problem, x, assoc, nfev):
     needed inside a round (implementation note: frozen IRLS weights converged far too slowly on real masks)."""
     lo, hi = prob.bounds()
     x = np.clip(x, lo + 1e-9, hi - 1e-9)
-    sol = least_squares(prob.raw_residuals, x, args=(assoc,), loss=prob.loss(assoc),
-                        jac_sparsity=prob.jac_sparsity(assoc), bounds=(lo, hi), method="trf", x_scale="jac",
+    jac = _FDJac(prob, prob.raw_residuals, (assoc,), assoc, lo, hi)
+    sol = least_squares(jac.f, x, jac=jac, loss=prob.loss(assoc), bounds=(lo, hi), method="trf", x_scale="jac",
                         max_nfev=nfev)  # fmt: skip
     return sol.x, sol.status > 0
 
@@ -630,19 +738,28 @@ def _irls_solve(prob: Problem, x, assoc):
     """One IRLS round: weights 1 / (1 + z^2) from x, weighted least squares (a majorise-minimise step for F)."""
     lo, hi = prob.bounds()
     x = np.clip(x, lo + 1e-9, hi - 1e-9)
-    sol = least_squares(prob.residuals, x, args=(assoc, prob.weights(x, assoc)), jac_sparsity=prob.jac_sparsity(assoc),
-                        bounds=(lo, hi), method="trf", x_scale="jac", max_nfev=S.M7_IRLS_NFEV)  # fmt: skip
+    jac = _FDJac(prob, prob.residuals, (assoc, prob.weights(x, assoc)), assoc, lo, hi)
+    sol = least_squares(jac.f, x, jac=jac, bounds=(lo, hi), method="trf", x_scale="jac",
+                        max_nfev=S.M7_IRLS_NFEV)  # fmt: skip
     return sol.x, sol.status > 0
 
 
-def fit(prob: Problem, x0, start="", outer=None) -> Fit:
-    """Section 7.3: shape stage (no wheels), then rounds of association + exact robust solve, backtracking on F."""
+def fit(prob: Problem, x0, start="", outer=None, bound=None, tol=None, shape=True) -> Fit:
+    """Section 7.3: shape stage (no wheels), then rounds of association + exact robust solve, backtracking on F.
+
+    Speed options (2026-11-11; the defaults reproduce the study): `bound` = the F to beat (racing: abandoned from
+    round M7_RACE_ROUND while F > bound (1 + M7_RACE_MARGIN); `info["abandoned"]`), `tol` replaces M7_TOL, and
+    `shape=False` skips the shape stage (polishing a fitted pose)."""
     outer = S.M7_OUTER_ITERS if outer is None else outer
+    tol = S.M7_TOL if tol is None else tol
+    race = bound is not None and np.isfinite(bound) and S.M7_RACE_ROUND is not None
+    limit = bound + S.M7_RACE_MARGIN * max(1.0, abs(bound)) if race else np.inf
+    abandoned = False
     x = x0.copy()
     empty = (np.array([], int),) * 3
     # stage 1: silhouette + motion + priors by IRLS (weights from the current pose: a redescending loss started far
     # away can ignore the silhouette and collapse the body; a quadratic one is dragged by outliers)
-    for _ in range(3):
+    for _ in range(3 if shape else 0):
         x, _ = _irls_solve(prob, x, empty)
     F0, parts = prob.F(x, parts=True)
     assoc = parts["assoc"]
@@ -685,13 +802,16 @@ def fit(prob: Problem, x0, start="", outer=None) -> Fit:
             prob.side_fixed = side
         rel = (F0 - F1) / max(1.0, abs(F0))
         x, F0, parts, assoc = x1, F1, p1, p1["assoc"]
-        if (same and rel < S.M7_TOL) or rel < S.M7_TOL / 10:  # a benign association flip-flop at the optimum
+        if (same and rel < tol) or rel < tol / 10:  # a benign association flip-flop at the optimum
             converged = True
+            break
+        if race and it >= S.M7_RACE_ROUND and F0 > limit:
+            abandoned = True  # cannot win any more: stop paying for it
             break
     if prob.side_fixed is not None:  # leave the problem with the pose's own side (every later use of a Fit)
         prob.side_fixed = None
         F0, parts = prob.F(x, assoc=assoc, parts=True)
-    return Fit(prob.cfg, x, F0, parts, assoc, converged, it, start)
+    return Fit(prob.cfg, x, F0, parts, assoc, converged, it, start, info={"abandoned": True} if abandoned else {})
 
 
 def _same(a, b):
@@ -707,8 +827,7 @@ def information(prob: Problem, ft: Fit):
     x, assoc = ft.x, ft.assoc
     wts = prob.weights(x, assoc)
     lo, hi = prob.bounds()
-    J = approx_derivative(prob.residuals, x, args=(assoc, wts), sparsity=prob.jac_sparsity(assoc), bounds=(lo, hi))
-    J = J.toarray() if hasattr(J, "toarray") else np.asarray(J)
+    J = _FDJac(prob, prob.residuals, (assoc, wts), assoc, lo, hi)(x).toarray()
     g = prob.geometry(x)
     zw, ze, zx = prob.obs_z(g, assoc)
     nw = 2 * len(assoc[0])
@@ -947,19 +1066,32 @@ def fit_config(track: Track, cfg: Config, x0=None, finish_fit=True) -> tuple[Pro
         starts = [("prior", mean)]
         if cfg.subtype != "pickup_van":
             starts.append(("short", mean - S.M7_START_SHIFT_FT))
-        fits = [fit(prob, initial_x(prob, lw), name) for name, lw in starts]
-        if S.M7_COARSE_GATE_MULT > 1:  # coarse-to-fine starts: wide gates find the wheels, the frozen ones refine
+        stol = S.M7_SEARCH_TOL
+        fits = []
+
+        def best():
+            done = [q.F for q in fits if not q.info.get("abandoned")]
+            return min(done) if done else None
+
+        # coarse-to-fine starts first (they won 18 of 30 NW setups; racing needs a good F to beat early): wide gates
+        # find the wheels, the frozen ones refine. Order does not change the winner (min F over the same fits).
+        if S.M7_COARSE_GATE_MULT > 1:
             coarse = Problem(_widen_gates(track, S.M7_COARSE_GATE_MULT), cfg)
             for name, lw in starts:
-                xc = fit(coarse, initial_x(coarse, lw), "coarse").x
-                fits.append(fit(prob, xc, name + "+coarse"))
+                xc = fit(coarse, initial_x(coarse, lw), "coarse", outer=S.M7_COARSE_OUTER, tol=stol).x
+                fits.append(fit(prob, xc, name + "+coarse", tol=stol))
+        fits += [fit(prob, initial_x(prob, lw), name, bound=best(), tol=stol) for name, lw in starts]
         ft = min(fits, key=lambda q: q.F)
         lw = pair_wheelbase(prob) if S.M7_PAIR_START else None
         if lw is not None and abs(lw - prob.unpack(ft.x)[2][0]) > S.M7_PAIR_TOL_FT * FT:
             # pair restarts: the best fit's pose with the pair wheelbase, either axle kept in place
             for keep in ("front", "rear"):
-                fits.append(fit(prob, set_wheelbase(prob, ft.x, lw, keep), f"pairs({lw / FT:.1f},{keep})"))
+                fits.append(fit(prob, set_wheelbase(prob, ft.x, lw, keep), f"pairs({lw / FT:.1f},{keep})",
+                                bound=best(), tol=stol))  # fmt: skip
             ft = min(fits, key=lambda q: q.F)
+        if stol is not None and stol != S.M7_TOL:  # polish the chosen fit at the study's tolerance
+            pol = fit(prob, ft.x, ft.start, shape=False)
+            ft = pol if pol.F <= ft.F else ft
     if finish_fit:
         ft = finish(prob, ft)
     return prob, ft
@@ -1064,7 +1196,10 @@ def solve_track(track: Track, camera_ok=True, configs=None) -> dict:
         if prob is ref_prob:
             continue
         x0 = convert_x(ref_prob, ref_ft.x, prob)
-        alt = fit(prob, x0, "cross")
+        alt = fit(prob, x0, "cross", bound=ft.F, tol=S.M7_SEARCH_TOL)
+        if S.M7_SEARCH_TOL is not None and S.M7_SEARCH_TOL != S.M7_TOL and not alt.info.get("abandoned") and alt.F < ft.F:
+            pol = fit(prob, alt.x, "cross", shape=False)
+            alt = pol if pol.F <= alt.F else alt
         if alt.F < ft.F:
             results[i] = (prob, alt)
     results = [(p, finish(p, f)) for p, f in results]

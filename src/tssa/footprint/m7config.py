@@ -183,6 +183,19 @@ class M7Config:
     M7_START_SHIFT_FT: float = 7.0
     # a two-segment body line is kept when its cost is below this fraction of one line's
     M7_TWO_SEG_GAIN: float = 0.7
+    # speed (2026-11-11). Racing: the coarse-to-fine starts run first; from outer round M7_RACE_ROUND on, a later
+    # start, pair restart or cross refit is abandoned while its F exceeds the best finished fit's F by more than the
+    # fraction M7_RACE_MARGIN (it can no longer win). None = every fit runs to convergence (the study). On the 25 NW
+    # display solves no winner changed (exact replay of traced fits; margins 0.02-0.2 at round 4 all safe); re-run,
+    # all 25 solves were identical to the unraced solver (fail, F, L, W) (replay: about 0.81x its CPU).
+    M7_RACE_ROUND: int | None = 4
+    M7_RACE_MARGIN: float = 0.05
+    # speed (2026-11-11): outer rounds of a coarse pre-fit (wide gates; it only seeds a start). None = M7_OUTER_ITERS
+    M7_COARSE_OUTER: int | None = None
+    # speed (2026-11-11): convergence tolerance of the search fits (starts, pair restarts, cross refits); the chosen
+    # fit is then polished at M7_TOL from its pose. None = M7_TOL throughout (no polish). Off by default: with
+    # M7_COARSE_OUTER=6 and 1e-3 the 25 NW solves took 0.89x the CPU but 3 changed pass/fail and L moved up to 1.7 ft
+    M7_SEARCH_TOL: float | None = None
     # mask components kept for the observations: at least this share of the summed (area + perimeter) (the study's
     # infer.M7_MIN_COMPONENT_FRAC, applied when its SAM cache was written; tssa stores every component)
     M7_MIN_COMPONENT_FRAC: float = 0.05
