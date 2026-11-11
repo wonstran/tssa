@@ -1,7 +1,7 @@
 # tssa.footprint: vehicle ground footprint from tracked boxes (VehFootPrinter)
 
 Date: 2026-11-10
-Status: **approved by the user, 2026-11-10** (rev 4.1); rev 4.2 is an implementation note (§4.3). Q6 and Q7 answered the same day (§16); nothing is open.
+Status: **approved by the user, 2026-11-10** (rev 4.1); rev 4.2 is an implementation note (§4.3). §19 adds the validation results (2026-11-11). Q6 and Q7 answered the same day (§16); nothing is open.
 - rev 4.1: addresses [review_2026-11-10-213328.md](review_2026-11-10-213328.md) ([response](review_2026-11-10-213328-response.md)); §15 summary of invalid-projection rows only (editorial).
 - rev 4: addresses [review_2026-11-10-211138.md](review_2026-11-10-211138.md) ([response](review_2026-11-10-211138-response.md)):
   - M7 admission is separate from the box-projection gate, with three row kinds (§7.7, §7.10, §9);
@@ -821,7 +821,7 @@ The results are written into this document as a new §19.
 |---|---|---|
 | One product per call; `compare()` instead of metric-native / metric-e2e / display | a library has no eligibility rules or clip sample | no sample-independence guarantees; users build their own metric sets |
 | M7 solves per segment only (display solve) | one product | metric-run solves are not available |
-| One SAM pass for M5 and M7: every component's contour plus the raw-mask lower outline; M7 applies the 5% component rule itself | the study ran SAM twice (M5 outlines, M7 contours) | M5 identical to the study's outlines on 358 of 360 tested rows (the other 2: SAM prompted with a different batch of boxes); M7 contours identical after the 5% rule (§19) |
+| One SAM pass for M5 and M7: every component's contour plus the raw-mask lower outline; M7 applies the 5% component rule itself | the study ran SAM twice (M5 outlines, M7 contours) | M5 lower outlines identical to the study's on 200 of 200 sampled rows; M7 masks IoU ≥ 0.99 after the 5% rule (§19) |
 | Approach-direction fallback dropped | needs movement labels | never-moving tracks: M3/M4 fail `no_heading`; M7 starts from the path direction |
 | Segmentation on ground speed, not pixel jumps | `TrackSmoother` has no pixel rule | segment boundaries may differ; counted in §14.3 |
 | Native orientations folded to axes, directed toward the final motion heading | one rule for mixed-source tracks | equal to the study's while moving; differs only while stopped (hold rule) |
@@ -866,3 +866,59 @@ Each phase ends with its tests passing and a commit. The version bumps by one pa
 - How M7's process pool is started on Windows (`spawn`) and on Linux.
 - Whether `split_speed = 30 m/s` needs changing after the §14.3 segment count; reported either way.
 - Whether to vectorise M3 and M5 (the study solves them row by row).
+
+## 19. Validation results (NW clip, 2026-11-11)
+
+Run with `docs/validation/nw_clip_validation.py` (parts `native`, `grid`, `e2e`, `trap`, `m7`, `m7study`, `m7compare`,
+`estimate`) and `docs/validation/detector_check.py`, on the pinned inputs of §14.3 and the study code from the
+snapshot (§17 phase 0). The port ran on Linux (WSL2, Python 3.12, scipy 1.17); the study's reports were made on
+Windows (Python 3.14).
+
+| Check | Result | Verdict |
+|---|---|---|
+| Camera | f 319.5459, (cx, cy) (334.1009, 240.1256), height 6.7331 m; largest difference from the study 5e-8 | pass |
+| M1, M2, M3, M6 native points | 46,213 / 46,213 / 46,213 / 34,628 rows valid in both, none in one only; max difference 0 m | pass |
+| M4 native points | 2,364 rows valid in both; max difference 1.4e-9 m; `label_case` and `interior_source` equal | pass |
+| M4 counts (metric `psi_ref`) | 2,185 valid (2,175 `camera_away`, 10 `other_pair`); `front_conflict` on tracks 230 and 432 | pass |
+| M5 (`solve_m5` on the study's outlines) | 23,526 rows valid in both, no disagreement, max difference 0 m | pass |
+| M7 port vs the study's solver, same jobs, same machine | 25 / 25 same pass/fail and reason; 17 passed; L and W differences 0 ft on all | pass |
+| M7 port vs the study's run report (`20261110_161113_s0`) | 23 / 25 same pass/fail (315 `param_bound` and 452 `wheel_resid` here, passed there); on the 17 passed in both, \|dL\| median 0.11 ft, max 2.97 ft (track 176), 6 within 0.05 ft; \|dW\| max 0.21 ft | platform noise, see below |
+| Detectors, 200 sampled rows | keypoints 66 / 66 rows, max 0.15 px; cuboid corners 66 / 66, max 0.05 px; masks 68 / 68 with IoU ≥ 0.99 (min 0.99996) after the 5% component rule; M5 lower outlines from the port's single SAM pass identical to the study's M5 cache on 200 / 200 rows | pass |
+| Grid | 445 segments here, 732 in the study (426 labelled tracks) | reported, see below |
+| Smoothed M6 centres vs the study's M6 display | 32,852 rows; median 0.0014 ft, p95 0.18 ft | reported |
+| Speed trap, NB/SB through vehicles common to both | \|error\| p90 (mph) here / study: M1 0.332 / 0.332, M2 0.365 / 0.365, M3 0.384 / 0.385, M4 0.365 / 0.361, M6 0.384 / 0.384; medians within 0.006 mph | pass (study's 0.38 mph) |
+
+**M7 and the platform.** The study's own solver, run on the same jobs on the Linux machine, gives exactly the port's
+results, and differs from its Windows report in the same way the port does (the two pass/fail flips, the same \|dL\|
+per track). The Windows-vs-Linux difference is most likely floating-point differences in the least-squares path (BLAS,
+scipy version; not traced further): the fit is multi-start with pruning, so a small change in one start's final cost can change which
+start wins. The 0.05 ft gate of §14.3 therefore holds on one platform, not across platforms; across platforms expect
+a median \|dL\| near 0.1 ft, rare multi-foot outliers, and some pass/fail changes (2 of 25 here).
+
+**Grid.** Ground-speed segmentation (§9, §15) cuts far less than the study's pixel-jump rule. Of the study's 306 cuts
+inside tracks, 292 are between consecutive frames, at a median box jump of 20 px (1.3 m), and 257 of its 732 segments
+have 5 rows or fewer. Lowering `split_speed` does not reproduce the study's grid: 456 segments at 20 m/s; 558 at
+15 m/s, with 41 tracks cut less and 40 cut more than the study; 2,589 at 10 m/s. §18's question is answered: keep
+30 m/s. The coarser grid does not move the smoothed centres materially (row above) and leaves the speed trap unchanged
+on common vehicles.
+
+**Speed trap, all vehicles.** On every NB/SB through vehicle (251 to 254 per method, against the study's 139 to 167
+eligible ones), the p90 is 0.375 to 0.461 mph; the study's eligibility rules (§15, first row) are not applied here.
+
+**`estimate()` with the default chains.** On the 426 labelled tracks (54,241 rows), with every detection
+table, 21 minutes with 10 workers (0.0.2.10, nothing cached). Sources: M6 33,650 rows, M2 10,555, M7 1,980, M3 28,
+none 8,028 (rejected projections). M7 solved the 25 bus and truck segments of the port's grid: 16 passed, 4
+`param_bound`, 3 `articulated_suspect`, 2 `wheel_resid` (these segments are cut by §9, not the study's display
+segments, so the 17 / 25 above is not directly comparable). On bus and truck rows: M7 1,980 (18 of them admitted
+`kinematic`), M6 798, M2 735, M3 28; sizes `m7_measured` 394, `m7_partly_prior` 1,106, `m7_prior` 480, `nominal`
+1,579. `fp_low_confidence` is set on 1,579 rows, the fallback rows of the failed solves. Speed trap on all 253 NB/SB through vehicles:
+\|error\| median 0.20 mph, p90 0.45 mph.
+
+**M7 speed (0.0.2.10).** The 0.0.2.9 solver (the study's algorithm as ported) took about 2 minutes per 70 to 90-frame segment on one uncontended core,
+and up to 20 minutes per segment with 10 to 16 solves sharing the machine. Two changes leave the results unchanged (the 25
+display solves are identical in pass/fail, F, L and W): a finite-difference Jacobian computed in grouped evaluations
+that equals scipy's sparse 2-point Jacobian bit for bit (tested), and racing (from outer round 4, a start, pair
+restart or cross refit is dropped while its cost is more than 5% above the best finished fit). One segment
+uncontended: 113 s to 53 s (88 frames) and 132 s to 62 s (69 frames). Cheaper search settings (`M7_COARSE_OUTER`,
+`M7_SEARCH_TOL`) saved only 11% more and changed 3 pass/fail outcomes, so they are off by default. The runner gives each worker one BLAS
+thread; more workers than physical cores lengthens every solve.
