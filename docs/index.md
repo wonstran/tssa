@@ -1,5 +1,7 @@
 # tssa API Manual
 
+**Version {{ tssa_version }}** ([changelog](changelog.md))
+
 `tssa` (Transportation Surrogate Safety Analysis) turns tracked road users from roadside video into ground
 trajectories, vehicle footprints and speeds for safety measures such as post-encroachment time (PET). It is the
 analysis side of [dnt](https://wonstran.github.io/dnt/): dnt detects and tracks, and tssa works on the track files.

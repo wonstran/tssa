@@ -10,6 +10,8 @@ exclude_docs: |
   validation/
 watch:
   - src/tssa
+hooks:
+  - tools/mkdocs_version.py
 
 theme:
   name: material
