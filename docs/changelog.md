@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+- API manual at <https://wonstran.github.io/tssa/>, built with MkDocs Material and mkdocstrings from the package
+  docstrings (`pip install -e ".[docs]"`, `mkdocs serve`). It shows the package version, read from
+  `tssa.__version__`.
+- `docs` extra in `pyproject.toml`.
+- GitHub releases for every tag from v0.0.2.3.
+
 ## 0.0.2.12 (2026-11-11)
 
 - Descriptive aliases for the footprint methods: `bottom_centre` (M1), `nominal_shift` (M2), `nominal_box` (M3),
