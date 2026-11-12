@@ -36,6 +36,7 @@ dependencies = [
 
 [project.optional-dependencies]
 detect = ["torch", "ultralytics", "opencv-python", "huggingface_hub"]
+docs = ["mkdocs-material", "mkdocstrings[python]", "pymdown-extensions<11", "ruff"]
 
 [project.urls]
 Homepage = "https://its.cutr.usf.edu/dnt/"

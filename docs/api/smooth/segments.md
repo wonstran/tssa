@@ -1,0 +1,3 @@
+# Segmentation
+
+::: tssa.smooth.segments

@@ -1,0 +1,101 @@
+site_name: tssa API Manual
+site_description: API documentation generated from tssa docstrings
+repo_url: https://github.com/wonstran/tssa
+repo_name: wonstran/tssa
+docs_dir: docs
+site_dir: site
+exclude_docs: |
+  review_*.md
+  study-snapshot-*.json
+  validation/
+watch:
+  - src/tssa
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+
+nav:
+  - Home: index.md
+  - Quickstart: quickstart.md
+  - Changelog: changelog.md
+  - Footprint design: 2026-11-10-footprint-design.md
+  - API Reference:
+      - api/index.md
+      - Package: api/tssa.md
+      - Vehicle Footprints:
+          - api/footprint/index.md
+          - VehFootPrinter: api/footprint/printer.md
+          - Configuration: api/footprint/config.md
+          - Locators: api/footprint/locators.md
+          - M7 Rigid Fit: api/footprint/m7.md
+          - Detection: api/footprint/detect.md
+          - Masks: api/footprint/masks.md
+          - Geometry and Orientation: api/footprint/geometry.md
+      - Smoothing:
+          - api/smooth/index.md
+          - TrackSmoother: api/smooth/smoother.md
+          - Configuration: api/smooth/config.md
+          - Methods: api/smooth/methods.md
+          - Segmentation: api/smooth/segments.md
+      - Speed: api/speed/calculator.md
+      - Transform:
+          - api/transform/index.md
+          - Homography: api/transform/homography.md
+          - Ground Model: api/transform/ground.md
+          - Pinhole Camera: api/transform/camera.md
+          - KMZ to CSV: api/transform/kmz.md
+      - Engine:
+          - api/engine/index.md
+          - Geometry: api/engine/geometry.md
+          - Lines: api/engine/line.md
+          - Zones: api/engine/zone.md
+          - View Transform: api/engine/view_transform.md
+      - Analyses:
+          - api/core/index.md
+          - Count: api/core/count.md
+          - Lane: api/core/lane.md
+          - Speed Meters: api/core/speed.md
+          - Interaction: api/core/interact.md
+          - Near Miss: api/core/nearmiss.md
+          - Yield: api/core/yield.md
+      - Annotation: api/annotation.md
+      - Track Files: api/io.md
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+          options:
+            docstring_style: google
+            docstring_options:
+              warn_unknown_params: false
+              warn_missing_types: false
+            show_source: true
+            show_signature_annotations: true
+            separate_signature: true
+            merge_init_into_class: true
+            members_order: source
+            inherited_members: true
+            show_root_heading: true
+            show_root_full_path: false
+            heading_level: 2
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - tables
+  - toc:
+      permalink: true
