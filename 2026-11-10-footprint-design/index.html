@@ -1,0 +1,4485 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="API documentation generated from tssa docstrings">
+      
+      
+      
+      
+        <link rel="prev" href="../changelog/">
+      
+      
+        <link rel="next" href="../api/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Footprint design - tssa API Manual</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tssafootprint-vehicle-ground-footprint-from-tracked-boxes-vehfootprinter" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="tssa API Manual" class="md-header__button md-logo" aria-label="tssa API Manual" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            tssa API Manual
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Footprint design
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/wonstran/tssa" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    wonstran/tssa
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../quickstart/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Quickstart
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Footprint design
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../api/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  API Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="tssa API Manual" class="md-nav__button md-logo" aria-label="tssa API Manual" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    tssa API Manual
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/wonstran/tssa" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    wonstran/tssa
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Footprint design
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Footprint design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-intent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Intent
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Intent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-the-seven-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 The seven methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-goals-non-goals-anti-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Goals, non-goals, anti-goals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-where-it-sits-in-the-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Where it sits in the pipeline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Inputs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Inputs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-tracks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Tracks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-homography-and-the-ground-model-adapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Homography and the ground-model adapter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-detection-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Detection tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-camera-zone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Camera zone
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-changes-to-tssasmooth-the-answer-to-q4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Changes to tssa.smooth (the answer to Q4)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Changes to tssa.smooth (the answer to Q4)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-per-row-covariance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Per-row covariance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-segmenting-once-smoothing-many-times" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Segmenting once, smoothing many times
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-rts_smooth-fixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 rts_smooth fixes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-detectors-tssafootprintdetect-optional-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Detectors (tssa.footprint.detect, optional install)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Detectors (tssa.footprint.detect, optional install)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-packaging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Packaging
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-matching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Matching
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-runner-and-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Runner and cache
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-locators-before-smoothing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Locators (before smoothing)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Locators (before smoothing)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Contract
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-m1-m2-m3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 M1, M2, M3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-m4-wheel-keypoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 M4 (wheel keypoints)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-m5-sam-outline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 M5 (SAM outline)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75-m6-cuboid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 M6 (cuboid)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#76-m7-wheel-anchored-rigid-fit-scopesegment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6 M7 (wheel-anchored rigid fit), scope="segment"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#77-m7-pseudo-measurements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.7 M7 pseudo-measurements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#78-chains" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.8 Chains
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#79-shared-noise-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.9 Shared noise model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#710-shared-per-row-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.10 Shared per-row checks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#711-locate-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.11 locate() output
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-pinhole-camera-tssatransformcamera" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Pinhole camera (tssa.transform.camera)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-grid-m2-pass-and-reference-heading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Grid, M2 pass and reference heading
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-orientation-and-polygons-after-smoothing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Orientation and polygons (after smoothing)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Orientation and polygons (after smoothing)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-motion-heading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Motion heading
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-footprint-orientation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Footprint orientation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 Size
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#104-corners-and-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4 Corners and output
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-public-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Public API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Public API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-construction-and-the-main-calls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Construction and the main calls
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-compare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 compare()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-vehicle-defaults-inside-estimate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 Vehicle defaults inside estimate()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#114-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4 info
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-footprintconfig-frozen-with_overrides-like-smoothconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 FootprintConfig (frozen; with_overrides() like SmoothConfig)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-m7config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 M7Config
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-module-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Module layout
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-tests-and-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Tests and validation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Tests and validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-ported-synthetic-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1 Ported synthetic tests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-new-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2 New tests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#143-validation-run-on-the-nw-clip-not-a-unit-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3 Validation run on the NW clip (not a unit test)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-deliberate-changes-from-the-study" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Deliberate changes from the study
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-decisions-on-the-open-points-user-2026-11-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Decisions on the open points (user, 2026-11-10)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-build-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Build order
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-left-to-the-builder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Left to the builder
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-validation-results-nw-clip-2026-11-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. Validation results (NW clip, 2026-11-11)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../api/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/tssa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../api/footprint/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vehicle Footprints
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Vehicle Footprints
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/footprint/printer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VehFootPrinter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/footprint/config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/footprint/locators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Locators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/footprint/m7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M7 Rigid Fit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/footprint/detect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/footprint/masks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Masks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/footprint/geometry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Geometry and Orientation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../api/smooth/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Smoothing
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Smoothing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/smooth/smoother/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TrackSmoother
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/smooth/config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/smooth/methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/smooth/segments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Segmentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/speed/calculator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Speed
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../api/transform/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Transform
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Transform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/transform/homography/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homography
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/transform/ground/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ground Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/transform/camera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pinhole Camera
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/transform/kmz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KMZ to CSV
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../api/engine/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engine
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Engine
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/engine/geometry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Geometry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/engine/line/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/engine/zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Zones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/engine/view_transform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    View Transform
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../api/core/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analyses
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Analyses
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/core/count/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Count
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/core/lane/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lane
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/core/speed/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Speed Meters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/core/interact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interaction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/core/nearmiss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Near Miss
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/core/yield/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Yield
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/annotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Annotation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track Files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-intent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Intent
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Intent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-the-seven-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 The seven methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-goals-non-goals-anti-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Goals, non-goals, anti-goals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-where-it-sits-in-the-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Where it sits in the pipeline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Inputs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Inputs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-tracks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Tracks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-homography-and-the-ground-model-adapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Homography and the ground-model adapter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-detection-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Detection tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-camera-zone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Camera zone
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-changes-to-tssasmooth-the-answer-to-q4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Changes to tssa.smooth (the answer to Q4)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Changes to tssa.smooth (the answer to Q4)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-per-row-covariance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Per-row covariance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-segmenting-once-smoothing-many-times" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Segmenting once, smoothing many times
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-rts_smooth-fixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 rts_smooth fixes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-detectors-tssafootprintdetect-optional-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Detectors (tssa.footprint.detect, optional install)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Detectors (tssa.footprint.detect, optional install)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-packaging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Packaging
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-matching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Matching
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-runner-and-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Runner and cache
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-locators-before-smoothing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Locators (before smoothing)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Locators (before smoothing)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Contract
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-m1-m2-m3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 M1, M2, M3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-m4-wheel-keypoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 M4 (wheel keypoints)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-m5-sam-outline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 M5 (SAM outline)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75-m6-cuboid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 M6 (cuboid)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#76-m7-wheel-anchored-rigid-fit-scopesegment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6 M7 (wheel-anchored rigid fit), scope="segment"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#77-m7-pseudo-measurements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.7 M7 pseudo-measurements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#78-chains" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.8 Chains
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#79-shared-noise-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.9 Shared noise model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#710-shared-per-row-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.10 Shared per-row checks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#711-locate-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.11 locate() output
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-pinhole-camera-tssatransformcamera" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Pinhole camera (tssa.transform.camera)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-grid-m2-pass-and-reference-heading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Grid, M2 pass and reference heading
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-orientation-and-polygons-after-smoothing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Orientation and polygons (after smoothing)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Orientation and polygons (after smoothing)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-motion-heading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Motion heading
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-footprint-orientation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Footprint orientation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 Size
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#104-corners-and-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4 Corners and output
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-public-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Public API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Public API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-construction-and-the-main-calls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Construction and the main calls
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-compare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 compare()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-vehicle-defaults-inside-estimate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 Vehicle defaults inside estimate()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#114-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4 info
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-footprintconfig-frozen-with_overrides-like-smoothconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 FootprintConfig (frozen; with_overrides() like SmoothConfig)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-m7config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 M7Config
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-module-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Module layout
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-tests-and-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Tests and validation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Tests and validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-ported-synthetic-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1 Ported synthetic tests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-new-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2 New tests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#143-validation-run-on-the-nw-clip-not-a-unit-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3 Validation run on the NW clip (not a unit test)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-deliberate-changes-from-the-study" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Deliberate changes from the study
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-decisions-on-the-open-points-user-2026-11-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Decisions on the open points (user, 2026-11-10)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-build-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Build order
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-left-to-the-builder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Left to the builder
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-validation-results-nw-clip-2026-11-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. Validation results (NW clip, 2026-11-11)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="tssafootprint-vehicle-ground-footprint-from-tracked-boxes-vehfootprinter">tssa.footprint: vehicle ground footprint from tracked boxes (VehFootPrinter)<a class="headerlink" href="#tssafootprint-vehicle-ground-footprint-from-tracked-boxes-vehfootprinter" title="Permanent link">&para;</a></h1>
+<p>Date: 2026-11-10
+Status: <strong>approved by the user, 2026-11-10</strong> (rev 4.1); rev 4.2 is an implementation note (§4.3). §19 adds the validation results (2026-11-11). Q6 and Q7 answered the same day (§16); nothing is open.
+- rev 4.1: addresses <a href="../review_2026-11-10-213328/">review_2026-11-10-213328.md</a> (<a href="../review_2026-11-10-213328-response/">response</a>); §15 summary of invalid-projection rows only (editorial).
+- rev 4: addresses <a href="../review_2026-11-10-211138/">review_2026-11-10-211138.md</a> (<a href="../review_2026-11-10-211138-response/">response</a>):
+  - M7 admission is separate from the box-projection gate, with three row kinds (§7.7, §7.10, §9);
+  - the width-hold inequality now matches the study code (§7.6);
+  - one precedence rule for admission in <code>compare()</code> (§7.8, §11.2);
+  - the UTM round-trip test is split into an internal and a public tolerance (§14.2).
+- rev 3: addresses <a href="../review_2026-11-10-205948/">review_2026-11-10-205948.md</a> (<a href="../review_2026-11-10-205948-response/">response</a>):
+  - invalid projections are kept on the grid, never measured (§5.2, §9);
+  - a complete segmented-input contract for the smoother (§5.2);
+  - measurement admission follows finite positions, not <code>interp</code>, and supplied covariances are final (§5.1, §5.2, §7.9);
+  - <code>rts_smooth</code> gets a guard and the correct start time (§5.3), and orientation handles zero or one native rows (§10.2);
+  - native axes are kept on vehicles that never move, with a <code>front_known</code> flag (§10.2);
+  - OpenCV-free loading and projection, including the existing homography module (§2, §8, §13);
+  - an explicit ground-model adapter with image size (§4.2);
+  - unit-aware heading threshold (§10.1);
+  - native-only <code>compare()</code> disables admission, and keeps every row (§11.2);
+  - detector row selection is independent of the config (§6.4);
+  - a study snapshot before porting (§17, phase 0).
+- rev 2: the user's answers to rev 1's open questions (2026-11-10):
+  - <strong>Q1:</strong> the class is <code>VehFootPrinter</code>.
+  - <strong>Q2:</strong> sizes and distance settings are in <strong>feet</strong>.
+  - <strong>Q3:</strong> port <strong>M1–M7 together</strong>, not only the recommended subset.
+  - <strong>Q4:</strong> "your suggestion": take the 2 × 2 covariance path, which needs two backward-compatible additions to <code>tssa.smooth</code> (§5).
+  - <strong>Q5:</strong> <code>tssa</code> provides the detectors (keypoints, cuboids, SAM masks) and the detection-to-track matching (§6), as an optional install.
+- rev 1: first draft (M1, M2, M3, M6 only; detectors and covariance left open).</p>
+<p>Source study: <code>D:\apps\miami-win\test\speed</code> (NW afternoon clip, A1A Collins Ave &amp; 17th St), referred to below as <strong>the study</strong>. Its documents are the algorithm specification for every method; this design says how each one becomes part of <code>tssa</code>, and what changes on the way.
+- <code>docs/2026-11-05-vehicle-footprint-design.md</code> (rev 5.1), <strong>the base design</strong>: M1–M6, camera, smoothing, orientation.
+- <code>docs/2026-11-06-vehicle-footprint-run-report.md</code>, <strong>the run report</strong>: results, recommendation, large-vehicle changes, rulings R0–R23.
+- <code>docs/2026-11-08-m7-wheel-anchored-design.md</code> (rev 7), <strong>the M7 design</strong>, and <code>docs/2026-11-08-m7-build-notes.md</code>, <strong>the M7 notes</strong>: decisions made while building M7 (up to "Round limit 20 -&gt; 30", 2026-11-10).</p>
+<p>Target package: <code>tssa</code> 0.0.2.4. New subpackage <code>src/tssa/footprint/</code>, new <code>src/tssa/transform/camera.py</code> and <code>ground.py</code>, additions to <code>src/tssa/smooth/</code>, and lazy OpenCV in <code>src/tssa/transform/homography.py</code>.</p>
+<h2 id="1-intent">1. Intent<a class="headerlink" href="#1-intent" title="Permanent link">&para;</a></h2>
+<p>The study compared seven ways to get a vehicle's ground position and footprint from a DNT bbox, through one shared segmentation and smoother. This design moves all seven into <code>tssa</code>, so a later project (PET, conflicts, speed) can get vehicle footprints from tracked boxes and video without the study's scripts, and can still compare methods.</p>
+<p><code>tssa</code> already has the steps around it:
+- <code>tssa.transform.DistortedHomography</code>: image ↔ ground;
+- <code>tssa.smooth.TrackSmoother</code>: segments and smooths ground positions;
+- <code>tssa.speed.SpeedCalculator</code>: speed from smoothed positions.</p>
+<p>None of them knows where on the vehicle its input point is. Today a user projects the bbox bottom-centre (the study's M1) and smooths that. The study showed this point is the worst choice for PET: it sits <strong>4.5 ft</strong> from the consensus of the independent cues, its bias depends on direction (left turns +3.8 ft ahead), it shifts PET by up to <strong>0.43 s</strong> (p90; 0.75 s on right turns), and it reads trap speeds <strong>0.9 mph</strong> lower than M6.</p>
+<p><code>VehFootPrinter</code> supplies the missing step: <strong>video + pixel boxes → a ground reference point at the body centre, with its covariance (before smoothing) → an oriented polygon of the right size (after smoothing).</strong></p>
+<h3 id="11-the-seven-methods">1.1 The seven methods<a class="headerlink" href="#11-the-seven-methods" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Study method</th>
+<th>Needs</th>
+<th>Native output</th>
+<th>Study result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>M1</code></td>
+<td>bbox bottom-centre</td>
+<td>homography</td>
+<td>point (foot of the box, not the body centre)</td>
+<td>4.59 ft from M6; PET shift p90 0.43 s</td>
+</tr>
+<tr>
+<td><code>M2</code></td>
+<td>M1 moved half a nominal width away from the camera</td>
+<td>homography</td>
+<td>point</td>
+<td>1.65 ft from M6; |Δ speed| 0.40 mph; no inference</td>
+</tr>
+<tr>
+<td><code>M3</code></td>
+<td>nominal rectangle at the reference heading, fitted to the bbox</td>
+<td>homography, ψ_ref</td>
+<td>rectangle, orientation imposed</td>
+<td>trucks 1.4 ft from M6 (M2: 6.7 ft)</td>
+</tr>
+<tr>
+<td><code>M4</code></td>
+<td>CarFusion wheel keypoints</td>
+<td>keypoints, camera, ψ_ref</td>
+<td>point + directed heading</td>
+<td>6.1% coverage; 1.18 ft from M6</td>
+</tr>
+<tr>
+<td><code>M5</code></td>
+<td>SAM lower outline, nominal rectangle fit</td>
+<td>masks</td>
+<td>rectangle + axis</td>
+<td>58.7% coverage; e2e jitter doubles</td>
+</tr>
+<tr>
+<td><code>M6</code></td>
+<td>UrbanOmniDetect-2 cuboid bottom face</td>
+<td>cuboids</td>
+<td>measured quadrilateral + axis</td>
+<td>99.5% coverage; <strong>recommended for PET and speed</strong></td>
+</tr>
+<tr>
+<td><code>M7</code></td>
+<td>wheel-anchored rigid-body fit per segment (buses, trucks)</td>
+<td>masks, camera, M2, ψ_ref</td>
+<td>centre + directed heading + fitted L, W, covariance</td>
+<td>19 of 25 display solves pass (run <code>20261110_161113_s0</code>); the user reviewed the M7 clips on 2026-11-10</td>
+</tr>
+</tbody>
+</table>
+<p>The default chains (§7.8) follow the study's recommendation (M6 for cars) and its combined PET product (M7 for buses and trucks, M6 next, then the class fallback).</p>
+<h2 id="2-goals-non-goals-anti-goals">2. Goals, non-goals, anti-goals<a class="headerlink" href="#2-goals-non-goals-anti-goals" title="Permanent link">&para;</a></h2>
+<p><strong>Goals</strong>
+- One public class, <code>VehFootPrinter</code>, with a frozen <code>FootprintConfig</code>, in the style of <code>TrackSmoother</code> / <code>SmoothConfig</code>.
+- All seven methods as registered <strong>locators</strong> (§7), usable alone, in per-class fallback chains, or side by side (<code>compare()</code>).
+- Per row: reference point, 2 × 2 position covariance, the locator that supplied it, why the others failed, native orientation and size.
+- After smoothing, per row: footprint orientation, motion heading, length and width in feet with their source, four corners; optionally shapely polygons.
+- Detector wrappers and matching (§6), so <code>tssa</code> can go from video to footprints.
+- A pinhole camera fitted to a ground homography (§8), needed by M4 and M7.
+- The study's synthetic tests ported under <code>tests/</code>, and one validation run that reproduces the study's NW-clip results (§14).</p>
+<p><strong>Non-goals (this round)</strong>
+- The study's <strong>evaluation machinery</strong>: the three products (metric-native, metric end-to-end, display), eligibility and analysis-zone rules for metrics, plausibility table, stop mask, review clips, pinned-input hashing, sample-independence checks, camera-sensitivity reports. <code>compare()</code> gives a project what it needs to build its own.
+- M7's metric solves per eligible run. <code>tssa</code> has one product, so M7 solves once per segment, the study's display solve.
+- Manual footprint keyframes (the user decided not to annotate, 2026-11-08).
+- Training models, shipping weights, real-time processing, PET itself.</p>
+<p><strong>Anti-goals (failure even if it "works")</strong>
+- <strong>A method looks better because it was smoothed differently.</strong> Every locator goes through the same segmentation and smoother, with the same noise model (§7.9). The only exception is M7's admitted pseudo-measurements, which carry M7's own covariance and are marked (§7.7).
+- <strong>Imposed sizes reported as measured.</strong> <code>dims_source</code> says whether a size was measured, partly prior, or nominal (M7: by information, M7 design §8.3).
+- <strong>Silent drops or invented support.</strong> Every input row comes back once. A row without a reference point says which locators were tried and why each failed. An M7 row with no observation of its own is never <code>native</code>.
+- <strong>Heavy imports for light use.</strong> Without torch, ultralytics or OpenCV installed, these must work: <code>import tssa</code>; <strong>loading</strong> a saved <code>HomographyTransform</code> or <code>DistortedHomography</code> (<code>load_json</code>, <code>load_matrix</code>) and projecting with it; fitting the pinhole camera; and M1, M2, M3, M4 and M6. OpenCV is still needed to <strong>fit</strong> a new homography, and for M5 and M7, which rasterise mask contours. torch and ultralytics load only when a detector runs (§6, §8, §13).
+- <strong>Study constants or machine paths in the code.</strong> NW-clip values are defaults with a cited source; checkpoints and repository paths are arguments.
+- <strong>Silent drift from the study.</strong> Every deliberate change is listed in §15.</p>
+<h2 id="3-where-it-sits-in-the-pipeline">3. Where it sits in the pipeline<a class="headerlink" href="#3-where-it-sits-in-the-pipeline" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>video ─► detect.run(...)            keypoints, cuboids, masks    (optional; §6; or bring your own tables)
+                 │
+tracks ──────────┼─► VehFootPrinter.locate()
+                 │      1. project M1, build ONE segment grid  (TrackSmoother.segment, §5.2, §9)
+                 │      2. M2 everywhere, reference pass: smooth M2 → ψ_ref        (§9)
+                 │      3. per class, run its chain of locators on the grid        (§7)
+                 │         → seg, fp_x, fp_y, fp_cov_*, fp_source, native orientation and size
+                 ▼
+            TrackSmoother.smooth(segmented=True)  same grid, covariance columns  (§5)
+                 ▼
+            SpeedCalculator.calculate()
+                 ▼
+            VehFootPrinter.polygons()  orientation, size, corners               (§10)
+</code></pre></div>
+<p><code>estimate()</code> runs <code>locate → smooth → speed → polygons</code> with vehicle defaults (§11.3). <code>locate()</code> and <code>polygons()</code> stay public for users who want their own smoother or speed settings. <code>compare()</code> runs several methods on the same grid (§11.2).</p>
+<p>The order follows base design §8.1: segmentation is built <strong>once</strong>, before any method; reference points are fixed <strong>before</strong> smoothing; orientation and polygon come <strong>after</strong>, from the smoothed motion.</p>
+<h2 id="4-inputs">4. Inputs<a class="headerlink" href="#4-inputs" title="Permanent link">&para;</a></h2>
+<h3 id="41-tracks">4.1 Tracks<a class="headerlink" href="#41-tracks" title="Permanent link">&para;</a></h3>
+<p>A DataFrame, one row per <code>(track, frame)</code>; column names configurable (§12):</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>frame</code></td>
+<td>integer frame number, zero-based, the video's frame index</td>
+</tr>
+<tr>
+<td><code>track</code></td>
+<td>track id</td>
+</tr>
+<tr>
+<td><code>x, y, w, h</code></td>
+<td>bbox top-left and size in <strong>distorted image pixels</strong></td>
+</tr>
+<tr>
+<td><code>cls</code></td>
+<td>class id per row (DNT: 2 car, 5 bus, 7 truck). The class used is the track's majority class, <code>cls_track</code>.</td>
+</tr>
+<tr>
+<td><code>interp</code> (optional)</td>
+<td>0 detected, 1 filled upstream</td>
+</tr>
+</tbody>
+</table>
+<p><strong>All tracks of a frame should be passed</strong>, including tracks the user does not want footprints for. M7 drops outline columns that a nearer box covers, and detector matching is one-to-one over every box of a frame (run report R21). <code>locate(..., only_tracks=[...])</code> limits the output without hiding the other boxes.</p>
+<h3 id="42-homography-and-the-ground-model-adapter">4.2 Homography and the ground-model adapter<a class="headerlink" href="#42-homography-and-the-ground-model-adapter" title="Permanent link">&para;</a></h3>
+<p><code>VehFootPrinter</code> wraps whatever it is given in <code>tssa.transform.ground.GroundModel</code> (new):</p>
+<div class="highlight"><pre><span></span><code><span class="n">GroundModel</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">homography</span><span class="p">,</span> <span class="n">image_size</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GroundModel</span>
+    <span class="n">image_to_world</span><span class="p">(</span><span class="n">uv</span><span class="p">)</span> <span class="o">/</span> <span class="n">world_to_image</span><span class="p">(</span><span class="n">EN</span><span class="p">)</span>   <span class="c1"># distorted pixels &lt;-&gt; world metres</span>
+    <span class="n">undistort</span><span class="p">(</span><span class="n">uv</span><span class="p">)</span> <span class="o">/</span> <span class="n">distort</span><span class="p">(</span><span class="n">uv_u</span><span class="p">)</span>             <span class="c1"># identity when the homography has no distortion model</span>
+    <span class="n">world_to_undistorted</span><span class="p">(</span><span class="n">EN</span><span class="p">)</span>                  <span class="c1"># direct through the inner undistorted-image homography when there is one</span>
+    <span class="n">image_size</span>                                <span class="c1"># (width, height) px</span>
+</code></pre></div>
+<ul>
+<li><strong>Distortion.</strong></li>
+<li>For <code>DistortedHomography</code>, <code>undistort</code> and <code>distort</code> are its own, and <code>world_to_undistorted</code> uses its inner homography directly. The round trip through <code>distort()</code> would add the iteration error of its 20-step inverse.</li>
+<li>For <code>HomographyTransform</code>, or any object with only <code>image_to_world</code> / <code>world_to_image</code>, both are the identity and <code>world_to_undistorted = world_to_image</code>.</li>
+<li>An object that has one of <code>undistort</code> / <code>distort</code> but not the other is rejected.</li>
+<li><strong>Image size.</strong> Taken from the explicit <code>image_size</code> argument (<code>VehFootPrinter(..., image_size=(640, 480))</code>), else from the homography's <code>image_size</code> attribute (<code>DistortedHomography</code> has one). If the two disagree, <code>ValueError</code>. If neither exists, construction fails with <code>ValueError</code>: the edge flag (§7.10) and the camera's principal-point prior (§8) both need it.</li>
+<li><strong>Pixel spaces.</strong> The camera works only in undistorted pixels. Its fit targets are <code>world_to_undistorted</code> of the zone grid, and its consistency check compares <code>distort(camera.project(X, z = 0))</code> with <code>world_to_image(X)</code>, as base design §5 specifies. M4 hub points and M7 tyre candidates are undistorted before they meet the camera (M7 design §5).</li>
+</ul>
+<h3 id="43-detection-tables">4.3 Detection tables<a class="headerlink" href="#43-detection-tables" title="Permanent link">&para;</a></h3>
+<p>Written by <code>tssa.footprint.detect</code> (§6), or by the user's own pipeline in the same format. All pixels are distorted image pixels, keyed by <code>(track, frame)</code> after matching.</p>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Columns</th>
+<th>Used by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>keypoints</code></td>
+<td><code>track, frame, iou, u0, v0 … u3, v3</code> (CarFusion wheels 0 RF, 1 LF, 2 RB, 3 LB)</td>
+<td>M4, M7 (optional cue)</td>
+</tr>
+<tr>
+<td><code>cuboids</code></td>
+<td><code>track, frame, iou, gu0, gv0 … gu3, gv3</code> (bottom-face corners, any start, any winding)</td>
+<td>M6</td>
+</tr>
+<tr>
+<td><code>masks</code></td>
+<td><code>MaskTable</code>: <code>(track, frame) →</code> list of contour polygons <code>(k, 2)</code> of every mask component, largest first, plus <code>.outlines</code>: the lower outline taken from the raw mask at segmentation time</td>
+<td>M5 (the stored outline, else one rebuilt from the contours), M7 (components with at least 5% of the area)</td>
+</tr>
+</tbody>
+</table>
+<p>One SAM pass serves both M5 and M7 (the study ran SAM twice, §15):
+- M5 reads the lower outline that <code>MaskSegmenter</code> takes from the raw mask, exactly the study's M5 input. Without one (masks from elsewhere), it rebuilds the outline from the contours.
+- M7 keeps the components holding at least <code>M7_MIN_COMPONENT_FRAC</code> (5%) of the summed area + perimeter, the rule the study applied when it wrote its SAM cache. Applied to an already filtered table it keeps every component, so the study's cache works as is.</p>
+<p>rev 4.2 (implementation, 2026-11-10): rev 4.1 stored only the 5% components and rebuilt M5's outline from them. The validation run measured the cost: outlines identical to the study's on 3,769 of 4,129 bus and truck rows, and M5 validity changed on 62 of them (§19).</p>
+<h3 id="44-camera-zone">4.4 Camera zone<a class="headerlink" href="#44-camera-zone" title="Permanent link">&para;</a></h3>
+<p>M4 and M7 need the pinhole camera of §8, which is fitted over a ground region. <code>zone</code>: a shapely polygon in world metres. Helper: <code>zone_from_points(world_points, buffer_ft=15)</code> (base design §7: GCP convex hull + 15 ft). Without a zone, camera-dependent locators fail with <code>camera_invalid</code>.</p>
+<h2 id="5-changes-to-tssasmooth-the-answer-to-q4">5. Changes to <code>tssa.smooth</code> (the answer to Q4)<a class="headerlink" href="#5-changes-to-tssasmooth-the-answer-to-q4" title="Permanent link">&para;</a></h2>
+<p><strong>Recommendation.</strong> Use the study's full measurement covariance, not a scalar σ. Two reasons:
+- The ground scale of a pixel is strongly directional in this view: the largest-to-smallest ratio has median 3.3 and p95 5.0 (base design §9). A scalar σ under-smooths along the camera ray and over-smooths across it.
+- M7's display pseudo-measurements carry their own 2 × 2 covariance (M7 design §9.3). A per-row covariance column carries them with no special path, replacing the study's <code>R_override</code>.</p>
+<p>All additions below are backward compatible: calls that use none of the new arguments give identical results, and the existing smooth and speed tests must pass unchanged.</p>
+<h3 id="51-per-row-covariance">5.1 Per-row covariance<a class="headerlink" href="#51-per-row-covariance" title="Permanent link">&para;</a></h3>
+<p><code>SmoothConfig.cov_cols: tuple[str, str, str] | None = None</code>: names of per-row covariance columns <code>(xx, xy, yy)</code> in m². Three columns make <code>R</code> symmetric by construction.
+- The <code>rts</code> kind uses them as the measurement covariance <code>R</code> on measured rows where all three are finite; otherwise <code>sigma_col</code>; otherwise the method's <code>sigma</code>.
+- <strong>A supplied covariance is final.</strong> <code>fill_scale</code> is applied only to noise that comes from <code>sigma_col</code> or the method's <code>sigma</code>, never to <code>cov_cols</code>. Whoever writes the covariance applies any inflation. For <code>VehFootPrinter</code> that rule is §7.9.
+- A measured row whose covariance is not positive definite (<code>xx &gt; 0</code>, <code>yy &gt; 0</code>, <code>xx·yy − xy² &gt; 0</code>) raises <code>ValueError</code>.
+- Kinds without a noise model (<code>ma</code>, <code>sg</code>) ignore it, as they ignore <code>sigma_col</code> today.</p>
+<h3 id="52-segmenting-once-smoothing-many-times">5.2 Segmenting once, smoothing many times<a class="headerlink" href="#52-segmenting-once-smoothing-many-times" title="Permanent link">&para;</a></h3>
+<p><strong><code>TrackSmoother.segment(tracks, ref_tracks=None, allow_missing=False) -&gt; DataFrame</code></strong></p>
+<p>The public form of today's <code>_grid</code>. It returns the <strong>structural</strong> table only: <code>track, frame, seg, seg_len, interp, fill_reason, gap_id</code>, one row per input row plus the inserted rows (<code>interp = 2</code>). No positions are returned, so none can be reused by mistake.</p>
+<p>With <code>allow_missing=True</code>, rows with a non-finite position are accepted and <strong>kept</strong>:
+- Jump detection and gap classification use only the finite rows. A run of missing rows between two finite rows counts as part of the gap between them.
+- <strong>Interior run, gap filled</strong> (short enough, plausible implied speed, no jump): the missing rows stay in the segment with their own <code>interp</code> (0 or 1) and <code>fill_reason = "no_position"</code>. Frames with no row at all are inserted as today (<code>interp = 2</code>).
+- <strong>Interior run, gap not filled:</strong> the track is split there, and the missing rows get <code>seg = −1</code>, <code>fill_reason = "no_position"</code>.
+- <strong>Prefix, suffix, or whole track</strong> (missing rows before a track's first finite row, after its last, or on a track with no finite row): <code>seg = −1</code>, <code>fill_reason = "no_position"</code>. They are never extrapolated.</p>
+<p>Without <code>allow_missing</code>, a non-finite position raises, as today.</p>
+<p><strong><code>TrackSmoother.smooth(tracks, ref_tracks=None, segmented=False)</code></strong></p>
+<p>With <code>segmented=True</code>, the input already carries the structural columns <code>seg, interp, fill_reason</code> (from <code>segment()</code> or from <code>VehFootPrinter.locate()</code>). Then:
+- <strong>No re-segmentation.</strong> The input is validated: no repeated <code>(track, frame)</code>, and every <code>(track, seg ≥ 0)</code> has consecutive frames; otherwise <code>ValueError</code>. <code>seg_len</code> is recomputed. <code>seg</code>, <code>interp</code> and <code>fill_reason</code> are input columns in this mode, so they pass through unchanged and are not clashes. The smoother adds only <code>&lt;pos&gt;_smooth</code> and <code>fallback</code> (or the <code>compare()</code> columns).
+- <strong>Measurement admission follows the positions, not <code>interp</code>.</strong> A row is a measurement exactly when it has <code>seg ≥ 0</code> and both position values are finite. <code>interp</code> is provenance only. It selects <code>fill_scale</code> for σ-based noise on <code>interp = 1</code> rows, and it no longer clears observations. A finite position on an <code>interp = 2</code> row (an M7 pseudo-measurement on an inserted frame, §7.7) is measured.
+- <strong>Nothing from the segmentation pass is reused.</strong> Observations come only from this call's position columns. Kinds that need a value on every row (<code>ma</code>, <code>sg</code>, and the short-segment fallback) get this call's measurements linearly interpolated across unmeasured rows of the segment, and held constant before the first and after the last measurement.
+- <strong>Coordinates.</strong> The local origin is computed from this call's finite positions (floor of the minimum, as today), and the output is returned in input coordinates, rounded to three decimals like every added numeric column today.
+- <strong>Segments without enough measurements:</strong>
+  - 0 measured rows: NaN positions, <code>fallback = 1</code>;
+  - 1 measured row: that position on that row, NaN elsewhere, <code>fallback = 1</code>;
+  - fewer than the method's minimum otherwise: the interpolated raw positions, <code>fallback = 1</code>, as today.
+- <strong><code>seg = −1</code> rows</strong> are returned with NaN positions and <code>fallback = 1</code>.</p>
+<p>Without <code>segmented</code>, behaviour is unchanged.</p>
+<p>This is how one segmentation serves every method, as the study required (base design §7, anti-goal 1), without any method seeing another's positions.</p>
+<h3 id="53-rts_smooth-fixes">5.3 <code>rts_smooth</code> fixes<a class="headerlink" href="#53-rts_smooth-fixes" title="Permanent link">&para;</a></h3>
+<p><code>tssa.smooth.methods.rts_smooth</code> needs two fixes, both found by the review:
+- <strong>Guard.</strong> Fewer than 2 measured rows raises <code>ValueError</code> with a clear message, not <code>IndexError</code>. Every caller checks first (§5.2, §10.2).
+- <strong>Start time.</strong> The forward pass starts at the first measured row <code>i0</code>, from the state of rows <code>i0</code>, <code>i1</code> as today. Rows before <code>i0</code> take the smoothed state at <code>i0</code>, extrapolated backward at its constant velocity: <code>x_k = x̂_{i0} − (i0 − k)·dt·v̂_{i0}</code>. Today the filter starts at row 0 with the state of row <code>i0</code>. On exact constant-velocity data with a 10-frame missing prefix, that gives 1.54 m at frame 0 where the truth is 0.
+- Existing callers are unaffected: today every segment starts with a measured row (inserted rows lie only between observations), so <code>i0 = 0</code>.</p>
+<h2 id="6-detectors-tssafootprintdetect-optional-install">6. Detectors (<code>tssa.footprint.detect</code>, optional install)<a class="headerlink" href="#6-detectors-tssafootprintdetect-optional-install" title="Permanent link">&para;</a></h2>
+<h3 id="61-packaging">6.1 Packaging<a class="headerlink" href="#61-packaging" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Extra: <code>pip install tssa[detect]</code> adds <code>torch</code>, <code>ultralytics</code>, <code>opencv-python</code>, <code>huggingface_hub</code>. <code>requirements.txt</code> already lists OpenCV.</li>
+<li>Every import of these is lazy, inside the function that needs it. A missing package raises <code>ImportError</code> naming the extra.</li>
+<li><strong>UrbanOmniDetect-2 is not pip-installable.</strong> <code>CuboidDetector(weights, repo_root)</code> puts <code>repo_root</code> first on <code>sys.path</code> and imports <code>v2.hybrid_v2</code> before loading, as the study's <code>infer.load_uod</code> does.</li>
+<li>No weights ship with <code>tssa</code>. The keypoint model downloads from Hugging Face at a <strong>pinned revision</strong> (default: the study's <code>48b5795f3b79cdfe7ff6588812aa388a6a7fdd9d</code> of <code>kiselyovd/vehicle-keypoints</code>, <code>weights.pt</code>). An unpinned revision raises.</li>
+</ul>
+<h3 id="62-classes">6.2 Classes<a class="headerlink" href="#62-classes" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Model</th>
+<th>Output table</th>
+<th>Study defaults</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>KeypointDetector(repo, filename, revision, conf=0.08, imgsz=640)</code></td>
+<td>CarFusion YOLO pose</td>
+<td><code>keypoints</code></td>
+<td><code>infer.run_keypoints</code></td>
+</tr>
+<tr>
+<td><code>CuboidDetector(weights, repo_root, conf=0.08, imgsz=640, prefer_cls=(2, 5, 7))</code></td>
+<td>UrbanOmniDetect-2</td>
+<td><code>cuboids</code></td>
+<td><code>infer.run_uod</code></td>
+</tr>
+<tr>
+<td><code>MaskSegmenter(weights, min_component_frac=0.0)</code></td>
+<td>SAM2.1, box-prompted with each track bbox</td>
+<td><code>masks</code></td>
+<td><code>infer.run_sam_full</code></td>
+</tr>
+</tbody>
+</table>
+<p>Full-frame inference for keypoints and cuboids; SAM is prompted with the requested rows' boxes (all of a frame in one call). Masks are <code>&gt; 0.5</code>, resized to the frame if needed, and stored as external contours (<code>CHAIN_APPROX_NONE</code>) of every component (by default), largest first, together with the row's lower outline from the raw mask.</p>
+<h3 id="63-matching">6.3 Matching<a class="headerlink" href="#63-matching" title="Permanent link">&para;</a></h3>
+<p><code>match_frame(track_xyxy, det_xyxy, min_iou=0.3, det_cls=None, prefer=None)</code>: one-to-one assignment of detections to <strong>every</strong> track box of the frame, maximising total IoU (<code>scipy.optimize.linear_sum_assignment</code>), edges below <code>min_iou</code> removed, preferred classes first (run report R21). It needs only numpy and scipy, so it lives in the core package (<code>footprint/match.py</code>) for users with their own detectors.</p>
+<h3 id="64-runner-and-cache">6.4 Runner and cache<a class="headerlink" href="#64-runner-and-cache" title="Permanent link">&para;</a></h3>
+<p><div class="highlight"><pre><span></span><code><span class="n">tables</span> <span class="o">=</span> <span class="n">detect</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">video</span><span class="p">,</span> <span class="n">tracks</span><span class="p">,</span> <span class="n">detectors</span><span class="o">=</span><span class="p">[</span><span class="n">KeypointDetector</span><span class="p">(),</span> <span class="n">CuboidDetector</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">root</span><span class="p">),</span> <span class="n">MaskSegmenter</span><span class="p">(</span><span class="n">w</span><span class="p">)],</span>
+                    <span class="n">rows</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cache_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>          <span class="c1"># -&gt; {"keypoints": df, "cuboids": df, "masks": MaskTable}</span>
+</code></pre></div>
+- Frames are read once, sequentially (<code>cv2.VideoCapture</code>), and every detector runs on each frame read.
+- <strong>Two separate inputs.</strong>
+  - <code>tracks</code> is the <strong>matching context</strong>: every box of every frame. It is always used whole, for the one-to-one matching of §6.3, however few rows are requested.
+  - <code>rows</code> selects the <strong>output</strong> (and cached) rows.
+- <strong><code>rows</code> default, independent of any configuration:</strong> every row of <code>tracks</code>, for every detector. The runner knows nothing about chains.
+- <strong>To infer only what a configuration needs</strong>, ask the printer: <code>vfp.required_rows(tracks) -&gt; {"keypoints": df, "cuboids": df, "masks": df}</code>. It returns, per table, the rows of tracks whose class chain contains a locator that needs that table (a custom car chain with M5 makes car rows appear under <code>masks</code>). Pass the result as <code>rows=</code>, either as one dict or per detector.
+- <strong>Cache</strong> (base design §10), optional: <code>cache_dir/&lt;detector&gt;/&lt;key&gt;/</code>, where <code>key</code> hashes the video file, the <strong>full</strong> track table (the matching context), the weights (file SHA-256 or HF revision), the detector parameters and a per-detector <code>CODE_VERSION</code>. A changed setting gives a new key, never silent reuse. A run infers only rows the cache lacks, and saves every 200 frames. <code>MaskTable</code> is stored as <code>npz</code>. The study's lesson applies: arrays are read once per load, not per row (run report, "Performance fix").</p>
+<h2 id="7-locators-before-smoothing">7. Locators (before smoothing)<a class="headerlink" href="#7-locators-before-smoothing" title="Permanent link">&para;</a></h2>
+<h3 id="71-contract">7.1 Contract<a class="headerlink" href="#71-contract" title="Permanent link">&para;</a></h3>
+<p><div class="highlight"><pre><span></span><code><span class="nd">@register_locator</span><span class="p">(</span><span class="s2">"M5"</span><span class="p">,</span> <span class="n">needs</span><span class="o">=</span><span class="p">(</span><span class="s2">"masks"</span><span class="p">,),</span> <span class="n">scope</span><span class="o">=</span><span class="s2">"row"</span><span class="p">,</span> <span class="n">point_only</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">locate_m5</span><span class="p">(</span><span class="n">rows</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">LocateContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LocatorResult</span><span class="p">:</span> <span class="o">...</span>
+</code></pre></div>
+- <code>scope="row"</code>: the locator sees any subset of rows. <code>scope="segment"</code> (M7): it sees whole segments of the grid, consecutive frames including filled ones.
+- <code>ctx</code>: the homography, the camera (or None), the config, the grid with <code>cls_track</code>, <code>ref_heading_deg</code> and the M2 points, and the detection tables by name.
+- <code>LocatorResult</code>, arrays aligned to <code>rows</code>:
+  - <code>ok</code>, <code>fail_reason</code>;
+  - <code>x, y</code> (world m);
+  - optional <code>cov</code> (n, 2, 2): only M7 supplies one; the others get the shared model of §7.9;
+  - <code>orient_deg</code>, <code>orient_kind</code> (<code>axis</code> / <code>directed</code> / <code>none</code>);
+  - <code>len_ft</code>, <code>wid_ft</code> (measured size, or NaN);
+  - <code>support</code> (<code>native</code> / <code>kinematic</code>);
+  - an extras dict of diagnostic columns, namespaced by the method (<code>m4_*</code>, <code>m5_*</code>, <code>m7_*</code>).
+- A locator whose <code>needs</code> are not supplied fails every row with <code>not_supplied</code>.</p>
+<p>Algorithms are <strong>ported from the study's code</strong>, not rewritten. §7.2–7.7 name the source and say only what changes.</p>
+<h3 id="72-m1-m2-m3">7.2 M1, M2, M3<a class="headerlink" href="#72-m1-m2-m3" title="Permanent link">&para;</a></h3>
+<p>Ported from <code>geometry.m1_points</code>, <code>geometry.m2_points</code> and <code>m3.solve_m3</code> (base design §6):
+- <strong>M1</strong> is <code>point_only</code>: <code>polygons()</code> gives it no corners.
+- <strong>M2:</strong> <code>away = unit(world(u, v − 1) − world(u, v))</code> at the bbox bottom-centre; moved <code>W_nom / 2</code> along it.
+- <strong>M3:</strong> solve the centre so the nominal rectangle at <code>ψ_ref</code> has its lowest projected corner on the bbox bottom and its projected horizontal midpoint at the bbox centre. LM from the M2 point; valid below 0.5 px. Fail reasons <code>no_heading</code>, <code>no_solution</code>. The orientation is <code>ψ_ref</code>, imposed.</p>
+<h3 id="73-m4-wheel-keypoints">7.3 M4 (wheel keypoints)<a class="headerlink" href="#73-m4-wheel-keypoints" title="Permanent link">&para;</a></h3>
+<p>Ported from <code>m4.solve_m4</code> and <code>m4.front_conflict</code> (base design §6.1). Unchanged, including:
+- the four label permutations;
+- the interior side from the other pair or from camera-away, never from the labels;
+- the hub-to-contact drop, because the landmark is the hub (run report: confirmed on crops; <code>wheel_landmark = "hub"</code> in the config);
+- the per-track <code>front_conflict</code> flag.</p>
+<p>Fail reasons: <code>no_match</code>, <code>no_valid_pair</code>, <code>side_ambiguous</code>, <code>camera_invalid</code>, <code>no_heading</code>. Extras: <code>m4_pair_side, m4_label_case, m4_interior_source, m4_side_reject, m4_front_flipped, m4_wheelbase_ft, m4_track_ft, m4_front_conflict</code>.</p>
+<h3 id="74-m5-sam-outline">7.4 M5 (SAM outline)<a class="headerlink" href="#74-m5-sam-outline" title="Permanent link">&para;</a></h3>
+<p>Ported from <code>m5.native_m5</code>:
+- lower outline from the mask contours;
+- R23: drop points more than 1 px below the bbox bottom;
+- fit a nominal-size rectangle from fixed starts at 0/45/90/135° (R19);
+- R20: mirror the fit away from the camera.</p>
+<p>Fail reasons: <code>no_match</code>, <code>few_columns</code> (&lt; 8), <code>fit_residual</code> (&gt; <code>m5_max_resid_ft</code>, 1.0 ft, untuned in the study). Extras: <code>m5_cols, m5_resid_ft, m5_sides, m5_flipped</code>.</p>
+<h3 id="75-m6-cuboid">7.5 M6 (cuboid)<a class="headerlink" href="#75-m6-cuboid" title="Permanent link">&para;</a></h3>
+<p>Ported from <code>m6.native_m6</code> and <code>face_geometry</code>:
+- project the four corners;
+- opposite-edge means give length and width;
+- doubled-angle mean of the long edges gives the axis;
+- the corner mean is the reference point.</p>
+<p>Fail reasons: <code>no_match</code> (no row, IoU &lt; 0.3, non-finite), <code>implausible_size</code> (length or width under <code>m6_size_gate</code> = 0.5 of nominal; run report "Large-vehicle handling"). The raw projected corners are kept as <code>m6_raw_c1x … m6_raw_c4y</code>, with <code>m6_len_ft, m6_wid_ft, m6_iou</code>.</p>
+<h3 id="76-m7-wheel-anchored-rigid-fit-scopesegment">7.6 M7 (wheel-anchored rigid fit), <code>scope="segment"</code><a class="headerlink" href="#76-m7-wheel-anchored-rigid-fit-scopesegment" title="Permanent link">&para;</a></h3>
+<p>Ported from <code>m7.py</code>, <code>m7_candidates.py</code>, and the job and table parts of <code>m7_runner.py</code>, <strong>in the state of 2026-11-10</strong> (run <code>20261110_161113_s0</code>). This is the M7 design rev 7 plus the M7 notes' later decisions:
+- front rule <code>travel</code> (2026-11-09);
+- width held at the class prior when the silhouette resolves width <strong>coarser</strong> than the threshold (2026-11-10). The study code is authoritative (<code>m7.py</code>: <code>w_held = M7_W_HOLD_FT_PER_PX is not None and w_ft_per_px &gt; M7_W_HOLD_FT_PER_PX</code>):
+  - <code>w_ft_per_px</code> is the width change per pixel of far-end silhouette, median over frames (<code>width_resolution</code>). Larger means coarser.
+  - Held when <code>w_ft_per_px &gt; 0.3</code>, a strict inequality: exactly 0.3 is <strong>not</strong> held.
+  - <code>w_ft_per_px = inf</code> (no frame's extreme column moves with W) is held.
+  - <code>w_hold_ft_per_px = None</code> never holds.
+- a width on its bound does not fail the solve (<code>M7_W_BOUND_FAILS = False</code>);
+- fitted tyre inset;
+- tyre lowest-point model;
+- image-edge σ;
+- pair-wheelbase restarts;
+- 30 outer rounds;
+- tandem and far-side targets off.</p>
+<p>All <code>M7_*</code> settings move into <code>FootprintConfig.m7</code> (§12.2) with these values.</p>
+<p><strong>Per segment</strong> of a cls 5/7 track (<code>m7_classes</code>):
+1. <strong>Frozen observations:</strong> <code>frame_obs_from_mask</code> on every row with a mask. Other boxes of the same frame come from the full track table (§4.1).
+2. <strong>Initial pose</strong> (study <code>m7_runner._init_pose</code>, then <code>m7.initial_x</code>):
+   - centre: the M2 points (§9), linearly interpolated across rows without one;
+   - heading: <code>ψ_ref</code> interpolated as a unit vector, or the path direction where <code>ψ_ref</code> is missing.
+3. <strong>Fit:</strong> <code>solve_track</code>. Segments shorter than <code>min_support_frames</code> (10) fail with <code>too_few_frames</code>.
+4. <strong>Rows:</strong>
+   - <code>wheels2</code> / <code>wheel_front</code> / <code>wheel_rear</code> / <code>silhouette</code> rows are <code>native</code>;
+   - <code>kinematic</code> rows are <code>ok = False</code>, <code>fail_reason = no_observation</code>, and their pose is kept in <code>m7_x, m7_y, m7_psi_deg</code>;
+   - a failed solve fails every row with its gate reason (<code>param_bound</code>, <code>wheel_resid</code>, <code>articulated_suspect</code>, …).</p>
+<p><strong>Runtime.</strong>
+- The study's 49 solves took 46 min wall on 12 workers; one 592-frame truck segment alone took 45 min.
+- <code>VehFootPrinter(..., workers=N)</code> solves segments in a process pool (one BLAS thread each).
+- <code>cache_dir</code> stores each solve under a key that hashes its observations, initial pose, camera, the <code>m7</code> settings and the solver's code version (study <code>m7_runner.job_key</code>).</p>
+<p>Extras: the M7 design §9.4 columns with the <code>m7_</code> prefix (support, own pose, per-solve parameters, size sources, uncertainty, flags), plus <code>m7_w_held</code>.</p>
+<h3 id="77-m7-pseudo-measurements">7.7 M7 pseudo-measurements<a class="headerlink" href="#77-m7-pseudo-measurements" title="Permanent link">&para;</a></h3>
+<p>M7 design §9.3, user decision Q2, adapted to the one-product world.
+- <strong>Admission</strong> (the study's predicate, <code>products._product</code>): a row becomes a measurement when
+  - its segment's M7 solve passed,
+  - <code>m7_support = kinematic</code>, and
+  - its M7 pose and <code>m7_cov_centre</code> are finite.</p>
+<p><strong>Nothing about the box is checked.</strong> Admission does not look at the projection gate (§7.10), the box fields or the Jacobian, so it applies to all three row kinds of §7.10 that lie in a segment (<code>seg ≥ 0</code>):
+  - <strong>inserted frames</strong> (<code>interp = 2</code>): no box at all;
+  - <strong>original rows whose projection was rejected:</strong> inside a segment, <code>fill_reason = "no_position"</code>. Admission overrides the rejection, as in the study, where the display gate was <code>proj_valid</code> and admission ignored it. The M7 pose comes from the camera and motion model, not from the bbox bottom.
+  - <strong>original rows with a valid projection.</strong></p>
+<p><strong>Never admitted:</strong> rows with <code>seg = −1</code>, which belong to no segment and no solve. The smoother measures any segment row with a finite position (§5.2), so an admitted point is used, not cleared.
+- <strong>No box-derived values on admitted rows.</strong> Their <code>fp_x, fp_y</code> is the M7 pose and their covariance is the one below. <code>fp_sigma</code> is computed from it; no box, Jacobian or <code>fill_meas_scale</code> enters.
+- <strong>Native M7 rows are gated like any box row,</strong> also as in the study (<code>nat_ok = native_valid &amp; gate</code>): a <code>wheels2</code> / <code>wheel_*</code> / <code>silhouette</code> row whose projection was rejected is <strong>not</strong> used as a native measurement. It is not admitted either, because admission requires <code>kinematic</code> support, so the next locator in the chain tries it.
+- <strong>Covariance:</strong> <code>R = kin_meas_scale² · m7_cov_centre + (kin_sd_floor_ft · 0.3048)² · I</code> (defaults 2.0 and 0.5 ft). It is final (§5.1), so no <code>interp</code>-based inflation is added, whatever the row's <code>interp</code>.
+- <strong>Marking:</strong> <code>fp_source = "M7"</code>, <code>fp_support = "kinematic"</code>.
+- <strong>Precedence:</strong> M7 native rows, then admitted rows, then the next locator in the chain.
+- <code>admit_kinematic=False</code> turns it off, giving the study's metric behaviour (no pseudo-measurements).</p>
+<h3 id="78-chains">7.8 Chains<a class="headerlink" href="#78-chains" title="Permanent link">&para;</a></h3>
+<p>Each class has an ordered chain. The <strong>first locator that succeeds</strong> on a row supplies its reference point. Defaults:</p>
+<table>
+<thead>
+<tr>
+<th><code>cls_track</code></th>
+<th>Default chain</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2 car</td>
+<td><code>M6 → M2</code></td>
+<td>run report recommendation</td>
+</tr>
+<tr>
+<td>5 bus</td>
+<td><code>M7 → M6 → M2</code></td>
+<td>M7 design §9.3 and §9.6</td>
+</tr>
+<tr>
+<td>7 truck</td>
+<td><code>M7 → M6 → M3 → M2</code></td>
+<td>same; <code>FALLBACK_BY_CLASS = {7: "M3"}</code>; the final M2 catches rows with no heading</td>
+</tr>
+<tr>
+<td>other</td>
+<td><code>M2</code>, with <code>default_size_ft</code></td>
+<td>my call</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Locators whose tables were not supplied fail with <code>not_supplied</code>, so without detections the chains reduce to <code>M2</code> / <code>M3 → M2</code>.</li>
+<li>M4 and M5 are in no default chain (the study rejected them for production). Users add them through <code>chains</code>.</li>
+<li><strong>Aliases</strong> (added in 0.0.2.12, Q7 in §16): <code>bottom_centre</code> M1, <code>nominal_shift</code> M2, <code>nominal_box</code> M3, <code>wheel_keypoints</code> M4, <code>sam_outline</code> M5, <code>cuboid</code> M6, <code>wheel_fit</code> M7. Chains and <code>compare()</code> accept either name; the printer resolves aliases when it is built, so results (<code>fp_source</code>, <code>fp_fail</code>, <code>method</code>) always carry the <code>M</code> name. <code>register_locator(..., aliases=...)</code> and <code>register_alias()</code> add names for user locators.</li>
+<li><strong>A chain of one locator</strong> has no fallback: failed rows have no measurement, and the smoother predicts them. For M7 this is the study's <strong>native-only</strong> product only with <code>admit_kinematic=False</code>; with admission on (the default), kinematic rows are still measured. <code>compare(fallback=None)</code> turns admission off for you (§11.2).</li>
+<li><strong>Mixing sources</strong> inside a track adds jumps, because the locators disagree by 1–2 ft (cars: M2 vs M6 1.6 ft). <code>fp_source</code> records it per row.</li>
+</ul>
+<h3 id="79-shared-noise-model">7.9 Shared noise model<a class="headerlink" href="#79-shared-noise-model" title="Permanent link">&para;</a></h3>
+<p>For every locator except M7's admitted rows, the measurement covariance is the study's (<code>smoothlib.methods.measurement_cov</code>):
+<div class="highlight"><pre><span></span><code>R = (sigma_k · h)² · J Jᵀ      J = 1-px Jacobian of image_to_world at the bbox bottom-centre, h = box height
+</code></pre></div>
+<code>sigma_k</code> = 0.03 (study <code>RTS_SIGMA_K</code>). It comes from the box, not from the locator, so no locator looks steadier because it was given a smaller σ. It is written as <code>fp_cov_xx, fp_cov_xy, fp_cov_yy</code>, plus <code>fp_sigma = sqrt(trace(R) / 2)</code> for smoothers that take a scalar.</p>
+<p><strong>Scaling by support type.</strong> Supplied covariances are final (§5.1), so <code>locate()</code> applies every inflation itself:</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>Covariance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>box-based locator (M1–M7 native) on an original row with a valid projection, <code>interp = 0</code></td>
+<td><code>R</code> as above</td>
+</tr>
+<tr>
+<td>box-based locator, <code>interp = 1</code> (box filled upstream)</td>
+<td><code>fill_meas_scale² · R</code>, <code>fill_meas_scale</code> = 4.0 (study <code>FILL_MEAS_SCALE</code>, applied as in the study's <code>smooth_series</code>)</td>
+</tr>
+<tr>
+<td>M7 admitted pseudo-measurement, any <code>interp</code></td>
+<td>§7.7, no further scaling</td>
+</tr>
+<tr>
+<td>no reference point</td>
+<td>NaN; the row is not measured</td>
+</tr>
+</tbody>
+</table>
+<p><code>fp_sigma</code> is computed from the scaled <code>R</code>. A smoother given <code>sigma_col="fp_sigma"</code> instead of the covariance columns would apply its own <code>fill_scale</code> on top, so <code>estimate()</code> always passes the covariance columns (§11.3).</p>
+<h3 id="710-shared-per-row-checks">7.10 Shared per-row checks<a class="headerlink" href="#710-shared-per-row-checks" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Three row kinds.</strong> <code>fp_row_kind</code> tells them apart; <code>fp_proj_valid</code> is the gate result (False on inserted rows, as the study's <code>proj_valid</code>):</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><code>fp_row_kind</code></th>
+<th>Row</th>
+<th>Box observation</th>
+<th>M7 admission (§7.7)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>box</code></td>
+<td>original row, projection valid</td>
+<td>yes: every locator may run</td>
+<td>if <code>kinematic</code></td>
+</tr>
+<tr>
+<td><code>box_rejected</code></td>
+<td>original row, projection rejected</td>
+<td>no: every <strong>native</strong> locator fails it with <code>projection</code></td>
+<td>if <code>seg ≥ 0</code> and <code>kinematic</code></td>
+</tr>
+<tr>
+<td><code>inserted</code></td>
+<td>frame inserted into a gap (<code>interp = 2</code>), no box</td>
+<td>no: row-scope locators are not run, <code>fp_fail = "no_box"</code>. M7's segment solve spans the frame but has no observation there, so the frame is <code>kinematic</code>.</td>
+<td>if <code>kinematic</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Projection gate</strong> (base design §7), on original rows only: the bottom-centre projection is invalid when non-finite, when the local scale (largest singular value of <code>J</code>) exceeds <code>max_ft_per_px</code> (2.0), or, if a <code>zone</code> is given, when it is outside the zone buffered by <code>gate_buffer_ft</code> (100). The gate governs <strong>box observations</strong> (every locator's native result). It does not govern M7 admission.</li>
+<li><strong>Image edge:</strong> <code>fp_edge = True</code> when the bbox is within <code>edge_px</code> (2) of an image border. A flag only.</li>
+</ul>
+<h3 id="711-locate-output">7.11 <code>locate()</code> output<a class="headerlink" href="#711-locate-output" title="Permanent link">&para;</a></h3>
+<p>Input columns first, unchanged; the grid's inserted rows are added (<code>interp = 2</code>). <strong>Every input row is present exactly once</strong>, including rows with an invalid projection (<code>seg = −1</code> or <code>fill_reason = "no_position"</code>, §9) and rows of tracks outside <code>only_tracks</code> (which keep their structural columns but get no <code>fp_*</code> values). Then:</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cls_track</code>, <code>seg</code>, <code>fill_reason</code>, <code>gap_id</code></td>
+<td>class and the shared grid (§5.2). The input's <code>interp</code> is updated in place, as <code>TrackSmoother</code> does.</td>
+</tr>
+<tr>
+<td><code>fp_x, fp_y</code></td>
+<td>reference point (world m); NaN when no locator succeeded</td>
+</tr>
+<tr>
+<td><code>fp_cov_xx, fp_cov_xy, fp_cov_yy</code>, <code>fp_sigma</code></td>
+<td>§7.9 / §7.7</td>
+</tr>
+<tr>
+<td><code>fp_source</code></td>
+<td>supplying locator, or <code>none</code></td>
+</tr>
+<tr>
+<td><code>fp_support</code></td>
+<td><code>native</code>, <code>kinematic</code> (M7 admitted) or empty</td>
+</tr>
+<tr>
+<td><code>fp_fail</code></td>
+<td>failures before it, <code>;</code>-joined, e.g. <code>M7:param_bound;M6:implausible_size</code></td>
+</tr>
+<tr>
+<td><code>fp_orient_deg, fp_orient_kind</code></td>
+<td>native orientation of the supplying locator</td>
+</tr>
+<tr>
+<td><code>fp_len_ft, fp_wid_ft</code></td>
+<td>measured size of the supplying locator (M6, M7), else NaN</td>
+</tr>
+<tr>
+<td><code>fp_row_kind</code>, <code>fp_proj_valid</code></td>
+<td><code>box</code> / <code>box_rejected</code> / <code>inserted</code>, and the gate result (§7.10)</td>
+</tr>
+<tr>
+<td><code>fp_edge</code>, <code>ref_heading_deg</code></td>
+<td>§7.10, §9</td>
+</tr>
+<tr>
+<td><code>m4_*</code>, <code>m5_*</code>, <code>m6_*</code>, <code>m7_*</code></td>
+<td>extras of every locator that ran on the row</td>
+</tr>
+</tbody>
+</table>
+<h2 id="8-pinhole-camera-tssatransformcamera">8. Pinhole camera (<code>tssa.transform.camera</code>)<a class="headerlink" href="#8-pinhole-camera-tssatransformcamera" title="Permanent link">&para;</a></h2>
+<p>Ported from the study's <code>camera.py</code> (base design §5). It is a transform, so it goes into <code>tssa.transform</code> next to the homography.
+- <code>PinholeCamera</code>: <code>project(XYZ)</code> (world 3-D → undistorted px) and <code>ray(uv)</code>.
+- <code>PinholeCamera.fit(homography, zone, f_fixed=None, free_principal=True, pp_prior=1e-3)</code>: least-squares fit of <code>f</code>, <code>(cx, cy)</code>, <code>R</code> and <code>C</code> to a 1 m grid over the zone, mapped with the homography. A weak prior pulls <code>(cx, cy)</code> toward the image centre, which picks one exact camera out of the family (R18).
+- <code>consistency(cam, homography, zone)</code>: RMS and max ground-projection residual; ok at RMS ≤ 1 px and max ≤ 3 px.
+- <code>sensitivity(...)</code>: refits at f × 0.87 / 1.0 / 1.13.
+- <code>hub_to_contact(cam, uv, r_m)</code>: the ray meets <code>z = r</code>, then drops vertically.</p>
+<ul>
+<li><strong>Pixel space and image size</strong> come from the <code>GroundModel</code> adapter (§4.2):</li>
+<li>fit targets: <code>world_to_undistorted</code> of the zone grid;</li>
+<li>consistency check: <code>distort(project(X, z = 0))</code> against <code>world_to_image(X)</code>;</li>
+<li>principal-point prior: toward the centre of <code>image_size</code>.</li>
+</ul>
+<p><code>fit</code> takes a <code>GroundModel</code>; a plain homography is wrapped, and fails without an image size.
+- <strong>No OpenCV.</strong>
+  - <code>cv2.Rodrigues</code> becomes <code>scipy.spatial.transform.Rotation.from_rotvec</code> / <code>as_rotvec</code>.
+  - The initial plane homography (<code>cv2.findHomography(…, 0)</code>, plain least squares) becomes a normalised DLT in numpy.
+  - The ported <code>test_camera</code> checks parity, and so does the NW-clip camera of §14.3 (f = 319.55 px, (cx, cy) = (334.10, 240.13), height 6.73 m, within 0.01 px / 0.001 m).</p>
+<p><code>VehFootPrinter</code> fits the camera lazily, the first time a locator needs it. A failed consistency check makes M4 and M7 fail with <code>camera_invalid</code> (base design §6.1; M7 design §7.5). The fit and its residuals go into <code>VehFootPrinter.info</code> (§11.4).</p>
+<h2 id="9-grid-m2-pass-and-reference-heading">9. Grid, M2 pass and reference heading<a class="headerlink" href="#9-grid-m2-pass-and-reference-heading" title="Permanent link">&para;</a></h2>
+<p>Inside <code>locate()</code>, before any chain runs:
+1. <strong>M1 points</strong> for every row. Rows that fail the projection gate (§7.10) get NaN, not a point.
+2. <strong>Grid:</strong> <code>smoother.segment(m1, allow_missing=True)</code> (§5.2). Every method uses this grid. Rows with an invalid projection keep their identity:
+   - <strong>one invalid row (or a short run) between valid observations:</strong> it stays in the segment, unmeasured, <code>fill_reason = "no_position"</code>;
+   - <strong>a run too long to bridge:</strong> the track splits there, and the run gets <code>seg = −1</code>;
+   - <strong>an invalid prefix or suffix, or a track with no valid projection at all:</strong> <code>seg = −1</code>.</p>
+<p>In every case these are <code>box_rejected</code> rows (§7.10): <code>fp_fail</code> starts with <code>projection</code>, and no <strong>box-derived</strong> ground point is invented for them. A <code>box_rejected</code> row inside a segment can still receive an admitted M7 pose (§7.7), and then <code>fp_source = "M7"</code> and <code>fp_support = "kinematic"</code>. Otherwise <code>fp_source = "none"</code>. <code>seg = −1</code> rows are never admitted, and reach every later step with NaN outputs.
+3. <strong>M2 points</strong> for every row with a valid projection.
+4. <strong>Reference pass:</strong> smooth M2 on the grid (<code>segmented=True</code>), compute velocities, and apply the motion-heading rules (§10.1) to get <code>ref_heading_deg</code>. It is needed by M3, M4 (pair acceptance, front) and M7 (initial heading), and stored for M5/M6 axis direction.</p>
+<p><strong>Dropped from the study:</strong> the approach-direction fallback for tracks that never move (it needs movement labels, which <code>tssa</code> inputs do not carry). Those rows get NaN <code>ψ_ref</code>; M3 and M4 fail with <code>no_heading</code>; M7 starts from the path direction, as <code>m7_runner._init_pose</code> already does.</p>
+<p><strong>Segmentation basis.</strong> The study split on <strong>pixel</strong> jumps (0.5 box heights per frame, <code>SPLIT_SPEED</code>, <code>SPLIT_LOGH</code>). <code>TrackSmoother</code> splits on ground speed. The vehicle defaults in §11.3 use ground speed. The validation run (§14) counts segments against the study's grid and reports the difference. A pixel-jump rule in <code>tssa.smooth</code> is a follow-up, not part of this round.</p>
+<h2 id="10-orientation-and-polygons-after-smoothing">10. Orientation and polygons (after smoothing)<a class="headerlink" href="#10-orientation-and-polygons-after-smoothing" title="Permanent link">&para;</a></h2>
+<p><code>polygons(table)</code> takes the <code>SpeedCalculator</code> output (the <code>locate()</code> columns, smoothed positions, <code>vx, vy</code>).</p>
+<h3 id="101-motion-heading">10.1 Motion heading<a class="headerlink" href="#101-motion-heading" title="Permanent link">&para;</a></h3>
+<p><strong>Units.</strong> The heading is unit-free, but the reliability threshold is not.
+- <code>polygons(table, speed_unit=None)</code> computes the speed itself from <code>vx, vy</code>.
+- Their unit is the <code>speed_unit</code> argument, else <code>table.attrs["speed_unit"]</code> (<code>"mph"</code> or <code>"m/s"</code>, as <code>SpeedCalculator</code> writes it), and the threshold is converted to it.
+- If both are given and differ, or the unit is unknown, or neither is given: <code>ValueError</code>. Some pandas operations drop <code>attrs</code>, so the message says to pass <code>speed_unit</code>.</p>
+<p>Per <code>(track, seg)</code> (base design §8.2):
+- <code>heading_reliable</code> at speed ≥ <code>heading_min_mph</code> (3);
+- otherwise hold the last reliable heading, and back-fill before the first;
+- a segment that is never reliable gets NaN motion heading (handled in §10.2).</p>
+<h3 id="102-footprint-orientation">10.2 Footprint orientation<a class="headerlink" href="#102-footprint-orientation" title="Permanent link">&para;</a></h3>
+<p>Per <code>(track, seg)</code>:
+1. <strong>Native rows:</strong> those whose supplying locator gave an orientation (M3–M7). Every native orientation is folded to an axis for smoothing; the directed value is kept for step 4.
+2. <strong>Axis smoothing, by the number <code>n</code> of native rows in the segment</strong> (as the study's <code>smooth_orientation</code>):
+   - <code>n = 0</code>: no native axis;
+   - <code>n = 1</code>: that axis, unchanged;
+   - <code>n ≥ 2</code>: RTS on the doubled-angle unit vector (<code>rts_smooth</code>, guarded and correctly started, §5.3; <code>orient_q</code> 1.0, <code>orient_sigma</code> 0.1; study <code>ORIENT_Q</code>, <code>ORIENT_SIGMA</code>, both untuned).
+3. <strong>Reach:</strong> the axis is used only within <code>orient_reach_frames</code> (10) of a native row (R10).
+4. <strong>Direction of an axis</strong>, first available:
+   1. the row's motion heading (reliable, held or back-filled; §10.1). <code>front_source = motion</code>;
+   2. the segment never moves: the nearest directed native orientation in the segment (M7's <code>ψ</code>, M4's <code>d_front</code>, M3's <code>ψ_ref</code>). <code>front_source = native</code>;
+   3. the motion heading of the same track's nearest other segment in time. <code>front_source = track</code>;
+   4. none: the axis is kept with an arbitrary direction. <code>front_source = none</code>, <code>front_known = False</code>.
+5. <strong>Rows without a native axis in reach</strong> use the motion heading, or else step 4.3. If neither exists, <code>orient_deg</code> is NaN and the row has no corners.</p>
+<p><code>orient_source</code> = <code>native</code> / <code>motion</code> / <code>none</code>. <code>front_known</code> is True unless step 4.4 was used.</p>
+<p><strong>Why fold, and when it matters.</strong>
+- <strong>While the vehicle moves</strong>, folding directed headings (M3, M4, M7) to axes loses nothing. M7's front rule is <code>travel</code>, so its front already faces the motion. For M4, the front correction already points <code>d_front</code> within 90° of <code>ψ_ref</code>.
+- <strong>A vehicle that never moves</strong> keeps its measured axis (step 4.2–4.4), so a parked bus with a passed M7 solve, or a stopped car with good M6 faces, still has an oriented footprint. Only its front may be unknown.</p>
+<p>The directed native value stays in <code>fp_orient_deg</code>, and M4's <code>m4_front_conflict</code> and M7's <code>m7_reversing</code> remain as flags.</p>
+<h3 id="103-size">10.3 Size<a class="headerlink" href="#103-size" title="Permanent link">&para;</a></h3>
+<p>Per track and segment, in this order:
+1. <strong>M7 passed solve</strong> (the segment's M7 solve has no fail reason): the solve's fitted <code>L</code> and <code>W</code> for <strong>every</strong> row of that segment (M7 design §9.3). <code>dims_source</code> = <code>m7_measured</code> / <code>m7_partly_prior</code> / <code>m7_prior</code> (M7 design §8.3, with the width-hold rule).
+2. <strong>Measured classes</strong> (<code>m6_measured_size_classes</code>, default <code>(2,)</code>): the median M6 length and width over the track's M6 rows, when there are at least <code>measured_size_min_rows</code> (5; my call). <code>dims_source = m6_measured</code>.
+3. Otherwise the class's nominal size (<code>size_ft</code>). <code>dims_source = nominal</code>.</p>
+<h3 id="104-corners-and-output">10.4 Corners and output<a class="headerlink" href="#104-corners-and-output" title="Permanent link">&para;</a></h3>
+<p><code>corners = rect(centre = smoothed position, orient_deg, length, width)</code>, front-left first. Rows supplied by a <code>point_only</code> locator (M1), or without a smoothed position, get NaN corners and <code>dims_source = none</code>.</p>
+<p>Added columns: <code>motion_heading_deg, heading_reliable, orient_deg, orient_source, front_source, front_known, length_ft, width_ft, dims_source, c1x, c1y, c2x, c2y, c3x, c3y, c4x, c4y</code> (corners in world m). With <code>front_known = False</code>, the corner set is correct but which end is "front-left" is arbitrary.</p>
+<p><code>VehFootPrinter.to_geodataframe(table, crs=None)</code> returns one shapely polygon per row (empty where corners are NaN).</p>
+<p><strong>Low confidence</strong> (M7 design §9.6, <code>combine_pet.low_confidence</code>): <code>fp_low_confidence = True</code> on rows of a failed M7 solve that fell back, or on admitted <code>kinematic</code> rows more than <code>lowconf_s</code> (2.0 s) from the nearest supported row. This flag is what a PET step needs.</p>
+<h2 id="11-public-api">11. Public API<a class="headerlink" href="#11-public-api" title="Permanent link">&para;</a></h2>
+<h3 id="111-construction-and-the-main-calls">11.1 Construction and the main calls<a class="headerlink" href="#111-construction-and-the-main-calls" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tssa.footprint</span><span class="w"> </span><span class="kn">import</span> <span class="n">VehFootPrinter</span><span class="p">,</span> <span class="n">FootprintConfig</span><span class="p">,</span> <span class="n">detect</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tssa.transform</span><span class="w"> </span><span class="kn">import</span> <span class="n">DistortedHomography</span>
+
+<span class="n">dh</span> <span class="o">=</span> <span class="n">DistortedHomography</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="s2">"model_a1a_nw.json"</span><span class="p">)</span>
+<span class="n">tables</span> <span class="o">=</span> <span class="n">detect</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">video</span><span class="p">,</span> <span class="n">tracks</span><span class="p">,</span> <span class="n">detectors</span><span class="o">=</span><span class="p">[</span><span class="n">detect</span><span class="o">.</span><span class="n">KeypointDetector</span><span class="p">(),</span>
+                                              <span class="n">detect</span><span class="o">.</span><span class="n">CuboidDetector</span><span class="p">(</span><span class="n">uod_ckpt</span><span class="p">,</span> <span class="n">uod_root</span><span class="p">),</span>
+                                              <span class="n">detect</span><span class="o">.</span><span class="n">MaskSegmenter</span><span class="p">(</span><span class="n">sam_ckpt</span><span class="p">)],</span> <span class="n">cache_dir</span><span class="o">=</span><span class="n">cache</span><span class="p">)</span>
+<span class="n">vfp</span> <span class="o">=</span> <span class="n">VehFootPrinter</span><span class="p">(</span><span class="n">dh</span><span class="p">,</span> <span class="n">zone</span><span class="o">=</span><span class="n">zone_from_points</span><span class="p">(</span><span class="n">gcps_utm</span><span class="p">,</span> <span class="n">buffer_ft</span><span class="o">=</span><span class="mi">15</span><span class="p">),</span> <span class="n">workers</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">cache_dir</span><span class="o">=</span><span class="n">cache</span><span class="p">)</span>
+
+<span class="n">out</span> <span class="o">=</span> <span class="n">vfp</span><span class="o">.</span><span class="n">estimate</span><span class="p">(</span><span class="n">tracks</span><span class="p">,</span> <span class="o">**</span><span class="n">tables</span><span class="p">)</span>                 <span class="c1"># locate -&gt; smooth -&gt; speed -&gt; polygons</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">vfp</span><span class="o">.</span><span class="n">to_geodataframe</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:32617"</span><span class="p">)</span>
+
+<span class="c1"># infer only what this configuration needs (masks for buses and trucks only, with the default chains)</span>
+<span class="n">tables</span> <span class="o">=</span> <span class="n">detect</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">video</span><span class="p">,</span> <span class="n">tracks</span><span class="p">,</span> <span class="n">detectors</span><span class="o">=</span><span class="p">[</span><span class="o">...</span><span class="p">],</span> <span class="n">rows</span><span class="o">=</span><span class="n">vfp</span><span class="o">.</span><span class="n">required_rows</span><span class="p">(</span><span class="n">tracks</span><span class="p">),</span> <span class="n">cache_dir</span><span class="o">=</span><span class="n">cache</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VehFootPrinter</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">homography</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">FootprintConfig</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">image_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">zone</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">camera</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">smoother</span><span class="p">:</span> <span class="n">TrackSmoother</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">speed</span><span class="p">:</span> <span class="n">SpeedCalculator</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                 <span class="n">workers</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">cache_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">config_overrides</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">locate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tracks</span><span class="p">,</span> <span class="n">only_tracks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">tables</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span> <span class="o">...</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">polygons</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">speed_unit</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span> <span class="o">...</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">required_rows</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tracks</span><span class="p">,</span> <span class="n">only_tracks</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span> <span class="o">...</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">estimate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tracks</span><span class="p">,</span> <span class="n">only_tracks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">tables</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span> <span class="o">...</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">compare</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tracks</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">(</span><span class="s2">"M1"</span><span class="p">,</span> <span class="s2">"M2"</span><span class="p">,</span> <span class="s2">"M3"</span><span class="p">,</span> <span class="s2">"M4"</span><span class="p">,</span> <span class="s2">"M5"</span><span class="p">,</span> <span class="s2">"M6"</span><span class="p">,</span> <span class="s2">"M7"</span><span class="p">),</span> <span class="n">fallback</span><span class="o">=</span><span class="s2">"M2"</span><span class="p">,</span>
+                <span class="n">admit_kinematic</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">only_tracks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">tables</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span> <span class="o">...</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_geodataframe</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span> <span class="o">...</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">available_locators</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]:</span> <span class="o">...</span>
+    <span class="n">info</span><span class="p">:</span> <span class="nb">dict</span>      <span class="c1"># camera fit and consistency, grid counts, M7 solve summaries (one row per solve)</span>
+</code></pre></div>
+<ul>
+<li><code>homography</code>, <code>image_size</code>: wrapped in <code>GroundModel</code> (§4.2); construction fails without an image size.</li>
+<li><code>camera</code>: pass a fitted <code>PinholeCamera</code> to skip the fit.</li>
+<li><code>smoother</code>: a user smoother must use <code>xy_cols=("fp_x", "fp_y")</code> and <code>cov_cols=("fp_cov_xx", "fp_cov_xy", "fp_cov_yy")</code>; anything else raises <code>ValueError</code> at construction, so the fill-scaling rule of §7.9 cannot be bypassed by accident.</li>
+<li><code>**tables</code>: the detection tables by name, so a later locator needs no new parameter.</li>
+<li>Errors raise <code>ValueError</code> early, as the existing classes do: bad config, an unknown locator name, a chain naming an unregistered locator, a column clash, a table missing its columns.</li>
+</ul>
+<h3 id="112-compare">11.2 <code>compare()</code><a class="headerlink" href="#112-compare" title="Permanent link">&para;</a></h3>
+<p>Runs each method as a single-locator chain on the <strong>same grid and reference heading</strong>, smooths and polygons each, and returns one long table with a <code>method</code> column.</p>
+<p><strong>Modes.</strong>
+<strong>One precedence rule for <code>admit_kinematic</code> in <code>compare()</code>:</strong></p>
+<table>
+<thead>
+<tr>
+<th><code>fallback</code></th>
+<th><code>admit_kinematic</code></th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>None</code> (native-only)</td>
+<td><code>None</code> or <code>False</code></td>
+<td>admission off</td>
+</tr>
+<tr>
+<td><code>None</code> (native-only)</td>
+<td><code>True</code></td>
+<td><code>ValueError</code>: admission contradicts native-only</td>
+</tr>
+<tr>
+<td>set (end-to-end)</td>
+<td><code>None</code></td>
+<td><code>config.admit_kinematic</code> (default True)</td>
+</tr>
+<tr>
+<td>set (end-to-end)</td>
+<td><code>True</code> / <code>False</code></td>
+<td>as given</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Native-only</strong> means measurements of the method's own observations only. A <code>kinematic</code> M7 row has no measurement: <code>fp_source = none</code>, <code>fp_support</code> empty, <code>fp_fail = "M7:no_observation"</code>, while <code>m7_support = kinematic</code> stays in the extras.</li>
+<li><strong>End-to-end</strong> (base design §7, without eligibility): admitted rows have <code>fp_source = M7</code> and <code>fp_support = kinematic</code>; rows the method fails on take the fallback.</li>
+</ul>
+<p><strong>Row contract: every input row, once per method.</strong> No row is ever dropped, so the per-method tables pair row by row.
+- Rows a method does not cover keep their identity, with <code>fp_source = none</code> and <code>fp_fail = "&lt;method&gt;:class_ineligible"</code>. Today that is M7 on classes outside <code>m7_classes</code>, such as cars.
+- <strong>The fallback is not applied to <code>class_ineligible</code> rows.</strong> An "M7 end-to-end" car would otherwise be pure M2 under the M7 label, and paired M7-vs-M6 comparisons on cars would compare M2 with M6.
+- Rows outside <code>only_tracks</code> are present with <code>fp_source = none</code> and <code>fp_fail = "excluded"</code>.</p>
+<p>It is what a project needs to rebuild the study's comparison: offsets between methods, speed traps, its own metrics.</p>
+<h3 id="113-vehicle-defaults-inside-estimate">11.3 Vehicle defaults inside <code>estimate()</code><a class="headerlink" href="#113-vehicle-defaults-inside-estimate" title="Permanent link">&para;</a></h3>
+<p><code>TrackSmoother</code>'s defaults are tuned for pedestrians: they would cut vehicle tracks at every frame faster than 6 m/s (13 mph). When no smoother is passed, <code>VehFootPrinter</code> builds:</p>
+<div class="highlight"><pre><span></span><code><span class="n">TrackSmoother</span><span class="p">(</span><span class="s2">"rts"</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">"q"</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">},</span>                 <span class="c1"># study RTS_Q, m²/s³ (gap regression: turn error 0.116 mph)</span>
+              <span class="n">xy_cols</span><span class="o">=</span><span class="p">(</span><span class="s2">"fp_x"</span><span class="p">,</span> <span class="s2">"fp_y"</span><span class="p">),</span> <span class="n">cov_cols</span><span class="o">=</span><span class="p">(</span><span class="s2">"fp_cov_xx"</span><span class="p">,</span> <span class="s2">"fp_cov_xy"</span><span class="p">,</span> <span class="s2">"fp_cov_yy"</span><span class="p">),</span>
+              <span class="n">fps</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">fps</span><span class="p">,</span> <span class="n">split_speed</span><span class="o">=</span><span class="mf">30.0</span><span class="p">,</span>         <span class="c1"># m/s (~67 mph): a jump or id switch; my call, §9</span>
+              <span class="n">fill_max_gap</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">gap_max_speed</span><span class="o">=</span><span class="mf">26.8</span><span class="p">)</span>      <span class="c1"># frames; m/s = 60 mph (study FILL_MAX_GAP, GAP_MAX_SPEED_MPH)</span>
+<span class="n">SpeedCalculator</span><span class="p">(</span><span class="n">fps</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">fps</span><span class="p">,</span> <span class="n">xy_cols</span><span class="o">=</span><span class="p">(</span><span class="s2">"fp_x_smooth"</span><span class="p">,</span> <span class="s2">"fp_y_smooth"</span><span class="p">))</span>   <span class="c1"># mph, the tssa default</span>
+</code></pre></div>
+<p><code>estimate()</code> calls <code>smoother.smooth(loc, segmented=True)</code> on <code>locate()</code>'s output (§5.2): no re-segmentation, every row returned, and rows without a reference point unmeasured. <code>polygons()</code> reads the speed unit from the calculator's <code>attrs</code> (§10.1). <code>estimate()</code> passes it explicitly, so the result does not depend on <code>attrs</code> surviving.</p>
+<h3 id="114-info">11.4 <code>info</code><a class="headerlink" href="#114-info" title="Permanent link">&para;</a></h3>
+<p>The camera (<code>f</code>, <code>cx</code>, <code>cy</code>, height, consistency RMS/max), segment and fill counts, per-locator success and failure counts, and the M7 per-solve table (study <code>m7_tracks.csv</code> columns). These are what the study's manifest recorded and what a user needs to judge a run.</p>
+<h2 id="12-configuration">12. Configuration<a class="headerlink" href="#12-configuration" title="Permanent link">&para;</a></h2>
+<h3 id="121-footprintconfig-frozen-with_overrides-like-smoothconfig">12.1 <code>FootprintConfig</code> (frozen; <code>with_overrides()</code> like <code>SmoothConfig</code>)<a class="headerlink" href="#121-footprintconfig-frozen-with_overrides-like-smoothconfig" title="Permanent link">&para;</a></h3>
+<p>Distances and sizes in <strong>feet</strong> (user Q2); positions in world metres; speeds in mph.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Default</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fps</code></td>
+<td>10.0</td>
+<td>study clip</td>
+</tr>
+<tr>
+<td><code>box_cols</code>, <code>cls_col</code></td>
+<td><code>("x", "y", "w", "h")</code>, <code>"cls"</code></td>
+<td>DNT track files</td>
+</tr>
+<tr>
+<td><code>size_ft</code></td>
+<td><code>{2: (15, 6), 5: (40, 8.5), 7: (25, 8)}</code> (L, W)</td>
+<td>base design §4, user decision</td>
+</tr>
+<tr>
+<td><code>priors_ft</code></td>
+<td>height, wheelbase, track width, front/rear overhang per class (base design §4 table)</td>
+<td>M4</td>
+</tr>
+<tr>
+<td><code>wheel_r_ft</code></td>
+<td>car 1.1, truck/bus 1.6</td>
+<td>base design §6.1</td>
+</tr>
+<tr>
+<td><code>default_size_ft</code></td>
+<td><code>(15, 6)</code></td>
+<td>my call</td>
+</tr>
+<tr>
+<td><code>chains</code>, <code>default_chain</code></td>
+<td>§7.8; <code>("M2",)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>max_ft_per_px</code>, <code>gate_buffer_ft</code>, <code>edge_px</code></td>
+<td>2.0, 100, 2</td>
+<td>base design §7</td>
+</tr>
+<tr>
+<td><code>sigma_k</code></td>
+<td>0.03</td>
+<td><code>RTS_SIGMA_K</code></td>
+</tr>
+<tr>
+<td><code>fill_meas_scale</code></td>
+<td>4.0 (std-dev multiplier on <code>interp = 1</code> rows, §7.9)</td>
+<td><code>FILL_MEAS_SCALE</code></td>
+</tr>
+<tr>
+<td><code>heading_min_mph</code></td>
+<td>3</td>
+<td><code>HEADING_MIN_MPH</code></td>
+</tr>
+<tr>
+<td><code>orient_q</code>, <code>orient_sigma</code>, <code>orient_reach_frames</code></td>
+<td>1.0, 0.1, 10</td>
+<td><code>ORIENT_*</code>, R10</td>
+</tr>
+<tr>
+<td><code>m3_resid_px</code></td>
+<td>0.5</td>
+<td><code>m3.RESID_OK_PX</code></td>
+</tr>
+<tr>
+<td><code>m4</code></td>
+<td>the base-design §6.1 tolerances (<code>WHEELBASE_TOL</code> 0.30, <code>AXIS_TOL_DEG</code> 30, <code>PARALLEL_TOL_DEG</code> 15, <code>TRACK_TOL</code> 0.30, <code>LONG_OFFSET_FRAC</code> 0.25, <code>MIN_CONTACT_SEP_FT</code> 0.5, <code>NEAR_DV_PX</code> 3, <code>NEAR_BOTTOM_FRAC</code> 0.10, <code>CAMERA_AWAY_DOT</code> 0.5, front-conflict 10 rows / 0.5), <code>wheel_landmark = "hub"</code></td>
+<td>study <code>settings.py</code></td>
+</tr>
+<tr>
+<td><code>m5_min_cols</code>, <code>m5_max_resid_ft</code></td>
+<td>8, 1.0</td>
+<td><code>M5_*</code></td>
+</tr>
+<tr>
+<td><code>m6_size_gate</code>, <code>m6_min_iou</code>, <code>m6_measured_size_classes</code></td>
+<td>0.5, 0.3, <code>(2,)</code></td>
+<td><code>M6_*</code></td>
+</tr>
+<tr>
+<td><code>measured_size_min_rows</code></td>
+<td>5</td>
+<td>my call</td>
+</tr>
+<tr>
+<td><code>m7</code></td>
+<td><code>M7Config</code> (§12.2)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>admit_kinematic</code>, <code>kin_meas_scale</code>, <code>kin_sd_floor_ft</code>, <code>lowconf_s</code></td>
+<td>True, 2.0, 0.5, 2.0</td>
+<td><code>M7_KIN_*</code>, <code>M7_LOWCONF_S</code></td>
+</tr>
+<tr>
+<td><code>camera_rms_px</code>, <code>camera_max_px</code>, <code>camera_pp_prior</code></td>
+<td>1.0, 3.0, 1e-3</td>
+<td>base design §5, R18</td>
+</tr>
+</tbody>
+</table>
+<h3 id="122-m7config">12.2 <code>M7Config</code><a class="headerlink" href="#122-m7config" title="Permanent link">&para;</a></h3>
+<p>A frozen dataclass holding every <code>M7_*</code> setting of the study's <code>settings.py</code> as of 2026-11-10, with the same values and their comments as docstrings. These include the prior sets (bus, truck, pickup/van), subtypes, loose width priors, inset priors, gates, σ values, solver iteration limits, front rule, width hold and pair start. The study code reads module globals (<code>S.M7_*</code>); the port passes an <code>M7Config</code> instead. Its hash enters the solve cache key.</p>
+<h2 id="13-module-layout">13. Module layout<a class="headerlink" href="#13-module-layout" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>src/tssa/smooth/config.py, methods.py, smoother.py, segments.py
+                                                      + cov_cols, segment(allow_missing), smooth(segmented), rts_smooth fixes   §5
+src/tssa/transform/homography.py                      lazy cv2 (below)
+src/tssa/transform/ground.py                          GroundModel adapter                         §4.2
+src/tssa/transform/camera.py                          PinholeCamera, fit, consistency, hub_to_contact (numpy/scipy only)   §8
+src/tssa/footprint/
+    __init__.py          VehFootPrinter, FootprintConfig, M7Config, register_locator, zone_from_points
+    config.py            FootprintConfig, M7Config
+    geometry.py          compass helpers, rect_corners, away_dir, jacobian, to_local/to_utm   (study geometry.py)
+    match.py             match_frame, compute_iou                                           (study infer.py)
+    masks.py             MaskTable, lower_outline, contour helpers                          (study m5.py, m7_candidates.py)
+    locators/
+        __init__.py      registry, LocateContext, LocatorResult
+        m1_m2_m3.py      (study geometry.py, m3.py)
+        m4.py            (study m4.py)
+        m5.py            (study m5.py)
+        m6.py            (study m6.py)
+        m7/
+            candidates.py  (study m7_candidates.py)
+            solver.py      (study m7.py)
+            runner.py      segment jobs, process pool, solve cache, native rows   (study m7_runner.py)
+    orientation.py       motion-heading rules, axis smoothing                               (study smooth.py, products.py)
+    printer.py           VehFootPrinter
+    detect/              optional: KeypointDetector, CuboidDetector, MaskSegmenter, run, cache   (study infer.py)
+tests/
+    smooth/test_cov_and_grid.py
+    transform/test_camera.py
+    footprint/  test_geometry.py  test_match.py  test_m1_m2_m3.py  test_m4.py  test_m5.py  test_m6.py
+                test_m7.py  test_m7_candidates.py  test_m7_runner.py  test_orientation.py  test_printer.py
+                m7_synth.py  conftest.py
+</code></pre></div>
+<p>Helpers stay inside <code>footprint/</code> (AGENTS.md: keep packages narrowly scoped); <code>engine/</code> is not touched.</p>
+<p><strong>Lazy OpenCV in <code>homography.py</code></strong> (review comment 6: today it imports <code>cv2</code> at module load, so <code>import tssa.transform</code> fails without OpenCV):
+- <code>import cv2</code> moves into the functions that fit (<code>cv2.findHomography</code>).
+- <strong>Projection</strong> (<code>_project</code>) becomes the homogeneous product in numpy, replacing <code>cv2.perspectiveTransform</code>. It must agree with the current results to 1e-9 on the existing <code>test_homography</code> cases, and those tests must pass unchanged.
+- The constructor default <code>method: int = cv2.RANSAC</code> becomes <code>method: int | None = None</code>, meaning RANSAC, resolved inside the fit. Passing OpenCV constants still works.
+- <strong>Guarantee:</strong> <code>load_json</code> / <code>load_matrix</code> and both projection directions work without OpenCV; constructing a homography from point pairs needs it.</p>
+<p><strong>Provenance.</strong> Every ported file starts with a docstring naming its study source file and that file's SHA-256, as listed in the snapshot manifest (§17, phase 0). The manifest, not the per-file docstrings, establishes that all ported files come from one state.</p>
+<h2 id="14-tests-and-validation">14. Tests and validation<a class="headerlink" href="#14-tests-and-validation" title="Permanent link">&para;</a></h2>
+<h3 id="141-ported-synthetic-tests">14.1 Ported synthetic tests<a class="headerlink" href="#141-ported-synthetic-tests" title="Permanent link">&para;</a></h3>
+<p>The study's suite had 210 tests for M1–M6 and 53 more for M7 at the last count. The method tests are ported with their fixtures:
+- <code>test_geometry</code>, <code>test_m3</code>;
+- <code>test_m4</code>: frontal/rear/oblique; the unequal-overhang bus under all four label permutations to 1e-6 ft; malformed-pair rejection; camera-away success; misaligned far pairs; head-on <code>side_ambiguous</code>; reversing bus; elevated hub to 0.05 ft;
+- <code>test_m5</code>, <code>test_m6</code>, <code>test_camera</code>;
+- <code>test_m7</code> and <code>test_m7_candidates</code>, using <code>m7_synth.py</code>: the 40 ft bus on a 90° right turn with 0.5 px noise, the association examples of test 21, and the rest;
+- the parts of <code>test_smooth</code> covering motion heading and orientation smoothing.</p>
+<p>Tests of the study's evaluation machinery (products, metrics, stops, sampling, clips, export) are not ported (§2).</p>
+<h3 id="142-new-tests">14.2 New tests<a class="headerlink" href="#142-new-tests" title="Permanent link">&para;</a></h3>
+<p><strong><code>tssa.smooth</code> (§5)</strong>
+1. <strong>Covariance:</strong>
+   - <code>cov_cols</code> with <code>R = σ²I</code> gives the same result as <code>sigma_col = σ</code> on <code>interp = 0</code> rows;
+   - on <code>interp = 1</code> rows the covariance is <strong>not</strong> inflated, while <code>sigma_col</code> is (§5.1);
+   - a non-PD <code>R</code> raises;
+   - the existing smoother tests pass unchanged.
+2. <strong>Segmenting with missing positions</strong> (<code>allow_missing=True</code>, review comment 1):
+   - one invalid row between valid observations stays in its segment, unmeasured, <code>fill_reason = "no_position"</code>;
+   - an invalid run longer than <code>fill_max_gap</code> splits the track and gets <code>seg = −1</code>;
+   - an invalid prefix and an invalid suffix get <code>seg = −1</code>;
+   - a track with no valid position is returned whole, with <code>seg = −1</code>;
+   - every input row is returned once.
+3. <strong>Segmented smoothing</strong> (review comment 2):
+   - <strong>stale positions:</strong> segment on M1 positions, then smooth M6 positions that are deliberately offset by 3 m. The output follows M6, not M1, for <code>rts</code>, <code>ma</code> and <code>sg</code>, and for a 1-row segment;
+   - <strong>large origin, two tolerances</strong>, both absolute (<code>rtol = 0</code>; a default relative tolerance at UTM scale would hide millimetres), on coordinates with six decimals (e.g. 5200000.123456 m):
+     - <strong>internal:</strong> the local ↔ world conversion, before output rounding, round-trips to 1e-6 m;
+     - <strong>public:</strong> the returned <code>&lt;pos&gt;_smooth</code> columns are within 0.0005 m. The smoother rounds its added columns to three decimals in <code>_finish()</code>, and <strong>segmented mode keeps that rounding</strong>, the same as the legacy path. No output precision changes.
+   - <strong>failed method:</strong> with every position NaN, a segment returns NaN and <code>fallback = 1</code>, without raising;
+   - <strong>structural columns:</strong> input with <code>seg</code>/<code>fill_reason</code> does not clash, and a non-consecutive segment raises.
+4. <strong>Admission</strong> (review comment 3): an M7 point on an inserted <code>interp = 2</code> frame changes the smoothed result; the same table with that point removed does not use it.
+5. <strong><code>rts_smooth</code>:</strong>
+   - 0 and 1 measured rows raise <code>ValueError</code>;
+   - exact constant-velocity data with a 10-frame missing prefix recovers frame 0 to 1e-6 m (today: 1.54 m off);
+   - segments that start with a measurement give the same result as before.</p>
+<p><strong>Ground model and camera (§4.2, §8)</strong></p>
+<ol>
+<li><strong>Adapter:</strong></li>
+<li>a <code>HomographyTransform</code> has identity distortion and needs an explicit <code>image_size</code>;</li>
+<li>a <code>DistortedHomography</code> gives its own size, and a conflicting explicit size raises;</li>
+<li>an object with only <code>undistort</code> raises.</li>
+<li><strong>Camera fit:</strong> fits through both an ordinary and a distorted homography (synthetic radial distortion), with consistency residuals under 1e-6 px on exact data.</li>
+<li><strong>Lazy imports</strong> (review comment 6), with <code>cv2</code>, <code>torch</code> and <code>ultralytics</code> blocked in <code>sys.modules</code>:</li>
+<li><code>import tssa</code>, <code>tssa.transform</code> and <code>tssa.footprint</code>;</li>
+<li><code>DistortedHomography.load_json</code> of a saved model, and projection in both directions;</li>
+<li><code>PinholeCamera.fit</code>;</li>
+<li>an M2-only and an M6-only <code>estimate()</code>.</li>
+</ol>
+<p>Fitting a homography and running M5 raise <code>ImportError</code> naming OpenCV.</p>
+<p><strong>Footprint</strong></p>
+<ol>
+<li><strong>Chains:</strong></li>
+<li>a truck row: M7 failed solve → collapsed M6 face → M3 → with no heading, M2; <code>fp_fail</code> lists each failure in order;</li>
+<li>a car without cuboids: <code>M6:not_supplied</code>, then M2.</li>
+<li><strong>Covariance per support type</strong> (§7.9): an <code>interp = 1</code> box row has <code>16 · R</code>; an admitted M7 row has exactly the §7.7 covariance.</li>
+<li><strong>Size:</strong> an M7 passed segment uses the fitted L and W on every row, fallback rows included; a car with 5 M6 rows uses their median, with 4 nominal; a bus is always nominal unless M7 passed.</li>
+<li><strong>Orientation</strong> (review comment 4):<ul>
+<li>no native axes: the motion heading is used, without error;</li>
+<li>one native axis: that axis within reach;</li>
+<li>an axis around 179°/1° never smooths to 90°;</li>
+<li>the reach rule;</li>
+<li>direction toward motion.</li>
+</ul>
+</li>
+<li><strong>Never-moving vehicles</strong> (review comment 5):<ul>
+<li>a stationary car with M6 faces keeps the M6 axis. <code>front_source</code> is <code>track</code> when another segment of the track moves, otherwise <code>none</code> with <code>front_known = False</code>. Corners are present either way;</li>
+<li>a stationary M7 bus takes its direction from <code>ψ</code> (<code>front_source = native</code>);</li>
+<li>a car that waits, then drives: the waiting rows are back-filled from the first moving heading (<code>front_source = motion</code>).</li>
+</ul>
+</li>
+<li><strong>Speed units</strong> (review comment 8): one track through <code>SpeedCalculator(units="metric")</code> and <code>units="imperial"</code> gives identical <code>heading_reliable</code> and <code>orient_deg</code>. A table without <code>attrs</code> and without <code>speed_unit</code> raises.</li>
+<li><strong><code>compare()</code></strong> (first review 9 and 10; second review 3):<ul>
+<li><strong><code>fallback=None</code>:</strong></li>
+<li>with <code>admit_kinematic=None</code> and with <code>False</code>: the <code>kinematic</code> M7 row has no measurement, <code>fp_source = none</code>, <code>fp_support</code> empty, <code>fp_fail = "M7:no_observation"</code>, and <code>m7_support = kinematic</code> stays;</li>
+<li>with <code>True</code>: <code>ValueError</code>;</li>
+<li><strong><code>fallback="M2"</code>:</strong></li>
+<li>with <code>admit_kinematic=None</code> (config default True) and with <code>True</code>: the same row is admitted, <code>fp_source = M7</code>, <code>fp_support = kinematic</code>;</li>
+<li>with <code>False</code>: it takes M2;</li>
+<li>a mixed car/bus input returns every row once per method, with M7 car rows <code>class_ineligible</code> and no fallback, in both modes;</li>
+<li><code>only_tracks</code> rows are <code>excluded</code>.</li>
+</ul>
+</li>
+<li><strong>End to end:</strong> a straight car and a turning car rendered to boxes and cuboid faces through a synthetic camera with 0.5 px noise and a 15-frame hole. The centre is within 0.3 ft, the heading within 2°, and the speed within 0.2 mph of truth (base design §8.2 bound).</li>
+<li><strong>Every input row returned once</strong> by <code>locate()</code> and <code>estimate()</code>, including invalid-projection rows.</li>
+<li><strong>Admission through the real pipeline</strong> (second review 1). <code>estimate()</code> runs on a synthetic bus with a passed M7 solve (a stub M7 locator in phase 2, the real one in phase 5), whose segment contains:<ul>
+<li>an <strong>inserted</strong> gap frame (<code>interp = 2</code>, NaN box fields, no Jacobian): it is admitted, <code>fp_row_kind = inserted</code>, and its <code>fp_cov_*</code> equal the §7.7 covariance exactly. The smoothed position moves toward the M7 pose compared with the same run with <code>admit_kinematic=False</code>;</li>
+<li>an <strong>original <code>box_rejected</code> row</strong> inside the segment with <code>kinematic</code> support: it is admitted, and <code>fp_fail</code> still starts with <code>projection</code>;</li>
+<li>an original <code>box_rejected</code> row with <strong>native</strong> M7 support: not used by M7, so the next locator in the chain is tried;</li>
+<li>a <strong><code>seg = −1</code></strong> prefix row: never admitted, NaN outputs.</li>
+</ul>
+</li>
+<li><strong>Width hold</strong> (second review 2): <code>w_ft_per_px</code> = 0.29, exactly 0.3, 0.31 and <code>inf</code>, with threshold 0.3, gives held = False, False, True, True, and <code>None</code> as the threshold never holds. This is the same decision as the study's expression, evaluated on those inputs.</li>
+</ol>
+<p><strong>Detectors (§6)</strong></p>
+<ol>
+<li><strong>Matching:</strong> a dense frame with crossing boxes is assigned one-to-one; an IoU under 0.3 is unmatched.</li>
+<li><strong>Row selection</strong> (review comment 11):<ul>
+<li><code>required_rows</code> with a custom car chain containing M5 lists car rows under <code>masks</code>;</li>
+<li>the default chains list only cls 5/7 rows there;</li>
+<li>in a crowded frame, requesting one track's rows gives the same match as requesting all rows (matching context is the whole frame). This is tested with a fake detector, so no model is needed.</li>
+</ul>
+</li>
+</ol>
+<h3 id="143-validation-run-on-the-nw-clip-not-a-unit-test">14.3 Validation run on the NW clip (not a unit test)<a class="headerlink" href="#143-validation-run-on-the-nw-clip-not-a-unit-test" title="Permanent link">&para;</a></h3>
+<p>On the study's pinned inputs (<code>footprint/inputs/</code>), fed with the study's caches converted to the §4.3 tables:</p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Pass condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Camera</td>
+<td>f, (cx, cy) and height equal to the run report's (319.55 px, (334.10, 240.13), 6.73 m) within 0.01 px / 0.001 m</td>
+</tr>
+<tr>
+<td>M1, M2, M3, M4, M5, M6 native points on the study's grid</td>
+<td>equal to the study's native tables (run <code>20261107_222536_s0</code>) to 1e-6 m</td>
+</tr>
+<tr>
+<td>M4 <code>label_case</code>, <code>interior_source</code>, <code>front_conflict</code></td>
+<td>counts equal to the run report (2,185 valid; tracks 230 and 432 flagged)</td>
+</tr>
+<tr>
+<td>M7 solves on the study's display segments, solved fresh by the port (not read from the study's solve cache), with the study's frames, observations and initial poses</td>
+<td>pass/fail and fail reasons equal to run <code>20261110_161113_s0</code>; fitted L and W within 0.05 ft. About 46 min with 12 workers.</td>
+</tr>
+<tr>
+<td>Detectors</td>
+<td>on 200 sampled rows, same device and package versions: <code>detect.run</code> reproduces the study's cache rows (keypoints and cuboid corners within 0.5 px; mask IoU ≥ 0.99)</td>
+</tr>
+<tr>
+<td>Grid</td>
+<td>segment count vs the study's pixel-jump grid; the difference is reported, not gated (§9)</td>
+</tr>
+<tr>
+<td>Smoothed M6 centres vs the study's M6 display</td>
+<td>median and p95 difference reported, not gated (study products used per-product segments)</td>
+</tr>
+<tr>
+<td>Speed trap (two screen lines 92.71 ft apart, NB/SB through vehicles)</td>
+<td>|error| p90 within the study's 0.38 mph</td>
+</tr>
+</tbody>
+</table>
+<p>The results are written into this document as a new §19.</p>
+<h2 id="15-deliberate-changes-from-the-study">15. Deliberate changes from the study<a class="headerlink" href="#15-deliberate-changes-from-the-study" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Change</th>
+<th>Why</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>One product per call; <code>compare()</code> instead of metric-native / metric-e2e / display</td>
+<td>a library has no eligibility rules or clip sample</td>
+<td>no sample-independence guarantees; users build their own metric sets</td>
+</tr>
+<tr>
+<td>M7 solves per segment only (display solve)</td>
+<td>one product</td>
+<td>metric-run solves are not available</td>
+</tr>
+<tr>
+<td>One SAM pass for M5 and M7: every component's contour plus the raw-mask lower outline; M7 applies the 5% component rule itself</td>
+<td>the study ran SAM twice (M5 outlines, M7 contours)</td>
+<td>M5 lower outlines identical to the study's on 200 of 200 sampled rows; M7 masks IoU ≥ 0.99 after the 5% rule (§19)</td>
+</tr>
+<tr>
+<td>Approach-direction fallback dropped</td>
+<td>needs movement labels</td>
+<td>never-moving tracks: M3/M4 fail <code>no_heading</code>; M7 starts from the path direction</td>
+</tr>
+<tr>
+<td>Segmentation on ground speed, not pixel jumps</td>
+<td><code>TrackSmoother</code> has no pixel rule</td>
+<td>segment boundaries may differ; counted in §14.3</td>
+</tr>
+<tr>
+<td>Native orientations folded to axes, directed toward the final motion heading</td>
+<td>one rule for mixed-source tracks</td>
+<td>equal to the study's while moving; differs only while stopped (hold rule)</td>
+</tr>
+<tr>
+<td>Never-moving segments keep their native axis; direction from a directed native or another segment, else <code>front_known = False</code></td>
+<td>the study's approach fallback is gone (§9)</td>
+<td>stationary vehicles keep an oriented footprint</td>
+</tr>
+<tr>
+<td>Invalid-projection input rows are retained without box-derived measurements. Prefixes, suffixes and unbridged missing runs get <code>seg = −1</code> and no position. Interior rows in valid segments may receive smoothed predictions, or admitted M7 kinematic measurements under §7.7.</td>
+<td>every row returned; no box-derived ground point from a rejected projection</td>
+<td>the study built segments from the boxes, so invalid-projection rows at a display segment's ends were also predicted there; here only interior rows are</td>
+</tr>
+<tr>
+<td><code>rts_smooth</code> starts at the first measurement</td>
+<td>segments may now start unmeasured</td>
+<td>identical wherever the first row is measured (every study case)</td>
+</tr>
+<tr>
+<td>Camera without OpenCV (scipy rotations, numpy DLT)</td>
+<td>OpenCV-free core</td>
+<td>parity checked in §14.3</td>
+</tr>
+<tr>
+<td><code>R_override</code> replaced by covariance columns</td>
+<td>general mechanism</td>
+<td>identical numbers</td>
+</tr>
+<tr>
+<td>Settings passed as config objects, not module globals</td>
+<td>library use, two printers in one process</td>
+<td>identical numbers</td>
+</tr>
+</tbody>
+</table>
+<h2 id="16-decisions-on-the-open-points-user-2026-11-10">16. Decisions on the open points (user, 2026-11-10)<a class="headerlink" href="#16-decisions-on-the-open-points-user-2026-11-10" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Q6. Freeze point for M7: snapshot now.</strong> The user has reviewed the M7 clips, so the snapshot (§17, phase 0) is taken now. The study's code has not changed since run <code>20261110_161113_s0</code>: the newest code file is <code>settings.py</code> (2026-11-10 16:10, just before that run), and the later edit to the M7 notes (18:50) only reports that run. The snapshot is therefore exactly the state §7.6 describes. Later study changes are ported deliberately, each with a new snapshot and a validation rerun.</li>
+<li><strong>Q7. Method names: <code>M1</code>–<code>M7</code> only, for now.</strong> Descriptive aliases (<code>bottom_centre</code>, <code>nominal_shift</code>, <code>nominal_box</code>, <code>wheel_keypoints</code>, <code>sam_outline</code>, <code>cuboid</code>, <code>wheel_fit</code>) are added later, as a follow-up outside phases 0–6. (Done in 0.0.2.12, §7.8.) The registry (§7.1) must therefore allow more than one name per locator without changing its result columns: <code>fp_source</code> keeps the canonical <code>M</code> name.</li>
+</ul>
+<h2 id="17-build-order">17. Build order<a class="headerlink" href="#17-build-order" title="Permanent link">&para;</a></h2>
+<p>Each phase ends with its tests passing and a commit. The version bumps by one patch per phase.</p>
+<ol>
+<li><strong>Study snapshot</strong> (review: source handoff). A read-only archive of the study folder's code, documents and settings, plus <code>docs/study-snapshot-&lt;date&gt;.json</code> committed in <code>tssa</code>. The manifest records:</li>
+<li>every <code>.py</code> and <code>.md</code> file with its SHA-256;</li>
+<li>the full <code>settings.py</code> values;</li>
+<li>the column schemas and one example row of each cache table (<code>m4</code>, <code>m5</code>, <code>m6</code>, <code>m7</code>, <code>m7solve</code>);</li>
+<li><code>pip freeze</code> of the study's Python 3.14 environment, and the model checkpoint hashes;</li>
+<li>the run directories used in §14.3.</li>
+</ol>
+<p>Code is ported only from the archive. Taken now (Q6, §16).
+1. <strong><code>tssa.transform</code> and <code>tssa.smooth</code> foundations:</strong>
+   - lazy OpenCV in <code>homography.py</code> and the <code>GroundModel</code> adapter (§4.2, §13);
+   - <code>cov_cols</code>, <code>segment(allow_missing)</code>, <code>smooth(segmented)</code> and the <code>rts_smooth</code> fixes (§5);
+   - tests 1–6, plus test 8 for the transform part;
+   - the existing smooth, speed and homography tests unchanged.
+2. <strong>Core footprint:</strong> config, geometry, registry, M1–M3, M6, chains, grid and reference pass, orientation, polygons, <code>estimate()</code>, <code>compare()</code>; ported tests for geometry, M3 and M6; tests 9–18 (M7 parts with a stub locator).
+3. <strong>Camera and M4, M5:</strong> <code>transform/camera.py</code> without OpenCV, M4, M5, <code>masks.py</code>; ported tests; test 7; the rest of test 8.
+4. <strong>Detectors:</strong> <code>match.py</code>, <code>detect/</code> with cache, <code>required_rows()</code>; tests 20–21; detector check of §14.3.
+5. <strong>M7:</strong> candidates, solver, runner with workers and cache, admission, low-confidence flag; ported M7 tests; tests 4, 10, 13, 15 and 18 against the real locator; test 19.
+6. <strong>Validation run</strong> (§14.3); results into §19; <code>README.md</code> section; <code>pyproject.toml</code> extra <code>detect</code>.</p>
+<h2 id="18-left-to-the-builder">18. Left to the builder<a class="headerlink" href="#18-left-to-the-builder" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>LocatorResult</code> and <code>LocateContext</code> field details.</li>
+<li>How M7's process pool is started on Windows (<code>spawn</code>) and on Linux.</li>
+<li>Whether <code>split_speed = 30 m/s</code> needs changing after the §14.3 segment count; reported either way.</li>
+<li>Whether to vectorise M3 and M5 (the study solves them row by row).</li>
+</ul>
+<h2 id="19-validation-results-nw-clip-2026-11-11">19. Validation results (NW clip, 2026-11-11)<a class="headerlink" href="#19-validation-results-nw-clip-2026-11-11" title="Permanent link">&para;</a></h2>
+<p>Run with <code>docs/validation/nw_clip_validation.py</code> (parts <code>native</code>, <code>grid</code>, <code>e2e</code>, <code>trap</code>, <code>m7</code>, <code>m7study</code>, <code>m7compare</code>,
+<code>estimate</code>) and <code>docs/validation/detector_check.py</code>, on the pinned inputs of §14.3 and the study code from the
+snapshot (§17 phase 0). The port ran on Linux (WSL2, Python 3.12, scipy 1.17); the study's reports were made on
+Windows (Python 3.14).</p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Result</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Camera</td>
+<td>f 319.5459, (cx, cy) (334.1009, 240.1256), height 6.7331 m; largest difference from the study 5e-8</td>
+<td>pass</td>
+</tr>
+<tr>
+<td>M1, M2, M3, M6 native points</td>
+<td>46,213 / 46,213 / 46,213 / 34,628 rows valid in both, none in one only; max difference 0 m</td>
+<td>pass</td>
+</tr>
+<tr>
+<td>M4 native points</td>
+<td>2,364 rows valid in both; max difference 1.4e-9 m; <code>label_case</code> and <code>interior_source</code> equal</td>
+<td>pass</td>
+</tr>
+<tr>
+<td>M4 counts (metric <code>psi_ref</code>)</td>
+<td>2,185 valid (2,175 <code>camera_away</code>, 10 <code>other_pair</code>); <code>front_conflict</code> on tracks 230 and 432</td>
+<td>pass</td>
+</tr>
+<tr>
+<td>M5 (<code>solve_m5</code> on the study's outlines)</td>
+<td>23,526 rows valid in both, no disagreement, max difference 0 m</td>
+<td>pass</td>
+</tr>
+<tr>
+<td>M7 port vs the study's solver, same jobs, same machine</td>
+<td>25 / 25 same pass/fail and reason; 17 passed; L and W differences 0 ft on all</td>
+<td>pass</td>
+</tr>
+<tr>
+<td>M7 port vs the study's run report (<code>20261110_161113_s0</code>)</td>
+<td>23 / 25 same pass/fail (315 <code>param_bound</code> and 452 <code>wheel_resid</code> here, passed there); on the 17 passed in both, |dL| median 0.11 ft, max 2.97 ft (track 176), 6 within 0.05 ft; |dW| max 0.21 ft</td>
+<td>platform noise, see below</td>
+</tr>
+<tr>
+<td>Detectors, 200 sampled rows</td>
+<td>keypoints 66 / 66 rows, max 0.15 px; cuboid corners 66 / 66, max 0.05 px; masks 68 / 68 with IoU ≥ 0.99 (min 0.99996) after the 5% component rule; M5 lower outlines from the port's single SAM pass identical to the study's M5 cache on 200 / 200 rows</td>
+<td>pass</td>
+</tr>
+<tr>
+<td>Grid</td>
+<td>445 segments here, 732 in the study (426 labelled tracks)</td>
+<td>reported, see below</td>
+</tr>
+<tr>
+<td>Smoothed M6 centres vs the study's M6 display</td>
+<td>32,852 rows; median 0.0014 ft, p95 0.18 ft</td>
+<td>reported</td>
+</tr>
+<tr>
+<td>Speed trap, NB/SB through vehicles common to both</td>
+<td>|error| p90 (mph) here / study: M1 0.332 / 0.332, M2 0.365 / 0.365, M3 0.384 / 0.385, M4 0.365 / 0.361, M6 0.384 / 0.384; medians within 0.006 mph</td>
+<td>pass (study's 0.38 mph)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>M7 and the platform.</strong> The study's own solver, run on the same jobs on the Linux machine, gives exactly the port's
+results, and differs from its Windows report in the same way the port does (the two pass/fail flips, the same |dL|
+per track). The Windows-vs-Linux difference is most likely floating-point differences in the least-squares path (BLAS,
+scipy version; not traced further): the fit is multi-start with pruning, so a small change in one start's final cost can change which
+start wins. The 0.05 ft gate of §14.3 therefore holds on one platform, not across platforms; across platforms expect
+a median |dL| near 0.1 ft, rare multi-foot outliers, and some pass/fail changes (2 of 25 here).</p>
+<p><strong>Grid.</strong> Ground-speed segmentation (§9, §15) cuts far less than the study's pixel-jump rule. Of the study's 306 cuts
+inside tracks, 292 are between consecutive frames, at a median box jump of 20 px (1.3 m), and 257 of its 732 segments
+have 5 rows or fewer. Lowering <code>split_speed</code> does not reproduce the study's grid: 456 segments at 20 m/s; 558 at
+15 m/s, with 41 tracks cut less and 40 cut more than the study; 2,589 at 10 m/s. §18's question is answered: keep
+30 m/s. The coarser grid does not move the smoothed centres materially (row above) and leaves the speed trap unchanged
+on common vehicles.</p>
+<p><strong>Speed trap, all vehicles.</strong> On every NB/SB through vehicle (251 to 254 per method, against the study's 139 to 167
+eligible ones), the p90 is 0.375 to 0.461 mph; the study's eligibility rules (§15, first row) are not applied here.</p>
+<p><strong><code>estimate()</code> with the default chains.</strong> On the 426 labelled tracks (54,241 rows), with every detection
+table, 21 minutes with 10 workers (0.0.2.10, nothing cached). Sources: M6 33,650 rows, M2 10,555, M7 1,980, M3 28,
+none 8,028 (rejected projections). M7 solved the 25 bus and truck segments of the port's grid: 16 passed, 4
+<code>param_bound</code>, 3 <code>articulated_suspect</code>, 2 <code>wheel_resid</code> (these segments are cut by §9, not the study's display
+segments, so the 17 / 25 above is not directly comparable). On bus and truck rows: M7 1,980 (18 of them admitted
+<code>kinematic</code>), M6 798, M2 735, M3 28; sizes <code>m7_measured</code> 394, <code>m7_partly_prior</code> 1,106, <code>m7_prior</code> 480, <code>nominal</code>
+1,579. <code>fp_low_confidence</code> is set on 1,579 rows, the fallback rows of the failed solves. Speed trap on all 253 NB/SB through vehicles:
+|error| median 0.20 mph, p90 0.45 mph.</p>
+<p><strong>M7 speed (0.0.2.10).</strong> The 0.0.2.9 solver (the study's algorithm as ported) took about 2 minutes per 70 to 90-frame segment on one uncontended core,
+and up to 20 minutes per segment with 10 to 16 solves sharing the machine. Two changes leave the results unchanged (the 25
+display solves are identical in pass/fail, F, L and W): a finite-difference Jacobian computed in grouped evaluations
+that equals scipy's sparse 2-point Jacobian bit for bit (tested), and racing (from outer round 4, a start, pair
+restart or cross refit is dropped while its cost is more than 5% above the best finished fit). One segment
+uncontended: 113 s to 53 s (88 frames) and 132 s to 62 s (69 frames). Cheaper search settings (<code>M7_COARSE_OUTER</code>,
+<code>M7_SEARCH_TOL</code>) saved only 11% more and changed 3 pass/fail outcomes, so they are off by default. The runner gives each worker one BLAS
+thread; more workers than physical cores lengthens every solve.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.indexes", "content.code.copy", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
