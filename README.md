@@ -2,6 +2,8 @@
 
 TSSA is a set of tools designed for conducting transportation sorrogate safety studies, specifically focusing on pedestrian and bicycle safety. It leverages AI and machine learning to analyze and interpret transportation data, providing insights and recommendations for improving safety in urban environments.
 
+**Documentation:** [tssa API Manual](https://wonstran.github.io/tssa/)
+
 ## Table of Contents
 
 - [Features](#features)
@@ -61,7 +63,8 @@ python analysis.py --data=data/traffic_data.csv --output=output/safety_report.pd
 `VehFootPrinter` turns tracked vehicle boxes into ground footprints: a reference point at the body centre before
 smoothing, then an oriented polygon of the right size after smoothing. It carries the seven methods of the speed
 study (M1 bbox bottom-centre ... M7 wheel-anchored rigid fit), per-class fallback chains, and a 2 x 2 measurement
-covariance per row. Design: [docs/2026-11-10-footprint-design.md](docs/2026-11-10-footprint-design.md).
+covariance per row. Design: [docs/2026-11-10-footprint-design.md](docs/2026-11-10-footprint-design.md). API:
+[VehFootPrinter reference](https://wonstran.github.io/tssa/api/footprint/).
 
 ```python
 import pandas as pd
